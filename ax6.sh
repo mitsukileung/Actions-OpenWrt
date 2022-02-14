@@ -42,5 +42,5 @@ git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci
 # 添加 OpenClash
 git clone -b master https://github.com/vernesong/OpenClash.git package/openclash
 
-# 添加 filebrowser
+# 添加 luci-theme-neobird 主题
 git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
