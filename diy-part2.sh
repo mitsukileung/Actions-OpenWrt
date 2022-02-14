@@ -11,11 +11,14 @@
 #
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.1.88/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
 # Modify X86 Kernel 5.10
-sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g' target/linux/x86/Makefile
+sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/x86/Makefile
 # Clear the login password
 sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
+# Modify frpc default setting
+sed -i 's/yourdomain.com/frp.104300.xyz/g' package/lean/luci-app-frpc/root/etc/config/frp
+sed -i 's/1234567/www.126126.xyz/g' package/lean/luci-app-frpc/root/etc/config/frp
 
 # 重新添加 luci-theme-argon
 rm -rf package/lean/luci-theme-argon
