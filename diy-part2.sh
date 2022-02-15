@@ -17,11 +17,11 @@ sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/x86/Makefi
 # Clear the login password
 sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
 # Modify frpc default setting
-sed -i 's/yourdomain.com/frp.104300.xyz/g' package/lean/luci-app-frpc/root/etc/config/frp
-sed -i 's/1234567/www.126126.xyz/g' package/lean/luci-app-frpc/root/etc/config/frp
+sed -i 's/yourdomain.com/frp.104300.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
+sed -i 's/1234567/www.126126.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 
 # 重新添加 luci-theme-argon
-rm -rf package/lean/luci-theme-argon
+rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
 git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
