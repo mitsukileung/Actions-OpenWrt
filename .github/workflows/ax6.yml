@@ -16,6 +16,8 @@ on:
   push:
     tags:
     - 'v*'
+  watch:
+    types: [started]
   repository_dispatch:
   workflow_dispatch:
     inputs:
