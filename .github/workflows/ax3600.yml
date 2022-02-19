@@ -13,6 +13,9 @@ name: AX3600
 on:
   schedule:
     - cron: 8 20 * * *
+  push:
+    tags:
+    - 'v*'
   repository_dispatch:
   workflow_dispatch:
     inputs:
