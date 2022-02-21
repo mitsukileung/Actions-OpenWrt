@@ -32,7 +32,7 @@ rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
 git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
 # 添加 luci-app-aliyundrive-webdav
-rm -rf ./feeds/luci/applications/luci-app-aliyundrive-webdav
+rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
 git clone https://github.com/messense/aliyundrive-webdav.git package/luci-app-aliyundrive-webdav
 
 # 添加 luci-app-unblockneteasemusic
