@@ -33,6 +33,7 @@ git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-ap
 
 # 添加 luci-app-aliyundrive-webdav
 rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
+rm -rf feeds/packages/net/aliyundrive-webdav
 git clone https://github.com/messense/aliyundrive-webdav.git package/luci-app-aliyundrive-webdav
 
 # 添加 luci-app-unblockneteasemusic
