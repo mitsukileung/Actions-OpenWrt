@@ -13,6 +13,9 @@
 # Uncomment a feed source
 sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
+# 修改ath11k-firmware
+wget -O https://raw.githubusercontent.com/Boos4721/openwrt/master/package/firmware/ath11k-firmware/Makefile package/firmware/ath11k-firmware/Makefile
+
 # Add a feed source
 echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
