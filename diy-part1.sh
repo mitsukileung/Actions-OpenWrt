@@ -15,6 +15,8 @@ sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # 修改ath11k-firmware
 wget -O package/firmware/ath11k-firmware/Makefile https://raw.githubusercontent.com/Boos4721/openwrt/master/package/firmware/ath11k-firmware/Makefile
+# del patch
+rm -rf target/linux/generic/pending-5.10/701-net-ethernet-mtk_eth_soc-add-ipv6-flow-offloading-support.patch
 
 # Add a feed source
 echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
