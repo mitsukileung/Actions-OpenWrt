@@ -10,8 +10,6 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-# del patch
-rm -rf target/linux/generic/pending-5.10/701-net-ethernet-mtk_eth_soc-add-ipv6-flow-offloading-support.patch
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
 # Modify X86 Kernel 5.10
