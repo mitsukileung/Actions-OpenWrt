@@ -19,6 +19,9 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/f
 # Modify frpc default setting
 sed -i 's/yourdomain.com/frp.104300.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 sed -i 's/1234567/www.126126.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
+# Add xiaomi devices
+sed -i 's/#TARGET_DEVICES += redmi_ax6/TARGET_DEVICES += redmi_ax6/g' target/linux/ipq807x/image/generic.mk
+sed -i 's/#TARGET_DEVICES += xiaomi_ax3600/TARGET_DEVICES += xiaomi_ax3600/g' target/linux/ipq807x/image/generic.mk
 # vemss add 'alterId'
 #wget -O feeds/helloworld/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/client-config.lua https://raw.githubusercontent.com/mitsukileung/mod/main/ssrp/client-config.lua
 #wget -O feeds/helloworld/luci-app-ssr-plus/luasrc/view/shadowsocksr/ssrurl.htm https://raw.githubusercontent.com/mitsukileung/mod/main/ssrp/ssrurl.htm
