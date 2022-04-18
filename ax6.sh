@@ -50,9 +50,9 @@ git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luc
 rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
 git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
-# 重新添加 luci-app-ipsec-server
-#rm -rf package/lean/luci-app-ipsec-server
-#git clone https://github.com/takayukileung/luci-app-ipsec-server.git package/luci-app-ipsec-server
+# 重新添加 luci-app-serverchan
+rm -rf feeds/luci/applications/luci-app-serverchan
+git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 
 # 重新添加 luci-app-aliyundrive-webdav
 rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
