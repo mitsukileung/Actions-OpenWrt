@@ -19,7 +19,3 @@ sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 # Add a feed source
 echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
-
-# Add xiaomi devices
-#sed -i 's/#TARGET_DEVICES += redmi_ax6/TARGET_DEVICES += redmi_ax6/g' target/linux/ipq807x/image/generic.mk
-#sed -i 's/#TARGET_DEVICES += xiaomi_ax3600/TARGET_DEVICES += xiaomi_ax3600/g' target/linux/ipq807x/image/generic.mk
