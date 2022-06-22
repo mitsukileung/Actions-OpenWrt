@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: X86
+name: Fpz_X86
 
 on:
   schedule:
