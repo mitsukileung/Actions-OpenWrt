@@ -12,7 +12,7 @@ name: Fpz_X86
 
 on:
   schedule:
-    - cron: 1 19 * * *
+    - cron: 1 13 * * *
   push:
     tags:
     - 'v*'
