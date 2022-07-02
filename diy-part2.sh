@@ -47,7 +47,7 @@ git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-ser
 
 # 重新添加 luci-app-aliyundrive-webdav
 rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
-rm -rf feeds/packages/net/aliyundrive-webdav
+rm -rf feeds/packages/multimedia/aliyundrive-webdav
 git clone https://github.com/messense/aliyundrive-webdav.git package/luci-app-aliyundrive-webdav
 
 # 添加 luci-app-unblockneteasemusic
