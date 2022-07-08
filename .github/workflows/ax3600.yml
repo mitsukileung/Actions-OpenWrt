@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: AX3600
+name: Jsz_AX3600
 
 on:
   schedule:
@@ -32,7 +32,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: ax3600.config
   DIY_P1_SH: diy-part1.sh
-  DIY_P2_SH: ax6.sh
+  DIY_P2_SH: ax3600.sh
   RELEASE_TAG: AX3600
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
