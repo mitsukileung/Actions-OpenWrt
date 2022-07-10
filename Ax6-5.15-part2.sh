@@ -31,6 +31,11 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 
 #git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
 
+rm -rf feeds/luci/applications/luci-app-argon-config
+rm -rf feeds/luci/applications/luci-app-turboacc
+rm -rf package/emortal/luci-app-unblockneteasemusic
+rm -rf feeds/luci/themes/luci-theme-argon
+
 # vemss add 'alterId'
 #wget -O feeds/luci/applications/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/client-config.lua https://raw.githubusercontent.com/mitsukileung/mod/main/ssrp/client-config.lua
 #wget -O feeds/luci/applications/luci-app-ssr-plus/luasrc/view/shadowsocksr/ssrurl.htm https://raw.githubusercontent.com/mitsukileung/mod/main/ssrp/ssrurl.htm
