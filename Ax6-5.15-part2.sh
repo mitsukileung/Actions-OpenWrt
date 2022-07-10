@@ -11,7 +11,7 @@
 #
 
 # Modify default IP
-#sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
 
 # 修改连接数
 #sed -i 's/net.netfilter.nf_conntrack_max=.*/net.netfilter.nf_conntrack_max=65535/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
@@ -27,7 +27,7 @@
 #git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git package/luci-theme-atmaterial
 #git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 #rm -rf feeds/kenzok8/luci-theme-neobird
-git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
+#git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 
 #git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
 
@@ -43,10 +43,10 @@ git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-
 
 
 #添加额外非必须软件包
-git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
-git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
-git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
-git clone https://github.com/takayukileung/ss.git package/lean
+#git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
+#git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
+#git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
+#git clone https://github.com/takayukileung/ss.git package/lean
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 #git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 #git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
