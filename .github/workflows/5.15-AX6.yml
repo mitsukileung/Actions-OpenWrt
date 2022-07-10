@@ -20,8 +20,8 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/robimarko/openwrt.git
-  REPO_BRANCH: ipq807x-5.15-pr
+  REPO_URL: https://github.com/1715173329/imoutowrt.git
+  REPO_BRANCH: master-ax3000-5.15
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: AX6-5.15.config
   DIY_P1_SH: Ax6-5.15-part1.sh
