@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build 5.15-DEV-AX6
+name: Build 5.15-DEV-AX3600
 
 on:
   repository_dispatch:
@@ -23,7 +23,7 @@ env:
   REPO_URL: https://github.com/1715173329/imoutowrt.git
   REPO_BRANCH: master-ax3000-5.15
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: AX6-5.15.config
+  CONFIG_FILE: AX3600-5.15.config
   DIY_P1_SH: Ax6-5.15-part1.sh
   DIY_P2_SH: Ax6-5.15-part2.sh
   UPLOAD_BIN_DIR: false
