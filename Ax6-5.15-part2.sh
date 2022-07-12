@@ -11,12 +11,12 @@
 #
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
+#sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
 
 # 修改连接数
 #sed -i 's/net.netfilter.nf_conntrack_max=.*/net.netfilter.nf_conntrack_max=65535/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
-#修正连接数（by ベ七秒鱼ベ）
-sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
+# 修正连接数（by ベ七秒鱼ベ）
+#sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 # Modify frpc default setting
 #sed -i 's/yourdomain.com/frp.104300.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/1234567/www.126126.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
@@ -31,10 +31,29 @@ sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package
 
 #git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
 
-rm -rf feeds/luci/applications/luci-app-argon-config
-rm -rf feeds/luci/applications/luci-app-turboacc
-rm -rf package/emortal/luci-app-unblockneteasemusic
-rm -rf feeds/luci/themes/luci-theme-argon
+rm -rf package/lean/baidupcs-web
+rm -rf package/lean/dns2socks
+rm -rf package/lean/frp
+rm -rf package/lean/ipt2socks
+rm -rf package/lean/microsocks
+rm -rf package/lean/pdnsd-alt
+rm -rf package/lean/qBittorrent
+rm -rf package/lean/qBittorrent-static
+rm -rf package/lean/qttools
+rm -rf package/lean/tcpping
+rm -rf package/lean/verysync
+
+rm -rf package/lean/adbyby
+rm -rf package/lean/autosamba
+rm -rf package/lean/ddns-scripts_aliyun
+rm -rf package/lean/ddns-scripts_dnspod
+rm -rf feeds/packages/net/dns2socks
+rm -rf feeds/packages/net/ipt2socks
+rm -rf feeds/packages/net/microsocks
+rm -rf feeds/packages/net/pdnsd-alt
+rm -rf package/lean/simple-obfs
+rm -rf package/lean/trojan
+rm -rf feeds/packages/net/verysync
 
 # vemss add 'alterId'
 #wget -O feeds/luci/applications/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/client-config.lua https://raw.githubusercontent.com/mitsukileung/mod/main/ssrp/client-config.lua
