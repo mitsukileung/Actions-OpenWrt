@@ -31,6 +31,8 @@
 
 #git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
 
+rm -rf feeds/Boos/luci-app-mosdns
+
 rm -rf package/lean/baidupcs-web
 rm -rf package/lean/dns2socks
 rm -rf package/lean/frp
