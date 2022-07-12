@@ -20,8 +20,8 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/1715173329/imoutowrt.git
-  REPO_BRANCH: master-ax3000-5.15
+  REPO_URL: https://github.com/Boos4721/openwrt.git
+  REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: AX3600-5.15.config
   DIY_P1_SH: Ax6-5.15-part1.sh
