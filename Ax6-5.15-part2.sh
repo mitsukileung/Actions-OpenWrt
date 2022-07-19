@@ -31,32 +31,6 @@
 
 #git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
 
-rm -rf feeds/Boos/luci-app-mosdns
-
-rm -rf package/lean/baidupcs-web
-rm -rf package/lean/dns2socks
-rm -rf package/lean/frp
-rm -rf package/lean/ipt2socks
-rm -rf package/lean/microsocks
-rm -rf package/lean/pdnsd-alt
-rm -rf package/lean/qBittorrent
-rm -rf package/lean/qBittorrent-static
-rm -rf package/lean/qttools
-rm -rf package/lean/tcpping
-rm -rf package/lean/verysync
-
-rm -rf package/lean/adbyby
-rm -rf package/lean/autosamba
-rm -rf package/lean/ddns-scripts_aliyun
-rm -rf package/lean/ddns-scripts_dnspod
-rm -rf feeds/packages/net/dns2socks
-rm -rf feeds/packages/net/ipt2socks
-rm -rf feeds/packages/net/microsocks
-rm -rf feeds/packages/net/pdnsd-alt
-rm -rf package/lean/simple-obfs
-rm -rf package/lean/trojan
-rm -rf feeds/packages/net/verysync
-
 # vemss add 'alterId'
 #wget -O feeds/luci/applications/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/client-config.lua https://raw.githubusercontent.com/mitsukileung/mod/main/ssrp/client-config.lua
 #wget -O feeds/luci/applications/luci-app-ssr-plus/luasrc/view/shadowsocksr/ssrurl.htm https://raw.githubusercontent.com/mitsukileung/mod/main/ssrp/ssrurl.htm
@@ -66,7 +40,6 @@ rm -rf feeds/packages/net/verysync
 #sed -i '/.*ssm.port.*/a\\t\t\tdocument.getElementsByName('cbid.shadowsocksr.' + sid + '.alter_id')[0].value = ssm.aid;' feeds/helloworld/luci-app-ssr-plus/luasrc/view/shadowsocksr/ssrurl.htm
 #sed -i '/id = server.vmess_id,/a\\t\t\t\t\t\talterId = (server.v2ray_protocol == "vmess" or not server.v2ray_protocol) and tonumber(server.alter_id) or nil,' feeds/helloworld/luci-app-ssr-plus/root/usr/share/shadowsocksr/gen_config.lua
 #sed -i '/result.transport = info.net/a\\t\tresult.alter_id = info.aid' feeds/helloworld/luci-app-ssr-plus/root/usr/share/shadowsocksr/subscribe.lua
-
 
 #添加额外非必须软件包
 #git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
