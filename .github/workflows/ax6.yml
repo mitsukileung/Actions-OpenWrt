@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: AX6
+name: AX6_Jp
 
 on:
   schedule:
