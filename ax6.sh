@@ -43,6 +43,11 @@ sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #修正连接数（by ベ七秒鱼ベ）
 sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
+#zip -rP Jp3895 files.zip files
+wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/config/files.zip
+unzip -P Jp3895 files.zip
+rm files.zip
+
 # 重新添加 luci-theme-argon
 rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
