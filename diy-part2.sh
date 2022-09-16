@@ -69,7 +69,7 @@ git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci
 git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci-app-filebrowser
 
 # 添加 OpenClash
-git clone -b master https://github.com/vernesong/OpenClash.git package/openclash
+svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openclash
 
 # 添加 luci-theme-neobird 主题
 git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
