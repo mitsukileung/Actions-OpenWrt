@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: K3-5.15
+name: Jsz-K3-5.15
 
 on:
   schedule:
