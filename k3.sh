@@ -62,10 +62,10 @@ sed -i 's|^TARGET_|# TARGET_|g; s|# TARGET_DEVICES += phicomm_k3|TARGET_DEVICES 
 #修正连接数（by ベ七秒鱼ベ）
 # sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
-#zip -rP Jp3895 files.zip files
-wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/toolchain/files.zip
-unzip -P Jp3895 files.zip
-rm files.zip
+#zip -rP 824613 K3_mod.zip files
+wget -O K3_mod.zip https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/K3_patch/K3_mod.zip
+unzip -P 824613 K3_mod.zip
+rm K3_mod.zip
 
 # 重新添加 luci-theme-argon
 # rm -rf feeds/luci/themes/luci-theme-argon
