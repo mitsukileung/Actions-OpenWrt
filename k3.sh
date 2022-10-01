@@ -35,6 +35,7 @@ sed -i 's|^TARGET_|# TARGET_|g; s|# TARGET_DEVICES += phicomm_k3|TARGET_DEVICES 
 #firmware='asus_dhd24'
 #echo '替换K3的无线驱动为asus-dhd24'
 #wget -nv https://github.com/yangxu52/Phicomm-k3-Wireless-Firmware/raw/master/brcmfmac4366c-pcie.bin.${firmware} -O package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
+wget -nv https://github.com/xiangfeidexiaohuo/Phicomm-K3_Wireless-Firmware/raw/master/brcmfmac4366c-pcie.bin_asus-dhd24 -O package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
 #echo '=========Replace k3 wireless firmware OK!========='
 
 # Modify frpc default setting
