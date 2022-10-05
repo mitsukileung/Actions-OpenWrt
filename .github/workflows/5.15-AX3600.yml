@@ -11,6 +11,11 @@
 name: Build 5.15-DEV-AX3600
 
 on:
+  schedule:
+    - cron: 6 3 * * *
+  push:
+    tags:
+    - 'v*'
   repository_dispatch:
   workflow_dispatch:
     inputs:
