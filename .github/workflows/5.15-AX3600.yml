@@ -29,7 +29,7 @@ env:
   REPO_BRANCH: mi-ipq807x
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: AX3600-5.15.config
-  DIY_P1_SH: diy-part1.sh
+  DIY_P1_SH: Ax6-5.15-part1.sh
   DIY_P2_SH: Ax6-5.15-part2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
