@@ -10,6 +10,12 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
+#切换gcc版本
+sed -i 's/config GCC_VERSION_11/config GCC_VERSION_12/g' toolchain/gcc/Config.version
+sed -i 's/default y if GCC_USE_VERSION_11/default y if GCC_USE_VERSION_12/g' toolchain/gcc/Config.version
+sed -i 's/default "11.3.0"	if GCC_VERSION_11/default "12.2.0"	if GCC_VERSION_12/g' toolchain/gcc/Config.version
+sed -i 's/default "12.2.0"/default "11.3.0"/g' toolchain/gcc/Config.version
+
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
 # Modify X86 Kernel 5.10
