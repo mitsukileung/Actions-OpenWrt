@@ -25,7 +25,7 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/mitsukileung/lede.git
+  REPO_URL: https://github.com/coolsnowwolf/lede.git
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: AX3600-5.15.config
