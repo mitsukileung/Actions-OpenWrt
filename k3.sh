@@ -80,6 +80,10 @@ rm files.zip
 rm -rf feeds/luci/applications/luci-app-serverchan
 git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 
+# 重新添加 luci-app-netdata
+rm -rf feeds/luci/applications/luci-app-netdata
+git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
+
 # 重新添加 luci-app-aliyundrive-webdav
 rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
 rm -rf feeds/packages/multimedia/aliyundrive-webdav
