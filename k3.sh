@@ -83,6 +83,8 @@ git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-ser
 # 重新添加 luci-app-netdata
 rm -rf feeds/luci/applications/luci-app-netdata
 git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
+#在rm前面加一行内容为“chmod +x /etc/init.d/netdata”
+sed -i '/rm/i chmod +x /etc/init.d/netdata' package/luci-app-netdata/root/etc/uci-defaults/40_luci-app-netdata
 
 # 重新添加 luci-app-aliyundrive-webdav
 rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
