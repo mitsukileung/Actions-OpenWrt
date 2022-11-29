@@ -18,6 +18,6 @@ sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g' target/linux/ramips/Make
 sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
 
 #zip -rP L824613 files.zip files
-wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/target/linux/files.zip
-unzip -P L824613 files.zip
-rm files.zip
+#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/target/linux/files.zip
+#unzip -P L824613 files.zip
+#rm files.zip
