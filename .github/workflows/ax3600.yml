@@ -28,7 +28,7 @@ on:
 
 env:
   REPO_URL: https://github.com/lovehackintosh/lede
-  REPO_BRANCH: mi-ipq807x-qsdk-11
+  REPO_BRANCH: mi-ipq807x
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: ax3600.config
   DIY_P1_SH: ax3600-1.sh
