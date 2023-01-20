@@ -31,7 +31,7 @@ env:
   REPO_BRANCH: mi-ipq807x-qsdk-11
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: ax3600.config
-  DIY_P1_SH: diy-part1.sh
+  DIY_P1_SH: ax3600-1.sh
   DIY_P2_SH: ax3600.sh
   RELEASE_TAG: AX3600
   UPLOAD_BIN_DIR: true
