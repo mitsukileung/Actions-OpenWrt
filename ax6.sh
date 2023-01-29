@@ -21,6 +21,9 @@ sed -i 's/yourdomain.com/fpz.5150586.xyz/g' feeds/luci/applications/luci-app-frp
 sed -i 's/1234567/LaputaShita~!/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
+# Modify zerotier default setting
+sed -i 's/enabled 0/enabled 1/g' packages/net/zerotier/files/etc/config/zerotier
+sed -i 's/8056c2e21c000001/1950791e780ce563/g' packages/net/zerotier/files/etc/config/zerotier
 # Add fix patch
 #rm -f feeds/routing/batman-adv/patches/0001-Revert-batman-adv-genetlink-move-to-smaller-ops-wher.patch
 #rm -f feeds/routing/batman-adv/patches/0002-Revert-batman-adv-Add-new-include-for-min-max-helper.patch
