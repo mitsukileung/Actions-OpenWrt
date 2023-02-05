@@ -9,7 +9,9 @@
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 
-#sed -i 's/9625784cf2e4fd9842f1d407681ce4878b5b0dcddbcd31c6135114a30c71e6a8/5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72/g' feeds/packages/utils/jq/Makefile
+# update frp to 0.46.1
+sed -i 's/0.45.0/0.46.1/g' feeds/packages/net/frp/Makefile
+sed -i 's/829cf9f14861ab1b074de6995282f30292f53513824372cfec4084a2e8de7123/af3e8d9d4144cf520cee2609cd45fb575afe711c03cc7441dc89d0402628a869/g' feeds/packages/net/frp/Makefile
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
