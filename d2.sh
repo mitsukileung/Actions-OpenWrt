@@ -16,6 +16,10 @@ sed -i 's/192.168.1.1/192.168.28.1/g' package/base-files/files/bin/config_genera
 # sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/x86/Makefile
 # Clear the login password
 sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
+#zip -rP Jp3895 files.zip files
+wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/scripts/config/files.zip
+unzip -P Jp3895 files.zip
+rm files.zip
 
 # 重新添加 luci-app-serverchan
 rm -rf feeds/luci/applications/luci-app-serverchan
