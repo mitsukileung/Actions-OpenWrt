@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: AX3600_immortalwrt
+name: Ax3600-stock_immortalwrt
 
 on:
   schedule:
@@ -33,7 +33,7 @@ env:
   CONFIG_FILE: ax3600_immortalwrt.config
   DIY_P1_SH: ax3600_immortalwrt_part1.sh
   DIY_P2_SH: ax3600_immortalwrt_part2.sh
-  RELEASE_TAG: AX3600_immortalwrt
+  RELEASE_TAG: Ax3600-stock_immortalwrt
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
