@@ -16,7 +16,9 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 # sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/x86/Makefile
 # Clear the login password
 sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
-
+# update frp to 0.47.0
+sed -i 's/0.47.0/0.45.0/g' feeds/packages/net/frp/Makefile
+sed -i 's/98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/829cf9f14861ab1b074de6995282f30292f53513824372cfec4084a2e8de7123/g' feeds/packages/net/frp/Makefile
 # 重新添加 luci-app-serverchan
 rm -rf feeds/luci/applications/luci-app-serverchan
 git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
