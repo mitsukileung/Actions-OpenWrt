@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: D2
+name: D1
 
 on:
   schedule:
@@ -28,10 +28,10 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: d2.config
+  CONFIG_FILE: d1.config
   DIY_P1_SH: diy-part1.sh
-  DIY_P2_SH: d2.sh
-  RELEASE_TAG: D2
+  DIY_P2_SH: d1.sh
+  RELEASE_TAG: D1
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
