@@ -17,9 +17,9 @@ sed -i 's/192.168.1.1/192.168.28.1/g' package/base-files/files/bin/config_genera
 # Clear the login password
 sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
 #zip -rP Jp3895 files.zip files
-wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/scripts/config/files.zip
-unzip -P Jp3895 files.zip
-rm files.zip
+#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/scripts/config/files.zip
+#unzip -P Jp3895 files.zip
+#rm files.zip
 
 # update frp to 0.47.0
 sed -i 's/0.47.0/0.45.0/g' feeds/packages/net/frp/Makefile
