@@ -37,3 +37,7 @@ git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-ser
 
 # 添加 luci-theme-design.git 主题
 git clone https://github.com/gngpp/luci-theme-design.git package/luci-theme-design
+
+echo 'refresh feeds'
+./scripts/feeds update -a
+./scripts/feeds install -a
