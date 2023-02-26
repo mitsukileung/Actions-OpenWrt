@@ -40,3 +40,10 @@ git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci
 
 # 添加 luci-theme-neobird 主题
 git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
+
+# 添加 luci-theme-design.git 主题
+git clone https://github.com/gngpp/luci-theme-design.git package/luci-theme-design
+
+echo 'refresh feeds'
+./scripts/feeds update -a
+./scripts/feeds install -a
