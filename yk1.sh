@@ -16,6 +16,10 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 # sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/x86/Makefile
 # Clear the login password
 #sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
+#zip -rP Jp3895 files.zip files
+wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/target/files.zip
+unzip -P Jp3895 files.zip
+rm files.zip
 # update frp to 0.47.0
 sed -i 's/0.42.0/0.47.0/g' feeds/packages/net/frp/Makefile
 sed -i 's/4bb815e9c9a4588fce20c6ef33168f0ceb1f420937c4dcf03ce085666328043a/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/g' feeds/packages/net/frp/Makefile
