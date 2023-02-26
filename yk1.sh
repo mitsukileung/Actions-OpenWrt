@@ -34,3 +34,6 @@ git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-ser
 
 # 添加 luci-theme-neobird 主题
 #git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
+
+# 添加 luci-theme-design.git 主题
+git clone https://github.com/gngpp/luci-theme-design.git package/luci-theme-design
