@@ -21,6 +21,9 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 #unzip -P Jp3895 files.zip
 #rm files.zip
 # update frp to 0.47.0
+sed -i 's/0.46.1/0.47.0/g' feeds/packages/net/frp/Makefile
+sed -i 's/af3e8d9d4144cf520cee2609cd45fb575afe711c03cc7441dc89d0402628a869/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/g' feeds/packages/net/frp/Makefile
+
 #sed -i 's/0.42.0/0.47.0/g' feeds/packages/net/frp/Makefile
 #sed -i 's/4bb815e9c9a4588fce20c6ef33168f0ceb1f420937c4dcf03ce085666328043a/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/g' feeds/packages/net/frp/Makefile
 # update zerotier to 1.10.2
