@@ -108,3 +108,4 @@ define Device/zyxel_nbg7815
 	DEVICE_PACKAGES := ipq-wifi-zyxel_nbg7815 kmod-ath11k-pci e2fsprogs kmod-fs-ext4 losetup kmod-hwmon-tmp103
 endef
 TARGET_DEVICES += zyxel_nbg7815
+
