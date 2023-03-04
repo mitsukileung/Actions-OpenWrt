@@ -21,3 +21,13 @@ sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generat
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/target/linux/files.zip
 #unzip -P L824613 files.zip
 #rm files.zip
+
+# Modify frp
+sed -i 's/host upx\///g' feeds/packages/net/frp/Makefile
+sed -i '/lzma/d' feeds/packages/net/frp/Makefile
+sed -i 's/+wget/+wget-ssl/g' feeds/luci/applications/luci-app-frpc/Makefile
+sed -i 's/+wget/+wget-ssl/g' feeds/luci/applications/luci-app-frps/Makefile
+
+echo 'refresh feeds'
+./scripts/feeds update -a
+./scripts/feeds install -a
