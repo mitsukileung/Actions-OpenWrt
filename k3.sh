@@ -26,9 +26,15 @@ rm -rf package/lean/k3screenctrl
 git clone https://github.com/yangxu52/k3screenctrl_build.git package/lean/k3screenctrl/
 echo '=========Replace k3screen drive plug OK!========='
 
-sed -i 's/1.10.2/1.10.3/g' feeds/packages/net/zerotier/Makefile
-sed -i 's/9f98b1670785f42294b9858068d42c6b8c2fdee6402e871a36562b47559e74e7/f2ce8a63a459a5fab129fb398e379b8c0875bdfeccb7bf15f9683ad22e43e629/g' feeds/packages/net/zerotier/Makefile
-wget -O feeds/packages/net/zerotier/patches/0001-fix-makefile.patch https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/patches/0001-fix-makefile.patch
+# Modify frp
+sed -i 's/host upx\///g' feeds/packages/net/frp/Makefile
+sed -i '/lzma/d' feeds/packages/net/frp/Makefile
+sed -i 's/+wget/+wget-ssl/g' feeds/luci/applications/luci-app-frpc/Makefile
+sed -i 's/+wget/+wget-ssl/g' feeds/luci/applications/luci-app-frps/Makefile
+
+#sed -i 's/1.10.2/1.10.3/g' feeds/packages/net/zerotier/Makefile
+#sed -i 's/9f98b1670785f42294b9858068d42c6b8c2fdee6402e871a36562b47559e74e7/f2ce8a63a459a5fab129fb398e379b8c0875bdfeccb7bf15f9683ad22e43e629/g' feeds/packages/net/zerotier/Makefile
+#wget -O feeds/packages/net/zerotier/patches/0001-fix-makefile.patch https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/patches/0001-fix-makefile.patch
 
 # only build k3
 sed -i 's|^TARGET_|# TARGET_|g; s|# TARGET_DEVICES += phicomm_k3|TARGET_DEVICES += phicomm_k3|' target/linux/bcm53xx/image/Makefile
