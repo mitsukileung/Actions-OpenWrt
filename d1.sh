@@ -17,9 +17,9 @@ sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g' target/linux/x86/Makefil
 # Clear the login password
 sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
 #zip -rP Jp3895 files.zip files
-wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/scripts/config/files.zip
-unzip -P Jp3895 files.zip
-rm files.zip
+#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/scripts/config/files.zip
+#unzip -P Jp3895 files.zip
+#rm files.zip
 
 # Modify frp
 sed -i 's/host upx\///g' feeds/packages/net/frp/Makefile
