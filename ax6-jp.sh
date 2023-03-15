@@ -52,9 +52,8 @@ rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
 git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
 # update to upx 4.0.2
-cd package/lean/upx
-rm -rf *
-wget -O Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/patch/Makefile
+rm -rf package/lean/upx/*
+wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/patch/Makefile
 
 # Modify frp
 #sed -i 's/host upx\///g' feeds/packages/net/frp/Makefile
