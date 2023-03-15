@@ -25,9 +25,8 @@ sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 sed -i 's/enabled 0/enabled 1/g' packages/net/zerotier/files/etc/config/zerotier
 sed -i 's/8056c2e21c000001/1950791e780ce563/g' packages/net/zerotier/files/etc/config/zerotier
 # update to upx 4.0.2
-cd package/lean/upx
-rm -rf *
-wget -O Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/patch/Makefile
+rm -rf package/lean/upx/*
+wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/patch/Makefile
 # Modify frp
 #sed -i 's/host upx\///g' feeds/packages/net/frp/Makefile
 #sed -i '/lzma/d' feeds/packages/net/frp/Makefile
