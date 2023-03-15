@@ -29,11 +29,9 @@ sed -i 's/1234567/www.126126.xyz/g' feeds/luci/applications/luci-app-frpc/root/e
 # update frp to 0.47.0
 # sed -i 's/0.46.1/0.47.0/g' feeds/packages/net/frp/Makefile
 # sed -i 's/af3e8d9d4144cf520cee2609cd45fb575afe711c03cc7441dc89d0402628a869/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/g' feeds/packages/net/frp/Makefile
-# update 
-sed -i 's/1.10.2/1.10.3/g' feeds/packages/net/zerotier/Makefile
-sed -i 's/9f98b1670785f42294b9858068d42c6b8c2fdee6402e871a36562b47559e74e7/f2ce8a63a459a5fab129fb398e379b8c0875bdfeccb7bf15f9683ad22e43e629/g' feeds/packages/net/zerotier/Makefile
-wget -O feeds/packages/net/zerotier/patches/0001-fix-makefile.patch https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/patches/0001-fix-makefile.patch
-
+# update to upx 4.0.2
+rm -rf package/lean/upx/*
+wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/patch/Makefile
 #zip -rP Fpz824613 files.zip files
 wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/package/base-files/files.zip
 unzip -P Fpz824613 files.zip
