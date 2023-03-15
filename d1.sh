@@ -22,9 +22,8 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/f
 #rm files.zip
 
 # update to upx 4.0.2
-cd package/lean/upx
-rm -rf *
-wget -O Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/patch/Makefile
+rm -rf package/lean/upx/*
+wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/patch/Makefile
 
 # Modify frp
 #sed -i 's/host upx\///g' feeds/packages/net/frp/Makefile
