@@ -21,11 +21,16 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/f
 #unzip -P Jp3895 files.zip
 #rm files.zip
 
+# update to upx 4.0.2
+cd package/lean/upx
+rm -rf *
+wget -O Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/patch/Makefile
+
 # Modify frp
-sed -i 's/host upx\///g' feeds/packages/net/frp/Makefile
-sed -i '/lzma/d' feeds/packages/net/frp/Makefile
-sed -i 's/+wget/+wget-ssl/g' feeds/luci/applications/luci-app-frpc/Makefile
-sed -i 's/+wget/+wget-ssl/g' feeds/luci/applications/luci-app-frps/Makefile
+#sed -i 's/host upx\///g' feeds/packages/net/frp/Makefile
+#sed -i '/lzma/d' feeds/packages/net/frp/Makefile
+#sed -i 's/+wget/+wget-ssl/g' feeds/luci/applications/luci-app-frpc/Makefile
+#sed -i 's/+wget/+wget-ssl/g' feeds/luci/applications/luci-app-frps/Makefile
 
 # update frp to 0.47.0
 #sed -i 's/0.47.0/0.45.0/g' feeds/packages/net/frp/Makefile
@@ -48,7 +53,7 @@ git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci
 git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 
 # 添加 luci-theme-design.git 主题
-git clone https://github.com/gngpp/luci-theme-design.git package/luci-theme-design
+#git clone https://github.com/gngpp/luci-theme-design.git package/luci-theme-design
 
 echo 'refresh feeds'
 ./scripts/feeds update -a
