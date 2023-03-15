@@ -51,6 +51,17 @@ git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luc
 rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
 git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
+# update to upx 4.0.2
+cd package/lean/upx
+rm -rf *
+wget -O Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/patch/Makefile
+
+# Modify frp
+#sed -i 's/host upx\///g' feeds/packages/net/frp/Makefile
+#sed -i '/lzma/d' feeds/packages/net/frp/Makefile
+#sed -i 's/+wget/+wget-ssl/g' feeds/luci/applications/luci-app-frpc/Makefile
+#sed -i 's/+wget/+wget-ssl/g' feeds/luci/applications/luci-app-frps/Makefile
+
 # 重新添加 luci-app-serverchan
 rm -rf feeds/luci/applications/luci-app-serverchan
 git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
@@ -78,3 +89,7 @@ svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/o
 
 # 添加 luci-theme-neobird 主题
 git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
+
+echo 'refresh feeds'
+./scripts/feeds update -a
+./scripts/feeds install -a
