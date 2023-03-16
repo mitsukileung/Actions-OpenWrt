@@ -26,12 +26,12 @@ sed -i 's/1234567/www.126126.xyz/g' feeds/luci/applications/luci-app-frpc/root/e
 #sed -i 's/GO_VERSION_PATCH:=4/GO_VERSION_PATCH:=5/g' feeds/packages/lang/golang/golang/Makefile
 #sed -i 's/eda74db4ac494800a3e66ee784e495bfbb9b8e535df924a8b01b1a8028b7f368/8e486e8e85a281fc5ce3f0bedc5b9d2dbf6276d7db0b25d3ec034f313da0375f/g' feeds/packages/lang/golang/golang/Makefile
 #rm -rf feeds/packages/lang/golang/golang/patches/010-cmd-compile-turn-off-jump-tables-when-spectre-retpolines-.patch
-# update frp to 0.47.0
-# sed -i 's/0.46.1/0.47.0/g' feeds/packages/net/frp/Makefile
-# sed -i 's/af3e8d9d4144cf520cee2609cd45fb575afe711c03cc7441dc89d0402628a869/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/g' feeds/packages/net/frp/Makefile
+# update frp to 0.48.0
+sed -i 's/0.47.0/0.48.0/g' feeds/packages/net/frp/Makefile
+sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/efba8ec9fad3369ce62631369f52b78a7248df426b5b54311e96231adac5cc76/g' feeds/packages/net/frp/Makefile
 # update to upx 4.0.2
-rm -rf package/lean/upx/*
-wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/patch/Makefile
+#rm -rf package/lean/upx/*
+#wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/patch/Makefile
 #zip -rP Fpz824613 files.zip files
 wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/package/base-files/files.zip
 unzip -P Fpz824613 files.zip
