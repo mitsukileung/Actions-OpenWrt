@@ -46,15 +46,15 @@ wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/co
 unzip -P Jp3895 files.zip
 rm files.zip
 
-# 重新添加 luci-theme-argon
-rm -rf feeds/luci/themes/luci-theme-argon
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
-git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
+# update frp to 0.48.0
+sed -i 's/0.47.0/0.48.0/g' feeds/packages/net/frp/Makefile
+sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/efba8ec9fad3369ce62631369f52b78a7248df426b5b54311e96231adac5cc76/g' feeds/packages/net/frp/Makefile
 
 # update to upx 4.0.2
-rm -rf package/lean/upx/*
-wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/patch/Makefile
+#rm -rf package/lean/upx/*
+#wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/utils/upx/Makefile
+#sed -i 's/4.0.1/4.0.2/g' package/lean/upx/Makefile
+#sed -i 's/77003c8e2e29aa9804e2fbaeb30f055903420b3e01d95eafe01aed957fb7e190/1221e725b1a89e06739df27fae394d6bc88aedbe12f137c630ec772522cbc76f/g' package/lean/upx/Makefile
 
 # Modify frp
 #sed -i 's/host upx\///g' feeds/packages/net/frp/Makefile
@@ -66,13 +66,8 @@ wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/mitsukileung
 rm -rf feeds/luci/applications/luci-app-serverchan
 git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 
-# 重新添加 luci-app-aliyundrive-webdav
-rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
-rm -rf feeds/packages/multimedia/aliyundrive-webdav
-git clone https://github.com/messense/aliyundrive-webdav.git package/luci-app-aliyundrive-webdav
-
 # 添加 luci-app-unblockneteasemusic
-git clone -b master https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
+#git clone -b master https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
 
 # 添加 smartdns
 git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
@@ -87,8 +82,11 @@ git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci
 # 添加 OpenClash
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openclash
 
-# 添加 luci-theme-neobird 主题
-git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
+# 添加 luci-theme-design.git 主题
+rm -rf feeds/luci/themes/luci-theme-design
+rm -rf feeds/luci/applications/luci-app-design-config
+git clone https://github.com/gngpp/luci-theme-design.git package/luci-theme-design
+git clone https://github.com/gngpp/luci-app-design-config.git package/luci-app-design-config
 
 echo 'refresh feeds'
 ./scripts/feeds update -a
