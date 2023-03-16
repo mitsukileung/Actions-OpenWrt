@@ -33,9 +33,9 @@ sed -i 's/77003c8e2e29aa9804e2fbaeb30f055903420b3e01d95eafe01aed957fb7e190/1221e
 #sed -i 's/+wget/+wget-ssl/g' feeds/luci/applications/luci-app-frpc/Makefile
 #sed -i 's/+wget/+wget-ssl/g' feeds/luci/applications/luci-app-frps/Makefile
 
-# update frp to 0.47.0
-#sed -i 's/0.47.0/0.48.0/g' feeds/packages/net/frp/Makefile
-#sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/efba8ec9fad3369ce62631369f52b78a7248df426b5b54311e96231adac5cc76/g' feeds/packages/net/frp/Makefile
+# update frp to 0.48.0
+sed -i 's/0.47.0/0.48.0/g' feeds/packages/net/frp/Makefile
+sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/efba8ec9fad3369ce62631369f52b78a7248df426b5b54311e96231adac5cc76/g' feeds/packages/net/frp/Makefile
 
 # 重新添加 luci-app-serverchan
 rm -rf feeds/luci/applications/luci-app-serverchan
