@@ -26,11 +26,9 @@ rm -rf package/lean/k3screenctrl
 git clone https://github.com/yangxu52/k3screenctrl_build.git package/lean/k3screenctrl/
 echo '=========Replace k3screen drive plug OK!========='
 
-# Modify frp
-sed -i 's/host upx\///g' feeds/packages/net/frp/Makefile
-sed -i '/lzma/d' feeds/packages/net/frp/Makefile
-sed -i 's/+wget/+wget-ssl/g' feeds/luci/applications/luci-app-frpc/Makefile
-sed -i 's/+wget/+wget-ssl/g' feeds/luci/applications/luci-app-frps/Makefile
+# update frp to 0.48.0
+sed -i 's/0.47.0/0.48.0/g' feeds/packages/net/frp/Makefile
+sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/efba8ec9fad3369ce62631369f52b78a7248df426b5b54311e96231adac5cc76/g' feeds/packages/net/frp/Makefile
 
 #sed -i 's/1.10.2/1.10.3/g' feeds/packages/net/zerotier/Makefile
 #sed -i 's/9f98b1670785f42294b9858068d42c6b8c2fdee6402e871a36562b47559e74e7/f2ce8a63a459a5fab129fb398e379b8c0875bdfeccb7bf15f9683ad22e43e629/g' feeds/packages/net/zerotier/Makefile
@@ -75,12 +73,6 @@ wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/to
 unzip -P Jp3895 files.zip
 rm files.zip
 
-# 重新添加 luci-theme-argon
-# rm -rf feeds/luci/themes/luci-theme-argon
-# git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-# rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
-# git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
-
 # 重新添加 luci-app-serverchan
 rm -rf feeds/luci/applications/luci-app-serverchan
 git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
@@ -92,13 +84,8 @@ git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netd
 sed -i '/rm/i chmod +x /etc/init.d/netdata' package/luci-app-netdata/root/etc/uci-defaults/40_luci-app-netdata
 sed -i 's/0/1/g' package/luci-app-netdata/root/etc/config/netdata && sed -i 's/19991/19990/g' package/luci-app-netdata/root/etc/config/netdata
 
-# 重新添加 luci-app-aliyundrive-webdav
-rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
-rm -rf feeds/packages/multimedia/aliyundrive-webdav
-git clone https://github.com/messense/aliyundrive-webdav.git package/luci-app-aliyundrive-webdav
-
 # 添加 luci-app-unblockneteasemusic
-git clone -b master https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
+#git clone -b master https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
 
 # 添加 smartdns
 # git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
@@ -114,10 +101,13 @@ git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openclash
 
 # 添加 luci-theme-neobird 主题
-git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
+#git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 
 # 添加 luci-theme-design.git 主题
+rm -rf feeds/luci/themes/luci-theme-design
+rm -rf feeds/luci/applications/luci-app-design-config
 git clone https://github.com/gngpp/luci-theme-design.git package/luci-theme-design
+git clone https://github.com/gngpp/luci-app-design-config.git package/luci-app-design-config
 
 echo 'refresh feeds'
 ./scripts/feeds update -a
