@@ -24,9 +24,7 @@ sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 # Modify zerotier default setting
 sed -i 's/enabled 0/enabled 1/g' packages/net/zerotier/files/etc/config/zerotier
 sed -i 's/8056c2e21c000001/1950791e780ce563/g' packages/net/zerotier/files/etc/config/zerotier
-# del ipq807x patches
-rm -f target/linux/ipq807x/patches-5.15/0005-v5.16-arm64-dts-qcom-Fix-IPQ8074-PCIe-PHY-nodes.patch
-rm -f target/linux/ipq807x/patches-5.15/0110-arm64-dts-ipq8074-fix-PCI-related-DT-nodes.patch
+
 # update to upx 4.0.2
 #rm -rf package/lean/upx/*
 #wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/utils/upx/Makefile
