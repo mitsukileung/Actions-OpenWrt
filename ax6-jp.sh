@@ -21,9 +21,7 @@ sed -i 's/yourdomain.com/fpz.5150586.xyz/g' feeds/luci/applications/luci-app-frp
 sed -i 's/1234567/LaputaShita~!/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
-# del ipq807x patches
-rm -f target/linux/ipq807x/patches-5.15/0005-v5.16-arm64-dts-qcom-Fix-IPQ8074-PCIe-PHY-nodes.patch
-rm -f target/linux/ipq807x/patches-5.15/0110-arm64-dts-ipq8074-fix-PCI-related-DT-nodes.patch
+
 # update golang to 1.19.5
 #sed -i 's/GO_VERSION_PATCH:=4/GO_VERSION_PATCH:=5/g' feeds/packages/lang/golang/golang/Makefile
 #sed -i 's/eda74db4ac494800a3e66ee784e495bfbb9b8e535df924a8b01b1a8028b7f368/8e486e8e85a281fc5ce3f0bedc5b9d2dbf6276d7db0b25d3ec034f313da0375f/g' feeds/packages/lang/golang/golang/Makefile
