@@ -48,19 +48,15 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/f
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
-# 添加xiaomi
-#wget -O target/linux/ipq807x/image/generic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/generic.mk
+# update frp to 0.48.0
+sed -i 's/0.47.0/0.48.0/g' feeds/packages/net/frp/Makefile
+sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/efba8ec9fad3369ce62631369f52b78a7248df426b5b54311e96231adac5cc76/g' feeds/packages/net/frp/Makefile
 
-# Ax3600 补丁
-#wget -O package/kernel/ath10k-ct/patches/100-api_update.patch https://raw.githubusercontent.com/immortalwrt/immortalwrt/master/package/kernel/ath10k-ct/patches/100-api_update.patch
-#wget -O package/kernel/ath10k-ct/patches/130-ath10k-read-qcom-coexist-support-as-a-u32.patch https://raw.githubusercontent.com/immortalwrt/immortalwrt/master/package/kernel/ath10k-ct/patches/130-ath10k-read-qcom-coexist-support-as-a-u32.patch
-#wget -O package/kernel/ath10k-ct/patches/202-ath10k-use-tpt-trigger-by-default.patch https://raw.githubusercontent.com/immortalwrt/immortalwrt/master/package/kernel/ath10k-ct/patches/202-ath10k-use-tpt-trigger-by-default.patch
-
-# 重新添加 luci-theme-argon
-#rm -rf feeds/luci/themes/luci-theme-argon
-#git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-#rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
-#git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
+# update to upx 4.0.2
+rm -rf package/lean/upx/*
+wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/utils/upx/Makefile
+sed -i 's/4.0.1/4.0.2/g' package/lean/upx/Makefile
+sed -i 's/77003c8e2e29aa9804e2fbaeb30f055903420b3e01d95eafe01aed957fb7e190/1221e725b1a89e06739df27fae394d6bc88aedbe12f137c630ec772522cbc76f/g' package/lean/upx/Makefile
 
 # 重新添加 luci-app-serverchan
 #rm -rf feeds/luci/applications/luci-app-serverchan
@@ -87,5 +83,12 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/f
 # 添加 OpenClash
 #svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openclash
 
-# 添加 luci-theme-neobird 主题
-#git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
+# 添加 luci-theme-design.git 主题
+rm -rf feeds/luci/themes/luci-theme-design
+rm -rf feeds/luci/applications/luci-app-design-config
+git clone https://github.com/gngpp/luci-theme-design.git package/luci-theme-design
+git clone https://github.com/gngpp/luci-app-design-config.git package/luci-app-design-config
+
+echo 'refresh feeds'
+./scripts/feeds update -a
+./scripts/feeds install -a
