@@ -85,5 +85,10 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 # 添加 OpenClash
 #svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openclash
 
-# 添加 luci-theme-neobird 主题
-#git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
+# 添加 luci-theme-design 主题
+git clone -b js https://github.com/gngpp/luci-theme-design.git package/luci-theme-design
+git clone https://github.com/gngpp/luci-app-design-config.git package/luci-app-design-config
+
+echo 'refresh feeds'
+./scripts/feeds update -a
+./scripts/feeds install -a
