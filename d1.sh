@@ -22,13 +22,14 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/f
 #rm files.zip
 
 # update to upx 4.0.2
-#rm -rf package/lean/upx/*
+rm -rf package/lean/upx/*
 #wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/utils/upx/Makefile
 #sed -i 's/4.0.1/4.0.2/g' package/lean/upx/Makefile
 #sed -i 's/77003c8e2e29aa9804e2fbaeb30f055903420b3e01d95eafe01aed957fb7e190/1221e725b1a89e06739df27fae394d6bc88aedbe12f137c630ec772522cbc76f/g' package/lean/upx/Makefile
-sed -i 's/3.96/4.0.2/g' package/lean/upx/Makefile
-sed -i 's/d7ba31cab8ce8d95d2c10e88d2ec787ac52005ef/33cdcb0e8277576cc64894bb332c469942864bcd/g' package/lean/upx/Makefile
-sed -i 's/15b4884dbe35d3b7bda27538429cab92aaeaca006d558deb49f2ef93e3c261b8/77c04ca942fb9222f102224b3ee8268c0046f558318aaa439c9ae2de33e67f9e/g' package/lean/upx/Makefile
+#sed -i 's/3.96/4.0.2/g' package/lean/upx/Makefile
+#sed -i 's/d7ba31cab8ce8d95d2c10e88d2ec787ac52005ef/33cdcb0e8277576cc64894bb332c469942864bcd/g' package/lean/upx/Makefile
+#sed -i 's/15b4884dbe35d3b7bda27538429cab92aaeaca006d558deb49f2ef93e3c261b8/77c04ca942fb9222f102224b3ee8268c0046f558318aaa439c9ae2de33e67f9e/g' package/lean/upx/Makefile
+wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/upx_Makefile
 
 # Modify frp
 #sed -i 's/host upx\///g' feeds/packages/net/frp/Makefile
