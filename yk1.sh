@@ -10,6 +10,8 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
+#修复软重启Bug
+sed -i '/spi-max-frequency/a\\t\tbroken-flash-reset;' target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
 # Modify X86 Kernel 5.10
