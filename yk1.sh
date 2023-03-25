@@ -10,7 +10,7 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-#修复软重启Bug
+#修复部分32M固件软重启Bug
 #sed -i '/m25p/a\\t\tbroken-flash-reset;' target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi
 sed -i '/&firmware/i\&flash0 {' target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
 sed -i '/&firmware/i\	broken-flash-reset;' target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
