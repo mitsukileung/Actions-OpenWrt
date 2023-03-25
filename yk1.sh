@@ -11,7 +11,7 @@
 #
 
 #修复yk-l1(32M固件)软重启Bug
-#sed -i '/m25p/a\\t\tbroken-flash-reset;' target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi
+sed -i 's/flash@0/flash0: flash@0/g' target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi
 sed -i '/&firmware/i\&flash0 {' target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
 sed -i '/&firmware/i\	broken-flash-reset;' target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
 sed -i '/&firmware/i\};' target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
