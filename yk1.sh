@@ -11,11 +11,13 @@
 #
 
 #修复yk-l1(32M固件)软重启Bug
-sed -i 's/flash@0/flash0: flash@0/g' target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi
-sed -i '/&firmware/i\&flash0 {' target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
-sed -i '/&firmware/i\	broken-flash-reset;' target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
-sed -i '/&firmware/i\};' target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
-sed -i '/&firmware/i\\r' target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
+#sed -i 's/flash@0/flash0: flash@0/g' target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi
+#sed -i '/&firmware/i\&flash0 {' target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
+#sed -i '/&firmware/i\	broken-flash-reset;' target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
+#sed -i '/&firmware/i\};' target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
+#sed -i '/&firmware/i\\r' target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
+wget -O target/linux/ramips/dts/mt7620a_youku_yk-l1.dts https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/mt7620a_youku_yk-l1.dts
+wget -O target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/mt7620a_youku_yk-l1.dtsi
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
 # Modify X86 Kernel 5.10
