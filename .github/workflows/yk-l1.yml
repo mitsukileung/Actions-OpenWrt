@@ -176,7 +176,7 @@ jobs:
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_GGRANSFER == 'true' && !cancelled()
       run: |
         curl -fsSL git.io/file-transfer | sh
-        ./transfer gg -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee ggransfer.log
+        ./transfer gg -p 16 --no-progress ${FIRMWARE} 2>&1 | tee ggransfer.log
         echo "::warning file=ggransfer.com::$(cat ggransfer.log | grep https)"
         echo "url=$(cat ggransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
 
