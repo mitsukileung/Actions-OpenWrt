@@ -34,7 +34,7 @@ env:
   RELEASE_TAG: yk1
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
-  UPLOAD_GGRANSFER: true
+  UPLOAD_TRSRANSFER: true
   UPLOAD_WSSRANSFER: true
   UPLOAD_RELEASE: false
   SERVERCHAN_SCKEY: true
@@ -171,14 +171,14 @@ jobs:
         name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
-    - name: Upload firmware to DownloadGG
-      id: DownloadGG
-      if: steps.organize.outputs.status == 'success' && env.UPLOAD_GGRANSFER == 'true' && !cancelled()
+    - name: Upload firmware to Transfer
+      id: Transfer
+      if: steps.organize.outputs.status == 'success' && env.UPLOAD_TRSRANSFER == 'true' && !cancelled()
       run: |
         curl -fsSL git.io/file-transfer | sh
-        ./transfer gg -p 16 --no-progress ${FIRMWARE} 2>&1 | tee ggransfer.log
-        echo "::warning file=ggransfer.com::$(cat ggransfer.log | grep https)"
-        echo "url=$(cat ggransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
+        ./transfer trs -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee trsransfer.log
+        echo "::warning file=trsransfer.com::$(cat trsransfer.log | grep https)"
+        echo "url=$(cat trsransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
 
     - name: Upload firmware to Wenshushu
       id: wenshushu
