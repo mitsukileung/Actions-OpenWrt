@@ -36,8 +36,9 @@ env:
   RELEASE_TAG: AX6
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
-  UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: true
+  UPLOAD_TRSRANSFER: true
+  UPLOAD_GGRANSFER: true
+  UPLOAD_WSSRANSFER: true
   UPLOAD_RELEASE: true
   SERVERCHAN_SCKEY: true
   TZ: Asia/Shanghai
@@ -173,23 +174,32 @@ jobs:
         name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
-    - name: Upload firmware to cowtransfer
-      id: cowtransfer
-      if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
+    - name: Upload firmware to Transfer
+      id: Transfer
+      if: steps.organize.outputs.status == 'success' && env.UPLOAD_TRSRANSFER == 'true' && !cancelled()
       run: |
         curl -fsSL git.io/file-transfer | sh
-        ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
-        echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
-        echo "url=$(cat cowtransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
-
-    - name: Upload firmware to WeTransfer
-      id: wetransfer
-      if: steps.organize.outputs.status == 'success' && env.UPLOAD_WETRANSFER == 'true' && !cancelled()
+        ./transfer trs -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee trsransfer.log
+        echo "::warning file=trsransfer.com::$(cat trsransfer.log | grep https)"
+        echo "url=$(cat trsransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
+        
+    - name: Upload firmware to DownloadGG
+      id: DownloadGG
+      if: steps.organize.outputs.status == 'success' && env.UPLOAD_GGRANSFER == 'true' && !cancelled()
       run: |
         curl -fsSL git.io/file-transfer | sh
-        ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
-        echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
-        echo "url=$(cat wetransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
+        ./transfer gg -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee ggransfer.log
+        echo "::warning file=ggransfer.com::$(cat ggransfer.log | grep https)"
+        echo "url=$(cat ggransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
+        
+    - name: Upload firmware to Wenshushu
+      id: wenshushu
+      if: steps.organize.outputs.status == 'success' && env.UPLOAD_WSSRANSFER == 'true' && !cancelled()
+      run: |
+        curl -fsSL git.io/file-transfer | sh
+        ./transfer wss -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wssransfer.log
+        echo "::warning file=wssransfer.com::$(cat wssransfer.log | grep https)"
+        echo "url=$(cat wssransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
 
     - name: Generate release tag
       id: tag
