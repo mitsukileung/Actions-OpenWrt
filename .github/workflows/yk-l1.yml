@@ -34,7 +34,7 @@ env:
   RELEASE_TAG: yk1
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
-  UPLOAD_TRSRANSFER: false
+  UPLOAD_TRSRANSFER: true
   UPLOAD_WSSRANSFER: true
   UPLOAD_RELEASE: false
   SERVERCHAN_SCKEY: true
@@ -176,7 +176,7 @@ jobs:
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_TRSRANSFER == 'true' && !cancelled()
       run: |
         curl -fsSL git.io/file-transfer | sh
-        ./transfer trs -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee trsransfer.log
+        ./transfer trs -p 16 --no-progress ${FIRMWARE} 2>&1 | tee trsransfer.log
         echo "::warning file=trsransfer.com::$(cat trsransfer.log | grep https)"
         echo "url=$(cat trsransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
 
