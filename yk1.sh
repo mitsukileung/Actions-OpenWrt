@@ -20,6 +20,8 @@
 #sed -i 's/pinctrl-names = "default", "pa_gpio";/pinctrl-names = "default";/g' target/linux/ramips/dts/mt7620a_hiwifi_r33.dts
 #sed -i '/pa_gpio_pins/d' target/linux/ramips/dts/mt7620a_hiwifi_r33.dts
 
+rm -f target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
+rm -f target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi
 wget -O target/linux/ramips/dts/mt7620a_youku_yk-l1.dts https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/mt7620a_youku_yk-l1.dts
 wget -O target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/mt7620a_youku_yk-l1.dtsi
 
