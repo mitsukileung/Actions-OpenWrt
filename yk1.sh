@@ -17,8 +17,8 @@
 #sed -i '/&firmware/i\};' target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
 #sed -i '/&firmware/i\\r' target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
 
-sed -i 's/pinctrl-names = "default", "pa_gpio";/pinctrl-names = "default";/g' target/linux/ramips/dts/mt7620a_hiwifi_r33.dts
-sed -i '/pa_gpio_pins/d' target/linux/ramips/dts/mt7620a_hiwifi_r33.dts
+#sed -i 's/pinctrl-names = "default", "pa_gpio";/pinctrl-names = "default";/g' target/linux/ramips/dts/mt7620a_hiwifi_r33.dts
+#sed -i '/pa_gpio_pins/d' target/linux/ramips/dts/mt7620a_hiwifi_r33.dts
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
