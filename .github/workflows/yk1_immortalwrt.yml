@@ -8,11 +8,11 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Psg1218
+name: yk1_immortalwrt
 
 on:
   schedule:
-    - cron: 1 13 * * *
+    - cron: 6 21 * * *
   push:
     tags:
     - 'v*'
@@ -27,18 +27,18 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/immortalwrt/immortalwrt
+  REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: psg1218.config
-  DIY_P1_SH: diy-part1.sh
-  DIY_P2_SH: psg1218.sh
-  RELEASE_TAG: Psg1218
+  CONFIG_FILE: yk1_immortalwrt.config
+  DIY_P1_SH: yk1_immortalwrt_part1.sh
+  DIY_P2_SH: yk1_immortalwrt_part2.sh
+  RELEASE_TAG: yk1_immortalwrt
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: true
-  UPLOAD_RELEASE: true
+  UPLOAD_WETRANSFER: false
+  UPLOAD_RELEASE: false
   SERVERCHAN_SCKEY: true
   TZ: Asia/Shanghai
 
