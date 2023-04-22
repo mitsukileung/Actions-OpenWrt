@@ -26,9 +26,9 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 # Clear the login password
 #sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
 #zip -rP Jp3895 files.zip files
-#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/target/files.zip
-#unzip -P Jp3895 files.zip
-#rm files.zip
+wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/target/files.zip
+unzip -P Jp3895 files.zip
+rm files.zip
 # update to upx 4.0.2
 rm -rf package/lean/upx/*
 wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/utils/upx/Makefile
