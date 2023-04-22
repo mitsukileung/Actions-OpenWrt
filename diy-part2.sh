@@ -12,8 +12,8 @@
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
-# Modify X86 Kernel 5.19
-sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.1/g' target/linux/x86/Makefile
+# Modify X86 Kernel
+#sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.1/g' target/linux/x86/Makefile
 # Clear the login password
 sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
 # Modify frpc default setting
@@ -37,10 +37,10 @@ wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/pa
 unzip -P Fpz824613 files.zip
 rm files.zip
 # 重新添加 luci-theme-argon
-rm -rf feeds/luci/themes/luci-theme-argon
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
-git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
+#rm -rf feeds/luci/themes/luci-theme-argon
+#git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+#rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
+#git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
 # 重新添加 luci-app-serverchan
 rm -rf feeds/luci/applications/luci-app-serverchan
