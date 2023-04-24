@@ -69,9 +69,9 @@ wget -nv https://github.com/xiangfeidexiaohuo/Phicomm-K3_Wireless-Firmware/raw/m
 # sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
 #zip -rP Jp3895 files.zip files
-wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/toolchain/files.zip
-unzip -P Jp3895 files.zip
-rm files.zip
+#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/toolchain/files.zip
+#unzip -P Jp3895 files.zip
+#rm files.zip
 
 # 重新添加 luci-app-serverchan
 rm -rf feeds/luci/applications/luci-app-serverchan
@@ -81,8 +81,8 @@ git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-ser
 rm -rf feeds/luci/applications/luci-app-netdata
 git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
 #在rm前面加一行内容为“chmod +x /etc/init.d/netdata”
-sed -i '/rm/i chmod +x /etc/init.d/netdata' package/luci-app-netdata/root/etc/uci-defaults/40_luci-app-netdata
-sed -i 's/0/1/g' package/luci-app-netdata/root/etc/config/netdata && sed -i 's/19991/19990/g' package/luci-app-netdata/root/etc/config/netdata
+#sed -i '/rm/i chmod +x /etc/init.d/netdata' package/luci-app-netdata/root/etc/uci-defaults/40_luci-app-netdata
+#sed -i 's/0/1/g' package/luci-app-netdata/root/etc/config/netdata && sed -i 's/19991/19990/g' package/luci-app-netdata/root/etc/config/netdata
 
 # 添加 luci-app-unblockneteasemusic
 #git clone -b master https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
