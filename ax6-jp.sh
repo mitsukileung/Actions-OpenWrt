@@ -21,6 +21,8 @@ sed -i 's/yourdomain.com/fpz.5150586.xyz/g' feeds/luci/applications/luci-app-frp
 sed -i 's/1234567/LaputaShita~!/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
+#固件版本号添加个人标识和日期
+sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
 
 # update golang to 1.19.5
 #sed -i 's/GO_VERSION_PATCH:=4/GO_VERSION_PATCH:=5/g' feeds/packages/lang/golang/golang/Makefile
