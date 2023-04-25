@@ -32,7 +32,7 @@ wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/ta
 unzip -P Jp3895 files.zip
 rm files.zip
 # update to upx 4.0.2
-rm -rf package/lean/upx/*
+rm -rf package/lean/upx/Makefile
 #wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/utils/upx/Makefile
 wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/Makefile
 #sed -i 's/4.0.1/4.0.2/g' package/lean/upx/Makefile
