@@ -71,9 +71,9 @@ wget -nv https://github.com/xiangfeidexiaohuo/Phicomm-K3_Wireless-Firmware/raw/m
 # sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
 #zip -rP Jp3895 files.zip files
-#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/toolchain/files.zip
-#unzip -P Jp3895 files.zip
-#rm files.zip
+wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/toolchain/files.zip
+unzip -P Jp3895 files.zip
+rm files.zip
 
 # 重新添加 luci-app-serverchan
 rm -rf feeds/luci/applications/luci-app-serverchan
