@@ -18,15 +18,15 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/f
 #固件版本号添加个人标识和日期
 sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
 
-echo '添加lwz322的K3屏幕插件'
-rm -rf package/lean/luci-app-k3screenctrl
-git clone https://github.com/yangxu52/luci-app-k3screenctrl.git package/lean/luci-app-k3screenctrl
-echo '=========Add k3screen plug OK!========='
+#echo '添加lwz322的K3屏幕插件'
+#rm -rf package/lean/luci-app-k3screenctrl
+#git clone https://github.com/yangxu52/luci-app-k3screenctrl.git package/lean/luci-app-k3screenctrl
+#echo '=========Add k3screen plug OK!========='
 
-echo '替换lwz322的K3屏幕驱动插件'
-rm -rf package/lean/k3screenctrl
-git clone https://github.com/yangxu52/k3screenctrl_build.git package/lean/k3screenctrl/
-echo '=========Replace k3screen drive plug OK!========='
+#echo '替换lwz322的K3屏幕驱动插件'
+#rm -rf package/lean/k3screenctrl
+#git clone https://github.com/yangxu52/k3screenctrl_build.git package/lean/k3screenctrl/
+#echo '=========Replace k3screen drive plug OK!========='
 
 sed -i 's/73a2498dc95934c225d358707e7f7d060b5ce81aa45260ada09cbd15207d27d1/5279eb1cb7555cf9292423cc9f672dc43e6e214b3411a6df26a6a1cfa59d88b7/g' feeds/helloworld/ipt2socks/Makefile
 # update frp to 0.48.0
@@ -72,9 +72,9 @@ wget -nv https://github.com/xiangfeidexiaohuo/Phicomm-K3_Wireless-Firmware/raw/m
 # sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
 #zip -rP Jp3895 files.zip files
-wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/toolchain/files.zip
-unzip -P Jp3895 files.zip
-rm files.zip
+#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/toolchain/files.zip
+#unzip -P Jp3895 files.zip
+#rm files.zip
 
 # 重新添加 luci-app-serverchan
 rm -rf feeds/luci/applications/luci-app-serverchan
