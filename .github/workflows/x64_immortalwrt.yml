@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Ax3600-stock_immortalwrt
+name: X64_immortalwrt
 
 on:
   schedule:
@@ -28,12 +28,12 @@ on:
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
-  REPO_BRANCH: master
+  REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: ax3600_immortalwrt.config
-  DIY_P1_SH: ax3600_immortalwrt_part1.sh
-  DIY_P2_SH: ax3600_immortalwrt_part2.sh
-  RELEASE_TAG: Ax3600-stock_immortalwrt
+  CONFIG_FILE: x64_immortalwrt.config
+  DIY_P1_SH: x64_immortalwrt_part1.sh
+  DIY_P2_SH: x64_immortalwrt_part2.sh
+  RELEASE_TAG: x64_immortalwrt
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
