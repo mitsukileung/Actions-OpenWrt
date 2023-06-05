@@ -47,7 +47,7 @@ sed -i 's/73a2498dc95934c225d358707e7f7d060b5ce81aa45260ada09cbd15207d27d1/5279e
 
 # 重新添加 luci-app-serverchan
 rm -rf feeds/luci/applications/luci-app-serverchan
-git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
+git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git
 
 # 重新添加 luci-app-netdata
 rm -rf feeds/luci/applications/luci-app-netdata
