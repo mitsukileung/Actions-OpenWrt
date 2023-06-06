@@ -178,7 +178,7 @@ jobs:
         echo "url=$(cat cowtransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
         
     - name: Upload firmware to Wenshushu
-      id: Wenshushu
+      id: wenshushu
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_WSSRANSFER == 'true' && !cancelled()
       run: |
         curl -fsSL git.io/file-transfer | sh
