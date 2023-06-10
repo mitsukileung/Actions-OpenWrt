@@ -73,7 +73,7 @@ git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-ap
 
 # 重新添加 luci-app-serverchan
 rm -rf feeds/luci/applications/luci-app-serverchan
-git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
+git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-serverchan
 
 # 重新添加 luci-app-aliyundrive-webdav
 rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
