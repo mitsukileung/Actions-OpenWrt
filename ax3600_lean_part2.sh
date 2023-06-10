@@ -23,7 +23,7 @@ sed -i 's/80/47001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 sed -i 's/443/47002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 # Modify zerotier default setting
 sed -i 's/enabled 0/enabled 1/g' packages/net/zerotier/files/etc/config/zerotier
-sed -i 's/8056c2e21c000001/1950791e780ce563/g' packages/net/zerotier/files/etc/config/zerotier
+sed -i 's/8056c2e21c000001/c026309d77879fdc/g' packages/net/zerotier/files/etc/config/zerotier
 #固件版本号添加个人标识和日期
 sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
 
