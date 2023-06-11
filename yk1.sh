@@ -42,6 +42,10 @@ sed -i 's/77003c8e2e29aa9804e2fbaeb30f055903420b3e01d95eafe01aed957fb7e190/1221e
 sed -i 's/0.47.0/0.49.0/g' feeds/packages/net/frp/Makefile
 sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/8ff92d4f763d596bee35efe17f0729d36e584b93c49a7671cebde4bb318b458f/g' feeds/packages/net/frp/Makefile
 
+# revert chinadns-ng to 2023.04.20
+sed -i 's/2023.06.01/2023.04.20/g' feeds/helloworld/chinadns-ng/Makefile
+sed -i 's/7c33e8a60b7618b33fce0960b94b46567766a051b307cea6b123da4176a52eab/e1f5197ecd96ebab4440fe069e0a06935df7ea07ac1ad0bab3f88bffe0055294/g' feeds/helloworld/chinadns-ng/Makefile
+
 # update zerotier to 1.10.2
 #sed -i 's/1.10.1/1.10.2/g' feeds/packages/net/zerotier/Makefile
 #sed -i 's/1cc6b5da059486aff588fa6e6f43d20a7063569cc108bbe7254969f1cf72c968/9f98b1670785f42294b9858068d42c6b8c2fdee6402e871a36562b47559e74e7/g' feeds/packages/net/zerotier/Makefile
