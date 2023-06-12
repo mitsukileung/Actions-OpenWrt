@@ -25,6 +25,9 @@ sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 sed -i 's/enabled 0/enabled 1/g' packages/net/zerotier/files/etc/config/zerotier
 sed -i 's/8056c2e21c000001/1950791e780ce563/g' packages/net/zerotier/files/etc/config/zerotier
 
+rm package/firmware/ipq-wifi/board-redmi_ax6.ipq8074
+rm package/firmware/ipq-wifi/board-xiaomi_ax3600.ipq8074
+rm package/firmware/ipq-wifi/board-xiaomi_ax3600.qca9889
 wget -O package/firmware/ipq-wifi/board-redmi_ax6.ipq8074 https://raw.githubusercontent.com/openwrt/firmware_qca-wireless/main/board-redmi_ax6.ipq8074
 wget -O package/firmware/ipq-wifi/board-xiaomi_ax3600.ipq8074 https://raw.githubusercontent.com/openwrt/firmware_qca-wireless/main/board-xiaomi_ax3600.ipq8074
 wget -O package/firmware/ipq-wifi/board-xiaomi_ax3600.qca9889 https://raw.githubusercontent.com/openwrt/firmware_qca-wireless/main/board-xiaomi_ax3600.qca9889
