@@ -59,8 +59,8 @@ sed -i 's/0.48.0/0.49.0/g' feeds/packages/net/frp/Makefile
 sed -i 's/efba8ec9fad3369ce62631369f52b78a7248df426b5b54311e96231adac5cc76/8ff92d4f763d596bee35efe17f0729d36e584b93c49a7671cebde4bb318b458f/g' feeds/packages/net/frp/Makefile
 
 # revert chinadns-ng to 2023.04.20
-sed -i 's/2023.06.01/2023.04.20/g' feeds/packages/net/chinadns-ng/Makefile
-sed -i 's/7c33e8a60b7618b33fce0960b94b46567766a051b307cea6b123da4176a52eab/e1f5197ecd96ebab4440fe069e0a06935df7ea07ac1ad0bab3f88bffe0055294/g' feeds/packages/net/chinadns-ng/Makefile
+#sed -i 's/2023.06.01/2023.04.20/g' feeds/packages/net/chinadns-ng/Makefile
+#sed -i 's/7c33e8a60b7618b33fce0960b94b46567766a051b307cea6b123da4176a52eab/e1f5197ecd96ebab4440fe069e0a06935df7ea07ac1ad0bab3f88bffe0055294/g' feeds/packages/net/chinadns-ng/Makefile
 
 # 重新添加 luci-theme-argon
 #rm -rf feeds/luci/themes/luci-theme-argon
