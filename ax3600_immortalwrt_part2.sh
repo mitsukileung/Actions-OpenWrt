@@ -68,6 +68,10 @@ sed -i 's/efba8ec9fad3369ce62631369f52b78a7248df426b5b54311e96231adac5cc76/8ff92
 #rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
 #git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
+# 重新添加 luci-app-openclash
+rm -rf feeds/luci/applications/luci-app-openclash
+svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
+
 # 重新添加 luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone -b luci https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
