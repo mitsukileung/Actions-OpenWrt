@@ -28,9 +28,9 @@ sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC
 #sed -i 's/GO_VERSION_PATCH:=4/GO_VERSION_PATCH:=5/g' feeds/packages/lang/golang/golang/Makefile
 #sed -i 's/eda74db4ac494800a3e66ee784e495bfbb9b8e535df924a8b01b1a8028b7f368/8e486e8e85a281fc5ce3f0bedc5b9d2dbf6276d7db0b25d3ec034f313da0375f/g' feeds/packages/lang/golang/golang/Makefile
 #rm -rf feeds/packages/lang/golang/golang/patches/010-cmd-compile-turn-off-jump-tables-when-spectre-retpolines-.patch
-# update frp to 0.49.0
-sed -i 's/0.47.0/0.49.0/g' feeds/packages/net/frp/Makefile
-sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/8ff92d4f763d596bee35efe17f0729d36e584b93c49a7671cebde4bb318b458f/g' feeds/packages/net/frp/Makefile
+# update frp to 0.50.0
+sed -i 's/0.47.0/0.50.0/g' feeds/packages/net/frp/Makefile
+sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/e33b5c88246acee63e098114acd0f10dddbbfe7095ada854b814f86869221f8e/g' feeds/packages/net/frp/Makefile
 # revert chinadns-ng to 2023.04.20
 sed -i 's/2023.06.01/2023.04.20/g' feeds/helloworld/chinadns-ng/Makefile
 sed -i 's/7c33e8a60b7618b33fce0960b94b46567766a051b307cea6b123da4176a52eab/e1f5197ecd96ebab4440fe069e0a06935df7ea07ac1ad0bab3f88bffe0055294/g' feeds/helloworld/chinadns-ng/Makefile
