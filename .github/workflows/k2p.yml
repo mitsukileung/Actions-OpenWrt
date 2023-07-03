@@ -25,11 +25,11 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede.git
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
+  REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: k2p.config
-  DIY_P1_SH: diy-part1.sh
+  DIY_P1_SH: ax3600_immortalwrt_part1.sh
   DIY_P2_SH: k2p.sh
   RELEASE_TAG: K2p
   UPLOAD_BIN_DIR: true
