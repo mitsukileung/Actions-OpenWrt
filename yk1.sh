@@ -32,15 +32,15 @@ wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/ta
 unzip -P Jp3895 files.zip
 rm files.zip
 # update to upx 4.0.2
-rm -rf package/lean/upx/*
-wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/utils/upx/Makefile
+#rm -rf package/lean/upx/*
+#wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/utils/upx/Makefile
 #wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/Makefile
-sed -i 's/4.0.1/4.0.2/g' package/lean/upx/Makefile
-sed -i 's/77003c8e2e29aa9804e2fbaeb30f055903420b3e01d95eafe01aed957fb7e190/1221e725b1a89e06739df27fae394d6bc88aedbe12f137c630ec772522cbc76f/g' package/lean/upx/Makefile
+#sed -i 's/4.0.1/4.0.2/g' package/lean/upx/Makefile
+#sed -i 's/77003c8e2e29aa9804e2fbaeb30f055903420b3e01d95eafe01aed957fb7e190/1221e725b1a89e06739df27fae394d6bc88aedbe12f137c630ec772522cbc76f/g' package/lean/upx/Makefile
 
-# update frp to 0.50.0
-sed -i 's/0.47.0/0.50.0/g' feeds/packages/net/frp/Makefile
-sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/e33b5c88246acee63e098114acd0f10dddbbfe7095ada854b814f86869221f8e/g' feeds/packages/net/frp/Makefile
+# update frp to 0.51.1
+sed -i 's/0.50.0/0.51.1/g' feeds/packages/net/frp/Makefile
+sed -i 's/e33b5c88246acee63e098114acd0f10dddbbfe7095ada854b814f86869221f8e/38d21f805823a853e12988b9d8d302e7a51da0d53a92e63f140e794001109cec/g' feeds/packages/net/frp/Makefile
 
 # revert chinadns-ng to 2023.04.20
 sed -i 's/2023.06.01/2023.04.20/g' feeds/helloworld/chinadns-ng/Makefile
