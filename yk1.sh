@@ -31,12 +31,8 @@ sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC
 wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/target/files.zip
 unzip -P Jp3895 files.zip
 rm files.zip
-# update to upx 4.0.2
-rm -rf package/lean/upx/*
-wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/utils/upx/Makefile
-wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/Makefile
-sed -i 's/4.0.1/4.0.2/g' package/lean/upx/Makefile
-sed -i 's/77003c8e2e29aa9804e2fbaeb30f055903420b3e01d95eafe01aed957fb7e190/1221e725b1a89e06739df27fae394d6bc88aedbe12f137c630ec772522cbc76f/g' package/lean/upx/Makefile
+
+sed -i 's/golang\/host upx\/host/golang\/host/g' feeds/packages/net/frp/Makefile
 
 # update frp to 0.51.1
 sed -i 's/0.50.0/0.51.1/g' feeds/packages/net/frp/Makefile
