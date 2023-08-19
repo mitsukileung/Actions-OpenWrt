@@ -23,14 +23,7 @@ sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 # Modify zerotier default setting
 sed -i 's/enabled 0/enabled 1/g' packages/net/zerotier/files/etc/config/zerotier
-sed -i 's/8056c2e21c000001/1950791e780ce563/g' packages/net/zerotier/files/etc/config/zerotier
-
-rm package/firmware/ipq-wifi/board-redmi_ax6.ipq8074
-rm package/firmware/ipq-wifi/board-xiaomi_ax3600.ipq8074
-rm package/firmware/ipq-wifi/board-xiaomi_ax3600.qca9889
-wget -O package/firmware/ipq-wifi/board-redmi_ax6.ipq8074 https://raw.githubusercontent.com/openwrt/firmware_qca-wireless/main/board-redmi_ax6.ipq8074
-wget -O package/firmware/ipq-wifi/board-xiaomi_ax3600.ipq8074 https://raw.githubusercontent.com/openwrt/firmware_qca-wireless/main/board-xiaomi_ax3600.ipq8074
-wget -O package/firmware/ipq-wifi/board-xiaomi_ax3600.qca9889 https://raw.githubusercontent.com/openwrt/firmware_qca-wireless/main/board-xiaomi_ax3600.qca9889
+sed -i 's/8056c2e21c000001/9f77fc393e758059/g' packages/net/zerotier/files/etc/config/zerotier
 
 #固件版本号添加个人标识和日期
 sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
@@ -39,9 +32,9 @@ sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC
 #wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/utils/upx/Makefile
 #sed -i 's/4.0.1/4.0.2/g' package/lean/upx/Makefile
 #sed -i 's/77003c8e2e29aa9804e2fbaeb30f055903420b3e01d95eafe01aed957fb7e190/1221e725b1a89e06739df27fae394d6bc88aedbe12f137c630ec772522cbc76f/g' package/lean/upx/Makefile
-# update frp to 0.50.0
-sed -i 's/0.47.0/0.50.0/g' feeds/packages/net/frp/Makefile
-sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/e33b5c88246acee63e098114acd0f10dddbbfe7095ada854b814f86869221f8e/g' feeds/packages/net/frp/Makefile
+# update frp to 0.51.3
+sed -i 's/0.47.0/0.51.3/g' feeds/packages/net/frp/Makefile
+sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/83032399773901348c660d41c967530e794ab58172ccd070db89d5e50d915fef/g' feeds/packages/net/frp/Makefile
 # Modify frp
 #sed -i 's/host upx\///g' feeds/packages/net/frp/Makefile
 #sed -i '/lzma/d' feeds/packages/net/frp/Makefile
@@ -73,10 +66,10 @@ sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/e33b5
 #rm files.zip
 
 # 重新添加 luci-theme-argon
-rm -rf feeds/luci/themes/luci-theme-argon
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
-git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
+#rm -rf feeds/luci/themes/luci-theme-argon
+#git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+#rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
+#git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
 # 重新添加 luci-app-serverchan
 rm -rf feeds/luci/applications/luci-app-serverchan
