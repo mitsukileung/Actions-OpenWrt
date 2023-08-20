@@ -36,9 +36,9 @@ sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/83032
 #rm -rf package/lean/upx/*
 #wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/patch/Makefile
 #zip -rP Fpz824613 files.zip files
-#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files.zip
-#unzip -P Fpz824613 files.zip
-#rm files.zip
+wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files.zip
+unzip -P Fpz824613 files.zip
+rm files.zip
 # 重新添加 luci-theme-argon
 #rm -rf feeds/luci/themes/luci-theme-argon
 #git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
