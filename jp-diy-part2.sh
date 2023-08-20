@@ -11,7 +11,7 @@
 #
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.55.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.68.1/g' package/base-files/files/bin/config_generate
 # Modify X86 Kernel
 #sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.4/g' target/linux/x86/Makefile
 # Clear the login password
