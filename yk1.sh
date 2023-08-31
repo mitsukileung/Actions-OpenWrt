@@ -42,9 +42,17 @@ sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/83032
 #sed -i 's/2023.06.01/2023.04.20/g' feeds/helloworld/chinadns-ng/Makefile
 #sed -i 's/7c33e8a60b7618b33fce0960b94b46567766a051b307cea6b123da4176a52eab/e1f5197ecd96ebab4440fe069e0a06935df7ea07ac1ad0bab3f88bffe0055294/g' feeds/helloworld/chinadns-ng/Makefile
 
-# update zerotier to 1.10.2
-#sed -i 's/1.10.1/1.10.2/g' feeds/packages/net/zerotier/Makefile
-#sed -i 's/1cc6b5da059486aff588fa6e6f43d20a7063569cc108bbe7254969f1cf72c968/9f98b1670785f42294b9858068d42c6b8c2fdee6402e871a36562b47559e74e7/g' feeds/packages/net/zerotier/Makefile
+# update zerotier 1.12.1
+rm -rf feeds/packages/net/zerotier/patches/*
+sed -i 's/1.10.6/1.12.1/g' feeds/packages/net/zerotier/Makefile
+sed -i 's/3f0b59e0c290b18b93fddee1f7b927209538d84a88343b2f3ac61a6bf3c87910/c6758a04f161bba1c0ef11fce991029a645ede381ae3862a25a2f5145aaffca8/g' feeds/packages/net/zerotier/Makefile
+sed -i 's/DEPENDS:=+libpthread +libstdcpp +kmod-tun +ip +libminiupnpc +libnatpmp/DEPENDS:=+libpthread +libstdcpp +kmod-tun +ip +libminiupnpc +libnatpmp +libatomic/g' feeds/packages/net/zerotier/Makefile
+wget -O feeds/packages/net/zerotier/patches/0001-fix-miniupnpc-natpmp-include-paths.patch https://raw.githubusercontent.com/takayukileung/zerotier_lede/main/zerotier/patches/0001-fix-miniupnpc-natpmp-include-paths.patch
+wget -O feeds/packages/net/zerotier/patches/0002-remove-PIE-options.patch https://raw.githubusercontent.com/takayukileung/zerotier_lede/main/zerotier/patches/0002-remove-PIE-options.patch
+wget -O feeds/packages/net/zerotier/patches/0003-fix-compilation-for-arm_cortex-a7-neon.patch https://raw.githubusercontent.com/takayukileung/zerotier_lede/main/zerotier/patches/0003-fix-compilation-for-arm_cortex-a7-neon.patch
+wget -O feeds/packages/net/zerotier/patches/0004-add-missing-libatomic.patch https://raw.githubusercontent.com/takayukileung/zerotier_lede/main/zerotier/patches/0004-add-missing-libatomic.patch
+wget -O feeds/packages/net/zerotier/patches/0005-remove-noexecstack.patch https://raw.githubusercontent.com/takayukileung/zerotier_lede/main/zerotier/patches/0005-remove-noexecstack.patch
+
 # 重新添加 luci-app-serverchan
 rm -rf feeds/luci/applications/luci-app-serverchan
 git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-serverchan
