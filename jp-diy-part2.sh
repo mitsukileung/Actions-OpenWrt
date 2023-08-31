@@ -22,8 +22,16 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/f
 #固件版本号添加个人标识和日期
 sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
 
-# update zerotier config
-#sed -i 's/8056c2e21c000001/c026309d77879fdc/g' feeds/packages/net/zerotier/files/etc/config/zerotier
+# update zerotier 1.12.1
+rm -rf feeds/packages/net/zerotier/patches/*
+sed -i 's/1.10.6/1.12.1/g' feeds/packages/net/zerotier/Makefile
+sed -i 's/3f0b59e0c290b18b93fddee1f7b927209538d84a88343b2f3ac61a6bf3c87910/c6758a04f161bba1c0ef11fce991029a645ede381ae3862a25a2f5145aaffca8/g' feeds/packages/net/zerotier/Makefile
+sed -i 's/DEPENDS:=+libpthread +libstdcpp +kmod-tun +ip +libminiupnpc +libnatpmp/DEPENDS:=+libpthread +libstdcpp +kmod-tun +ip +libminiupnpc +libnatpmp +libatomic/g' feeds/packages/net/zerotier/Makefile
+wget -O feeds/packages/net/zerotier/patches/0001-fix-miniupnpc-natpmp-include-paths.patch https://raw.githubusercontent.com/takayukileung/zerotier_lede/main/zerotier/patches/0001-fix-miniupnpc-natpmp-include-paths.patch
+wget -O feeds/packages/net/zerotier/patches/0002-remove-PIE-options.patch https://raw.githubusercontent.com/takayukileung/zerotier_lede/main/zerotier/patches/0002-remove-PIE-options.patch
+wget -O feeds/packages/net/zerotier/patches/0003-fix-compilation-for-arm_cortex-a7-neon.patch https://raw.githubusercontent.com/takayukileung/zerotier_lede/main/zerotier/patches/0003-fix-compilation-for-arm_cortex-a7-neon.patch
+wget -O feeds/packages/net/zerotier/patches/0004-add-missing-libatomic.patch https://raw.githubusercontent.com/takayukileung/zerotier_lede/main/zerotier/patches/0004-add-missing-libatomic.patch
+wget -O feeds/packages/net/zerotier/patches/0005-remove-noexecstack.patch https://raw.githubusercontent.com/takayukileung/zerotier_lede/main/zerotier/patches/0005-remove-noexecstack.patch
 
 # update frp to 0.51.3
 sed -i 's/0.47.0/0.51.3/g' feeds/packages/net/frp/Makefile
