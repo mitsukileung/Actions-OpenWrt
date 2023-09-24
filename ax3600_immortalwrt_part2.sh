@@ -33,8 +33,8 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 #wget -O target/linux/ipq807x/image/generic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/generic.mk
 
 # update frp to 0.50.0
-sed -i 's/0.49.0/0.50.0/g' feeds/packages/net/frp/Makefile
-sed -i 's/8ff92d4f763d596bee35efe17f0729d36e584b93c49a7671cebde4bb318b458f/e33b5c88246acee63e098114acd0f10dddbbfe7095ada854b814f86869221f8e/g' feeds/packages/net/frp/Makefile
+#sed -i 's/0.49.0/0.50.0/g' feeds/packages/net/frp/Makefile
+#sed -i 's/8ff92d4f763d596bee35efe17f0729d36e584b93c49a7671cebde4bb318b458f/e33b5c88246acee63e098114acd0f10dddbbfe7095ada854b814f86869221f8e/g' feeds/packages/net/frp/Makefile
 
 # revert chinadns-ng to 2023.04.20
 #sed -i 's/2023.06.01/2023.04.20/g' feeds/packages/net/chinadns-ng/Makefile
