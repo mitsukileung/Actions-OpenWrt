@@ -17,7 +17,7 @@ sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generat
 # Clear the login password
 #sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
 
-#sed -i 's/golang\/host upx\/host/golang\/host/g' feeds/packages/net/frp/Makefile
+sed -i 's/golang\/host upx\/host/golang\/host/g' feeds/packages/net/frp/Makefile
 
 # update zerotier config
 #sed -i 's/1.12.1/1.12.2/g' feeds/packages/net/zerotier/Makefile
