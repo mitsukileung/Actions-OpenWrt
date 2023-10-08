@@ -32,7 +32,7 @@ wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/ta
 unzip -P Jp3895 files.zip
 rm files.zip
 
-#sed -i 's/golang\/host upx\/host/golang\/host/g' feeds/packages/net/frp/Makefile
+sed -i 's/golang\/host upx\/host/golang\/host/g' feeds/packages/net/frp/Makefile
 
 # update frp to 0.51.3
 sed -i 's/0.47.0/0.51.3/g' feeds/packages/net/frp/Makefile
