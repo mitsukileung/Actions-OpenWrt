@@ -34,9 +34,9 @@ rm files.zip
 
 sed -i 's/golang\/host upx\/host/golang\/host/g' feeds/packages/net/frp/Makefile
 
-# update frp to 0.51.3
-#sed -i 's/0.47.0/0.51.3/g' feeds/packages/net/frp/Makefile
-#sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/83032399773901348c660d41c967530e794ab58172ccd070db89d5e50d915fef/g' feeds/packages/net/frp/Makefile
+# update frp to 0.52.0
+sed -i 's/0.51.3/0.52.0/g' feeds/packages/net/frp/Makefile
+sed -i 's/83032399773901348c660d41c967530e794ab58172ccd070db89d5e50d915fef/391d5625bed8453bc1b0c7973ba607267860c7f889a164faed60d6946b7721fd/g' feeds/packages/net/frp/Makefile
 
 # revert chinadns-ng to 2023.04.20
 #sed -i 's/2023.06.01/2023.04.20/g' feeds/helloworld/chinadns-ng/Makefile
