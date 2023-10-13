@@ -34,6 +34,9 @@ rm files.zip
 
 sed -i 's/golang\/host upx\/host/golang\/host/g' feeds/packages/net/frp/Makefile
 
+sed -i 's/GO_VERSION_PATCH:=2/GO_VERSION_PATCH:=1/g' feeds/packages/lang/golang/golang/Makefile
+sed -i 's/45e59de173baec39481854490d665b726cec3e5b159f6b4172e5ec7780b2c201/bfa36bf75e9a1e9cbbdb9abcf9d1707e479bd3a07880a8ae3564caee5711cb99/g' feeds/packages/lang/golang/golang/Makefile
+
 # update frp to 0.51.2
 #sed -i 's/0.51.3/0.51.2/g' feeds/packages/net/frp/Makefile
 #sed -i 's/83032399773901348c660d41c967530e794ab58172ccd070db89d5e50d915fef/23b8f91fc1f86feb2ef4e7af4cf509be46360e0d16c3f71036f7206394417ddb/g' feeds/packages/net/frp/Makefile
