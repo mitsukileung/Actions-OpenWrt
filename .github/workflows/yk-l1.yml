@@ -95,8 +95,7 @@ jobs:
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-        #cd openwrt && git reset --hard 040575e75f50158e7f930a136174cd144a9166d7
-        cd openwrt && git reset --hard 7a04c52544444af4883459b3a17d1985eac280c8
+        cd openwrt && git reset --hard ad98915e765b04bc58abbf4ed3a1e4410adc642d
         
     - name: Load custom feeds
       run: |
