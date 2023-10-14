@@ -12,7 +12,7 @@ name: Ax6-stock_immortalwrt
 
 on:
   schedule:
-    - cron: 2 20 * * *
+    - cron: 2 15 * * *
   push:
     tags:
     - 'v*'
