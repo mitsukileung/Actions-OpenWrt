@@ -52,7 +52,7 @@ svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/l
 
 # 重新添加 luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall
-svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
+svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci-smartdns-dev/luci-app-passwall package/luci-app-passwall
 
 # 重新添加 luci-app-wechatpush
 rm -rf feeds/luci/applications/luci-app-wechatpush
