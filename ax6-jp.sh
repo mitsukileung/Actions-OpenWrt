@@ -82,6 +82,9 @@ git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci
 # 添加 filebrowser
 git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci-app-filebrowser
 
+# 添加 OpenAppFilter
+git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+
 # 添加 OpenClash
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openclash
 
