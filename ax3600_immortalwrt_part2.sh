@@ -59,7 +59,7 @@ rm -rf feeds/luci/applications/luci-app-wechatpush
 git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
 
 # 添加 OpenAppFilter
-git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+#git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
 # 添加 smartdns
 #git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
