@@ -101,6 +101,9 @@ git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci
 # 添加 OpenClash
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openclash
 
+# 添加 OpenAppFilter
+git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+
 # 添加 luci-theme-neobird 主题
 git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 
