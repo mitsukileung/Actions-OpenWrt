@@ -48,7 +48,7 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 
 # 重新添加 luci-app-openclash dev版
 rm -rf /feeds/luci/applications/luci-app-homeproxy
-git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
+git clone -b dev https://github.com/immortalwrt/homebridger.git package/luci-app-homeproxy
 
 # 重新添加 luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
