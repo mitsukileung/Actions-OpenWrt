@@ -55,8 +55,8 @@ rm -rf feeds/luci/applications/luci-app-passwall
 svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci-smartdns-dev/luci-app-passwall package/luci-app-passwall
 
 # 重新添加 luci-app-wechatpush
-rm -rf feeds/luci/applications/luci-app-wechatpush
-git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
+#rm -rf feeds/luci/applications/luci-app-wechatpush
+#git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
 
 # 添加 OpenAppFilter
 #git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
