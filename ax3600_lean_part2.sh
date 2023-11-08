@@ -27,10 +27,10 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' packages/net/zerotier/files/etc/c
 #固件版本号添加个人标识和日期
 sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
 
-sed -i 's/        -Dzlib=disabled \\ /        -Dzlib=disabled \\/g' feeds/packages/utils/zstd/Makefile
-sed -i 's/         -Dlzma=disabled \\ /        -Dlzma=disabled \\/g' feeds/packages/utils/zstd/Makefile
-sed -i 's/         -Dlz4=disabled \\ /        -Dlz4=disabled \\/g' feeds/packages/utils/zstd/Makefile
-sed -i 's/         -Db_lto=true/        -Db_lto=true/g' feeds/packages/utils/zstd/Makefile
+#sed -i 's/        -Dzlib=disabled \\ /        -Dzlib=disabled \\/g' feeds/packages/utils/zstd/Makefile
+#sed -i 's/         -Dlzma=disabled \\ /        -Dlzma=disabled \\/g' feeds/packages/utils/zstd/Makefile
+#sed -i 's/         -Dlz4=disabled \\ /        -Dlz4=disabled \\/g' feeds/packages/utils/zstd/Makefile
+#sed -i 's/         -Db_lto=true/        -Db_lto=true/g' feeds/packages/utils/zstd/Makefile
 
 # update to upx 4.0.2
 #rm -rf package/lean/upx/*
