@@ -25,10 +25,10 @@ sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 sed -i 's/enabled 0/enabled 1/g' packages/net/zerotier/files/etc/config/zerotier
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' packages/net/zerotier/files/etc/config/zerotier
 
-sed -i 's/        -Dzlib=disabled \\ /        -Dzlib=disabled \\/g' feeds/packages/utils/zstd/Makefile
-sed -i 's/         -Dlzma=disabled \\ /        -Dlzma=disabled \\/g' feeds/packages/utils/zstd/Makefile
-sed -i 's/         -Dlz4=disabled \\ /        -Dlz4=disabled \\/g' feeds/packages/utils/zstd/Makefile
-sed -i 's/         -Db_lto=true/        -Db_lto=true/g' feeds/packages/utils/zstd/Makefile
+#sed -i 's/        -Dzlib=disabled \\ /        -Dzlib=disabled \\/g' feeds/packages/utils/zstd/Makefile
+#sed -i 's/         -Dlzma=disabled \\ /        -Dlzma=disabled \\/g' feeds/packages/utils/zstd/Makefile
+#sed -i 's/         -Dlz4=disabled \\ /        -Dlz4=disabled \\/g' feeds/packages/utils/zstd/Makefile
+#sed -i 's/         -Db_lto=true/        -Db_lto=true/g' feeds/packages/utils/zstd/Makefile
 
 #固件版本号添加个人标识和日期
 sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
@@ -86,7 +86,7 @@ rm -rf feeds/packages/multimedia/aliyundrive-webdav
 git clone https://github.com/messense/aliyundrive-webdav.git package/luci-app-aliyundrive-webdav
 
 # 添加 luci-app-unblockneteasemusic
-git clone -b master https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
+#git clone -b master https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
 
 # 添加 smartdns
 git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
