@@ -1,0 +1,36 @@
+#
+# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
+#
+# This is free software, licensed under the MIT License.
+# See /LICENSE for more information.
+#
+# https://github.com/P3TERX/Actions-OpenWrt
+# Description: Build OpenWrt using GitHub Actions
+#
+
+name: k2p_imm_21.02
+
+on:
+  schedule:
+    - cron: 5 21 * * *
+  push:
+    tags:
+    - 'v*'
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
+
+env:
+  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
+  REPO_BRANCH: openwrt-21.02
+  FEEDS_CONF: feeds.conf.default
+  CONFIG_FILE: k2p_imm_21.02.config
+  DIY_P1_SH: ax3600_immortalwrt_part1.sh
+  DIY_P2_SH: ax3600_immortalwrt_part2.sh
+  RELEASE_TAG: k2p_imm_21.02
+  UPLOAD_BIN_DIR: true
+  UPLOAD_FIRMWARE: true
