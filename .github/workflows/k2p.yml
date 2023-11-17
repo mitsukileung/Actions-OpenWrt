@@ -31,7 +31,7 @@ env:
   CONFIG_FILE: k2p_imm.config
   DIY_P1_SH: ax3600_immortalwrt_part1.sh
   DIY_P2_SH: ax3600_immortalwrt_part2.sh
-  RELEASE_TAG: K2p
+  RELEASE_TAG: k2p_imm
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
