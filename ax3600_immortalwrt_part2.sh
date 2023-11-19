@@ -48,17 +48,21 @@ sed -i 's/8056c2e21c000001/439bdec6f23e97d9/g' feeds/packages/net/zerotier/files
 #rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
 #git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
-# 重新添加 luci-app-openclash dev版
+# 重新添加 luci-app-homeproxy dev版
 rm -rf /feeds/luci/applications/luci-app-homeproxy
 git clone -b dev https://github.com/immortalwrt/homebridger.git package/luci-app-homeproxy
 
 # 重新添加 luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
-svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
+git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/luci-app-openclash
 
 # 重新添加 luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall
-svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci-smartdns-dev/luci-app-passwall package/luci-app-passwall
+git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git --depth=1 package/luci-app-passwall
+
+# 重新添加 luci-app-socat 同时兼容firewall3/4 
+rm -rf feeds/luci/applications/luci-app-socat
+git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-socat
 
 # 重新添加 luci-app-wechatpush
 #rm -rf feeds/luci/applications/luci-app-wechatpush
