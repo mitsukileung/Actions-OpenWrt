@@ -50,7 +50,7 @@ sed -i 's/8056c2e21c000001/439bdec6f23e97d9/g' feeds/packages/net/zerotier/files
 
 # 重新添加 luci-app-homeproxy dev版
 rm -rf /feeds/luci/applications/luci-app-homeproxy
-git clone -b dev https://github.com/immortalwrt/homebridger.git package/luci-app-homeproxy
+git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
 
 # 重新添加 luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
