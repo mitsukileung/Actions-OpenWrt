@@ -22,6 +22,8 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 #sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 
+sed -i 's/8056c2e21c000001/439bdec6f23e97d9/g' feeds/packages/net/zerotier/files/etc/config/zerotier
+
 #zip -rP Jsz3895 files.zip files
 wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/openwrt-21.02/tools/files_7981_fpz.zip
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/openwrt-21.02/tools/files_7981_jsz.zip
