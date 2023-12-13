@@ -23,10 +23,10 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 #sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 
 #zip -rP Jsz3895 files.zip files
-wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/openwrt-21.02/tools/files_7981_fpz.zip
-#wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/openwrt-21.02/tools/files_7981_jsz.zip
-mv files_7981_fpz.zip files.zip
-#mv files_7981_jsz.zip files.zip
+#wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/openwrt-21.02/tools/files_7981_fpz.zip
+wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/openwrt-21.02/tools/files_7981_jsz.zip
+#mv files_7981_fpz.zip files.zip
+mv files_7981_jsz.zip files.zip
 unzip -P Jsz3895 files.zip
 rm files.zip
 #修正连接数（by ベ七秒鱼ベ）
@@ -54,8 +54,8 @@ rm files.zip
 #git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
 
 # 重新添加 luci-app-openclash
-#rm -rf feeds/luci/applications/luci-app-openclash
-#git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
+rm -rf feeds/luci/applications/luci-app-openclash
+git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
 
 # 重新添加 luci-app-passwall
 #rm -rf feeds/luci/applications/luci-app-passwall
