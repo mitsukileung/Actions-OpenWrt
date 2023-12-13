@@ -25,9 +25,9 @@ sed -i 's/192.168.1.1/192.168.68.1/g' package/base-files/files/bin/config_genera
 sed -i 's/8056c2e21c000001/439bdec6f23e97d9/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
 #zip -rP Jsz3895 files.zip files
-#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/package/files.zip
-#unzip -P Jsz3895 files.zip
-#rm files.zip
+wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/package/files.zip
+unzip -P Jsz3895 files.zip
+rm files.zip
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
