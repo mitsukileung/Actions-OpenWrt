@@ -60,6 +60,7 @@ git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/op
 # 重新添加 luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/xiaorouji/openwrt-passwall.git --depth=1 package/openwrt-passwall
+sed -i '/iptables-mod-socket/d' package/openwrt-passwall/luci-app-passwall/Makefile
 
 # 重新添加 luci-app-wechatpush
 #rm -rf feeds/luci/applications/luci-app-wechatpush
