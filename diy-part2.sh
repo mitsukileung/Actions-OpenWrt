@@ -17,8 +17,8 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 # Clear the login password
 sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
 # Modify frpc default setting
-sed -i 's/yourdomain.com/frp.104300.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
-sed -i 's/1234567/www.126126.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
+#sed -i 's/yourdomain.com/frp.104300.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
+#sed -i 's/1234567/www.126126.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #固件版本号添加个人标识和日期
 sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
 
@@ -69,8 +69,8 @@ git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netd
 #git clone -b master https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
 
 # 重新添加 luci-app-pushbot
-rm -rf feeds/luci/applications/luci-app-pushbot
-git clone https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-pushbot
+#rm -rf feeds/luci/applications/luci-app-pushbot
+#git clone https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-pushbot
 
 # 添加 smartdns
 #git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
@@ -83,7 +83,7 @@ git clone https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-push
 git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci-app-filebrowser
 
 # 添加 OpenClash
-svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openclash
+#svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openclash
 
 # 添加 luci-theme-neobird 主题
 #git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
