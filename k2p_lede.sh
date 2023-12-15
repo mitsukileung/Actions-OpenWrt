@@ -22,10 +22,7 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/f
 #固件版本号添加个人标识和日期
 sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
 sed -i 's/golang\/host upx\/host/golang\/host/g' feeds/packages/net/frp/Makefile
-#sed -i 's/        -Dzlib=disabled \\ /        -Dzlib=disabled \\/g' feeds/packages/utils/zstd/Makefile
-#sed -i 's/         -Dlzma=disabled \\ /        -Dlzma=disabled \\/g' feeds/packages/utils/zstd/Makefile
-#sed -i 's/         -Dlz4=disabled \\ /        -Dlz4=disabled \\/g' feeds/packages/utils/zstd/Makefile
-#sed -i 's/         -Db_lto=true/        -Db_lto=true/g' feeds/packages/utils/zstd/Makefile
+sed -i 's/8056c2e21c000001/439bdec6f23e97d9/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
 # update zerotier config
 #sed -i 's/1.12.1/1.12.2/g' feeds/packages/net/zerotier/Makefile
