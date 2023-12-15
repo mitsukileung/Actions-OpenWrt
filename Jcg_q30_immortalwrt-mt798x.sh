@@ -34,8 +34,8 @@ sed -i 's/8056c2e21c000001/439bdec6f23e97d9/g' feeds/packages/net/zerotier/files
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
-# 添加xiaomi
-#wget -O target/linux/ipq807x/image/generic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/generic.mk
+# 更新 uugamebooster
+wget -O feeds/packages/net/uugamebooster/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/net/uugamebooster/Makefile
 
 # update frp to 0.50.0
 #sed -i 's/0.49.0/0.50.0/g' feeds/packages/net/frp/Makefile
