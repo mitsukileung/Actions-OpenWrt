@@ -36,9 +36,22 @@ define Device/redmi_ax6
 	$(call Device/xiaomi_ax3600)
 	DEVICE_VENDOR := Redmi
 	DEVICE_MODEL := AX6
-	DEVICE_PACKAGES := ipq-wifi-redmi_ax6 uboot-envtools
+	DEVICE_PACKAGES := ipq-wifi-redmi_ax6
 endef
 TARGET_DEVICES += redmi_ax6
+
+define Device/tplink_xtr10890
+	$(call Device/FitImage)
+	$(call Device/UbiFit)
+	DEVICE_VENDOR := TPLINK
+	DEVICE_MODEL := XTR10890
+	BLOCKSIZE := 128k
+	PAGESIZE := 2048
+	DEVICE_DTS_CONFIG := config@hk01.c6
+	SOC := ipq8078
+	DEVICE_PACKAGES := ipq-wifi-tplink_xtr10890 uboot-envtools
+endef
+TARGET_DEVICES += tplink_xtr10890
 
 define Device/xiaomi_ax3600
 	$(call Device/FitImage)
@@ -49,8 +62,7 @@ define Device/xiaomi_ax3600
 	PAGESIZE := 2048
 	DEVICE_DTS_CONFIG := config@ac04
 	SOC := ipq8071
-	DEVICE_PACKAGES := ath10k-firmware-qca9887-ct ipq-wifi-xiaomi_ax3600 \
-	kmod-ath10k-ct uboot-envtools
+	DEVICE_PACKAGES := ipq-wifi-xiaomi_ax3600 kmod-ath10k-ct-smallbuffers ath10k-firmware-qca9887-ct
 endef
 TARGET_DEVICES += xiaomi_ax3600
 
@@ -66,32 +78,6 @@ define Device/zte_mf269
 	DEVICE_PACKAGES := ipq-wifi-zte_mf269 uboot-envtools
 endef
 TARGET_DEVICES += zte_mf269
-
-define Device/tplink_tl-er2260t
-	$(call Device/FitImage)
-	$(call Device/UbiFit)  
-	DEVICE_DTS := ipq8070-tl-er2260t
-	DEVICE_DTS_CONFIG := config@hk07
-	BLOCKSIZE := 128k
-	PAGESIZE := 2048
-	BOARD_NAME := tplink,tl-er2260t
-	DEVICE_TITLE := TPLINK TL-ER2260T
-	DEVICE_PACKAGES := qca-ssdk-shell
-endef
-TARGET_DEVICES += tplink_tl-er2260t
-
-define Device/tplink_xtr10890
-	$(call Device/FitImage)
-	$(call Device/UbiFit)
-	DEVICE_VENDOR := TPLINK
-	DEVICE_MODEL := XTR10890
-	BLOCKSIZE := 128k
-	PAGESIZE := 2048
-	DEVICE_DTS_CONFIG := config@hk01.c6
-	SOC := ipq8078
-	DEVICE_PACKAGES := ipq-wifi-tplink_xtr10890 uboot-envtools
-endef
-TARGET_DEVICES += tplink_xtr10890
 
 define Device/zyxel_nbg7815
 	$(call Device/FitImage)
