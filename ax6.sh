@@ -17,29 +17,24 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 # Clear the login password
 sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
 # Modify frpc default setting
-sed -i 's/yourdomain.com/fpz.5150586.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
-sed -i 's/1234567/LaputaShita~!/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
-sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
-sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
+#sed -i 's/yourdomain.com/fpz.5150586.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
+#sed -i 's/1234567/LaputaShita~!/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
+#sed -i 's/80/47001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
+#sed -i 's/443/47002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 # Modify zerotier default setting
-sed -i 's/enabled 0/enabled 1/g' packages/net/zerotier/files/etc/config/zerotier
+#sed -i 's/enabled 0/enabled 1/g' packages/net/zerotier/files/etc/config/zerotier
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' packages/net/zerotier/files/etc/config/zerotier
-
-#sed -i 's/        -Dzlib=disabled \\ /        -Dzlib=disabled \\/g' feeds/packages/utils/zstd/Makefile
-#sed -i 's/         -Dlzma=disabled \\ /        -Dlzma=disabled \\/g' feeds/packages/utils/zstd/Makefile
-#sed -i 's/         -Dlz4=disabled \\ /        -Dlz4=disabled \\/g' feeds/packages/utils/zstd/Makefile
-#sed -i 's/         -Db_lto=true/        -Db_lto=true/g' feeds/packages/utils/zstd/Makefile
-
 #固件版本号添加个人标识和日期
 sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
+
 # update to upx 4.0.2
 #rm -rf package/lean/upx/*
 #wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/utils/upx/Makefile
 #sed -i 's/4.0.1/4.0.2/g' package/lean/upx/Makefile
 #sed -i 's/77003c8e2e29aa9804e2fbaeb30f055903420b3e01d95eafe01aed957fb7e190/1221e725b1a89e06739df27fae394d6bc88aedbe12f137c630ec772522cbc76f/g' package/lean/upx/Makefile
-# update frp to 0.51.3
-sed -i 's/0.47.0/0.51.3/g' feeds/packages/net/frp/Makefile
-sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/83032399773901348c660d41c967530e794ab58172ccd070db89d5e50d915fef/g' feeds/packages/net/frp/Makefile
+# update frp to 0.49.0
+#sed -i 's/0.47.0/0.51.3/g' feeds/packages/net/frp/Makefile
+#sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/83032399773901348c660d41c967530e794ab58172ccd070db89d5e50d915fef/g' feeds/packages/net/frp/Makefile
 # Modify frp
 #sed -i 's/host upx\///g' feeds/packages/net/frp/Makefile
 #sed -i '/lzma/d' feeds/packages/net/frp/Makefile
@@ -86,23 +81,23 @@ rm -rf feeds/packages/multimedia/aliyundrive-webdav
 git clone https://github.com/messense/aliyundrive-webdav.git package/luci-app-aliyundrive-webdav
 
 # 添加 luci-app-unblockneteasemusic
-#git clone -b master https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
+git clone -b master https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
 
 # 添加 smartdns
-git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
-git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
+#git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
+#git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
 
 # 添加 adguardhome
-git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
+#git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 
 # 添加 filebrowser
 git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci-app-filebrowser
 
-# 添加 OpenClash
-svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openclash
-
 # 添加 OpenAppFilter
 git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+
+# 添加 OpenClash
+git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
 
 # 添加 luci-theme-neobird 主题
 git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
