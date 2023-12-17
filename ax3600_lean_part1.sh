@@ -16,7 +16,7 @@
 # 修改ath11k-firmware
 #wget -O package/firmware/ath11k-firmware/Makefile https://raw.githubusercontent.com/robimarko/openwrt/ipq807x-5.15/package/firmware/ath11k-firmware/Makefile
 # 添加xiaomi系列
-wget -O target/linux/qualcommax/image/ipq807x.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/ipq807x.mk
+wget -O target/linux/ipq807x/image/generic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/ipq807x.mk
 # Add a feed source
 echo 'src-git-full helloworld https://github.com/fw876/helloworld.git;main' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
