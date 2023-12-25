@@ -24,6 +24,16 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 
 sed -i 's/8056c2e21c000001/439bdec6f23e97d9/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
+sed -i 's/1.2.10/1.2.9/g' feeds/packages/sound/alsa-utils/Makefile
+sed -i 's/104b62ec7f02a7ce16ca779f4815616df1cc21933503783a9107b5944f83063a/e7623d4525595f92e11ce25ee9a97f2040a14c6e4dcd027aa96e06cbce7817bd/g' feeds/packages/sound/alsa-utils/Makefile
+
+sed -i 's/1.2.10/1.2.9/g' feeds/packages/libs/alsa-ucm-conf/Makefile
+sed -i 's/9c21e3f01ff00baa758df17e867cd36e24ebb41a6bec49737e99105e16f2ae97/374f6833bfd77d0a4675e4aa2bfb79defe850e5a46a5d4542a45962f4b9e272a/g' feeds/packages/libs/alsa-ucm-conf/Makefile
+
+sed -i 's/1.2.10/1.2.9/g' feeds/packages/libs/alsa-lib/Makefile
+sed -i 's/c86a45a846331b1b0aa6e6be100be2a7aef92efd405cf6bac7eef8174baa920e/dc9c643fdc4ccfd0572cc685858dd41e08afb583f30460b317e4188275f615b2/g' feeds/packages/libs/alsa-lib/Makefile
+rm -rf feeds/packages/libs/alsa-lib/patches/010-global-h-move-STRING-macro-outside-PIC-ifdef-block.patch
+
 #zip -rP Jsz3895 files.zip files
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files.zip
 #unzip -P Jsz3895 files.zip
