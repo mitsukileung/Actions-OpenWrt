@@ -61,8 +61,8 @@ wget -O feeds/packages/net/uugamebooster/Makefile https://raw.githubusercontent.
 #git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
 
 # 重新添加 luci-app-openclash
-rm -rf feeds/luci/applications/luci-app-openclash
-git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
+#rm -rf feeds/luci/applications/luci-app-openclash
+#git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
 
 # 重新添加 luci-app-passwall
 #rm -rf feeds/luci/applications/luci-app-passwall
