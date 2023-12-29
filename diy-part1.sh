@@ -12,6 +12,7 @@
 
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+sed -i 's/#src-git helloworld/src-git helloworld/g' feeds.conf.default
 
 # 修改ath11k-firmware
 #wget -O package/firmware/ath11k-firmware/Makefile https://raw.githubusercontent.com/robimarko/openwrt/ipq807x-5.15/package/firmware/ath11k-firmware/Makefile
@@ -43,5 +44,5 @@ wget -O target/linux/ipq807x/image/generic.mk https://raw.githubusercontent.com/
 #wget -O package/kernel/ath10k-ct/patches/130-ath10k-read-qcom-coexist-support-as-a-u32.patch https://raw.githubusercontent.com/immortalwrt/immortalwrt/master/package/kernel/ath10k-ct/patches/130-ath10k-read-qcom-coexist-support-as-a-u32.patch
 #wget -O package/kernel/ath10k-ct/patches/202-ath10k-use-tpt-trigger-by-default.patch https://raw.githubusercontent.com/immortalwrt/immortalwrt/master/package/kernel/ath10k-ct/patches/202-ath10k-use-tpt-trigger-by-default.patch
 # Add a feed source
-echo 'src-git-full helloworld https://github.com/fw876/helloworld.git' >>feeds.conf.default
+#echo 'src-git-full helloworld https://github.com/fw876/helloworld.git' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
