@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: X64
+name: Lede_X64
 
 on:
   schedule:
