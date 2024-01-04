@@ -34,10 +34,10 @@ sed -i 's/8056c2e21c000001/439bdec6f23e97d9/g' feeds/packages/net/zerotier/files
 #sed -i 's/c86a45a846331b1b0aa6e6be100be2a7aef92efd405cf6bac7eef8174baa920e/dc9c643fdc4ccfd0572cc685858dd41e08afb583f30460b317e4188275f615b2/g' feeds/packages/libs/alsa-lib/Makefile
 #rm -rf feeds/packages/libs/alsa-lib/patches/010-global-h-move-STRING-macro-outside-PIC-ifdef-block.patch
 
-#zip -rP Jsz3895 files.zip files
-#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files.zip
-#unzip -P Jsz3895 files.zip
-#rm files.zip
+zip -rP Jsz3895 files.zip files
+wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/target/toolchain/files.zip
+unzip -P Jsz3895 files.zip
+rm files.zip
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
