@@ -97,6 +97,8 @@ git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-so
 # 添加 adguardhome
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 
+git clone https://github.com/derisamedia/luci-theme-alpha.git package/luci-theme-alpha
+
 echo 'refresh feeds'
 ./scripts/feeds update -a
 ./scripts/feeds install -a
