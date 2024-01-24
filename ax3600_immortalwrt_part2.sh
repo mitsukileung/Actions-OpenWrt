@@ -24,14 +24,16 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 
 sed -i 's/8056c2e21c000001/439bdec6f23e97d9/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
-sed -i 's/1.7.7/1.8.0/g' feeds/packages/net/sing-box/Makefile
-sed -i 's/ce182cb2181e898b56ca9b6ce0d5adeaece8e761ac62ce8cde69b3c7219b8430/80ae2a860fc77d961c578999e5fcfe964f969c81d9ccac156b2fef1340eca12f/g' feeds/packages/net/sing-box/Makefile
+sed -i 's/949feec1da2bc9d43b6c766c1dfb6f71f737a221e5ce4220616a3900dfb40c82/949feec1da2bc9d43b6c766c1dfb6f71.8.0a221e5ce4220616a3900dfb40c82/g' feeds/packages/net/sing-box/Makefile
 
-sed -i 's/1.8.6/1.8.7/g' feeds/packages/net/xray-core/Makefile
-sed -i 's/d828296c9f29f9e59a61ab73d44f072ab2a30fe979679e39aea43b33ddb7d6bf/e8f46177d792b89700f164ca28fbf1a3c7d95a3ecf98871cb0dd5e474b46a859/g' feeds/packages/net/xray-core/Makefile
+#sed -i 's/1.7.7/1.8.0/g' feeds/packages/net/sing-box/Makefile
+#sed -i 's/ce182cb2181e898b56ca9b6ce0d5adeaece8e761ac62ce8cde69b3c7219b8430/80ae2a860fc77d961c578999e5fcfe964f969c81d9ccac156b2fef1340eca12f/g' feeds/packages/net/sing-box/Makefile
 
-sed -i 's/1.8.4/1.8.7/g' feeds/packages/net/xray-plugin/Makefile
-sed -i 's/7154310f1108bb8538327f35696cbce1ca22feb1e7d26922a8a359ccab68d952/6ee5ed3a6bbecc41dba99a107849de00e2e72d99fdea4f9af8ea95783cb38528/g' feeds/packages/net/xray-plugin/Makefile
+#sed -i 's/1.8.6/1.8.7/g' feeds/packages/net/xray-core/Makefile
+#sed -i 's/d828296c9f29f9e59a61ab73d44f072ab2a30fe979679e39aea43b33ddb7d6bf/e8f46177d792b89700f164ca28fbf1a3c7d95a3ecf98871cb0dd5e474b46a859/g' feeds/packages/net/xray-core/Makefile
+
+#sed -i 's/1.8.4/1.8.7/g' feeds/packages/net/xray-plugin/Makefile
+#sed -i 's/7154310f1108bb8538327f35696cbce1ca22feb1e7d26922a8a359ccab68d952/6ee5ed3a6bbecc41dba99a107849de00e2e72d99fdea4f9af8ea95783cb38528/g' feeds/packages/net/xray-plugin/Makefile
 
 #sed -i 's/1.2.10/1.2.9/g' feeds/packages/sound/alsa-utils/Makefile
 #sed -i 's/104b62ec7f02a7ce16ca779f4815616df1cc21933503783a9107b5944f83063a/e7623d4525595f92e11ce25ee9a97f2040a14c6e4dcd027aa96e06cbce7817bd/g' feeds/packages/sound/alsa-utils/Makefile
