@@ -49,6 +49,12 @@ sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC
 #rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
 #git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
+sed -i 's/3.15.0/4.2.6/g' feeds/packages/net/uugamebooster/Makefile
+sed -i 's/0b6a8d04f0b72d9270da295e3eb0d924/c72e59fb5f359afea6b067c935c564a8/g' feeds/packages/net/uugamebooster/Makefile
+sed -i 's/22ac7bac2e3c517b0120f182b6d406ad/10cb8e4c9a7671448ea8fb3d243b8131/g' feeds/packages/net/uugamebooster/Makefile
+sed -i 's/de7b87ef7c713d9dd97423d0131eeafd/4a1558e103769da7e5b50d203e60665e/g' feeds/packages/net/uugamebooster/Makefile
+sed -i 's/983e1873e74c06690e32bb7bae12883e/8b57eeaee056b6d244484ad83afaa066/g' feeds/packages/net/uugamebooster/Makefile
+
 # 重新添加 luci-app-serverchan
 rm -rf feeds/luci/applications/luci-app-serverchan
 git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-serverchan
