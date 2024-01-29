@@ -32,7 +32,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: Jcg_q30_6.1.config
   DIY_P1_SH: ax3600_immortalwrt_part1.sh
-  DIY_P2_SH: Jcg_q30_6.1.sh
+  DIY_P2_SH: ax3600_immortalwrt_part2.sh
   RELEASE_TAG: Jcg_q30_6.1
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
