@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Jcg_q30_6.1_iptable
+name: ax3600_immortalwrt_iptable
 
 on:
   schedule:
@@ -30,10 +30,10 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: Jcg_q30_6.1_iptable.config
+  CONFIG_FILE: ax3600_immortalwrt_iptable.config
   DIY_P1_SH: ax3600_immortalwrt_part1.sh
   DIY_P2_SH: Jcg_q30_6.1_iptable.sh
-  RELEASE_TAG: Jcg_q30_6.1_iptable
+  RELEASE_TAG: ax3600_immortalwrt_iptable
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
