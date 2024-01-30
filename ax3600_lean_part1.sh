@@ -17,7 +17,7 @@
 #wget -O package/firmware/ath11k-firmware/Makefile https://raw.githubusercontent.com/robimarko/openwrt/ipq807x-5.15/package/firmware/ath11k-firmware/Makefile
 
 # 添加xiaomi系列
-#wget -O target/linux/ipq807x/image/generic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/ipq807x.mk
+#wget -O target/linux/ipq807x/image/generic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/generic.mk
 wget -O target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8072-ax9000.dts https://raw.githubusercontent.com/immortalwrt/immortalwrt/master/target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8072-ax9000.dts
 
 # Add a feed source
