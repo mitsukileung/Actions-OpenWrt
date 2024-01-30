@@ -76,12 +76,12 @@ rm -rf feeds/luci/applications/luci-app-serverchan
 git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-serverchan
 
 # 重新添加 luci-app-aliyundrive-webdav
-rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
-rm -rf feeds/packages/multimedia/aliyundrive-webdav
-git clone https://github.com/messense/aliyundrive-webdav.git package/luci-app-aliyundrive-webdav
+#rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
+#rm -rf feeds/packages/multimedia/aliyundrive-webdav
+#git clone https://github.com/messense/aliyundrive-webdav.git package/luci-app-aliyundrive-webdav
 
 # 添加 luci-app-unblockneteasemusic
-git clone -b master https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
+#git clone -b master https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
 
 # 添加 smartdns
 #git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
@@ -91,10 +91,10 @@ git clone -b master https://github.com/UnblockNeteaseMusic/luci-app-unblocknetea
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 
 # 添加 filebrowser
-git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci-app-filebrowser
+#git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci-app-filebrowser
 
 # 添加 OpenAppFilter
-git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+#git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
 # 添加 OpenClash
 git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
