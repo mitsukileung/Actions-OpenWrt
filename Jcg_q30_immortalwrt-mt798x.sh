@@ -42,9 +42,9 @@ sed -i 's/8056c2e21c000001/439bdec6f23e97d9/g' feeds/packages/net/zerotier/files
 # 更新 uugamebooster
 wget -O feeds/packages/net/uugamebooster/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/net/uugamebooster/Makefile
 
-# update frp to 0.50.0
-#sed -i 's/0.49.0/0.50.0/g' feeds/packages/net/frp/Makefile
-#sed -i 's/8ff92d4f763d596bee35efe17f0729d36e584b93c49a7671cebde4bb318b458f/e33b5c88246acee63e098114acd0f10dddbbfe7095ada854b814f86869221f8e/g' feeds/packages/net/frp/Makefile
+# update frp
+sed -i 's/0.51.2/0.54.0/g' feeds/packages/net/frp/Makefile
+sed -i 's/23b8f91fc1f86feb2ef4e7af4cf509be46360e0d16c3f71036f7206394417ddb/c09d8610b5eb02c0b1851459ace7751fe80a06b2373a6d5d40631a08e8ac64ae/g' feeds/packages/net/frp/Makefile
 
 # revert chinadns-ng to 2023.04.20
 #sed -i 's/2023.06.01/2023.04.20/g' feeds/packages/net/chinadns-ng/Makefile
