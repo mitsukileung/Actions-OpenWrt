@@ -42,6 +42,9 @@ sed -i 's/8056c2e21c000001/439bdec6f23e97d9/g' feeds/packages/net/zerotier/files
 # 更新 uugamebooster
 wget -O feeds/packages/net/uugamebooster/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/net/uugamebooster/Makefile
 
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 21.x feeds/packages/lang/golang
+
 # update frp
 sed -i 's/0.51.2/0.54.0/g' feeds/packages/net/frp/Makefile
 sed -i 's/23b8f91fc1f86feb2ef4e7af4cf509be46360e0d16c3f71036f7206394417ddb/c09d8610b5eb02c0b1851459ace7751fe80a06b2373a6d5d40631a08e8ac64ae/g' feeds/packages/net/frp/Makefile
