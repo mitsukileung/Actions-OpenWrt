@@ -22,11 +22,6 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/f
 #固件版本号添加个人标识和日期
 sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
 
-#sed -i 's/        -Dzlib=disabled \\ /        -Dzlib=disabled \\/g' feeds/packages/utils/zstd/Makefile
-#sed -i 's/         -Dlzma=disabled \\ /        -Dlzma=disabled \\/g' feeds/packages/utils/zstd/Makefile
-#sed -i 's/         -Dlz4=disabled \\ /        -Dlz4=disabled \\/g' feeds/packages/utils/zstd/Makefile
-#sed -i 's/         -Db_lto=true/        -Db_lto=true/g' feeds/packages/utils/zstd/Makefile
-
 # update zerotier config
 #sed -i 's/1.12.1/1.12.2/g' feeds/packages/net/zerotier/Makefile
 #sed -i 's/c6758a04f161bba1c0ef11fce991029a645ede381ae3862a25a2f5145aaffca8/7c6512cfc208374ea9dc9931110e35f71800c34890e0f35991ea485aae66e31c/g' feeds/packages/net/zerotier/Makefile
@@ -43,6 +38,7 @@ sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/package/base-files/files.zip
 #unzip -P Fpz824613 files.zip
 #rm files.zip
+
 # 重新添加 luci-theme-argon
 #rm -rf feeds/luci/themes/luci-theme-argon
 #git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
@@ -54,6 +50,10 @@ sed -i 's/0b6a8d04f0b72d9270da295e3eb0d924/667327e1296fcf0b65d2dfbda113134e/g' f
 sed -i 's/22ac7bac2e3c517b0120f182b6d406ad/a8c77fd205dd0547bd045645fe8b8c96/g' feeds/packages/net/uugamebooster/Makefile
 sed -i 's/de7b87ef7c713d9dd97423d0131eeafd/77bd009ed42caae3bc7355927b813f90/g' feeds/packages/net/uugamebooster/Makefile
 sed -i 's/983e1873e74c06690e32bb7bae12883e/a7082319555ffdf294d846766f5cb8c2/g' feeds/packages/net/uugamebooster/Makefile
+
+wget -O feeds/small/luci-app-ssr-plus/root/etc/init.d/shadowsocksr https://raw.githubusercontent.com/zxlhhyccc/helloworld/246aedf99b1574c513d004b99465000507fd4649/luci-app-ssr-plus/root/etc/init.d/shadowsocksr
+
+wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
 
 # 重新添加 luci-app-serverchan
 rm -rf feeds/luci/applications/luci-app-serverchan
