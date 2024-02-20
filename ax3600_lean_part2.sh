@@ -31,6 +31,8 @@ wget -O feeds/packages/net/uugamebooster/Makefile https://raw.githubusercontent.
 
 wget -O feeds/small/luci-app-ssr-plus/root/etc/init.d/shadowsocksr https://raw.githubusercontent.com/zxlhhyccc/helloworld/246aedf99b1574c513d004b99465000507fd4649/luci-app-ssr-plus/root/etc/init.d/shadowsocksr
 
+wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
+
 # update to upx 4.0.2
 #rm -rf package/lean/upx/*
 #wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/utils/upx/Makefile
