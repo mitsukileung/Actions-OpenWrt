@@ -21,5 +21,6 @@
 #wget -O target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8072-ax9000.dts https://raw.githubusercontent.com/immortalwrt/immortalwrt/master/target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8072-ax9000.dts
 
 # Add a feed source
-echo 'src-git-full helloworld https://github.com/fw876/helloworld.git;master' >>feeds.conf.default
+#echo 'src-git-full helloworld https://github.com/fw876/helloworld.git;master' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
