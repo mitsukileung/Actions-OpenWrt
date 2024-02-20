@@ -36,7 +36,7 @@ config server_subscribe
 	option auto_update '0'
 
 config socks5_proxy
-	option socks '0'
+	option socks 'nil'
 	option local_port '10800'
 
 config server_global
