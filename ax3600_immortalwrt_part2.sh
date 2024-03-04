@@ -79,7 +79,7 @@ git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/lu
 
 # 重新添加 luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall.git --depth=1 package/luci-app-passwall
 
 # 重新添加 luci-app-socat 同时兼容firewall3/4 
 rm -rf feeds/luci/applications/luci-app-socat
@@ -99,7 +99,7 @@ git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-so
 # 添加 adguardhome
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 
-git clone https://github.com/derisamedia/luci-theme-alpha.git package/luci-theme-alpha
+#git clone https://github.com/derisamedia/luci-theme-alpha.git package/luci-theme-alpha
 
 echo 'refresh feeds'
 ./scripts/feeds update -a
