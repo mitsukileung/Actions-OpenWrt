@@ -104,7 +104,7 @@ git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git pac
 git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
 
 # 添加 luci-theme-neobird 主题
-git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
+#git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 
 # 添加 luci-theme-design.git 主题
 rm -rf feeds/luci/themes/luci-theme-design
