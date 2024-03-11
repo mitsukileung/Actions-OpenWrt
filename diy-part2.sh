@@ -39,11 +39,9 @@ sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC
 #unzip -P Fpz824613 files.zip
 #rm files.zip
 
-# 重新添加 luci-theme-argon
-#rm -rf feeds/luci/themes/luci-theme-argon
-#git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-#rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
-#git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
+# 重新添加 luci-app-passwall smartdns版本
+rm -rf feeds/small/luci-app-passwall
+git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
 
 sed -i 's/3.15.0/4.7.16/g' feeds/packages/net/uugamebooster/Makefile
 sed -i 's/0b6a8d04f0b72d9270da295e3eb0d924/667327e1296fcf0b65d2dfbda113134e/g' feeds/packages/net/uugamebooster/Makefile
