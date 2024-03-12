@@ -76,8 +76,8 @@ wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.g
 #git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
 # 重新添加 luci-app-serverchan
-rm -rf feeds/luci/applications/luci-app-serverchan
-git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-serverchan
+#rm -rf feeds/luci/applications/luci-app-serverchan
+#git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-serverchan
 
 # 重新添加 luci-app-aliyundrive-webdav
 #rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
@@ -101,16 +101,16 @@ git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git pac
 #git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
 # 添加 OpenClash
-git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
+#git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
 
 # 添加 luci-theme-neobird 主题
-git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
+#git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 
 # 添加 luci-theme-design.git 主题
-rm -rf feeds/luci/themes/luci-theme-design
-rm -rf feeds/luci/applications/luci-app-design-config
-git clone https://github.com/gngpp/luci-theme-design.git package/luci-theme-design
-git clone https://github.com/gngpp/luci-app-design-config.git package/luci-app-design-config
+#rm -rf feeds/luci/themes/luci-theme-design
+#rm -rf feeds/luci/applications/luci-app-design-config
+#git clone https://github.com/gngpp/luci-theme-design.git package/luci-theme-design
+#git clone https://github.com/gngpp/luci-app-design-config.git package/luci-app-design-config
 
 echo 'refresh feeds'
 ./scripts/feeds update -a
