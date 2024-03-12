@@ -43,9 +43,6 @@ sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC
 rm -rf feeds/small/luci-app-passwall
 git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
 
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-
 sed -i 's/3.15.0/4.7.16/g' feeds/packages/net/uugamebooster/Makefile
 sed -i 's/0b6a8d04f0b72d9270da295e3eb0d924/667327e1296fcf0b65d2dfbda113134e/g' feeds/packages/net/uugamebooster/Makefile
 sed -i 's/22ac7bac2e3c517b0120f182b6d406ad/a8c77fd205dd0547bd045645fe8b8c96/g' feeds/packages/net/uugamebooster/Makefile
