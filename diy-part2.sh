@@ -40,8 +40,8 @@ sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC
 #rm files.zip
 
 # 重新添加 luci-app-passwall smartdns版本
-rm -rf feeds/small/luci-app-passwall
-git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
+#rm -rf feeds/small/luci-app-passwall
+#git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
 
 sed -i 's/3.15.0/4.7.16/g' feeds/packages/net/uugamebooster/Makefile
 sed -i 's/0b6a8d04f0b72d9270da295e3eb0d924/667327e1296fcf0b65d2dfbda113134e/g' feeds/packages/net/uugamebooster/Makefile
@@ -52,12 +52,12 @@ sed -i 's/983e1873e74c06690e32bb7bae12883e/a7082319555ffdf294d846766f5cb8c2/g' f
 wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
 
 # 重新添加 luci-app-serverchan
-rm -rf feeds/luci/applications/luci-app-serverchan
-git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-serverchan
+#rm -rf feeds/luci/applications/luci-app-serverchan
+#git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-serverchan
 
 # 重新添加 luci-app-netdata
-rm -rf feeds/luci/applications/luci-app-netdata
-git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
+#rm -rf feeds/luci/applications/luci-app-netdata
+#git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
 #在rm前面加一行内容为“chmod +x /etc/init.d/netdata”
 #sed -i '/rm/i chmod +x /etc/init.d/netdata' package/luci-app-netdata/root/etc/uci-defaults/40_luci-app-netdata
 #sed -i 's/0/1/g' package/luci-app-netdata/root/etc/config/netdata && sed -i 's/19991/19990/g' package/luci-app-netdata/root/etc/config/netdata
@@ -82,19 +82,19 @@ git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netd
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 
 # 添加 filebrowser
-git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci-app-filebrowser
+#git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci-app-filebrowser
 
 # 添加 OpenClash
-git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
+#git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
 
 # 添加 luci-theme-neobird 主题
 #git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 
 # 添加 luci-theme-design.git 主题
-rm -rf feeds/luci/themes/luci-theme-design
-rm -rf feeds/luci/applications/luci-app-design-config
-git clone https://github.com/gngpp/luci-theme-design.git package/luci-theme-design
-git clone https://github.com/gngpp/luci-app-design-config.git package/luci-app-design-config
+#rm -rf feeds/luci/themes/luci-theme-design
+#rm -rf feeds/luci/applications/luci-app-design-config
+#git clone https://github.com/gngpp/luci-theme-design.git package/luci-theme-design
+#git clone https://github.com/gngpp/luci-app-design-config.git package/luci-app-design-config
 
 echo 'refresh feeds'
 ./scripts/feeds update -a
