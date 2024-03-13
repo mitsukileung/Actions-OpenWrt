@@ -22,9 +22,12 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/f
 #固件版本号添加个人标识和日期
 sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
 
-# update zerotier config
-#sed -i 's/1.12.1/1.12.2/g' feeds/packages/net/zerotier/Makefile
-#sed -i 's/c6758a04f161bba1c0ef11fce991029a645ede381ae3862a25a2f5145aaffca8/7c6512cfc208374ea9dc9931110e35f71800c34890e0f35991ea485aae66e31c/g' feeds/packages/net/zerotier/Makefile
+./scripts/feeds update -a
+rm -rf feeds/luci/applications/luci-app-mosdns
+rm -rf feeds/packages/net/{alist,adguardhome,smartdns}
+rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd-alt,miniupnpd-iptables,wireless-regdb}
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
 # update frp to 0.51.3
 #sed -i 's/0.47.0/0.51.3/g' feeds/packages/net/frp/Makefile
@@ -40,8 +43,8 @@ sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC
 #rm files.zip
 
 # 重新添加 luci-app-passwall smartdns版本
-#rm -rf feeds/small/luci-app-passwall
-#git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
+rm -rf feeds/smpackage/luci-app-passwall
+git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
 
 sed -i 's/3.15.0/4.7.16/g' feeds/packages/net/uugamebooster/Makefile
 sed -i 's/0b6a8d04f0b72d9270da295e3eb0d924/667327e1296fcf0b65d2dfbda113134e/g' feeds/packages/net/uugamebooster/Makefile
