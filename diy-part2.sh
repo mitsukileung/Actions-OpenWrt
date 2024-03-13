@@ -52,7 +52,7 @@ sed -i 's/22ac7bac2e3c517b0120f182b6d406ad/a8c77fd205dd0547bd045645fe8b8c96/g' f
 sed -i 's/de7b87ef7c713d9dd97423d0131eeafd/77bd009ed42caae3bc7355927b813f90/g' feeds/packages/net/uugamebooster/Makefile
 sed -i 's/983e1873e74c06690e32bb7bae12883e/a7082319555ffdf294d846766f5cb8c2/g' feeds/packages/net/uugamebooster/Makefile
 
-wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
+wget -O feeds/smpackage/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
 
 # 重新添加 luci-app-serverchan
 #rm -rf feeds/luci/applications/luci-app-serverchan
