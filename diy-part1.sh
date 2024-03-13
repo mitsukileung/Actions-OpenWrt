@@ -20,8 +20,6 @@ sed -i '1i src-git smpackage https://github.com/kenzok8/small-package' feeds.con
 rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd-alt,miniupnpd-iptables,wireless-regdb}
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-rm -rf feeds/smpackage/luci-app-passwall
-git clone -b luci-smartdns-dev --single-branch https://github.com/xiaorouji/openwrt-passwall package/openwrt-passwall
 
 # 修改ath11k-firmware
 #wget -O package/firmware/ath11k-firmware/Makefile https://raw.githubusercontent.com/robimarko/openwrt/ipq807x-5.15/package/firmware/ath11k-firmware/Makefile
