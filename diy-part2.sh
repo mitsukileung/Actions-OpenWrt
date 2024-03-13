@@ -36,7 +36,7 @@ sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC
 #rm files.zip
 
 # 重新添加 luci-app-passwall smartdns版本
-rm -rf feeds/smpackage/luci-app-passwall
+rm -rf feeds/small/luci-app-passwall
 git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
 
 sed -i 's/3.15.0/4.7.16/g' feeds/packages/net/uugamebooster/Makefile
