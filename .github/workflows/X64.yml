@@ -12,7 +12,7 @@ name: Lede_X64
 
 on:
   schedule:
-    - cron: 1 13 * * *
+    - cron: 8 */5 * * *
   push:
     tags:
     - 'v*'
