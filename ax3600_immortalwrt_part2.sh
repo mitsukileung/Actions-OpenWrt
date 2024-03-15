@@ -79,7 +79,7 @@ git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/lu
 
 # 重新添加 luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall
-git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 
 # 重新添加 luci-app-socat 同时兼容firewall3/4 
 rm -rf feeds/luci/applications/luci-app-socat
