@@ -76,8 +76,8 @@ wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.g
 #git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
 # 重新添加 luci-app-serverchan
-rm -rf feeds/luci/applications/luci-app-serverchan
-git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-serverchan
+#rm -rf feeds/luci/applications/luci-app-serverchan
+#git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-serverchan
 
 # 重新添加 luci-app-aliyundrive-webdav
 #rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
