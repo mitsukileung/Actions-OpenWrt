@@ -378,6 +378,8 @@ iptables extension for triggering a LED.
  Targets:
   - LED
 
+endef
+
 define Package/iptables-mod-socket
 $(call Package/iptables/Module, +kmod-ipt-socket)
   TITLE:=Socket match iptables extensions
