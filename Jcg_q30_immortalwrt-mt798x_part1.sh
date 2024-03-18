@@ -23,3 +23,14 @@
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 #echo 'src-git routing https://github.com/coolsnowwolf/routing' >>feeds.conf.default
 #echo 'src-git telephony https://git.openwrt.org/feed/telephony.git' >>feeds.conf.default
+
+sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
+./scripts/feeds update -a
+rm -rf feeds/packages/devel/gn && mv feeds/small/gn feeds/packages/devel/gn && rm -rf feeds/packages/net/mosdns
+rm -rf feeds/luci/applications/luci-app-mosdns && rm -rf feeds/kenzo/homeproxy && rm -rf feeds/kenzo/luci-app-homeproxy && rm -rf feeds/luci/applications/luci-app-ssr-plus
+rm -rf feeds/small/shadowsocksr-libev && rm -rf feeds/small/v2raya && rm -rf feeds/luci/applications/luci-app-v2raya && rm -rf feeds/small/luci-app-passwall2
+rm -rf feeds/packages/net/{alist,adguardhome,xray*,v2ray*,v2ray*,sing*,smartdns}
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+./scripts/feeds update -a && ./scripts/feeds install -a
