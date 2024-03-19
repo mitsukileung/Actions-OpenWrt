@@ -49,6 +49,12 @@ wget -O feeds/packages/net/uugamebooster/Makefile https://raw.githubusercontent.
 sed -i 's/0.51.2/0.53.2/g' feeds/packages/net/frp/Makefile
 sed -i 's/23b8f91fc1f86feb2ef4e7af4cf509be46360e0d16c3f71036f7206394417ddb/ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b32ec/g' feeds/packages/net/frp/Makefile
 
+sed -i 's/1.8.3/1.8.9/g' feeds/packages/net/xray-core/Makefile
+sed -i 's/bdfa65c15cd25f931745d9c70c753503db5d119ff11960ca7b3a2e19c4b0a8d1/708cf7754c733c8eb98939495c0c2e698ca5712383b87dc25eea974a0d332721/g' feeds/packages/net/xray-core/Makefile
+
+sed -i 's/5.7.0/5.15.1/g' feeds/packages/net/v2ray-plugin/Makefile
+sed -i 's/ec0096e36cfe01a946197b44ae51ea76a3dc6a76f846a99f3b985be59ae167fb/833c2ee956ca054865ede20029a92b1eaf821c22cdbc5ec4ed4108e1f493ad1f/g' feeds/packages/net/v2ray-plugin/Makefile
+
 # revert chinadns-ng to 2023.04.20
 #sed -i 's/2023.06.01/2023.04.20/g' feeds/packages/net/chinadns-ng/Makefile
 #sed -i 's/7c33e8a60b7618b33fce0960b94b46567766a051b307cea6b123da4176a52eab/e1f5197ecd96ebab4440fe069e0a06935df7ea07ac1ad0bab3f88bffe0055294/g' feeds/packages/net/chinadns-ng/Makefile
