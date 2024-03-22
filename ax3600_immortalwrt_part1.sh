@@ -26,3 +26,4 @@
 
 ./scripts/feeds update -a
 git clone https://github.com/mitsukileung/luci-app-openvpn-server.git feeds/luci/applications/luci-app-openvpn-server
+./scripts/feeds install -a
