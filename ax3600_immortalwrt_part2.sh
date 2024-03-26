@@ -30,7 +30,9 @@ git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
-#git clone https://github.com/mitsukileung/luci-app-openvpn-server.git feeds/luci/applications/luci-app-openvpn-server
+rm -rf feeds/packages/net/tailscale/patches
+sed -i 's/1.58.2/1.62.0/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/452f355408e4e2179872387a863387e06346fc8a6f9887821f9b8a072c6a5b0a/19d91f208a7337b8f2caad030936112c641533d7c1d932a2a8732731e2e80ae5/g' feeds/packages/net/tailscale/Makefile
 
 #sed -i 's/949feec1da2bc9d43b6c766c1dfb6f71f737a221e5ce4220616a3900dfb40c82/949feec1da2bc9d43b6c766c1dfb6f71.8.0a221e5ce4220616a3900dfb40c82/g' feeds/packages/net/sing-box/Makefile
 
