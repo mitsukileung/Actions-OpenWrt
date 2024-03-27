@@ -48,8 +48,8 @@ sed -i 's/983e1873e74c06690e32bb7bae12883e/a7082319555ffdf294d846766f5cb8c2/g' f
 wget -O feeds/smpackage/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
 
 rm -rf feeds/packages/net/tailscale/patches
-sed -i 's/1.44.3/1.62.0/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/9d0cdccf103d3613ea4671e7092a18e9b7a471f30b4d92defb001510262e48d5/19d91f208a7337b8f2caad030936112c641533d7c1d932a2a8732731e2e80ae5/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/1.44.3/1.62.1/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/9d0cdccf103d3613ea4671e7092a18e9b7a471f30b4d92defb001510262e48d5/22737fae37e971fecdf49d6b741b99988868aa3f1e683e67e14b872a2c49ca1c/g' feeds/packages/net/tailscale/Makefile
 
 # 重新添加 luci-app-serverchan
 #rm -rf feeds/luci/applications/luci-app-serverchan
