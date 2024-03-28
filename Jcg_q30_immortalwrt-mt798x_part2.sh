@@ -25,8 +25,8 @@ sed -i 's/192.168.1.1/192.168.98.1/g' package/base-files/files/bin/config_genera
 sed -i 's/8056c2e21c000001/439bdec6f23e97d9/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
 #rm -rf feeds/packages/net/tailscale/patches
-#sed -i 's/1.32.3/1.62.1/g' feeds/packages/net/tailscale/Makefile
-#sed -i 's/4cf88a1d754240ce71b29d3a65ca480091ad9c614ac99c541cef6fdaf0585dd4/22737fae37e971fecdf49d6b741b99988868aa3f1e683e67e14b872a2c49ca1c/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/1.32.3/1.62.1/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/4cf88a1d754240ce71b29d3a65ca480091ad9c614ac99c541cef6fdaf0585dd4/22737fae37e971fecdf49d6b741b99988868aa3f1e683e67e14b872a2c49ca1c/g' feeds/packages/net/tailscale/Makefile
 
 #zip -rP Jsz3895 files.zip files
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/openwrt-21.02/tools/files_7981_fpz.zip
