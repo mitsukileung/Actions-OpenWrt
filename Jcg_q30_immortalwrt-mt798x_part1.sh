@@ -23,6 +23,19 @@
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 #echo 'src-git routing https://github.com/coolsnowwolf/routing' >>feeds.conf.default
 #echo 'src-git telephony https://git.openwrt.org/feed/telephony.git' >>feeds.conf.default
-sed -i '$a src-git smpackage https://github.com/kenzok8/small-package' feeds.conf.default
+
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
+./scripts/feeds update -a
+rm -rf feeds/luci/applications/luci-app-passwall
+rm -rf feeds/luci/applications/luci-app-openclash
+rm -rf feeds/packages/devel/gn
+git clone https://github.com/takayukileung/rust.git feeds/packages/lang/rust
+rm -rf feeds/packages/net/{brook,chinadns-ng,dns2*,hysteria,ipt2socks,microsocks,naiveproxy,pdnsd-alt,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan*,tuic-client,v2ray-*,xray*,mosdns}
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+./scripts/feeds install -a
 
 
