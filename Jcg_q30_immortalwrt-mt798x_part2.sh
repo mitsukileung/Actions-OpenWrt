@@ -89,22 +89,6 @@ sed -i 's/23b8f91fc1f86feb2ef4e7af4cf509be46360e0d16c3f71036f7206394417ddb/ff2a4
 # 添加 adguardhome
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 
-rm -rf feeds/smpackage/sing-box
-rm -rf feeds/smpackage/xray-core
-rm -rf feeds/smpackage/xray-plugin
-rm -rf feeds/luci/applications/luci-app-passwall
-rm -rf feeds/luci/applications/luci-app-ssr-plus
-rm -rf feeds/luci/applications/luci-theme-argon
-rm -rf feeds/luci/applications/luci-app-openclash
-rm -rf feeds/packages/net/naiveproxy
-rm -rf feeds/packages/net/brook
-rm -rf feeds/packages/net/chinadns-ng
-rm -rf feeds/packages/net/dns2socks
-rm -rf feeds/packages/net/dns2tcp
-rm -rf feeds/packages/net/hysteria
-rm -rf feeds/packages/net/smartdns
-rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd-alt,miniupnpd-iptables,wireless-regdb}
-
 echo 'refresh feeds'
 ./scripts/feeds update -a
 ./scripts/feeds install -a
