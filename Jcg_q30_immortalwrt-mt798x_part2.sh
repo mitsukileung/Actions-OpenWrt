@@ -25,8 +25,8 @@ sed -i 's/192.168.1.1/192.168.98.1/g' package/base-files/files/bin/config_genera
 sed -i 's/8056c2e21c000001/439bdec6f23e97d9/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
 #rm -rf feeds/packages/net/tailscale/patches
-sed -i 's/1.32.3/1.62.1/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/4cf88a1d754240ce71b29d3a65ca480091ad9c614ac99c541cef6fdaf0585dd4/22737fae37e971fecdf49d6b741b99988868aa3f1e683e67e14b872a2c49ca1c/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/1.32.3/1.38.3/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/4cf88a1d754240ce71b29d3a65ca480091ad9c614ac99c541cef6fdaf0585dd4/63ef41e642f4b2c322c794742f03e9e06b593992e9a1299c94f495a496cffb3a/g' feeds/packages/net/tailscale/Makefile
 
 #zip -rP Jsz3895 files.zip files
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/openwrt-21.02/tools/files_7981_fpz.zip
@@ -50,8 +50,8 @@ wget -O feeds/packages/net/uugamebooster/Makefile https://raw.githubusercontent.
 #git clone https://github.com/sbwml/packages_lang_golang -b 21.x feeds/packages/lang/golang
 
 # update frp
-sed -i 's/0.51.2/0.53.2/g' feeds/packages/net/frp/Makefile
-sed -i 's/23b8f91fc1f86feb2ef4e7af4cf509be46360e0d16c3f71036f7206394417ddb/ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b32ec/g' feeds/packages/net/frp/Makefile
+#sed -i 's/0.51.2/0.53.2/g' feeds/packages/net/frp/Makefile
+#sed -i 's/23b8f91fc1f86feb2ef4e7af4cf509be46360e0d16c3f71036f7206394417ddb/ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b32ec/g' feeds/packages/net/frp/Makefile
 
 # revert chinadns-ng to 2023.04.20
 #sed -i 's/2023.06.01/2023.04.20/g' feeds/packages/net/chinadns-ng/Makefile
