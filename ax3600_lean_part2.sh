@@ -43,11 +43,8 @@ sed -i 's/9d0cdccf103d3613ea4671e7092a18e9b7a471f30b4d92defb001510262e48d5/22737
 # update frp to 0.49.0
 #sed -i 's/0.47.0/0.51.3/g' feeds/packages/net/frp/Makefile
 #sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/83032399773901348c660d41c967530e794ab58172ccd070db89d5e50d915fef/g' feeds/packages/net/frp/Makefile
-# Modify frp
-#sed -i 's/host upx\///g' feeds/packages/net/frp/Makefile
-#sed -i '/lzma/d' feeds/packages/net/frp/Makefile
-#sed -i 's/+wget/+wget-ssl/g' feeds/luci/applications/luci-app-frpc/Makefile
-#sed -i 's/+wget/+wget-ssl/g' feeds/luci/applications/luci-app-frps/Makefile
+# Add luci-app-multi-frpc
+git clone -b dev https://github.com/justice2001/luci-app-multi-frpc.git package/luci-app-multi-frpc
 # Add fix patch
 #rm -f feeds/routing/batman-adv/patches/0001-Revert-batman-adv-genetlink-move-to-smaller-ops-wher.patch
 #rm -f feeds/routing/batman-adv/patches/0002-Revert-batman-adv-Add-new-include-for-min-max-helper.patch
