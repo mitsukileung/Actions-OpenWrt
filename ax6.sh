@@ -35,6 +35,9 @@ rm -rf feeds/packages/net/tailscale/patches
 sed -i 's/1.44.3/1.62.0/g' feeds/packages/net/tailscale/Makefile
 sed -i 's/9d0cdccf103d3613ea4671e7092a18e9b7a471f30b4d92defb001510262e48d5/19d91f208a7337b8f2caad030936112c641533d7c1d932a2a8732731e2e80ae5/g' feeds/packages/net/tailscale/Makefile
 
+sed -i 's/1.7.4.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
+sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
+
 # update to upx 4.0.2
 #rm -rf package/lean/upx/*
 #wget -O package/lean/upx/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/utils/upx/Makefile
