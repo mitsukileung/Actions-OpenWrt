@@ -24,6 +24,10 @@ sed -i 's/192.168.1.1/192.168.98.1/g' package/base-files/files/bin/config_genera
 
 sed -i 's/8056c2e21c000001/439bdec6f23e97d9/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
+#rm -f feeds/packages/net/socat/patches/100-usleep.patch
+sed -i 's/1.7.3.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
+sed -i 's/972374ca86f65498e23e3259c2ee1b8f9dbeb04d12c2a78c0c9b5d1cb97dfdfc/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
+
 #rm -rf feeds/packages/net/tailscale/patches
 #sed -i 's/1.32.3/1.38.3/g' feeds/packages/net/tailscale/Makefile
 #sed -i 's/4cf88a1d754240ce71b29d3a65ca480091ad9c614ac99c541cef6fdaf0585dd4/63ef41e642f4b2c322c794742f03e9e06b593992e9a1299c94f495a496cffb3a/g' feeds/packages/net/tailscale/Makefile
