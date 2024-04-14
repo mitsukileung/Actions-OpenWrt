@@ -54,6 +54,8 @@ rm -rf feeds/packages/net/tailscale/patches
 sed -i 's/1.44.3/1.62.1/g' feeds/packages/net/tailscale/Makefile
 sed -i 's/9d0cdccf103d3613ea4671e7092a18e9b7a471f30b4d92defb001510262e48d5/22737fae37e971fecdf49d6b741b99988868aa3f1e683e67e14b872a2c49ca1c/g' feeds/packages/net/tailscale/Makefile
 
+git clone -b dev https://github.com/justice2001/luci-app-multi-frpc.git package/luci-app-multi-frpc
+
 # 重新添加 luci-app-serverchan
 #rm -rf feeds/luci/applications/luci-app-serverchan
 #git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-serverchan
