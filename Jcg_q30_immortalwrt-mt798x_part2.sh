@@ -74,8 +74,8 @@ sed -i 's/23b8f91fc1f86feb2ef4e7af4cf509be46360e0d16c3f71036f7206394417ddb/83032
 #git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
 
 # 重新添加 luci-app-openclash
-#rm -rf feeds/luci/applications/luci-app-openclash
-#git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
+rm -rf feeds/luci/applications/luci-app-openclash
+git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
 
 # 重新添加 luci-app-passwall
 #rm -rf feeds/luci/applications/luci-app-passwall
