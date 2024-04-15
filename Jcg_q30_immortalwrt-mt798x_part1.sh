@@ -26,6 +26,6 @@
 sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
 ./scripts/feeds update -a
 rm -rf feeds/packages/lang/golang
-rm -rf feeds/packages/net/{alist,adguardhome,chinadns-ng,mosdns,xray*,v2ray-*,sing*,smartdns}
+rm -rf feeds/packages/net/{chinadns-ng,mosdns,xray*,v2ray-*,sing*}
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 ./scripts/feeds install -a
