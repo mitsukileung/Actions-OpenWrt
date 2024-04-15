@@ -11,7 +11,7 @@
 #
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.98.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.88.3/g' package/base-files/files/bin/config_generate
 # Modify X86 Kernel 5.10
 #sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' target/linux/ipq807x/Makefile
 # Clear the login password
