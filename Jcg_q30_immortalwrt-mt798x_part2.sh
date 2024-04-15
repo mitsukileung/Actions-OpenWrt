@@ -30,9 +30,9 @@ sed -i 's/972374ca86f65498e23e3259c2ee1b8f9dbeb04d12c2a78c0c9b5d1cb97dfdfc/e1de6
 
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 
-#rm -rf feeds/packages/net/tailscale/patches
-#sed -i 's/1.32.3/1.38.3/g' feeds/packages/net/tailscale/Makefile
-#sed -i 's/4cf88a1d754240ce71b29d3a65ca480091ad9c614ac99c541cef6fdaf0585dd4/63ef41e642f4b2c322c794742f03e9e06b593992e9a1299c94f495a496cffb3a/g' feeds/packages/net/tailscale/Makefile
+rm -rf feeds/packages/net/tailscale/patches
+sed -i 's/1.32.3/1.64.0/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/4cf88a1d754240ce71b29d3a65ca480091ad9c614ac99c541cef6fdaf0585dd4/a0b9b84fef37316a9eee2490668811cafb85b227839eca97bbff88f7ce58a815/g' feeds/packages/net/tailscale/Makefile
 
 #zip -rP Jsz3895 files.zip files
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/openwrt-21.02/tools/files_7981_fpz.zip
