@@ -23,11 +23,11 @@
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 #echo 'src-git routing https://github.com/coolsnowwolf/routing' >>feeds.conf.default
 #echo 'src-git telephony https://git.openwrt.org/feed/telephony.git' >>feeds.conf.default
-sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
-./scripts/feeds update -a
-rm -rf feeds/packages/lang/golang
-rm -rf feeds/packages/net/{brook,chinadns-ng,dns2socks,dns2tcp,hysteria,ipt2socks,microsocks,naiveproxy,pdnsd-alt,redsocks2,shadow-tls,shadowsocks-rust,simple-obfs,mosdns,tcping,trojan*,tuic-client,xray*,v2ray*}
-rm -rf feeds/small/shadowsocksr-libev
-sed -i '/iptables-mod-socket/d' feeds/small/luci-app-passwall/Makefile
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-./scripts/feeds install -a
+#sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
+#./scripts/feeds update -a
+#rm -rf feeds/packages/lang/golang
+#rm -rf feeds/packages/net/{brook,chinadns-ng,dns2socks,dns2tcp,hysteria,ipt2socks,microsocks,naiveproxy,pdnsd-alt,redsocks2,shadow-tls,shadowsocks-rust,simple-obfs,mosdns,tcping,trojan*,tuic-client,xray*,v2ray*}
+#rm -rf feeds/small/shadowsocksr-libev
+#sed -i '/iptables-mod-socket/d' feeds/small/luci-app-passwall/Makefile
+#git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+#./scripts/feeds install -a
