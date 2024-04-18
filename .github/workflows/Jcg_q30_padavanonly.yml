@@ -32,7 +32,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: Jcg_q30_padavanonly.config
   DIY_P1_SH: Jcg_q30_immortalwrt-mt798x_part1.sh
-  DIY_P2_SH: Jcg_q30_immortalwrt-mt798x_part2.sh
+  DIY_P2_SH: Jcg_q30_padavanonly_part2.sh
   RELEASE_TAG: Jcg_q30_padavanonly
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
