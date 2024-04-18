@@ -24,6 +24,8 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/f
 # Modify zerotier default setting
 #sed -i 's/enabled 0/enabled 1/g' packages/net/zerotier/files/etc/config/zerotier
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' packages/net/zerotier/files/etc/config/zerotier
+sed -i 's/1.12.2/1.14.0/g' feeds/packages/net/zerotier/Makefile
+sed -i 's/7c6512cfc208374ea9dc9931110e35f71800c34890e0f35991ea485aae66e31c/d6ea4dc3b4d88c1acc14f4fe349f9b23860c512e037cb5116d306418d2cbd500/g' feeds/packages/net/zerotier/Makefile
 #固件版本号添加个人标识和日期
 sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
 
@@ -32,8 +34,8 @@ wget -O feeds/packages/net/uugamebooster/Makefile https://raw.githubusercontent.
 wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
 
 rm -rf feeds/packages/net/tailscale/patches
-sed -i 's/1.44.3/1.62.1/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/9d0cdccf103d3613ea4671e7092a18e9b7a471f30b4d92defb001510262e48d5/22737fae37e971fecdf49d6b741b99988868aa3f1e683e67e14b872a2c49ca1c/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/1.44.3/1.64.2/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/9d0cdccf103d3613ea4671e7092a18e9b7a471f30b4d92defb001510262e48d5/e5e46f6b6b716b2c4696dce0b92dc2e36f02b06b7ad9f055042a820ad61b2a47/g' feeds/packages/net/tailscale/Makefile
 
 sed -i 's/1.7.4.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
 sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
