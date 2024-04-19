@@ -75,7 +75,7 @@ sed -i 's/7c6512cfc208374ea9dc9931110e35f71800c34890e0f35991ea485aae66e31c/d6ea4
 #git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
 # 重新添加 luci-app-openclash dev版
-#rm -rf /feeds/luci/applications/luci-app-homeproxy
+#rm -rf feeds/luci/applications/luci-app-homeproxy
 #git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
 
 # 重新添加 luci-app-openclash
