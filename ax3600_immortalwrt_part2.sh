@@ -32,8 +32,8 @@ git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 rm -rf feeds/packages/net/tailscale/patches
-sed -i 's/1.58.2/1.64.0/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/452f355408e4e2179872387a863387e06346fc8a6f9887821f9b8a072c6a5b0a/a0b9b84fef37316a9eee2490668811cafb85b227839eca97bbff88f7ce58a815/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/1.58.2/1.64.2/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/452f355408e4e2179872387a863387e06346fc8a6f9887821f9b8a072c6a5b0a/e5e46f6b6b716b2c4696dce0b92dc2e36f02b06b7ad9f055042a820ad61b2a47/g' feeds/packages/net/tailscale/Makefile
 
 rm -f feeds/packages/net/socat/patches/100-usleep.patch
 sed -i 's/1.7.4.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
