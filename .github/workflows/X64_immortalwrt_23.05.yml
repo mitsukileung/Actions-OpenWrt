@@ -32,7 +32,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: X64_immortalwrt_23.05.config
   DIY_P1_SH: ax3600_immortalwrt_part1.sh
-  DIY_P2_SH: ax3600_immortalwrt_part2.sh
+  DIY_P2_SH: X64_immortalwrt_23.05_part2.sh
   RELEASE_TAG: X64_immortalwrt_23.05
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
