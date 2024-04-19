@@ -26,18 +26,18 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 
 #wget -O package/network/utils/iptables/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/iptables_Makefile
 
-#rm -f feeds/packages/net/socat/patches/100-usleep.patch
-#sed -i 's/1.7.3.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
-#sed -i 's/972374ca86f65498e23e3259c2ee1b8f9dbeb04d12c2a78c0c9b5d1cb97dfdfc/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
+rm -f feeds/packages/net/socat/patches/100-usleep.patch
+sed -i 's/1.7.3.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
+sed -i 's/972374ca86f65498e23e3259c2ee1b8f9dbeb04d12c2a78c0c9b5d1cb97dfdfc/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
 
 sed -i 's/1.12.2/1.14.0/g' feeds/packages/net/zerotier/Makefile
 sed -i 's/7c6512cfc208374ea9dc9931110e35f71800c34890e0f35991ea485aae66e31c/d6ea4dc3b4d88c1acc14f4fe349f9b23860c512e037cb5116d306418d2cbd500/g' feeds/packages/net/zerotier/Makefile
 
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 
-#rm -rf feeds/packages/net/tailscale/patches
-#sed -i 's/1.32.3/1.64.0/g' feeds/packages/net/tailscale/Makefile
-#sed -i 's/4cf88a1d754240ce71b29d3a65ca480091ad9c614ac99c541cef6fdaf0585dd4/a0b9b84fef37316a9eee2490668811cafb85b227839eca97bbff88f7ce58a815/g' feeds/packages/net/tailscale/Makefile
+rm -rf feeds/packages/net/tailscale/patches
+sed -i 's/1.32.3/1.38.3/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/4cf88a1d754240ce71b29d3a65ca480091ad9c614ac99c541cef6fdaf0585dd4/63ef41e642f4b2c322c794742f03e9e06b593992e9a1299c94f495a496cffb3a/g' feeds/packages/net/tailscale/Makefile
 
 #zip -rP Jsz3895 files.zip files
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/openwrt-21.02/tools/files_7981_fpz.zip
