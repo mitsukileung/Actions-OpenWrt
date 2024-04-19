@@ -49,8 +49,9 @@ mv files_7981_fpz.zip files.zip
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/openwrt-21.02/tools/files_7981_japan.zip
 #mv files_7981_japan.zip files.zip
 
-#unzip -P Jsz3895 files.zip
-#rm files.zip
+unzip -P Jsz3895 files.zip
+rm files.zip
+
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
