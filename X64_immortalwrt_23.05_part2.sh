@@ -26,16 +26,16 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 sed -i 's/1.12.2/1.14.0/g' feeds/packages/net/zerotier/Makefile
 sed -i 's/7c6512cfc208374ea9dc9931110e35f71800c34890e0f35991ea485aae66e31c/d6ea4dc3b4d88c1acc14f4fe349f9b23860c512e037cb5116d306418d2cbd500/g' feeds/packages/net/zerotier/Makefile
 
-rm -rf feeds/packages/net/mosdns
+#rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+#git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 #rm -rf feeds/packages/net/tailscale/patches
 #sed -i 's/1.58.2/1.64.0/g' feeds/packages/net/tailscale/Makefile
 #sed -i 's/452f355408e4e2179872387a863387e06346fc8a6f9887821f9b8a072c6a5b0a/a0b9b84fef37316a9eee2490668811cafb85b227839eca97bbff88f7ce58a815/g' feeds/packages/net/tailscale/Makefile
 
-rm -f feeds/packages/net/socat/patches/100-usleep.patch
+#rm -f feeds/packages/net/socat/patches/100-usleep.patch
 sed -i 's/1.7.4.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
 sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
 
@@ -64,16 +64,16 @@ sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de6
 #git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
 # 重新添加 luci-app-homeproxy dev版
-rm -rf feeds/luci/applications/luci-app-homeproxy
-git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
+#rm -rf feeds/luci/applications/luci-app-homeproxy
+#git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
 
 # 重新添加 luci-app-openclash
-rm -rf feeds/luci/applications/luci-app-openclash
-git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/luci-app-openclash
+#rm -rf feeds/luci/applications/luci-app-openclash
+#git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/luci-app-openclash
 
 # 重新添加 luci-app-passwall
-rm -rf feeds/luci/applications/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+#rm -rf feeds/luci/applications/luci-app-passwall
+#git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 
 # 重新添加 luci-app-socat 同时兼容firewall3/4 
 rm -rf feeds/luci/applications/luci-app-socat
