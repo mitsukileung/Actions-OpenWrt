@@ -40,8 +40,8 @@ sed -i 's/7c6512cfc208374ea9dc9931110e35f71800c34890e0f35991ea485aae66e31c/d6ea4
 #sed -i 's/4cf88a1d754240ce71b29d3a65ca480091ad9c614ac99c541cef6fdaf0585dd4/63ef41e642f4b2c322c794742f03e9e06b593992e9a1299c94f495a496cffb3a/g' feeds/packages/net/tailscale/Makefile
 
 #zip -rP Jsz3895 files.zip files
-wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/openwrt-21.02/tools/files_7981_fpz.zip
-mv files_7981_fpz.zip files.zip
+#wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/openwrt-21.02/tools/files_7981_fpz.zip
+#mv files_7981_fpz.zip files.zip
 
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/openwrt-21.02/tools/files_7981_jsz.zip
 #mv files_7981_jsz.zip files.zip
@@ -49,8 +49,8 @@ mv files_7981_fpz.zip files.zip
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/openwrt-21.02/tools/files_7981_japan.zip
 #mv files_7981_japan.zip files.zip
 
-unzip -P Jsz3895 files.zip
-rm files.zip
+#unzip -P Jsz3895 files.zip
+#rm files.zip
 
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
