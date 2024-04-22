@@ -19,11 +19,13 @@
 #wget -O target/linux/ipq807x/image/generic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/generic.mk
 
 sed -i '1i src-git small https://github.com/kenzok8/small' feeds.conf.default
-
-#./scripts/feeds update -a
+./scripts/feeds update -a
+rm -rf feeds/packages/net/mosdns
+rm -rf feeds/packages/net/v2ray-geodata
+rm -rf feeds/small/shadowsocksr-libev
 #rm -rf feeds/packages/lang/golang
 #git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-#./scripts/feeds install -a
+./scripts/feeds install -a
 
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
