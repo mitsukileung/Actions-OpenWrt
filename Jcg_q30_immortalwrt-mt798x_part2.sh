@@ -31,7 +31,7 @@ sed -i 's/1.7.3.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
 sed -i 's/972374ca86f65498e23e3259c2ee1b8f9dbeb04d12c2a78c0c9b5d1cb97dfdfc/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
 
 sed -i 's/1.12.2/1.14.0/g' feeds/packages/net/zerotier/Makefile
-sed -i 's/7c6512cfc208374ea9dc9931110e35f71800c34890e0f35991ea485aae66e31c/d6ea4dc3b4d88c1acc14f4fe349f9b23860c512e037cb5116d306418d2cbd500/g' feeds/packages/net/zerotier/Makefile
+sed -i 's/7c6512cfc208374ea9dc9931110e35f71800c34890e0f35991ea485aae66e31c/7191623a81b0d1b552b9431e8864dd3420783ee518394ac1376cee6aaf033291/g' feeds/packages/net/zerotier/Makefile
 
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 
