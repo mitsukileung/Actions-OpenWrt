@@ -22,16 +22,17 @@ sed -i 's/192.168.1.1/192.168.88.3/g' package/base-files/files/bin/config_genera
 #sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 
+rm -f feeds/packages/net/zerotier/patches/0001-fix-miniupnpc-natpmp-include-paths.patch
+rm -f feeds/packages/net/zerotier/patches/0002-remove-PIE-options.patch
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
+sed -i 's/1.12.2/1.14.0/g' feeds/packages/net/zerotier/Makefile
+sed -i 's/7c6512cfc208374ea9dc9931110e35f71800c34890e0f35991ea485aae66e31c/7191623a81b0d1b552b9431e8864dd3420783ee518394ac1376cee6aaf033291/g' feeds/packages/net/zerotier/Makefile
 
 #wget -O package/network/utils/iptables/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/iptables_Makefile
 
 rm -f feeds/packages/net/socat/patches/100-usleep.patch
 sed -i 's/1.7.3.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
 sed -i 's/972374ca86f65498e23e3259c2ee1b8f9dbeb04d12c2a78c0c9b5d1cb97dfdfc/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
-
-sed -i 's/1.12.2/1.14.0/g' feeds/packages/net/zerotier/Makefile
-sed -i 's/7c6512cfc208374ea9dc9931110e35f71800c34890e0f35991ea485aae66e31c/7191623a81b0d1b552b9431e8864dd3420783ee518394ac1376cee6aaf033291/g' feeds/packages/net/zerotier/Makefile
 
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 
