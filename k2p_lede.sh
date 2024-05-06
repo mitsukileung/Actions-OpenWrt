@@ -77,7 +77,7 @@ git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git pac
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 
 # 添加 filebrowser
-git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci-app-filebrowser
+#git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci-app-filebrowser
 
 # 添加 OpenClash
 #svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openclash
