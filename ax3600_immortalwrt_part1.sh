@@ -24,6 +24,7 @@ rm -rf feeds/packages/net/mosdns
 rm -rf feeds/packages/net/v2ray-geodata
 rm -rf feeds/small/shadowsocksr-libev
 #rm -rf feeds/packages/lang/golang
+rm -rf feeds/luci/applications/luci-app-passwall
 #git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 rm -rf ./tmp && rm -rf .config && rm -rf package/feeds
 ./scripts/feeds update -a && ./scripts/feeds install -a
