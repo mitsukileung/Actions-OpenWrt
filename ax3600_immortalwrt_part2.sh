@@ -73,7 +73,7 @@ sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de6
 
 # 重新添加 luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
-git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/luci-app-openclash
+git clone --filter=blob:none --branch=dev https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 
 # 重新添加 luci-app-passwall
 #rm -rf feeds/luci/applications/luci-app-passwall
