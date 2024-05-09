@@ -18,17 +18,16 @@
 # 添加xiaomi系列
 #wget -O target/linux/ipq807x/image/generic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/generic.mk
 
-sed -i '1i src-git small https://github.com/kenzok8/small' feeds.conf.default
+#sed -i '1i src-git small https://github.com/kenzok8/small' feeds.conf.default
 ./scripts/feeds update -a
+wget -O test1.sh https://raw.githubusercontent.com/takayukileung/JB/main/v2ray-geodata_update.sh
+./test1.sh
 rm -rf feeds/packages/net/mosdns
-rm -rf feeds/packages/net/v2ray-geodata
-rm -rf feeds/small/shadowsocksr-libev
-rm -rf feeds/small/luci-app-ssr-plus
-rm -rf feeds/packages/net/sing-box
 #rm -rf feeds/packages/lang/golang
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-openclash
 #git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+rm -f ./test1.sh
 rm -rf ./tmp && rm -rf .config && rm -rf package/feeds
 ./scripts/feeds update -a && ./scripts/feeds install -a
 
