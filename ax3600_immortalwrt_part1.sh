@@ -24,6 +24,7 @@ git clone -b v5 https://github.com/sbwml/luci-app-mosdns.git package/mosdns
 rm -rf feeds/packages/net/mosdns
 wget -O test1.sh https://raw.githubusercontent.com/takayukileung/JB/main/v2ray-geodata_update.sh
 wget -O feeds/packages/net/chinadns-ng/Makefile https://raw.githubusercontent.com/kenzok8/small/master/chinadns-ng/Makefile
+chmod 777 test1.sh
 ./test1.sh
 #rm -rf feeds/packages/lang/golang
 rm -rf feeds/luci/applications/luci-app-passwall
