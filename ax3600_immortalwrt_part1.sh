@@ -21,6 +21,7 @@
 #sed -i '1i src-git small https://github.com/kenzok8/small' feeds.conf.default
 ./scripts/feeds update -a
 wget -O test1.sh https://raw.githubusercontent.com/takayukileung/JB/main/v2ray-geodata_update.sh
+wget -O feeds/packages/net/chinadns-ng/Makefile https://raw.githubusercontent.com/kenzok8/small/master/chinadns-ng/Makefile
 ./test1.sh
 rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/lang/golang
