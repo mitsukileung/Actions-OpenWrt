@@ -72,12 +72,12 @@ sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de6
 #git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
 
 # 重新添加 luci-app-openclash
-rm -rf feeds/luci/applications/luci-app-openclash
+#rm -rf feeds/luci/applications/luci-app-openclash
 git clone --filter=blob:none --branch=dev https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 
 # 重新添加 luci-app-passwall
 #rm -rf feeds/luci/applications/luci-app-passwall
-#git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 
 # 重新添加 luci-app-socat 同时兼容firewall3/4 
 rm -rf feeds/luci/applications/luci-app-socat
