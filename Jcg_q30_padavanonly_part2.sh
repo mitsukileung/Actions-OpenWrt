@@ -22,8 +22,15 @@ sed -i 's/192.168.6.1/192.168.88.3/g' package/base-files/files/bin/config_genera
 #sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 
-rm -f feeds/packages/net/zerotier/patches/0001-fix-miniupnpc-natpmp-include-paths.patch
-rm -f feeds/packages/net/zerotier/patches/0002-remove-PIE-options.patch
+#rm -f feeds/packages/net/zerotier/patches/0001-fix-miniupnpc-natpmp-include-paths.patch
+#rm -f feeds/packages/net/zerotier/patches/0002-remove-PIE-options.patch
+
+wget -O feeds/packages/net/zerotier/patches/0001-fix-miniupnpc-natpmp-include-paths.patch https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/patches/0001-fix-miniupnpc-natpmp-include-paths.patch
+wget -O feeds/packages/net/zerotier/patches/0002-remove-PIE-options.patch https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/patches/0002-remove-PIE-options.patch
+wget -O feeds/packages/net/zerotier/patches/0003-fix-compilation-for-arm_cortex-a7-neon.patch https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/patches/0003-fix-compilation-for-arm_cortex-a7-neon.patch
+wget -O feeds/packages/net/zerotier/patches/0004-add-missing-libatomic.patch https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/patches/0004-add-missing-libatomic.patch
+wget -O feeds/packages/net/zerotier/patches/0005-remove-noexecstack.patch https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/patches/0005-remove-noexecstack.patch
+
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 sed -i 's/1.12.2/1.14.0/g' feeds/packages/net/zerotier/Makefile
 sed -i 's/7c6512cfc208374ea9dc9931110e35f71800c34890e0f35991ea485aae66e31c/7191623a81b0d1b552b9431e8864dd3420783ee518394ac1376cee6aaf033291/g' feeds/packages/net/zerotier/Makefile
