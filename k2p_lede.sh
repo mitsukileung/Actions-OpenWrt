@@ -24,6 +24,9 @@ sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC
 sed -i 's/golang\/host upx\/host/golang\/host/g' feeds/packages/net/frp/Makefile
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
+sed -i 's/1.7.4.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
+sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
+
 # update zerotier config
 #sed -i 's/1.12.1/1.12.2/g' feeds/packages/net/zerotier/Makefile
 #sed -i 's/c6758a04f161bba1c0ef11fce991029a645ede381ae3862a25a2f5145aaffca8/7c6512cfc208374ea9dc9931110e35f71800c34890e0f35991ea485aae66e31c/g' feeds/packages/net/zerotier/Makefile
@@ -47,8 +50,8 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 #git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
 # 重新添加 luci-app-serverchan
-rm -rf feeds/luci/applications/luci-app-serverchan
-git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-serverchan
+#rm -rf feeds/luci/applications/luci-app-serverchan
+#git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-serverchan
 
 # 重新添加 luci-app-netdata
 #rm -rf feeds/luci/applications/luci-app-netdata
