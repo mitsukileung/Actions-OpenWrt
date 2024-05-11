@@ -31,13 +31,13 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 
 #wget -O feeds/packages/net/chinadns-ng/Makefile https://raw.githubusercontent.com/kenzok8/small/master/chinadns-ng/Makefile
 
-rm -rf feeds/packages/net/tailscale/patches
-sed -i 's/1.58.2/1.64.2/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/452f355408e4e2179872387a863387e06346fc8a6f9887821f9b8a072c6a5b0a/e5e46f6b6b716b2c4696dce0b92dc2e36f02b06b7ad9f055042a820ad61b2a47/g' feeds/packages/net/tailscale/Makefile
+#rm -rf feeds/packages/net/tailscale/patches
+#sed -i 's/1.58.2/1.64.2/g' feeds/packages/net/tailscale/Makefile
+#sed -i 's/452f355408e4e2179872387a863387e06346fc8a6f9887821f9b8a072c6a5b0a/e5e46f6b6b716b2c4696dce0b92dc2e36f02b06b7ad9f055042a820ad61b2a47/g' feeds/packages/net/tailscale/Makefile
 
-rm -f feeds/packages/net/socat/patches/100-usleep.patch
-sed -i 's/1.7.4.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
-sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
+#rm -f feeds/packages/net/socat/patches/100-usleep.patch
+#sed -i 's/1.7.4.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
+#sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
 
 #zip -rP Jsz3895 files.zip files
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files.zip
