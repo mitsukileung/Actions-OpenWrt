@@ -31,7 +31,7 @@ rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-openclash
 #git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 rm -f ./test1.sh
-./scripts/feeds install -a
+./scripts/feeds update -a && ./scripts/feeds install -a
 
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
