@@ -61,8 +61,8 @@ sed -i 's/983e1873e74c06690e32bb7bae12883e/b9ca050a6ed3658b460150b02f7772e6/g' f
 wget -O feeds/smpackage/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
 
 rm -rf feeds/packages/net/tailscale/patches
-sed -i 's/1.44.3/1.62.1/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/9d0cdccf103d3613ea4671e7092a18e9b7a471f30b4d92defb001510262e48d5/22737fae37e971fecdf49d6b741b99988868aa3f1e683e67e14b872a2c49ca1c/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/1.64.2/1.66.1/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/e5e46f6b6b716b2c4696dce0b92dc2e36f02b06b7ad9f055042a820ad61b2a47/a3c8645891d2dd25ad417df16e7f635cdf98d2c01778614942c6e39218c84a65/g' feeds/packages/net/tailscale/Makefile
 
 git clone -b dev https://github.com/justice2001/luci-app-multi-frpc.git package/luci-app-multi-frpc
 
