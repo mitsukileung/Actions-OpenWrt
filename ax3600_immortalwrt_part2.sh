@@ -27,6 +27,9 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 wget -O feeds/packages/net/shadowsocksr-libev/patches/105-Upgrade-PCRE-to-PCRE2.patch https://raw.githubusercontent.com/takayukileung/JB/main/105-Upgrade-PCRE-to-PCRE2.patch
 sed -i 's/+libpcre +libudns/+libpcre2 +libudns/g' feeds/packages/net/shadowsocksr-libev/Makefile
 
+sed -i 's/1.18.3/1.18.4/g' feeds/packages/net/shadowsocks-rust/Makefile
+sed -i 's/0eb817d81e6827e65593c67d4eef6a1136ca84a1c33cf4c97b3a84e98e5a7f60/1df8961d4b16f756081a554bf84ded124d43062f92cf36f2ac3f590ee72d22f3/g' feeds/packages/net/shadowsocks-rust/Makefile
+
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
