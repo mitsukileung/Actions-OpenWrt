@@ -30,6 +30,7 @@ sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
 rm -rf feeds/packages/net/{alist,adguardhome,xray*,v2ray*,v2ray*,sing*,smartdns}
 wget -O feeds/small/sing-box/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/net/sing-box/Makefile
 wget -O feeds/small/sing-box/files/sing-box.init https://raw.githubusercontent.com/immortalwrt/packages/master/net/sing-box/files/sing-box.init
+wget -O feeds/small/sing-box/files/sing-box.conf https://raw.githubusercontent.com/immortalwrt/packages/master/net/sing-box/files/sing-box.conf
 #rm -rf feeds/packages/lang/golang
 #git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 ./scripts/feeds install -a 
