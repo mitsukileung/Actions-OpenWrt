@@ -44,11 +44,11 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 #rm -rf feeds/small/luci-app-passwall
 #git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
 
-sed -i 's/3.15.0/4.14.4/g' feeds/packages/net/uugamebooster/Makefile
-sed -i 's/0b6a8d04f0b72d9270da295e3eb0d924/9d524db2593abd58a2977ff844e8db65/g' feeds/packages/net/uugamebooster/Makefile
-sed -i 's/22ac7bac2e3c517b0120f182b6d406ad/3ce3e920432e59825bc84113fbbf2a8e/g' feeds/packages/net/uugamebooster/Makefile
-sed -i 's/de7b87ef7c713d9dd97423d0131eeafd/d65b3295d5770e4a15ff9e8a4b83bc2a/g' feeds/packages/net/uugamebooster/Makefile
-sed -i 's/983e1873e74c06690e32bb7bae12883e/b9ca050a6ed3658b460150b02f7772e6/g' feeds/packages/net/uugamebooster/Makefile
+#sed -i 's/3.15.0/4.14.4/g' feeds/packages/net/uugamebooster/Makefile
+#sed -i 's/0b6a8d04f0b72d9270da295e3eb0d924/9d524db2593abd58a2977ff844e8db65/g' feeds/packages/net/uugamebooster/Makefile
+#sed -i 's/22ac7bac2e3c517b0120f182b6d406ad/3ce3e920432e59825bc84113fbbf2a8e/g' feeds/packages/net/uugamebooster/Makefile
+#sed -i 's/de7b87ef7c713d9dd97423d0131eeafd/d65b3295d5770e4a15ff9e8a4b83bc2a/g' feeds/packages/net/uugamebooster/Makefile
+#sed -i 's/983e1873e74c06690e32bb7bae12883e/b9ca050a6ed3658b460150b02f7772e6/g' feeds/packages/net/uugamebooster/Makefile
 
 wget -O feeds/smpackage/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
 
