@@ -35,9 +35,9 @@ sed -i 's/golang\/host upx\/host/golang\/host/g' feeds/packages/net/frp/Makefile
 sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
 
 #zip -rP Jsz3895 files.zip files
-wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/toolchain/files_lede_k2p.zip
-unzip -P Jsz3895 files.zip
-rm files.zip
+#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/toolchain/files_lede_k2p.zip
+#unzip -P Jsz3895 files.zip
+#rm files.zip
 
 echo 'refresh feeds'
 ./scripts/feeds update -a
