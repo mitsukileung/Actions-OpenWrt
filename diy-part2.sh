@@ -88,7 +88,7 @@ git clone -b dev https://github.com/justice2001/luci-app-multi-frpc.git package/
 #git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci-app-filebrowser
 
 # 添加 OpenClash
-#git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
+git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
 
 # 添加 luci-theme-neobird 主题
 #git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
