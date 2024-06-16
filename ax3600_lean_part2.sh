@@ -22,25 +22,11 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/f
 #sed -i 's/80/47001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/443/47002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 # Modify zerotier default setting
-wget -O feeds/packages/net/zerotier/patches/0001-fix-miniupnpc-natpmp-include-paths.patch https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/patches/0001-fix-miniupnpc-natpmp-include-paths.patch
-wget -O feeds/packages/net/zerotier/patches/0002-remove-PIE-options.patch https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/patches/0002-remove-PIE-options.patch
-wget -O feeds/packages/net/zerotier/patches/0003-fix-compilation-for-arm_cortex-a7-neon.patch https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/patches/0003-fix-compilation-for-arm_cortex-a7-neon.patch
-wget -O feeds/packages/net/zerotier/patches/0004-add-missing-libatomic.patch https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/patches/0004-add-missing-libatomic.patch
-wget -O feeds/packages/net/zerotier/patches/0005-remove-noexecstack.patch https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/patches/0005-remove-noexecstack.patch
-
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
-sed -i 's/1.12.2/1.14.0/g' feeds/packages/net/zerotier/Makefile
-sed -i 's/7c6512cfc208374ea9dc9931110e35f71800c34890e0f35991ea485aae66e31c/7191623a81b0d1b552b9431e8864dd3420783ee518394ac1376cee6aaf033291/g' feeds/packages/net/zerotier/Makefile
+
 #固件版本号添加个人标识和日期
 sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
-
-wget -O feeds/packages/net/uugamebooster/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/uu_Makefile
-
-wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
-
-rm -rf feeds/packages/net/tailscale/patches
-sed -i 's/1.44.3/1.64.2/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/9d0cdccf103d3613ea4671e7092a18e9b7a471f30b4d92defb001510262e48d5/e5e46f6b6b716b2c4696dce0b92dc2e36f02b06b7ad9f055042a820ad61b2a47/g' feeds/packages/net/tailscale/Makefile
+#wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
 
 sed -i 's/1.7.4.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
 sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
@@ -112,7 +98,7 @@ git clone -b dev https://github.com/justice2001/luci-app-multi-frpc.git package/
 #git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
 # 添加 OpenClash
-#git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
+git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
 
 # 添加 luci-theme-neobird 主题
 #git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
