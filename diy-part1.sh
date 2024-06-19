@@ -17,7 +17,9 @@
 
 #sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '1i src-git small https://github.com/kenzok8/small' feeds.conf.default
-./scripts/feeds update -a && rm -rf feeds/luci/applications/luci-app-mosdns
+./scripts/feeds update -a
+rm -rf feeds/luci/applications/luci-app-mosdns
+rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/{alist,adguardhome,xray*,v2ray*,v2ray*,sing*}
 #wget -O feeds/small/sing-box/Makefile https://raw.githubusercontent.com/takayukileung/JB/main/Makefile-sing-box
 
