@@ -50,7 +50,7 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 #sed -i 's/de7b87ef7c713d9dd97423d0131eeafd/d65b3295d5770e4a15ff9e8a4b83bc2a/g' feeds/packages/net/uugamebooster/Makefile
 #sed -i 's/983e1873e74c06690e32bb7bae12883e/b9ca050a6ed3658b460150b02f7772e6/g' feeds/packages/net/uugamebooster/Makefile
 
-wget -O feeds/smpackage/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
+wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
 
 git clone -b dev https://github.com/justice2001/luci-app-multi-frpc.git package/luci-app-multi-frpc
 
