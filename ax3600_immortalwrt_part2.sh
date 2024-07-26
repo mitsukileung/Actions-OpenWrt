@@ -31,8 +31,8 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 
 #wget -O feeds/packages/net/chinadns-ng/Makefile https://raw.githubusercontent.com/kenzok8/small/master/chinadns-ng/Makefile
 
-sed -i 's/1.68.2/1.70.0/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/9d34bd153c485dd0d88d3d76f187b5032046c0807a411ca97f38c8039a9ac659/8429728708f9694534489daa0a30af58be67f25742597940e7613793275c738f/g' feeds/packages/net/tailscale/Makefile
+#sed -i 's/1.68.2/1.70.0/g' feeds/packages/net/tailscale/Makefile
+#sed -i 's/9d34bd153c485dd0d88d3d76f187b5032046c0807a411ca97f38c8039a9ac659/8429728708f9694534489daa0a30af58be67f25742597940e7613793275c738f/g' feeds/packages/net/tailscale/Makefile
 
 #rm -f feeds/packages/net/socat/patches/100-usleep.patch
 #sed -i 's/1.7.4.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
