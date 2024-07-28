@@ -29,8 +29,8 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
-#sed -i 's/1.20.2/1.20.3/g' feeds/packages/net/shadowsocks-rust/Makefile
-#sed -i 's/555f0680621d6ebe19eb6b91356068ca7afabf5ef502bbe2a85d779af03e45b9/07d2301cb14d8e1ff653def167604e701ca9a05a140291875e0ec9e6334ad513/g' feeds/packages/net/shadowsocks-rust/Makefile
+sed -i 's/1.20.2/1.20.3/g' feeds/packages/net/shadowsocks-rust/Makefile
+sed -i 's/555f0680621d6ebe19eb6b91356068ca7afabf5ef502bbe2a85d779af03e45b9/07d2301cb14d8e1ff653def167604e701ca9a05a140291875e0ec9e6334ad513/g' feeds/packages/net/shadowsocks-rust/Makefile
 
 #sed -i 's/1.68.2/1.70.0/g' feeds/packages/net/tailscale/Makefile
 #sed -i 's/9d34bd153c485dd0d88d3d76f187b5032046c0807a411ca97f38c8039a9ac659/8429728708f9694534489daa0a30af58be67f25742597940e7613793275c738f/g' feeds/packages/net/tailscale/Makefile
