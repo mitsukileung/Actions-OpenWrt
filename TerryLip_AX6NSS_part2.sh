@@ -25,8 +25,8 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
 git clone https://github.com/takayukileung/other.git
-cp -r other/ddns-scripts_dnspod feeds/packages/net/ddns-scripts_dnspod1
-cp -r other/ddns-scripts_aliyun feeds/packages/net/ddns-scripts_aliyun1
+cp -r other/ddns-scripts_dnspod feeds/packages/net/ddns-scripts_dnspod
+cp -r other/ddns-scripts_aliyun feeds/packages/net/ddns-scripts_aliyun
 cp -r other/luci-app-zerotier feeds/luci/applications/luci-app-zerotier
 wget -O feeds/packages/net/zerotier/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/Makefile
 rm -rf other
