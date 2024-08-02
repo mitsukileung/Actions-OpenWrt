@@ -18,8 +18,8 @@
 # 添加xiaomi系列
 #wget -O target/linux/ipq807x/image/generic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/generic.mk
 
-sed -i 'src-git PWluci https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
-sed -i 'src-git PWpackages https://github.com/xiaorouji/openwrt-passwall-packages.git' feeds.conf.default
+sed -i '1i src-git PWluci https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
+sed -i '2i src-git PWpackages https://github.com/xiaorouji/openwrt-passwall-packages.git' feeds.conf.default
 
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
