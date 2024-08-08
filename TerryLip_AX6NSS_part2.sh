@@ -17,8 +17,8 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 # Clear the login password
 #sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
 #Modify Wifi default setting
-sed -i 's/disabled='1'/disabled='0'/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-#sed -i 's/set ${si}.ssid='OpenWrt'/set ${si}.ssid='OpenWrt'/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+wget -O package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/mac80211.uc
+#sed -i 's/OpenWrt/ipenWrt/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 # Modify frpc default setting
 #sed -i 's/yourdomain.com/fpz.5150586.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/1234567/LaputaShita~!/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
