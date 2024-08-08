@@ -31,6 +31,15 @@ cp -r other/luci-app-zerotier feeds/luci/applications/luci-app-zerotier
 wget -O feeds/packages/net/zerotier/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/Makefile
 rm -rf other
 
+rm -rf feeds/luci/modules/luci-base
+rm -rf feeds/luci/modules/luci-mod-status
+rm -rf feeds/packages/utils/coremark
+rm -rf feeds/packages/net/v2ray-geodata
+git clone https://github.com/immortalwrt/luci.git backup_luci
+cp -rf backup_luci/modules/luci-base feeds/luci/modules/luci-base
+cp -rf backup_luci/modules/luci-mod-status feeds/luci/modules/luci-mod-status
+rm -rf backup_luci
+
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
