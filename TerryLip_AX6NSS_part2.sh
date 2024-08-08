@@ -35,6 +35,7 @@ rm -rf feeds/luci/modules/luci-base
 rm -rf feeds/luci/modules/luci-mod-status
 rm -rf feeds/packages/utils/coremark
 rm -rf feeds/packages/net/v2ray-geodata
+rm -rf package/new/v2ray-geodata
 git clone https://github.com/immortalwrt/luci.git backup_luci
 cp -rf backup_luci/modules/luci-base feeds/luci/modules/luci-base
 cp -rf backup_luci/modules/luci-mod-status feeds/luci/modules/luci-mod-status
@@ -109,5 +110,6 @@ git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-so
 #git clone https://github.com/derisamedia/luci-theme-alpha.git package/luci-theme-alpha
 
 echo 'refresh feeds'
+rm -rf ./tmp
 ./scripts/feeds update -a
 ./scripts/feeds install -a
