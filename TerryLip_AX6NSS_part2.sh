@@ -41,6 +41,11 @@ cp -rf backup_luci/modules/luci-base feeds/luci/modules/luci-base
 cp -rf backup_luci/modules/luci-mod-status feeds/luci/modules/luci-mod-status
 rm -rf backup_luci
 
+cp -rf luci feed mod/wireless.js feeds/luci/modules/luci-mod-network/htdocs/luci-static/resources/view/network/wireless.js
+cp -rf luci feed mod/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+cp -rf luci feed mod/luci-mod-status.json feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/luci-mod-status.json
+cp -rf luci feed mod/system.js feeds/luci/modules/luci-mod-system/htdocs/luci-static/resources/view/system/system.js
+
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
