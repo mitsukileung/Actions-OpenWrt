@@ -27,7 +27,7 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 git clone https://github.com/takayukileung/other.git
 cp -r other/ddns-scripts_dnspod feeds/packages/net/ddns-scripts_dnspod
 cp -r other/ddns-scripts_aliyun feeds/packages/net/ddns-scripts_aliyun
-cp -r other/luci-app-zerotier feeds/luci/applications/luci-app-zerotier
+cp -r other/luci-app-zerotier package/new/luci-app-zerotier
 wget -O feeds/packages/net/zerotier/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/Makefile
 rm -rf other
 
