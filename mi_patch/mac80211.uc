@@ -77,7 +77,7 @@ set ${s}.${id}
 set ${s}.band='${lc(band_name)}'
 set ${s}.channel='${channel}'
 set ${s}.htmode='${htmode}'
-set ${s}.disabled='1'
+set ${s}.disabled='0'
 
 set ${si}=wifi-iface
 set ${si}.device='${name}'
