@@ -33,11 +33,11 @@ sed -i 's/1.12.2/1.14.0/g' feeds/packages/net/zerotier/Makefile
 sed -i 's/7c6512cfc208374ea9dc9931110e35f71800c34890e0f35991ea485aae66e31c/7191623a81b0d1b552b9431e8864dd3420783ee518394ac1376cee6aaf033291/g' feeds/packages/net/zerotier/Makefile
 
 wget -O feeds/packages/net/uugamebooster/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/immortalwrt_uu_makefile
-sed -i 's/7.6.12/7.4.4/g' feeds/packages/net/uugamebooster/Makefile
-sed -i 's/94142285c777c43c817c686d6a2bdae3d2321d168ca095b57dc0dc298e1d2edd/a4aaccfd437b16a645e541d3f8370620ac0258e0000d01c1b59d1dcfd670caae/g' feeds/packages/net/uugamebooster/Makefile
-sed -i 's/03af56ff4e9b541378a5aa3a1cb3a691b651a3d44c3635e041a9b770e08f80b8/1ae13f669f4afb021e80d1a9341c1d3de7ce982168e6b4d1726ce494913da64f/g' feeds/packages/net/uugamebooster/Makefile
-sed -i 's/180370c0840f33a151c1e19d2ea01a2c6d7edc5e765b76f3432153fd7e6cdaef/f5df1b3adc8566fba4eb7d1ba1b7bc8cb6c285cf31a29591719672508edccef1/g' feeds/packages/net/uugamebooster/Makefile
-sed -i 's/cf7301d76a901da3f8410d7c908d62fde7ad0c04c39c147943b9794394867d49/3c4aeb495d4a972d35c608ec7dde4481964c604360fc5c7217987e8b7689b108/g' feeds/packages/net/uugamebooster/Makefile
+#sed -i 's/7.6.12/7.4.4/g' feeds/packages/net/uugamebooster/Makefile
+#sed -i 's/94142285c777c43c817c686d6a2bdae3d2321d168ca095b57dc0dc298e1d2edd/a4aaccfd437b16a645e541d3f8370620ac0258e0000d01c1b59d1dcfd670caae/g' feeds/packages/net/uugamebooster/Makefile
+#sed -i 's/03af56ff4e9b541378a5aa3a1cb3a691b651a3d44c3635e041a9b770e08f80b8/1ae13f669f4afb021e80d1a9341c1d3de7ce982168e6b4d1726ce494913da64f/g' feeds/packages/net/uugamebooster/Makefile
+#sed -i 's/180370c0840f33a151c1e19d2ea01a2c6d7edc5e765b76f3432153fd7e6cdaef/f5df1b3adc8566fba4eb7d1ba1b7bc8cb6c285cf31a29591719672508edccef1/g' feeds/packages/net/uugamebooster/Makefile
+#sed -i 's/cf7301d76a901da3f8410d7c908d62fde7ad0c04c39c147943b9794394867d49/3c4aeb495d4a972d35c608ec7dde4481964c604360fc5c7217987e8b7689b108/g' feeds/packages/net/uugamebooster/Makefile
 
 rm -f feeds/packages/net/socat/patches/100-usleep.patch
 sed -i 's/1.7.3.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
