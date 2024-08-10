@@ -9,7 +9,7 @@ PKG_VERSION:=7.6.12
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(ARCH).tar.gz
-PKG_SOURCE_URL:=https://uu.gdl.netease.com/uuplugin/openwrt-$(ARCH)/v$(PKG_VERSION)/uu.tar.gz?
+PKG_SOURCE_URL:=https://uu.gdl.netease.com/uuplugin/openwrt-$(ARCH)/v$(PKG_VERSION)/uu.tar.gz
 ifeq ($(ARCH),aarch64)
   PKG_HASH:=94142285c777c43c817c686d6a2bdae3d2321d168ca095b57dc0dc298e1d2edd
 else ifeq ($(ARCH),arm)
