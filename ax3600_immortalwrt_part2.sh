@@ -32,6 +32,9 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 #sed -i 's/1.68.2/1.70.0/g' feeds/packages/net/tailscale/Makefile
 #sed -i 's/9d34bd153c485dd0d88d3d76f187b5032046c0807a411ca97f38c8039a9ac659/8429728708f9694534489daa0a30af58be67f25742597940e7613793275c738f/g' feeds/packages/net/tailscale/Makefile
 
+sed -i 's/1.20.3/1.20.4/g' feeds/packages/net/shadowsocks-rust/Makefile
+sed -i 's/07d2301cb14d8e1ff653def167604e701ca9a05a140291875e0ec9e6334ad513/cf064ad157974b3e396aab3bb60aab380dbc4e11b736603bfbc8e7a138f6bb26/g' feeds/packages/net/shadowsocks-rust/Makefile
+
 #rm -f feeds/packages/net/socat/patches/100-usleep.patch
 #sed -i 's/1.7.4.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
 #sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
