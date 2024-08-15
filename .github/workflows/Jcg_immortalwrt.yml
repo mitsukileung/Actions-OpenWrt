@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Jcg_test
+name: Jcg_immortalwrt
 
 on:
   schedule:
@@ -27,13 +27,13 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x.git
-  REPO_BRANCH: openwrt-21.02
+  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
+  REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: Jcg_test.config
-  DIY_P1_SH: Jcg_test_part1.sh
-  DIY_P2_SH: Jcg_test_part2.sh
-  RELEASE_TAG: Jcg_test
+  CONFIG_FILE: Jcg_immortalwrt.config
+  DIY_P1_SH: ax3600_immortalwrt_part1.sh
+  DIY_P2_SH: ax3600_immortalwrt_part2.sh
+  RELEASE_TAG: Jcg_immortalwrt
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
