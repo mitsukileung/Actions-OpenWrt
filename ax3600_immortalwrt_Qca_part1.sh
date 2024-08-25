@@ -27,7 +27,7 @@ wget -O test1.sh https://raw.githubusercontent.com/takayukileung/JB/main/v2ray-g
 chmod 777 test1.sh
 ./test1.sh
 #rm -rf feeds/packages/lang/golang
-#rm -rf feeds/luci/applications/luci-app-passwall
+rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-openclash
 #git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 rm -f ./test1.sh
