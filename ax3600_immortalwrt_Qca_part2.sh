@@ -29,6 +29,7 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
+wget -O package/kernel/mac80211/patches/ath10k/988-ath10k-always-use-mac80211-loss-detection.patch https://raw.githubusercontent.com/King-Of-Knights/openwrt-6.x/main/package/kernel/mac80211/patches/ath10k/988-ath10k-always-use-mac80211-loss-detection.patch
 wget -O package/kernel/ath10k-ct/patches/999-003-ath10k-add-nss-support.patch https://raw.githubusercontent.com/King-Of-Knights/openwrt-6.x/main/package/kernel/ath10k-ct/patches/999-003-ath10k-add-nss-support.patch
 rm -f package/kernel/ath10k-ct/patches/999-001-fix-ath10k_update_vif_offload.patch
 rm -f package/kernel/ath10k-ct/patches/999-800-ath10k-Add-threaded-napi.patch
