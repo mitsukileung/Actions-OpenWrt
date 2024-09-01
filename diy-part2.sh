@@ -37,10 +37,10 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 #sed -i 's/2023.06.01/2023.04.20/g' feeds/helloworld/chinadns-ng/Makefile
 #sed -i 's/7c33e8a60b7618b33fce0960b94b46567766a051b307cea6b123da4176a52eab/e1f5197ecd96ebab4440fe069e0a06935df7ea07ac1ad0bab3f88bffe0055294/g' feeds/helloworld/chinadns-ng/Makefile
 
-#zip -rP Fpz824613 files.zip files
-#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/package/base-files/files.zip
-#unzip -P Fpz824613 files.zip
-#rm files.zip
+#zip -rP Jsz3895 files.zip files
+wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files_nasjp.zip
+unzip -P Jsz3895 files.zip
+rm files.zip
 
 # 重新添加 luci-app-passwall smartdns版本
 #rm -rf feeds/small/luci-app-passwall
