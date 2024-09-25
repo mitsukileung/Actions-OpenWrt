@@ -48,8 +48,8 @@ sed -i 's/07d2301cb14d8e1ff653def167604e701ca9a05a140291875e0ec9e6334ad513/cf064
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
-# 添加xiaomi
-#wget -O target/linux/ipq807x/image/generic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/generic.mk
+#添加 集客AC
+git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
 
 # update frp to 0.53.2
 #sed -i 's/0.51.3/0.53.2/g' feeds/packages/net/frp/Makefile
