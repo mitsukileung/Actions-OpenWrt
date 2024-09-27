@@ -31,7 +31,7 @@ sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de6
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
-wget -O feeds/packages/net/uugamebooster/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/uu_Makefile
+#wget -O feeds/packages/net/uugamebooster/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/uu_Makefile
 
 #zip -rP Fpz824613 files.zip files
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/package/base-files/files.zip
@@ -48,8 +48,9 @@ wget -O feeds/packages/net/uugamebooster/Makefile https://raw.githubusercontent.
 #sed -i 's/d65b3295d5770e4a15ff9e8a4b83bc2a/skip/g' feeds/packages/net/uugamebooster/Makefile
 #sed -i 's/b9ca050a6ed3658b460150b02f7772e6/skip/g' feeds/packages/net/uugamebooster/Makefile
 
-#sed -i 's/1.66.3/1.68.1/g' feeds/packages/net/tailscale/Makefile
-#sed -i 's/51f26a6fcc8b4b6156354bd12a9f029e93c200de9b753ac72d10f70828fb6277/d7fe30282d2f5eabdc76a5a89f11d935ed3a5d93d55f5fd5b40f9a9f49e19490/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/1.70.0/1.72.1/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/8429728708f9694534489daa0a30af58be67f25742597940e7613793275c738f/21b529e85144f526b61e0998c8b7885d53f17cba21252e5c7252c4014f5f507b/g' feeds/packages/net/tailscale/Makefile
+git clone https://github.com/mitsukileung/luci-app-tailscale.git package/luci-app-tailscale
 
 wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
 
