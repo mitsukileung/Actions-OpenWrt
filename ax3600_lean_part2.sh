@@ -48,8 +48,9 @@ wget -O feeds/packages/net/uugamebooster/Makefile https://raw.githubusercontent.
 #sed -i 's/d65b3295d5770e4a15ff9e8a4b83bc2a/022c616f84bd1ed5466eb00193376ad5/g' feeds/packages/net/uugamebooster/Makefile
 #sed -i 's/b9ca050a6ed3658b460150b02f7772e6/17fb275fe666ec3d03ba3b41c2441156/g' feeds/packages/net/uugamebooster/Makefile
 
-sed -i 's/1.68.1/1.68.2/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/d7fe30282d2f5eabdc76a5a89f11d935ed3a5d93d55f5fd5b40f9a9f49e19490/9d34bd153c485dd0d88d3d76f187b5032046c0807a411ca97f38c8039a9ac659/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/1.70.0/1.72.1/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/8429728708f9694534489daa0a30af58be67f25742597940e7613793275c738f/21b529e85144f526b61e0998c8b7885d53f17cba21252e5c7252c4014f5f507b/g' feeds/packages/net/tailscale/Makefile
+git clone https://github.com/mitsukileung/luci-app-tailscale.git package/luci-app-tailscale
 
 wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
 
