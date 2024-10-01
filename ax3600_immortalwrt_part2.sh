@@ -29,8 +29,8 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
-sed -i 's/1.70.0/1.72.1/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/8429728708f9694534489daa0a30af58be67f25742597940e7613793275c738f/21b529e85144f526b61e0998c8b7885d53f17cba21252e5c7252c4014f5f507b/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/1.72.1/1.74.1/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/21b529e85144f526b61e0998c8b7885d53f17cba21252e5c7252c4014f5f507b/ef7b8a76ce81133dc10f243d733302c070232cdd6594b685c6adbf32769d4f2c/g' feeds/packages/net/tailscale/Makefile
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 git clone https://github.com/mitsukileung/luci-app-tailscale.git package/luci-app-tailscale
 
