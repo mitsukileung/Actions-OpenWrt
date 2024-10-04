@@ -33,7 +33,7 @@ env:
   CONFIG_FILE: ax3600_immortalwrt_Qca.config
   DIY_P1_SH: ax3600_immortalwrt_Qca_part1.sh
   DIY_P2_SH: ax3600_immortalwrt_Qca_part2.sh
-  RELEASE_TAG: Ax3600-stock_immortalwrt_QCA
+  RELEASE_TAG: Ax3600_immortalwrt_QCA
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
