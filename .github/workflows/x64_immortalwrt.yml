@@ -48,12 +48,6 @@ jobs:
 
     steps:
 
-    - name: Clear all caches
-      run: gh cache delete --all --repo mitsukileung/Actions-OpenWrt  # TODO: Use your project.
-      env:
-        # This token requires the "repo" scope.
-        GITHUB_TOKEN: ${{ secrets.PAT }}
-          
     - name: Free Disk Space (Ubuntu)
       uses: jlumbroso/free-disk-space@main
       with:
