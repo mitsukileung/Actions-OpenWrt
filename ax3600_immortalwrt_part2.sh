@@ -89,8 +89,8 @@ git clone --filter=blob:none --branch=dev https://github.com/vernesong/OpenClash
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 
 # 重新添加 luci-app-socat 同时兼容firewall3/4 
-rm -rf feeds/luci/applications/luci-app-socat
-git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-socat
+#rm -rf feeds/luci/applications/luci-app-socat
+#git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-socat
 
 # 重新添加 luci-app-wechatpush
 #rm -rf feeds/luci/applications/luci-app-wechatpush
