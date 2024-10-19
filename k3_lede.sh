@@ -12,77 +12,76 @@
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
-# Modify X86 Kernel 5.10
-#sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' target/linux/ipq807x/Makefile
+# Modify X86 Kernel
+sed -i 's/KERNEL_PATCHVER:=6.6/KERNEL_PATCHVER:=5.4/g' target/linux/x86/Makefile
 # Clear the login password
-#sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
+sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
 # Modify frpc default setting
-#sed -i 's/yourdomain.com/fpz.5150586.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
-#sed -i 's/1234567/LaputaShita~!/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
-#sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
-#sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
-
-sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
-
-#rm -rf feeds/packages/net/mosdns
-#git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-
-#rm -rf feeds/packages/net/v2ray-geodata
-#git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-
-# only build k3
-sed -i 's|^TARGET_|# TARGET_|g; s|# TARGET_DEVICES += phicomm_k3|TARGET_DEVICES += phicomm_k3|' target/linux/bcm53xx/image/Makefile
+#sed -i 's/yourdomain.com/frp.104300.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
+#sed -i 's/1234567/www.126126.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
+#固件版本号添加个人标识和日期
+sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
 
 sed -i 's/1.7.4.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
 sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
 
+#wget -O feeds/packages/net/uugamebooster/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/uu_Makefile
+
+# update frp to 0.51.3
+#sed -i 's/0.47.0/0.51.3/g' feeds/packages/net/frp/Makefile
+#sed -i 's/d98ebf8638701cf8662604b9fe2fb355f91209f87edcb77f2830c7fa40ccbe37/83032399773901348c660d41c967530e794ab58172ccd070db89d5e50d915fef/g' feeds/packages/net/frp/Makefile
+
+sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
+
+# 添加 luci-app-mosdns
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+
 #zip -rP Jsz3895 files.zip files
-#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files.zip
+#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files_nasjp.zip
 #unzip -P Jsz3895 files.zip
 #rm files.zip
-#修正连接数（by ベ七秒鱼ベ）
-#sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
-# 添加xiaomi
-#wget -O target/linux/ipq807x/image/generic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/generic.mk
+# 添加 luci-app-passwall
+#rm -rf feeds/small/luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
 
-# update frp to 0.50.0
-#sed -i 's/0.49.0/0.50.0/g' feeds/packages/net/frp/Makefile
-#sed -i 's/8ff92d4f763d596bee35efe17f0729d36e584b93c49a7671cebde4bb318b458f/e33b5c88246acee63e098114acd0f10dddbbfe7095ada854b814f86869221f8e/g' feeds/packages/net/frp/Makefile
+sed -i 's/6.1/5.4/g' target/linux/x86/Makefile
 
-# revert chinadns-ng to 2023.04.20
-#sed -i 's/2023.06.01/2023.04.20/g' feeds/packages/net/chinadns-ng/Makefile
-#sed -i 's/7c33e8a60b7618b33fce0960b94b46567766a051b307cea6b123da4176a52eab/e1f5197ecd96ebab4440fe069e0a06935df7ea07ac1ad0bab3f88bffe0055294/g' feeds/packages/net/chinadns-ng/Makefile
+# only build k3
+sed -i 's|^TARGET_|# TARGET_|g; s|# TARGET_DEVICES += phicomm_k3|TARGET_DEVICES += phicomm_k3|' target/linux/bcm53xx/image/Makefile
 
-# 重新添加 luci-theme-argon
-#rm -rf feeds/luci/themes/luci-theme-argon
-#git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-#rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
-#git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
+sed -i 's/1.70.0/1.76.1/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/8429728708f9694534489daa0a30af58be67f25742597940e7613793275c738f/ce87e52fd4e8e52540162a2529c5d73f5f76c6679147a7887058865c9e01ec36/g' feeds/packages/net/tailscale/Makefile
+#git clone https://github.com/mitsukileung/luci-app-tailscale.git package/luci-app-tailscale
 
-# 重新添加 luci-app-homeproxy dev版
-rm -rf /feeds/luci/applications/luci-app-homeproxy
-git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
+#wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
 
-# 重新添加 luci-app-openclash
-#rm -rf feeds/luci/applications/luci-app-openclash
-#git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/luci-app-openclash
+git clone -b dev https://github.com/justice2001/luci-app-multi-frpc.git package/luci-app-multi-frpc
 
-# 重新添加 luci-app-passwall
-#rm -rf feeds/luci/applications/luci-app-passwall
-#git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+# 重新添加 luci-app-serverchan
+#rm -rf feeds/luci/applications/luci-app-serverchan
+git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
 
-# 重新添加 luci-app-socat 同时兼容firewall3/4 
-rm -rf feeds/luci/applications/luci-app-socat
-git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-socat
+# 重新添加 luci-app-netdata
+#rm -rf feeds/luci/applications/luci-app-netdata
+#git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
+#在rm前面加一行内容为“chmod +x /etc/init.d/netdata”
+#sed -i '/rm/i chmod +x /etc/init.d/netdata' package/luci-app-netdata/root/etc/uci-defaults/40_luci-app-netdata
+#sed -i 's/0/1/g' package/luci-app-netdata/root/etc/config/netdata && sed -i 's/19991/19990/g' package/luci-app-netdata/root/etc/config/netdata
 
-# 重新添加 luci-app-wechatpush
-rm -rf feeds/luci/applications/luci-app-wechatpush
-git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
-sed -i '/:wrtbwmon/d' package/luci-app-wechatpush/Makefile
+# 重新添加 luci-app-aliyundrive-webdav
+#rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
+#rm -rf feeds/packages/multimedia/aliyundrive-webdav
+#git clone https://github.com/messense/aliyundrive-webdav.git package/luci-app-aliyundrive-webdav
 
-# 添加 OpenAppFilter
-#git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+# 添加 luci-app-unblockneteasemusic
+#git clone -b master https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
+
+# 重新添加 luci-app-pushbot
+#rm -rf feeds/luci/applications/luci-app-pushbot
+#git clone https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-pushbot
 
 # 添加 smartdns
 #git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
@@ -91,7 +90,20 @@ sed -i '/:wrtbwmon/d' package/luci-app-wechatpush/Makefile
 # 添加 adguardhome
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 
-#git clone https://github.com/derisamedia/luci-theme-alpha.git package/luci-theme-alpha
+# 添加 filebrowser
+#git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci-app-filebrowser
+
+# 添加 OpenClash
+git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
+
+# 添加 luci-theme-neobird 主题
+#git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
+
+# 添加 luci-theme-design.git 主题
+#rm -rf feeds/luci/themes/luci-theme-design
+#rm -rf feeds/luci/applications/luci-app-design-config
+#git clone https://github.com/gngpp/luci-theme-design.git package/luci-theme-design
+#git clone https://github.com/gngpp/luci-app-design-config.git package/luci-app-design-config
 
 echo 'refresh feeds'
 ./scripts/feeds update -a
