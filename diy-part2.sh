@@ -33,14 +33,14 @@ sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de6
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
-# revert chinadns-ng to 2023.04.20
-#sed -i 's/2023.06.01/2023.04.20/g' feeds/helloworld/chinadns-ng/Makefile
-#sed -i 's/7c33e8a60b7618b33fce0960b94b46567766a051b307cea6b123da4176a52eab/e1f5197ecd96ebab4440fe069e0a06935df7ea07ac1ad0bab3f88bffe0055294/g' feeds/helloworld/chinadns-ng/Makefile
+# 添加 luci-app-mosdns
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 #zip -rP Jsz3895 files.zip files
-wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files_nasjp.zip
-unzip -P Jsz3895 files.zip
-rm files.zip
+#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files_nasjp.zip
+#unzip -P Jsz3895 files.zip
+#rm files.zip
 
 # 重新添加 luci-app-passwall smartdns版本
 #rm -rf feeds/small/luci-app-passwall
@@ -58,7 +58,7 @@ git clone -b dev https://github.com/justice2001/luci-app-multi-frpc.git package/
 
 # 重新添加 luci-app-serverchan
 #rm -rf feeds/luci/applications/luci-app-serverchan
-#git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-serverchan
+git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
 
 # 重新添加 luci-app-netdata
 #rm -rf feeds/luci/applications/luci-app-netdata
