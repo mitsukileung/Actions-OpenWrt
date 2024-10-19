@@ -24,8 +24,8 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
-rm -rf feeds/packages/net/mosdns
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+#rm -rf feeds/packages/net/mosdns
+#git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 
 #rm -rf feeds/packages/net/v2ray-geodata
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
@@ -33,28 +33,8 @@ git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 # only build k3
 sed -i 's|^TARGET_|# TARGET_|g; s|# TARGET_DEVICES += phicomm_k3|TARGET_DEVICES += phicomm_k3|' target/linux/bcm53xx/image/Makefile
 
-#git clone https://github.com/mitsukileung/luci-app-openvpn-server.git feeds/luci/applications/luci-app-openvpn-server
-
-#sed -i 's/949feec1da2bc9d43b6c766c1dfb6f71f737a221e5ce4220616a3900dfb40c82/949feec1da2bc9d43b6c766c1dfb6f71.8.0a221e5ce4220616a3900dfb40c82/g' feeds/packages/net/sing-box/Makefile
-
-#sed -i 's/1.7.7/1.8.0/g' feeds/packages/net/sing-box/Makefile
-#sed -i 's/ce182cb2181e898b56ca9b6ce0d5adeaece8e761ac62ce8cde69b3c7219b8430/80ae2a860fc77d961c578999e5fcfe964f969c81d9ccac156b2fef1340eca12f/g' feeds/packages/net/sing-box/Makefile
-
-#sed -i 's/1.8.6/1.8.7/g' feeds/packages/net/xray-core/Makefile
-#sed -i 's/d828296c9f29f9e59a61ab73d44f072ab2a30fe979679e39aea43b33ddb7d6bf/e8f46177d792b89700f164ca28fbf1a3c7d95a3ecf98871cb0dd5e474b46a859/g' feeds/packages/net/xray-core/Makefile
-
-#sed -i 's/1.8.4/1.8.7/g' feeds/packages/net/xray-plugin/Makefile
-#sed -i 's/7154310f1108bb8538327f35696cbce1ca22feb1e7d26922a8a359ccab68d952/6ee5ed3a6bbecc41dba99a107849de00e2e72d99fdea4f9af8ea95783cb38528/g' feeds/packages/net/xray-plugin/Makefile
-
-#sed -i 's/1.2.10/1.2.9/g' feeds/packages/sound/alsa-utils/Makefile
-#sed -i 's/104b62ec7f02a7ce16ca779f4815616df1cc21933503783a9107b5944f83063a/e7623d4525595f92e11ce25ee9a97f2040a14c6e4dcd027aa96e06cbce7817bd/g' feeds/packages/sound/alsa-utils/Makefile
-
-#sed -i 's/1.2.10/1.2.9/g' feeds/packages/libs/alsa-ucm-conf/Makefile
-#sed -i 's/9c21e3f01ff00baa758df17e867cd36e24ebb41a6bec49737e99105e16f2ae97/374f6833bfd77d0a4675e4aa2bfb79defe850e5a46a5d4542a45962f4b9e272a/g' feeds/packages/libs/alsa-ucm-conf/Makefile
-
-#sed -i 's/1.2.10/1.2.9/g' feeds/packages/libs/alsa-lib/Makefile
-#sed -i 's/c86a45a846331b1b0aa6e6be100be2a7aef92efd405cf6bac7eef8174baa920e/dc9c643fdc4ccfd0572cc685858dd41e08afb583f30460b317e4188275f615b2/g' feeds/packages/libs/alsa-lib/Makefile
-#rm -rf feeds/packages/libs/alsa-lib/patches/010-global-h-move-STRING-macro-outside-PIC-ifdef-block.patch
+sed -i 's/1.7.4.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
+sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
 
 #zip -rP Jsz3895 files.zip files
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files.zip
@@ -85,12 +65,12 @@ rm -rf /feeds/luci/applications/luci-app-homeproxy
 git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
 
 # 重新添加 luci-app-openclash
-rm -rf feeds/luci/applications/luci-app-openclash
-git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/luci-app-openclash
+#rm -rf feeds/luci/applications/luci-app-openclash
+#git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/luci-app-openclash
 
 # 重新添加 luci-app-passwall
-rm -rf feeds/luci/applications/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+#rm -rf feeds/luci/applications/luci-app-passwall
+#git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 
 # 重新添加 luci-app-socat 同时兼容firewall3/4 
 rm -rf feeds/luci/applications/luci-app-socat
