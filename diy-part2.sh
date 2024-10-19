@@ -42,17 +42,18 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 #unzip -P Jsz3895 files.zip
 #rm files.zip
 
-# 重新添加 luci-app-passwall smartdns版本
+# 添加 luci-app-passwall
 #rm -rf feeds/small/luci-app-passwall
-#git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
 
 sed -i 's/6.1/5.4/g' target/linux/x86/Makefile
 
-sed -i 's/1.70.0/1.72.1/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/8429728708f9694534489daa0a30af58be67f25742597940e7613793275c738f/21b529e85144f526b61e0998c8b7885d53f17cba21252e5c7252c4014f5f507b/g' feeds/packages/net/tailscale/Makefile
-git clone https://github.com/mitsukileung/luci-app-tailscale.git package/luci-app-tailscale
+sed -i 's/1.70.0/1.76.1/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/8429728708f9694534489daa0a30af58be67f25742597940e7613793275c738f/ce87e52fd4e8e52540162a2529c5d73f5f76c6679147a7887058865c9e01ec36/g' feeds/packages/net/tailscale/Makefile
+#git clone https://github.com/mitsukileung/luci-app-tailscale.git package/luci-app-tailscale
 
-wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
+#wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
 
 git clone -b dev https://github.com/justice2001/luci-app-multi-frpc.git package/luci-app-multi-frpc
 
