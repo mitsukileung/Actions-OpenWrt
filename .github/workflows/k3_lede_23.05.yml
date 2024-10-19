@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: K3_lede_23.05
+name: K3_lede
 
 on:
   schedule:
@@ -33,7 +33,7 @@ env:
   CONFIG_FILE: k3_lede.config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: k3_lede.sh
-  RELEASE_TAG: K3_lede_23.05
+  RELEASE_TAG: K3_lede
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
