@@ -16,19 +16,19 @@
 #sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 
 #sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-sed -i '1i src-git small https://github.com/kenzok8/small' feeds.conf.default
-./scripts/feeds update -a
-rm -rf feeds/luci/applications/luci-app-mosdns
-rm -rf feeds/packages/net/mosdns
-rm -rf feeds/packages/net/v2ray-geodata
+#sed -i '1i src-git small https://github.com/kenzok8/small' feeds.conf.default
+#./scripts/feeds update -a
+#rm -rf feeds/luci/applications/luci-app-mosdns
+#rm -rf feeds/packages/net/mosdns
+#rm -rf feeds/packages/net/v2ray-geodata
 #rm -rf feeds/packages/net/{alist,adguardhome,xray*,v2ray*,v2ray*,sing*}
 #wget -O feeds/small/sing-box/Makefile https://raw.githubusercontent.com/takayukileung/JB/main/Makefile-sing-box
 
-wget -O feeds/small/sing-box/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/net/sing-box/Makefile
-sed -i 's/..\/..\/lang\/golang\/golang-package.mk/$(TOPDIR)\/feeds\/packages\/lang\/golang\/golang-package.mk/g' feeds/small/sing-box/Makefile
-wget -O feeds/small/sing-box/files/sing-box.init https://raw.githubusercontent.com/immortalwrt/packages/master/net/sing-box/files/sing-box.init
-wget -O feeds/small/sing-box/files/sing-box.conf https://raw.githubusercontent.com/immortalwrt/packages/master/net/sing-box/files/sing-box.conf
-rm -f feeds/small/sing-box/files/config.json.example
+#wget -O feeds/small/sing-box/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/net/sing-box/Makefile
+#sed -i 's/..\/..\/lang\/golang\/golang-package.mk/$(TOPDIR)\/feeds\/packages\/lang\/golang\/golang-package.mk/g' feeds/small/sing-box/Makefile
+#wget -O feeds/small/sing-box/files/sing-box.init https://raw.githubusercontent.com/immortalwrt/packages/master/net/sing-box/files/sing-box.init
+#wget -O feeds/small/sing-box/files/sing-box.conf https://raw.githubusercontent.com/immortalwrt/packages/master/net/sing-box/files/sing-box.conf
+#rm -f feeds/small/sing-box/files/config.json.example
 #rm -rf feeds/packages/lang/golang
 #git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-./scripts/feeds install -a 
+#./scripts/feeds install -a 
