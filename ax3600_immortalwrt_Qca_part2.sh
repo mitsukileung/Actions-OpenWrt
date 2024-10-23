@@ -34,8 +34,6 @@ sed -i 's/ef7b8a76ce81133dc10f243d733302c070232cdd6594b685c6adbf32769d4f2c/ce87e
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 git clone https://github.com/mitsukileung/luci-app-tailscale.git package/luci-app-tailscale
 
-git clone https://github.com/mitsukileung/luci-app-easymesh.git package/luci-app-easymesh
-
 #sed -i 's/1.20.3/1.20.4/g' feeds/packages/net/shadowsocks-rust/Makefile
 #sed -i 's/07d2301cb14d8e1ff653def167604e701ca9a05a140291875e0ec9e6334ad513/cf064ad157974b3e396aab3bb60aab380dbc4e11b736603bfbc8e7a138f6bb26/g' feeds/packages/net/shadowsocks-rust/Makefile
 
