@@ -31,7 +31,7 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 
 #sed -i 's/1.58.2/1.76.1/g' feeds/packages/net/tailscale/Makefile
 #sed -i 's/452f355408e4e2179872387a863387e06346fc8a6f9887821f9b8a072c6a5b0a/ce87e52fd4e8e52540162a2529c5d73f5f76c6679147a7887058865c9e01ec36/g' feeds/packages/net/tailscale/Makefile
-wget -O feeds/packages/net/tailscale/Makefile https://raw.githubusercontent.com/immortalwrt/packages/refs/heads/master/net/tailscale/Makefile
+wget -O feeds/packages/net/tailscale/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/imm_tailscale_makefile
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 git clone https://github.com/mitsukileung/luci-app-tailscale.git package/luci-app-tailscale
 
