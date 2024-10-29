@@ -23,6 +23,7 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 #sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
+sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/luci/applications/luci-app-zerotier/root/etc/config/zerotier
 
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
@@ -42,9 +43,10 @@ git clone https://github.com/mitsukileung/luci-app-tailscale.git package/luci-ap
 #sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
 
 #zip -rP Jsz3895 files.zip files
-#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files.zip
+#wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/refs/heads/openwrt-21.02/scripts/files_ax6_japan.zip
 #unzip -P Jsz3895 files.zip
 #rm files.zip
+
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
