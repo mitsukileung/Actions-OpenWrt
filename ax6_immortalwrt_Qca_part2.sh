@@ -43,9 +43,9 @@ git clone https://github.com/mitsukileung/luci-app-tailscale.git package/luci-ap
 #sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
 
 #zip -rP Jsz3895 files.zip files
-wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/refs/heads/openwrt-21.02/scripts/files_ax6_japan.zip
-unzip -P Jsz3895 files.zip
-rm files.zip
+#wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/refs/heads/openwrt-21.02/scripts/files_ax6_japan.zip
+#unzip -P Jsz3895 files.zip
+#rm files.zip
 
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
