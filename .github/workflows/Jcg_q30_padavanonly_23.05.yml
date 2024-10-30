@@ -12,7 +12,7 @@ name: Jcg_q30_padavanonly_23.05
 
 on:
   schedule:
-    - cron: 2 0 * * *
+    - cron: 2 */4 * * *
   push:
     tags:
     - 'v*'
