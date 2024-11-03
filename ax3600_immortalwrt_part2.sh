@@ -33,7 +33,7 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/luci/applications/luci-app-
 sed -i 's/1.74.1/1.76.1/g' feeds/packages/net/tailscale/Makefile
 sed -i 's/ef7b8a76ce81133dc10f243d733302c070232cdd6594b685c6adbf32769d4f2c/ce87e52fd4e8e52540162a2529c5d73f5f76c6679147a7887058865c9e01ec36/g' feeds/packages/net/tailscale/Makefile
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
-git clone https://github.com/mitsukileung/luci-app-tailscale.git package/luci-app-tailscale
+git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
 
 sed -i 's/1.20.3/1.20.4/g' feeds/packages/net/shadowsocks-rust/Makefile
 sed -i 's/07d2301cb14d8e1ff653def167604e701ca9a05a140291875e0ec9e6334ad513/cf064ad157974b3e396aab3bb60aab380dbc4e11b736603bfbc8e7a138f6bb26/g' feeds/packages/net/shadowsocks-rust/Makefile
