@@ -48,9 +48,9 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 #sed -i 's/d65b3295d5770e4a15ff9e8a4b83bc2a/skip/g' feeds/packages/net/uugamebooster/Makefile
 #sed -i 's/b9ca050a6ed3658b460150b02f7772e6/skip/g' feeds/packages/net/uugamebooster/Makefile
 
-sed -i 's/1.70.0/1.72.1/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/8429728708f9694534489daa0a30af58be67f25742597940e7613793275c738f/21b529e85144f526b61e0998c8b7885d53f17cba21252e5c7252c4014f5f507b/g' feeds/packages/net/tailscale/Makefile
-git clone https://github.com/mitsukileung/luci-app-tailscale.git package/luci-app-tailscale
+sed -i 's/1.76.1/1.76.6/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/ce87e52fd4e8e52540162a2529c5d73f5f76c6679147a7887058865c9e01ec36/1603c78a6a5e9f83b278d305e1196fbfdeeb841be10ac2ddb7ea433c2701234b/g' feeds/packages/net/tailscale/Makefile
+#git clone https://github.com/mitsukileung/luci-app-tailscale.git package/luci-app-tailscale
 
 wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
 
@@ -90,7 +90,7 @@ git clone -b dev https://github.com/justice2001/luci-app-multi-frpc.git package/
 #git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci-app-filebrowser
 
 # 添加 OpenClash
-git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
+#git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
 
 # 添加 luci-theme-neobird 主题
 #git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
