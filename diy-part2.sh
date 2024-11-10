@@ -34,8 +34,8 @@ sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de6
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
 # 添加 luci-app-mosdns
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+#git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+#git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 #zip -rP Jsz3895 files.zip files
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files_nasjp.zip
@@ -44,13 +44,13 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 # 添加 luci-app-passwall
 #rm -rf feeds/small/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
+#git clone https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
+#git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
 
-sed -i 's/6.1/5.4/g' target/linux/x86/Makefile
+sed -i 's/6.6/5.4/g' target/linux/x86/Makefile
 
-sed -i 's/1.70.0/1.76.1/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/8429728708f9694534489daa0a30af58be67f25742597940e7613793275c738f/ce87e52fd4e8e52540162a2529c5d73f5f76c6679147a7887058865c9e01ec36/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/1.76.1/1.76.6/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/ce87e52fd4e8e52540162a2529c5d73f5f76c6679147a7887058865c9e01ec36/1603c78a6a5e9f83b278d305e1196fbfdeeb841be10ac2ddb7ea433c2701234b/g' feeds/packages/net/tailscale/Makefile
 #git clone https://github.com/mitsukileung/luci-app-tailscale.git package/luci-app-tailscale
 
 #wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
@@ -59,7 +59,7 @@ git clone -b dev https://github.com/justice2001/luci-app-multi-frpc.git package/
 
 # 重新添加 luci-app-serverchan
 #rm -rf feeds/luci/applications/luci-app-serverchan
-git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
+#git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
 
 # 重新添加 luci-app-netdata
 #rm -rf feeds/luci/applications/luci-app-netdata
@@ -91,7 +91,7 @@ git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git pac
 #git clone https://github.com/takayukileung/luci-app-filebrowser.git package/luci-app-filebrowser
 
 # 添加 OpenClash
-git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
+#git clone -b dev https://github.com/vernesong/OpenClash.git --depth=1 package/openclash
 
 # 添加 luci-theme-neobird 主题
 #git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
