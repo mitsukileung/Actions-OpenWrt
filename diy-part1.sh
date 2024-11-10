@@ -31,4 +31,4 @@ rm -rf feeds/packages/net/{chinadns-ng,dns2socks,dns2tcp,microsocks,mosdns,pdnsd
 #rm -f feeds/small/sing-box/files/config.json.example
 #rm -rf feeds/packages/lang/golang
 #git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-./scripts/feeds install -a 
+./scripts/feeds install -a
