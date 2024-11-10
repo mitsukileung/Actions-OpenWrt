@@ -49,8 +49,8 @@ git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/ope
 
 sed -i 's/6.1/5.4/g' target/linux/x86/Makefile
 
-sed -i 's/1.70.0/1.76.1/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/8429728708f9694534489daa0a30af58be67f25742597940e7613793275c738f/ce87e52fd4e8e52540162a2529c5d73f5f76c6679147a7887058865c9e01ec36/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/1.76.1/1.76.6/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/ce87e52fd4e8e52540162a2529c5d73f5f76c6679147a7887058865c9e01ec36/1603c78a6a5e9f83b278d305e1196fbfdeeb841be10ac2ddb7ea433c2701234b/g' feeds/packages/net/tailscale/Makefile
 #git clone https://github.com/mitsukileung/luci-app-tailscale.git package/luci-app-tailscale
 
 #wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
