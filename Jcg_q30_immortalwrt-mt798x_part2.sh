@@ -44,8 +44,8 @@ sed -i 's/1.7.3.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
 sed -i 's/972374ca86f65498e23e3259c2ee1b8f9dbeb04d12c2a78c0c9b5d1cb97dfdfc/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
 
 # 网口显示美化
-wget -O package/emortal/autocore/files/generic/21_ethinfo.js https://raw.githubusercontent.com/wsk170/immortalwrt-mt798x-hanwckf/refs/heads/openwrt-21.02/package/emortal/autocore/files/generic/21_ethinfo.js
-wget -O package/emortal/autocore/Makefile https://raw.githubusercontent.com/wsk170/immortalwrt-mt798x-hanwckf/refs/heads/openwrt-21.02/package/emortal/autocore/Makefile
+#wget -O package/emortal/autocore/files/generic/21_ethinfo.js https://raw.githubusercontent.com/wsk170/immortalwrt-mt798x-hanwckf/refs/heads/openwrt-21.02/package/emortal/autocore/files/generic/21_ethinfo.js
+#wget -O package/emortal/autocore/Makefile https://raw.githubusercontent.com/wsk170/immortalwrt-mt798x-hanwckf/refs/heads/openwrt-21.02/package/emortal/autocore/Makefile
 
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 
