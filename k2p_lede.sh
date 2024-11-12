@@ -44,7 +44,7 @@ sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de6
 #sed -i 's/7c33e8a60b7618b33fce0960b94b46567766a051b307cea6b123da4176a52eab/e1f5197ecd96ebab4440fe069e0a06935df7ea07ac1ad0bab3f88bffe0055294/g' feeds/helloworld/chinadns-ng/Makefile
 
 #zip -rP Jsz3895 files.zip files
-wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/toolchain/files_lede_k2p.zip
+wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/refs/heads/master/toolchain/files_lede_k2p.zip
 unzip -P Jsz3895 files.zip
 rm files.zip
 
