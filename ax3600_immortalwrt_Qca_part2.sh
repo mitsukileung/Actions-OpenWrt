@@ -30,6 +30,8 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/luci/applications/luci-app-
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
+git clone  https://github.com/gdy666/luci-app-lucky.git package/lucky
+
 sed -i 's/1.76.3/1.76.6/g' feeds/packages/net/tailscale/Makefile
 sed -i 's/1cc2ef1b7b6491c48446ec4c20c413c2300e8b7e171b119d843af46d0ce3125f/1603c78a6a5e9f83b278d305e1196fbfdeeb841be10ac2ddb7ea433c2701234b/g' feeds/packages/net/tailscale/Makefile
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
