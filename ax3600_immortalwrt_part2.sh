@@ -86,6 +86,7 @@ git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-h
 # 重新添加 luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
 git clone --filter=blob:none --branch=dev https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+sed -i 's/PKG_RELEASE:=beta/PKG_RELEASE:=/g' package/luci-app-openclash/luci-app-openclash/Makefile
 
 # 重新添加 luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall
