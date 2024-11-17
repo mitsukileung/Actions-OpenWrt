@@ -28,6 +28,9 @@ rm -rf feeds/packages/net/mosdns
 #wget -O feeds/packages/net/chinadns-ng/Makefile https://raw.githubusercontent.com/kenzok8/small/master/chinadns-ng/Makefile
 #chmod 777 test1.sh
 #./test1.sh
+
+sed -i 's/kmod-button-hotplug/kmod-button-hotplug kmod-drm-i915/g' target/linux/x86/Makefile
+
 #rm -rf feeds/packages/lang/golang
 #rm -rf feeds/luci/applications/luci-app-passwall
 #rm -rf feeds/luci/applications/luci-app-openclash
