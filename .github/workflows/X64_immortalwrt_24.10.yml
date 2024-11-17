@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: X64_immortalwrt_23.05
+name: X64_immortalwrt_24.10
 
 on:
   schedule:
@@ -28,12 +28,12 @@ on:
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
-  REPO_BRANCH: openwrt-23.05
+  REPO_BRANCH: openwrt-24.10
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: X64_immortalwrt_23.05.config
-  DIY_P1_SH: X64_immortalwrt_23.05_part1.sh
-  DIY_P2_SH: X64_immortalwrt_23.05_part2.sh
-  RELEASE_TAG: X64_immortalwrt_23.05
+  CONFIG_FILE: X64_immortalwrt_24.10.config
+  DIY_P1_SH: X64_immortalwrt_24.10_part1.sh
+  DIY_P2_SH: X64_immortalwrt_24.10_part2.sh
+  RELEASE_TAG: X64_immortalwrt_24.10
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
