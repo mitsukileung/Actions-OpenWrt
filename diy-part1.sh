@@ -21,7 +21,7 @@ sed -i '2i src-git luci https://github.com/coolsnowwolf/luci' feeds.conf.default
 rm -rf feeds/luci/applications/luci-app-serverchan
 rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/packages/utils/v2dat
-rm -rf feeds/packages/net/{chinadns-ng,dns2socks,dns2tcp,microsocks,mosdns,pdnsd-alt,sing-box,tcping,v2ray-geodata,xray-core}
+rm -rf feeds/packages/net/{chinadns-ng,dns2socks,dns2tcp,microsocks,mosdns,pdnsd-alt,sing-box,tcping,trojan,v2ray-geodata,xray-core}
 #wget -O feeds/small/sing-box/Makefile https://raw.githubusercontent.com/takayukileung/JB/main/Makefile-sing-box
 
 #wget -O feeds/small/sing-box/Makefile https://raw.githubusercontent.com/immortalwrt/packages/master/net/sing-box/Makefile
