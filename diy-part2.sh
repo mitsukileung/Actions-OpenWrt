@@ -29,7 +29,6 @@ sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de6
 
 rm -rf feeds/packages/net/frp/*
 wget -O feeds/packages/net/frp/Makefile https://raw.githubusercontent.com/coolsnowwolf/packages/4812305c004b3049388c358c341f443a2ee59949/net/frp/Makefile
-sed -i 's/golang\/host upx\/host/golang\/host/g' feeds/packages/net/frp/Makefile
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
