@@ -12,7 +12,7 @@ name: X64_immortalwrt
 
 on:
   schedule:
-    - cron: 2 10 * * *
+    - cron: 2 */5 * * *
   push:
     tags:
     - 'v*'
