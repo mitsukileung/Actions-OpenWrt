@@ -37,9 +37,6 @@ sed -i 's/1cc2ef1b7b6491c48446ec4c20c413c2300e8b7e171b119d843af46d0ce3125f/1603c
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
 
-sed -i 's/1.20.3/1.20.4/g' feeds/packages/net/shadowsocks-rust/Makefile
-sed -i 's/07d2301cb14d8e1ff653def167604e701ca9a05a140291875e0ec9e6334ad513/cf064ad157974b3e396aab3bb60aab380dbc4e11b736603bfbc8e7a138f6bb26/g' feeds/packages/net/shadowsocks-rust/Makefile
-
 #rm -f feeds/packages/net/socat/patches/100-usleep.patch
 #sed -i 's/1.7.4.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
 #sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
