@@ -32,7 +32,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: 703n_lede.config
   DIY_P1_SH: diy-part1.sh
-  DIY_P2_SH: 703n_lede.sh
+  DIY_P2_SH: diy-part2.sh
   RELEASE_TAG: 703n_lede
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
