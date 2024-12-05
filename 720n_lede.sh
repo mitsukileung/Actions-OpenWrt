@@ -12,10 +12,12 @@
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.99.1/g' package/base-files/files/bin/config_generate
-wget -O target/linux/ath79/dts/ar9331_tplink_tl-wr710n-8m.dtsi https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/ar9331_tplink_tl-wr710n-16m.dtsi
-wget -O target/linux/ath79/image/generic-tp-link.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/generic-tp-link.mk
+sed -i 's/7d0000/fd0000/g' target/linux/ath79/dts/ar9331_tplink_tl-wr710n-8m.dtsi
+sed -i 's/7f0000/ff0000/g' target/linux/ath79/dts/ar9331_tplink_tl-wr710n-8m.dtsi
+sed -i 's/8mlzma/16mlzma/g' target/linux/ath79/image/generic-tp-link.mk
+
 # Modify X86 Kernel
-sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.4/g' target/linux/ath79/Makefile
+#sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.4/g' target/linux/ath79/Makefile
 # Clear the login password
 sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
 # Modify frpc default setting
