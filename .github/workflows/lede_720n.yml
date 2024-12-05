@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: 703n_lede
+name: 720n_lede
 
 on:
   schedule:
@@ -30,10 +30,10 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede.git
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: 703n_lede.config
+  CONFIG_FILE: 720n_lede.config
   DIY_P1_SH: diy-part1.sh
-  DIY_P2_SH: diy-part2.sh
-  RELEASE_TAG: 703n_lede
+  DIY_P2_SH: 720n_lede.sh
+  RELEASE_TAG: 720n_lede
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
