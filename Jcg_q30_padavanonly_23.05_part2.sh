@@ -100,8 +100,8 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-pas
 #git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-socat
 
 # 重新添加 luci-app-wechatpush
-#rm -rf feeds/luci/applications/luci-app-wechatpush
-#git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
+rm -rf feeds/luci/applications/luci-app-wechatpush
+git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
 
 # 添加 OpenAppFilter
 #git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
