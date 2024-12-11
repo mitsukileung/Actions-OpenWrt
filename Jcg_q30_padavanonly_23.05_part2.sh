@@ -34,8 +34,8 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
-sed -i 's/1.58.2/1.76.6/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/452f355408e4e2179872387a863387e06346fc8a6f9887821f9b8a072c6a5b0a/1603c78a6a5e9f83b278d305e1196fbfdeeb841be10ac2ddb7ea433c2701234b/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/1.58.2/1.78.1/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/452f355408e4e2179872387a863387e06346fc8a6f9887821f9b8a072c6a5b0a/dbc25cc241bb233f183475f003d5508af7b45add1ca548b35a6a6fea91fb91af/g' feeds/packages/net/tailscale/Makefile
 #wget -O feeds/packages/net/tailscale/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/imm_tailscale_makefile
 #wget -O feeds/packages/net/tailscale/Makefile https://raw.githubusercontent.com/immortalwrt/packages/refs/heads/master/net/tailscale/Makefile
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
