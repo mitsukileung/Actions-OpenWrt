@@ -22,6 +22,9 @@ sed -i 's/192.168.1.1/192.168.88.3/g' package/base-files/files/bin/config_genera
 #sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 
+wget -O package/emortal/autocore/files/generic/21_ethinfo.js https://raw.githubusercontent.com/wsk170/immortalwrt-mt798x/refs/heads/openwrt-21.02/package/emortal/autocore/files/generic/21_ethinfo.js
+wget -O package/emortal/autocore/files/generic/luci-mod-status-autocore.json https://raw.githubusercontent.com/wsk170/immortalwrt-mt798x/refs/heads/openwrt-21.02/package/emortal/autocore/files/generic/luci-mod-status-autocore.json
+
 wget -O feeds/packages/net/zerotier/patches/0001-fix-miniupnpc-natpmp-include-paths.patch https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/patches/0001-fix-miniupnpc-natpmp-include-paths.patch
 wget -O feeds/packages/net/zerotier/patches/0002-remove-PIE-options.patch https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/patches/0002-remove-PIE-options.patch
 wget -O feeds/packages/net/zerotier/patches/0003-fix-compilation-for-arm_cortex-a7-neon.patch https://raw.githubusercontent.com/immortalwrt/packages/master/net/zerotier/patches/0003-fix-compilation-for-arm_cortex-a7-neon.patch
