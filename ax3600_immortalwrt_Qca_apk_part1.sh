@@ -26,7 +26,7 @@ rm -rf feeds/packages/net/mosdns
 
 sed -i '/)\/etc\/config/d' feeds/packages/net/socat/Makefile
 sed -i '/)\/etc\/init.d/d' feeds/packages/net/socat/Makefile
-wget -O feeds/luci/applications/luci-app-socat/root/etc/uci-defaults/luci-app-socat https://raw.githubusercontent.com/immortalwrt/luci/refs/heads/openwrt-23.05/applications/luci-app-socat/root/etc/uci-defaults/luci-app-socat
+#wget -O feeds/luci/applications/luci-app-socat/root/etc/uci-defaults/luci-app-socat https://raw.githubusercontent.com/immortalwrt/luci/refs/heads/openwrt-23.05/applications/luci-app-socat/root/etc/uci-defaults/luci-app-socat
 #rm -rf feeds/packages/net/v2ray-geodata
 #wget -O test1.sh https://raw.githubusercontent.com/takayukileung/JB/main/v2ray-geodata_update.sh
 #wget -O feeds/packages/net/chinadns-ng/Makefile https://raw.githubusercontent.com/kenzok8/small/master/chinadns-ng/Makefile
