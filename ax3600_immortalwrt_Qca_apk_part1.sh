@@ -24,6 +24,8 @@ git clone -b v5 https://github.com/sbwml/luci-app-mosdns.git package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 rm -rf feeds/packages/net/mosdns
 
+sed -i '/)\/etc\/config/d' feeds/packages/net/socat/Makefile
+sed -i '/)\/etc\/init.d/d' feeds/packages/net/socat/Makefile
 #rm -rf feeds/packages/net/v2ray-geodata
 #wget -O test1.sh https://raw.githubusercontent.com/takayukileung/JB/main/v2ray-geodata_update.sh
 #wget -O feeds/packages/net/chinadns-ng/Makefile https://raw.githubusercontent.com/kenzok8/small/master/chinadns-ng/Makefile
