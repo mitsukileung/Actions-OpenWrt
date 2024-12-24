@@ -23,6 +23,10 @@
 git clone -b v5 https://github.com/sbwml/luci-app-mosdns.git package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 rm -rf feeds/packages/net/mosdns
+
+sed -i 's/20220816/20220823/g' feeds/luci/applications/luci-app-socat/Makefile
+wget -O feeds/luci/applications/luci-app-socat/root/etc/uci-defaults/luci-app-socat https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_apk
+
 #rm -rf feeds/packages/net/v2ray-geodata
 #wget -O test1.sh https://raw.githubusercontent.com/takayukileung/JB/main/v2ray-geodata_update.sh
 #wget -O feeds/packages/net/chinadns-ng/Makefile https://raw.githubusercontent.com/kenzok8/small/master/chinadns-ng/Makefile
