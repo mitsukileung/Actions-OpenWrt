@@ -9,7 +9,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Ax3600_immortalwrt_Qca_Apk
+name: Ax3600_immortalwrt_QCA_Apk
 
 on:
   schedule:
@@ -31,10 +31,10 @@ env:
   REPO_URL: https://github.com/VIKINGYFY/immortalwrt.git
   REPO_BRANCH: main
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: ax3600_immortalwrt_Qca_apk.config
+  CONFIG_FILE: ax3600_immortalwrt_QCA_apk.config
   DIY_P1_SH: ax3600_immortalwrt_Qca_apk_part1.sh
   DIY_P2_SH: ax3600_immortalwrt_Qca_part2.sh
-  RELEASE_TAG: Ax3600_immortalwrt_Qca_Apk
+  RELEASE_TAG: Ax3600_immortalwrt_QCA_Apk
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
