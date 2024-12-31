@@ -12,6 +12,7 @@
 
 # Modify default IP
 sed -i 's/192.168.6.1/192.168.88.3/g' package/base-files/files/bin/config_generate
+sed -i 's/model = "JCG Q30";/model = "JCG Q30 \/ MR3000D-CIq(512MB RAM version)";/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-jcg-q30.dts
 # Modify X86 Kernel 5.10
 #sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' target/linux/ipq807x/Makefile
 # Clear the login password
