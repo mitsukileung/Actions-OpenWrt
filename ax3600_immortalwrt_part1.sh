@@ -29,7 +29,7 @@ rm -rf feeds/packages/net/v2ray-geodata
 #chmod 777 test1.sh
 #./test1.sh
 
-sed -i 's/kmod-button-hotplug/kmod-button-hotplug kmod-drm-i915/g' target/linux/x86/Makefile
+#sed -i 's/kmod-button-hotplug/kmod-button-hotplug kmod-drm-i915/g' target/linux/x86/Makefile
 
 #rm -rf feeds/packages/lang/golang
 #rm -rf feeds/luci/applications/luci-app-passwall
