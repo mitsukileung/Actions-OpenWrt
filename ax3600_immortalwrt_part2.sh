@@ -34,6 +34,8 @@ wget -O package/v2ray-geoview/Makefile https://raw.githubusercontent.com/xiaorou
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
+git clone https://github.com/ophub/luci-app-amlogic.git package/luci-app-amlogic
+
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
 sed -i 's/1.76.6/1.78.1/g' feeds/packages/net/tailscale/Makefile
