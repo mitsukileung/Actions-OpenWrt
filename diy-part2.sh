@@ -60,6 +60,9 @@ git clone -b dev https://github.com/justice2001/luci-app-multi-frpc.git package/
 #rm -rf feeds/luci/applications/luci-app-serverchan
 git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
 
+
+git clone https://github.com/ophub/luci-app-amlogic.git package/luci-app-amlogic
+
 # 重新添加 luci-app-netdata
 #rm -rf feeds/luci/applications/luci-app-netdata
 #git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
