@@ -85,8 +85,8 @@ git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
 #git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
 # 重新添加 luci-app-homeproxy dev版
-rm -rf feeds/luci/applications/luci-app-homeproxy
-git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
+#rm -rf feeds/luci/applications/luci-app-homeproxy
+#git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
 
 # 重新添加 luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
@@ -99,9 +99,9 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-pas
 #sed -i 's/PKG_VERSION:=4.78-4/PKG_VERSION:=4.78.4/g' package/luci-app-passwall/luci-app-passwall/Makefile
 
 # 重新添加 luci-app-socat 同时兼容firewall3/4 
-rm -rf feeds/luci/applications/luci-app-socat
+#rm -rf feeds/luci/applications/luci-app-socat
 #git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-socat
-git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
+#git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 
 # 重新添加 luci-app-wechatpush
 #rm -rf feeds/luci/applications/luci-app-wechatpush
