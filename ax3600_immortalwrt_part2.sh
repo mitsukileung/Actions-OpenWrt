@@ -99,8 +99,9 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-pas
 #sed -i 's/PKG_VERSION:=4.78-4/PKG_VERSION:=4.78.4/g' package/luci-app-passwall/luci-app-passwall/Makefile
 
 # 重新添加 luci-app-socat 同时兼容firewall3/4 
-#rm -rf feeds/luci/applications/luci-app-socat
+rm -rf feeds/luci/applications/luci-app-socat
 #git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-socat
+git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 
 # 重新添加 luci-app-wechatpush
 #rm -rf feeds/luci/applications/luci-app-wechatpush
