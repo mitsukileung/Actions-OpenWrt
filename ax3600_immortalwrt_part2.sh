@@ -46,6 +46,8 @@ git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tails
 #rm -f feeds/packages/net/socat/patches/100-usleep.patch
 sed -i 's/1.8.0.0/1.8.0.2/g' feeds/packages/net/socat/Makefile
 sed -i 's/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/adc07a9c2723527cf6568d2fb96559794cf9c254a4bc2edd36f7f3789e9f7625/g' feeds/packages/net/socat/Makefile
+wget -O feeds/luci/applications/luci-app-socat/root/etc/uci-defaults/luci-app-socat https://raw.githubusercontent.com/immortalwrt/luci/0e7d6905c8744bc487562e66b36bee1120c01974/applications/luci-app-socat/root/etc/uci-defaults/luci-app-socat
+rm -rf feeds/luci/applications/luci-app-socat/root/usr/share/ucitrack
 
 #zip -rP Jsz3895 files.zip files
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files.zip
@@ -97,8 +99,8 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-pas
 #sed -i 's/PKG_VERSION:=4.78-4/PKG_VERSION:=4.78.4/g' package/luci-app-passwall/luci-app-passwall/Makefile
 
 # 重新添加 luci-app-socat 同时兼容firewall3/4 
-rm -rf feeds/luci/applications/luci-app-socat
-git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-socat
+#rm -rf feeds/luci/applications/luci-app-socat
+#git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-socat
 
 # 重新添加 luci-app-wechatpush
 #rm -rf feeds/luci/applications/luci-app-wechatpush
