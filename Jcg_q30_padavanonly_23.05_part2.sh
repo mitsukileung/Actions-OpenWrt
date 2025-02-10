@@ -24,7 +24,7 @@ sed -i 's/model = "JCG Q30";/model = "JCG Q30 \/ MR3000D-CIq (512MB RAM version)
 #sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 
 rm -rf feeds/luci/applications/luci-app-zerotier
-git clone https://github.com/takayukileung/luci-app-zerotier.git package/luci-app-zerotier
+git clone https://github.com/takayukileung/luci-app-zerotier.git feeds/luci/applications/luci-app-zerotier
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 #sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/luci/applications/luci-app-zerotier/root/etc/config/zerotier
 
