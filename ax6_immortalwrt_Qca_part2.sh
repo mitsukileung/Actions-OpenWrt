@@ -103,8 +103,8 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-pas
 #rm -rf feeds/luci/applications/luci-app-wechatpush
 #git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
 
-# 添加 OpenAppFilter
-#git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+# 添加 OpenWrt-nikki
+git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 
 # 添加 smartdns
 #git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
