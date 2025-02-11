@@ -108,9 +108,8 @@ git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wec
 # 添加 OpenAppFilter
 #git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
-# 添加 smartdns
-#git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
-#git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
+# 添加 OpenWrt-nikki
+git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 
 # 添加 adguardhome
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
