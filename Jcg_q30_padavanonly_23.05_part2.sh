@@ -69,7 +69,7 @@ sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de6
 #wget -O target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh https://raw.githubusercontent.com/VIKINGYFY/immortalwrt/19e3832bf0d39dd2ced289b27a95444b1ec0f911/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh
 
 #添加 集客AC
-git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
+#git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
 
 # update frp to 0.53.2
 #sed -i 's/0.51.3/0.53.2/g' feeds/packages/net/frp/Makefile
@@ -102,8 +102,8 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-pas
 #git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-socat
 
 # 重新添加 luci-app-wechatpush
-rm -rf feeds/luci/applications/luci-app-wechatpush
-git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
+#rm -rf feeds/luci/applications/luci-app-wechatpush
+#git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
 
 # 添加 OpenAppFilter
 #git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
