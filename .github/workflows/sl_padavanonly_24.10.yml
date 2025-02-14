@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Jcg_q30_NekokeCore_24.10
+name: sl_NekokeCore_24.10
 
 on:
   schedule:
@@ -30,10 +30,10 @@ env:
   REPO_URL: https://github.com/NekokeCore/immortalwrt-mt798x-24.10.git
   REPO_BRANCH: openwrt-24.10
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: Jcg_q30_NekokeCore_24.10.config
-  DIY_P1_SH: Jcg_q30_NekokeCore_24.10_part1.sh
+  CONFIG_FILE: sl_NekokeCore_24.10.config
+  DIY_P1_SH: sl_NekokeCore_24.10_part1.sh
   DIY_P2_SH: Jcg_q30_padavanonly_23.05_part2.sh
-  RELEASE_TAG: Jcg_q30_NekokeCore_24.10
+  RELEASE_TAG: sl_NekokeCore_24.10
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
