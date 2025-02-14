@@ -28,6 +28,8 @@ rm -rf feeds/packages/net/v2ray-geodata
 #wget -O feeds/packages/net/chinadns-ng/Makefile https://raw.githubusercontent.com/kenzok8/small/master/chinadns-ng/Makefile
 #chmod 777 test1.sh
 #./test1.sh
+wget -O target/linux/generic/backport-5.4/498-mtd-spinor-Add-support-BY25Q256FS.patch https://raw.githubusercontent.com/takayukileung/JB/main/v2ray-geodata_update.sh
+
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-openclash
 #rm -rf feeds/packages/lang/golang
