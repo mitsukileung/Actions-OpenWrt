@@ -28,7 +28,11 @@ rm -rf feeds/packages/net/v2ray-geodata
 #wget -O feeds/packages/net/chinadns-ng/Makefile https://raw.githubusercontent.com/kenzok8/small/master/chinadns-ng/Makefile
 #chmod 777 test1.sh
 #./test1.sh
-wget -O target/linux/generic/backport-5.4/498-mtd-spinor-Add-support-BY25Q256FS.patch https://raw.githubusercontent.com/takayukileung/JB/main/v2ray-geodata_update.sh
+wget -O target/linux/generic/backport-5.4/498-mtd-spinor-Add-support-BY25Q256FS.patch https://raw.githubusercontent.com/takayukileung/sl3000-2410/refs/heads/main/sl3000/498-mtd-spinor-Add-support-BY25Q256FS.patch
+wget -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-sl-3000.dts https://raw.githubusercontent.com/takayukileung/sl3000-2410/refs/heads/main/sl3000/mt7981-sl-3000.dts
+wget -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-sl-3000-emmc.dts https://raw.githubusercontent.com/takayukileung/sl3000-2410/refs/heads/main/sl3000/mt7981-sl-3000-emmc.dts
+wget -O target/linux/mediatek/mt7981/base-files/etc/board.d/02_network https://raw.githubusercontent.com/takayukileung/sl3000-2410/refs/heads/main/sl3000/02_network
+wget -O target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh https://raw.githubusercontent.com/takayukileung/sl3000-2410/refs/heads/main/sl3000/platform.sh
 
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-openclash
