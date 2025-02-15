@@ -33,13 +33,13 @@ wget -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-sl-3
 wget -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-sl-3000-emmc.dts https://raw.githubusercontent.com/takayukileung/sl3000-2410/refs/heads/main/sl3000/mt7981-sl-3000-emmc.dts
 wget -O target/linux/mediatek/mt7981/base-files/etc/board.d/02_network https://raw.githubusercontent.com/takayukileung/sl3000-2410/refs/heads/main/sl3000/02_network
 wget -O target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh https://raw.githubusercontent.com/takayukileung/sl3000-2410/refs/heads/main/sl3000/platform.sh
-#wget -O package/boot/uboot-envtools/files/mediatek_filogic https://raw.githubusercontent.com/takayukileung/sl3000-2410/refs/heads/main/sl3000/mediatek_filogic
+wget -O package/boot/uboot-envtools/files/mediatek_filogic https://raw.githubusercontent.com/takayukileung/sl3000-2410/refs/heads/main/sl3000/mediatek_filogic
 wget -O package/mtk/applications/mtk-smp/files/smp.sh https://raw.githubusercontent.com/takayukileung/sl3000-2410/refs/heads/main/sl3000/smp.sh
 wget -O target/linux/mediatek/image/mt7981.mk https://raw.githubusercontent.com/takayukileung/sl3000-2410/refs/heads/main/sl3000/mt7981.mk
 wget -O defconfig/mt7981-ax3000.config https://raw.githubusercontent.com/takayukileung/sl3000-2410/refs/heads/main/sl3000/mt7981-ax3000.config
 wget -O target/linux/mediatek/mt7981/base-files/lib/preinit/90_extract_caldata https://raw.githubusercontent.com/takayukileung/sl3000-2410/refs/heads/main/sl3000/90_extract_caldata
 
-wget -O package/boot/uboot-envtools/files/mediatek_filogic https://raw.githubusercontent.com/takayukileung/sl3000-2410/refs/heads/main/sl3000/mediatek_filogic-mod
+#wget -O package/boot/uboot-envtools/files/mediatek_filogic https://raw.githubusercontent.com/takayukileung/sl3000-2410/refs/heads/main/sl3000/mediatek_filogic-mod
 
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-openclash
