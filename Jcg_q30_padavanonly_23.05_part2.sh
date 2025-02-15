@@ -24,6 +24,7 @@ sed -i 's/model = "JCG Q30";/model = "JCG Q30 \/ MR3000D-CIq (512MB RAM version)
 #sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
+sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/luci/applications/luci-app-zerotier/root/etc/config/zerotier
 
 #mkdir package/v2ray-geoview
 #wget -O package/v2ray-geoview/Makefile https://raw.githubusercontent.com/xiaorouji/openwrt-passwall-packages/refs/heads/main/v2ray-geoview/Makefile
