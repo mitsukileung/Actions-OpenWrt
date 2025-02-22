@@ -29,8 +29,6 @@ rm -rf feeds/packages/net/geoview
 mkdir package/v2ray-geoview
 wget -O package/v2ray-geoview/Makefile https://raw.githubusercontent.com/xiaorouji/openwrt-passwall-packages/refs/heads/main/v2ray-geoview/Makefile
 
-sed -i '/PKG_FIXUP/d' feeds/packages/libs/libffi/Makefile
-
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
