@@ -20,7 +20,7 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/f
 #sed -i 's/yourdomain.com/frp.104300.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/1234567/www.126126.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #固件版本号添加个人标识和日期
-sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
+sed -i "s/DISTRIB_DESCRIPTION='LEDE '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d)) '/g" package/lean/default-settings/files/zzz-default-settings
 
 sed -i 's/1.8.0.0/1.8.0.2/g' feeds/packages/net/socat/Makefile
 sed -i 's/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/adc07a9c2723527cf6568d2fb96559794cf9c254a4bc2edd36f7f3789e9f7625/g' feeds/packages/net/socat/Makefile
