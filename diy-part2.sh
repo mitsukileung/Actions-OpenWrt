@@ -51,8 +51,8 @@ git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/ope
 
 #sed -i 's/6.1/5.4/g' target/linux/x86/Makefile
 
-sed -i 's/1.76.1/1.76.6/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/ce87e52fd4e8e52540162a2529c5d73f5f76c6679147a7887058865c9e01ec36/1603c78a6a5e9f83b278d305e1196fbfdeeb841be10ac2ddb7ea433c2701234b/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/1.76.1/1.80.2/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/ce87e52fd4e8e52540162a2529c5d73f5f76c6679147a7887058865c9e01ec36/b4d5eb15e2d11ad71803dea8ec8ddcaf5a400eabe12a5f469d133cfeae56678b/g' feeds/packages/net/tailscale/Makefile
 #git clone https://github.com/mitsukileung/luci-app-tailscale.git package/luci-app-tailscale
 
 #wget -O feeds/small/luci-app-ssr-plus/root/etc/config/shadowsocksr https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/shadowsocksr
@@ -60,8 +60,6 @@ sed -i 's/ce87e52fd4e8e52540162a2529c5d73f5f76c6679147a7887058865c9e01ec36/1603c
 git clone -b dev https://github.com/justice2001/luci-app-multi-frpc.git package/luci-app-multi-frpc
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
-
-git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 
 # 重新添加 luci-app-serverchan
 #rm -rf feeds/luci/applications/luci-app-serverchan
