@@ -32,6 +32,8 @@ wget -O feeds/packages/net/frp/Makefile https://raw.githubusercontent.com/coolsn
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
+rm -rf feeds/packages/net/geoview
+
 # 添加 luci-app-mosdns
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
