@@ -20,7 +20,12 @@
 
 #sed -i '1i src-git small https://github.com/kenzok8/small' feeds.conf.default
 ./scripts/feeds update -a
-git clone -b v5 https://github.com/sbwml/luci-app-mosdns.git package/mosdns
+git clone -b v5 https://github.com/sbwml/luci-app-mosdns.git mosdns
+cp -r /mosdns/luci-app-mosdns /package/luci-app-mosdns
+cp -r /mosdns/mosdns /package/mosdns
+cp -r /mosdns/v2dat /package/v2dat
+rm -rf mosdns
+
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
