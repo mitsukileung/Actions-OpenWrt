@@ -39,8 +39,8 @@ git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 sed -i 's/1.58.2/1.80.3/g' feeds/packages/net/tailscale/Makefile
 sed -i 's/452f355408e4e2179872387a863387e06346fc8a6f9887821f9b8a072c6a5b0a/4ea7d4c1a4e86905f330f5d5f5288488cb29d6c586d5bcabf9d02c5481ba740d/g' feeds/packages/net/tailscale/Makefile
 
-sed -i 's/1.80.0/1.80.3/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/3dc0e5f903912ba5ada04c807501550b2d434111d1080b11099672d3dfd5c3f3/4ea7d4c1a4e86905f330f5d5f5288488cb29d6c586d5bcabf9d02c5481ba740d/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/1.80.2/1.80.3/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/b4d5eb15e2d11ad71803dea8ec8ddcaf5a400eabe12a5f469d133cfeae56678b/4ea7d4c1a4e86905f330f5d5f5288488cb29d6c586d5bcabf9d02c5481ba740d/g' feeds/packages/net/tailscale/Makefile
 
 #wget -O feeds/packages/net/tailscale/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/imm_tailscale_makefile
 #wget -O feeds/packages/net/tailscale/Makefile https://raw.githubusercontent.com/immortalwrt/packages/refs/heads/master/net/tailscale/Makefile
