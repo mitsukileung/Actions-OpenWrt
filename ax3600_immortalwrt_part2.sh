@@ -29,6 +29,15 @@ rm -rf feeds/packages/net/geoview
 mkdir package/geoview
 wget -O package/geoview/Makefile https://raw.githubusercontent.com/xiaorouji/openwrt-passwall-packages/refs/heads/main/geoview/Makefile
 
+sed -i 's/202501190004/202503050126/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/4f8d16184b6938e635519bc91cb978dcea6884878e39f592f7144135401d6bb6/83337c712b04d8c16351cf5a5394eae5cb9cfa257fb4773485945dce65dcea76/g' feeds/packages/net/v2ray-geodata/Makefile
+
+sed -i 's/20250124154827/20250307074130/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/ac12d81edc6058b3c66ae96a0a26ca8281616d96ea86d0d77b2ceff34a3e1a9d/17d78a6b0a64e04f2362b2907788d9a192d41a340301e2e63daca415219cf752/g' feeds/packages/net/v2ray-geodata/Makefile
+
+sed -i 's/202502030035/202503030037/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/2e9292d9adfd684df520a9228b641f57e63581eb93f5938284beeb621fde6bf3/07f9aea6d96f0c97bd215332b36dc7789fe4366447172e232e1f10e414b7b6b3/g' feeds/packages/net/v2ray-geodata/Makefile
+
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
