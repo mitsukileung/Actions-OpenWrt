@@ -20,7 +20,7 @@
 
 #sed -i '1i src-git small https://github.com/kenzok8/small' feeds.conf.default
 ./scripts/feeds update -a
-git clone https://github.com/sbwml/luci-app-mosdns.git mosdns
+git clone -b v5 https://github.com/sbwml/luci-app-mosdns.git mosdns
 cp -r mosdns/luci-app-mosdns package/luci-app-mosdns
 cp -r mosdns/mosdns package/mosdns
 cp -r mosdns/v2dat package/v2dat
