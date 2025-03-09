@@ -54,9 +54,9 @@ git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tails
 #sed -i 's/1.7.4.4/1.8.0.3/g' feeds/packages/net/socat/Makefile
 #sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/01eb017361d95bb3a6941e840b59e4463a3fabf92df4154ed02b16a2ed6a0095/g' feeds/packages/net/socat/Makefile
 
-rm -rf feeds/luci/applications/luci-app-socat
-wget -O feeds/packages/net/socat/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_2305_Makefile
-git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
+#rm -rf feeds/luci/applications/luci-app-socat
+#wget -O feeds/packages/net/socat/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_2305_Makefile
+#git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 
 #zip -rP Jsz3895 files.zip files
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/openwrt-21.02/tools/files_7981_fpz_new.zip
