@@ -32,11 +32,11 @@ wget -O package/geoview/Makefile https://raw.githubusercontent.com/xiaorouji/ope
 sed -i 's/202501190004/202503050126/g' feeds/packages/net/v2ray-geodata/Makefile
 sed -i 's/4f8d16184b6938e635519bc91cb978dcea6884878e39f592f7144135401d6bb6/83337c712b04d8c16351cf5a5394eae5cb9cfa257fb4773485945dce65dcea76/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/20250124154827/20250307074130/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/ac12d81edc6058b3c66ae96a0a26ca8281616d96ea86d0d77b2ceff34a3e1a9d/17d78a6b0a64e04f2362b2907788d9a192d41a340301e2e63daca415219cf752/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/20250124154827/20250326132209/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/ac12d81edc6058b3c66ae96a0a26ca8281616d96ea86d0d77b2ceff34a3e1a9d/1eeb1aa717971c6cabd5fa935a74e2a12c4f264b8641cec340309d85524895a7/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/202502030035/202503030037/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/2e9292d9adfd684df520a9228b641f57e63581eb93f5938284beeb621fde6bf3/07f9aea6d96f0c97bd215332b36dc7789fe4366447172e232e1f10e414b7b6b3/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/202502030035/202503240038/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/2e9292d9adfd684df520a9228b641f57e63581eb93f5938284beeb621fde6bf3/05bcd815b0d0c890650136a9a56126a910439ce286de5b15e039dc02b2170397/g' feeds/packages/net/v2ray-geodata/Makefile
 
 sed -i 's/2025-03-19/2023-12-05/g' package/libs/libnl-tiny/Makefile
 sed -i 's/c0df580adbd4d555ecc1962dbe88e91d75b67a4e/965c4bf49658342ced0bd6e7cb069571b4a1ddff/g' package/libs/libnl-tiny/Makefile
