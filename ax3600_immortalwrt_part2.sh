@@ -52,9 +52,9 @@ sed -i 's/1603c78a6a5e9f83b278d305e1196fbfdeeb841be10ac2ddb7ea433c2701234b/dbc25
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
 
-rm -rf feeds/luci/applications/luci-app-socat
-wget -O feeds/packages/net/socat/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_Makefile
-git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
+#rm -rf feeds/luci/applications/luci-app-socat
+#wget -O feeds/packages/net/socat/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_Makefile
+#git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 
 #zip -rP Jsz3895 files.zip files
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files.zip
@@ -75,7 +75,7 @@ git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 #wget -O target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh https://raw.githubusercontent.com/VIKINGYFY/immortalwrt/19e3832bf0d39dd2ced289b27a95444b1ec0f911/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh
 
 #添加 集客AC
-git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
+#git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
 
 # update frp to 0.53.2
 #sed -i 's/0.51.3/0.53.2/g' feeds/packages/net/frp/Makefile
