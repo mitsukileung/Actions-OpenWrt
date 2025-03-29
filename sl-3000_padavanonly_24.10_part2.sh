@@ -66,6 +66,7 @@ git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tails
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
+wget -O defconfig/mt7981-ax3000.config https://raw.githubusercontent.com/takayukileung/sl3000-p-2410/refs/heads/main/defconfig/mt7981-ax3000.config
 wget -O package/boot/uboot-envtools/files/mediatek_filogic https://raw.githubusercontent.com/takayukileung/sl3000-p-2410/refs/heads/main/package/boot/uboot-envtools/files/mediatek_filogic
 wget -O package/mtk/applications/mtk-smp/files/smp.sh https://raw.githubusercontent.com/takayukileung/sl3000-p-2410/refs/heads/main/package/mtk/applications/mtk-smp/files/smp.sh
 wget -O target/linux/generic/backport-5.4/494-mtd-spinand-add-support-foresee.patch https://raw.githubusercontent.com/takayukileung/sl3000-p-2410/refs/heads/main/target/linux/generic/backport-5.4/494-mtd-spinand-add-support-foresee.patch
@@ -74,10 +75,12 @@ wget -O target/linux/generic/backport-5.4/496-mtd-spinand-Add-support-dosilicon.
 wget -O target/linux/generic/backport-5.4/497-mtd-spinand-Add-support-gsto.patch https://raw.githubusercontent.com/takayukileung/sl3000-p-2410/refs/heads/main/target/linux/generic/backport-5.4/497-mtd-spinand-Add-support-gsto.patch
 wget -O target/linux/generic/backport-5.4/498-mtd-spinor-Add-support-BY25Q256FS.patch https://raw.githubusercontent.com/takayukileung/sl3000-p-2410/refs/heads/main/target/linux/generic/backport-5.4/498-mtd-spinor-Add-support-BY25Q256FS.patch
 wget -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-sl-3000-emmc.dts https://raw.githubusercontent.com/takayukileung/sl3000-p-2410/refs/heads/main/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-sl-3000-emmc.dts
+wget -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-sl-3000.dts https://raw.githubusercontent.com/takayukileung/sl3000-p-2410/refs/heads/main/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-sl-3000.dts
 wget -O target/linux/mediatek/image/mt7981.mk https://raw.githubusercontent.com/takayukileung/sl3000-p-2410/refs/heads/main/target/linux/mediatek/image/mt7981.mk
 wget -O target/linux/mediatek/mt7981/base-files/etc/board.d/02_network https://raw.githubusercontent.com/takayukileung/sl3000-p-2410/refs/heads/main/target/linux/mediatek/mt7981/base-files/etc/board.d/02_network
+wget -O target/linux/mediatek/mt7981/base-files/lib/preinit/90_extract_caldata https://raw.githubusercontent.com/takayukileung/sl3000-p-2410/refs/heads/main/target/linux/mediatek/mt7981/base-files/lib/preinit/90_extract_caldata
 wget -O target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh https://raw.githubusercontent.com/takayukileung/sl3000-p-2410/refs/heads/main/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
-wget -O target/linux/mediatek/patches-5.4/9921-support-SX-7981R128-for-mtk-sdk-v7.6.6.1_hanwckf.patch https://raw.githubusercontent.com/takayukileung/sl3000-p-2410/refs/heads/main/target/linux/mediatek/patches-5.4/9921-support-SX-7981R128-for-mtk-sdk-v7.6.6.1_hanwckf.patch
+#wget -O target/linux/mediatek/patches-5.4/9921-support-SX-7981R128-for-mtk-sdk-v7.6.6.1_hanwckf.patch https://raw.githubusercontent.com/takayukileung/sl3000-p-2410/refs/heads/main/target/linux/mediatek/patches-5.4/9921-support-SX-7981R128-for-mtk-sdk-v7.6.6.1_hanwckf.patch
 
 #添加 集客AC
 #git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
