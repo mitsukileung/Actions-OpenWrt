@@ -12,7 +12,7 @@
 
 # Modify default IP
 sed -i 's/192.168.6.1/192.168.88.3/g' package/base-files/files/bin/config_generate
-sed -i 's/model = "JCG Q30";/model = "JCG Q30 \/ MR3000D-CIq (512MB RAM version)";/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-jcg-q30.dts
+#sed -i 's/model = "JCG Q30";/model = "JCG Q30 \/ MR3000D-CIq (512MB RAM version)";/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-jcg-q30.dts
 # Modify X86 Kernel 5.10
 #sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' target/linux/ipq807x/Makefile
 # Clear the login password
@@ -23,8 +23,8 @@ sed -i 's/model = "JCG Q30";/model = "JCG Q30 \/ MR3000D-CIq (512MB RAM version)
 #sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 
-sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
-sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/luci/applications/luci-app-zerotier/root/etc/config/zerotier
+#sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
+#sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/luci/applications/luci-app-zerotier/root/etc/config/zerotier
 
 #mkdir package/v2ray-geoview
 #wget -O package/v2ray-geoview/Makefile https://raw.githubusercontent.com/xiaorouji/openwrt-passwall-packages/refs/heads/main/v2ray-geoview/Makefile
@@ -36,11 +36,11 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/luci/applications/luci-app-
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
-sed -i 's/1.58.2/1.80.3/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/452f355408e4e2179872387a863387e06346fc8a6f9887821f9b8a072c6a5b0a/4ea7d4c1a4e86905f330f5d5f5288488cb29d6c586d5bcabf9d02c5481ba740d/g' feeds/packages/net/tailscale/Makefile
+#sed -i 's/1.58.2/1.80.3/g' feeds/packages/net/tailscale/Makefile
+#sed -i 's/452f355408e4e2179872387a863387e06346fc8a6f9887821f9b8a072c6a5b0a/4ea7d4c1a4e86905f330f5d5f5288488cb29d6c586d5bcabf9d02c5481ba740d/g' feeds/packages/net/tailscale/Makefile
 
-sed -i 's/1.80.2/1.80.3/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/b4d5eb15e2d11ad71803dea8ec8ddcaf5a400eabe12a5f469d133cfeae56678b/4ea7d4c1a4e86905f330f5d5f5288488cb29d6c586d5bcabf9d02c5481ba740d/g' feeds/packages/net/tailscale/Makefile
+#sed -i 's/1.80.2/1.80.3/g' feeds/packages/net/tailscale/Makefile
+#sed -i 's/b4d5eb15e2d11ad71803dea8ec8ddcaf5a400eabe12a5f469d133cfeae56678b/4ea7d4c1a4e86905f330f5d5f5288488cb29d6c586d5bcabf9d02c5481ba740d/g' feeds/packages/net/tailscale/Makefile
 
 #wget -O feeds/packages/net/tailscale/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/imm_tailscale_makefile
 #wget -O feeds/packages/net/tailscale/Makefile https://raw.githubusercontent.com/immortalwrt/packages/refs/heads/master/net/tailscale/Makefile
