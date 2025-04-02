@@ -36,6 +36,15 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/luci/applications/luci-app-
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
+sed -i 's/202501190004/202503281421/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/4f8d16184b6938e635519bc91cb978dcea6884878e39f592f7144135401d6bb6/83337c712b04d8c16351cf5a5394eae5cb9cfa257fb4773485945dce65dcea76/g' feeds/packages/net/v2ray-geodata/Makefile
+
+sed -i 's/20250124154827/20250401022534/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/ac12d81edc6058b3c66ae96a0a26ca8281616d96ea86d0d77b2ceff34a3e1a9d/6c69c83e0d9ee39cb0674515ce1668a411b9824a1c6314291d77bc83cd0c6d56/g' feeds/packages/net/v2ray-geodata/Makefile
+
+sed -i 's/202502030035/202503310039/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/2e9292d9adfd684df520a9228b641f57e63581eb93f5938284beeb621fde6bf3/1eb78f2dee6952b43dde65f72af44c1a064c97572ed0d72ad36fcf47ac4feafd/g' feeds/packages/net/v2ray-geodata/Makefile
+
 #sed -i 's/1.58.2/1.80.3/g' feeds/packages/net/tailscale/Makefile
 #sed -i 's/452f355408e4e2179872387a863387e06346fc8a6f9887821f9b8a072c6a5b0a/4ea7d4c1a4e86905f330f5d5f5288488cb29d6c586d5bcabf9d02c5481ba740d/g' feeds/packages/net/tailscale/Makefile
 
