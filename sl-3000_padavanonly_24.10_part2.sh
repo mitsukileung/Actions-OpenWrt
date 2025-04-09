@@ -36,14 +36,14 @@
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
-sed -i 's/202501190004/202503281421/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/4f8d16184b6938e635519bc91cb978dcea6884878e39f592f7144135401d6bb6/83337c712b04d8c16351cf5a5394eae5cb9cfa257fb4773485945dce65dcea76/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/202503050126/202504050136/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/83337c712b04d8c16351cf5a5394eae5cb9cfa257fb4773485945dce65dcea76/735786c00694313090c5d525516463836167422b132ce293873443613b496e92/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/20250124154827/20250401022534/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/ac12d81edc6058b3c66ae96a0a26ca8281616d96ea86d0d77b2ceff34a3e1a9d/6c69c83e0d9ee39cb0674515ce1668a411b9824a1c6314291d77bc83cd0c6d56/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/20250312064659/20250407044718/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/eb752838bf61a39f1e1d3962d0aeecae103e96f925755ee18f206490744c91a8/a35d248bdf7892fbf747d94e656e45339c1d90c6b656b5c1311d62c1f2cbaadf/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/202502030035/202503310039/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/2e9292d9adfd684df520a9228b641f57e63581eb93f5938284beeb621fde6bf3/1eb78f2dee6952b43dde65f72af44c1a064c97572ed0d72ad36fcf47ac4feafd/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/202503100030/202504070038/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/548afd9a291bca6c89c344dc2b06c3103ca6f5e10b11dbd9fa8e844a545489d6/ea5ed940fee6d7c872a143d160486e5d576124fc5167dfc6a8d55708281276ec/g' feeds/packages/net/v2ray-geodata/Makefile
 
 #sed -i 's/1.58.2/1.80.3/g' feeds/packages/net/tailscale/Makefile
 #sed -i 's/452f355408e4e2179872387a863387e06346fc8a6f9887821f9b8a072c6a5b0a/4ea7d4c1a4e86905f330f5d5f5288488cb29d6c586d5bcabf9d02c5481ba740d/g' feeds/packages/net/tailscale/Makefile
