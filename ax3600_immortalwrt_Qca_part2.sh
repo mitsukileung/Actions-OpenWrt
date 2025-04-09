@@ -29,14 +29,14 @@ rm -rf feeds/packages/net/geoview
 mkdir package/geoview
 wget -O package/geoview/Makefile https://raw.githubusercontent.com/xiaorouji/openwrt-passwall-packages/refs/heads/main/geoview/Makefile
 
-sed -i 's/202503050126/202503281421/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/83337c712b04d8c16351cf5a5394eae5cb9cfa257fb4773485945dce65dcea76/83337c712b04d8c16351cf5a5394eae5cb9cfa257fb4773485945dce65dcea76/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/202503050126/202504050136/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/83337c712b04d8c16351cf5a5394eae5cb9cfa257fb4773485945dce65dcea76/735786c00694313090c5d525516463836167422b132ce293873443613b496e92/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/20250312064659/20250401022534/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/eb752838bf61a39f1e1d3962d0aeecae103e96f925755ee18f206490744c91a8/6c69c83e0d9ee39cb0674515ce1668a411b9824a1c6314291d77bc83cd0c6d56/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/20250312064659/20250407044718/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/eb752838bf61a39f1e1d3962d0aeecae103e96f925755ee18f206490744c91a8/a35d248bdf7892fbf747d94e656e45339c1d90c6b656b5c1311d62c1f2cbaadf/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/202503100030/202503310039/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/548afd9a291bca6c89c344dc2b06c3103ca6f5e10b11dbd9fa8e844a545489d6/1eb78f2dee6952b43dde65f72af44c1a064c97572ed0d72ad36fcf47ac4feafd/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/202503100030/202504070038/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/548afd9a291bca6c89c344dc2b06c3103ca6f5e10b11dbd9fa8e844a545489d6/ea5ed940fee6d7c872a143d160486e5d576124fc5167dfc6a8d55708281276ec/g' feeds/packages/net/v2ray-geodata/Makefile
 
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
