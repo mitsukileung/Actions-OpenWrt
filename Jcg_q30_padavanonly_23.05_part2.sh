@@ -69,9 +69,9 @@ git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tails
 #git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 
 #zip -rP Jsz3895 files.zip files
-#wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-nss/refs/heads/main/tools/files_7981_jsz.zip
-#unzip -P Jsz3895 files.zip
-#rm files.zip
+wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-nss/refs/heads/main/tools/files_7981_jsz_2410.zip
+unzip -P Jsz3895 files.zip
+rm files.zip
 
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
