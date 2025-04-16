@@ -36,8 +36,8 @@ sed -i 's/83337c712b04d8c16351cf5a5394eae5cb9cfa257fb4773485945dce65dcea76/73578
 sed -i 's/20250407044718/20250415151718/g' feeds/packages/net/v2ray-geodata/Makefile
 sed -i 's/a35d248bdf7892fbf747d94e656e45339c1d90c6b656b5c1311d62c1f2cbaadf/fc4d21440f7f04e938374a0ab676a147dfb3fac67e59275c7ee3b4ee036638bf/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/202503100030/202504070038/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/548afd9a291bca6c89c344dc2b06c3103ca6f5e10b11dbd9fa8e844a545489d6/ea5ed940fee6d7c872a143d160486e5d576124fc5167dfc6a8d55708281276ec/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/202504070038/202504140040/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/ea5ed940fee6d7c872a143d160486e5d576124fc5167dfc6a8d55708281276ec/854f5086bb3a22e77ea1f370c39b3c6b50cf7a9d08f3726449f164e8cb95aea4/g' feeds/packages/net/v2ray-geodata/Makefile
 
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
