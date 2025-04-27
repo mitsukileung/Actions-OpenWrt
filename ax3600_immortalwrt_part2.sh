@@ -24,20 +24,19 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 sed -i 's/'0/'1/g' feeds/packages/net/adguardhome/files/adguardhome.config
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
-sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/luci/applications/luci-app-zerotier/root/etc/config/zerotier
 
 rm -rf feeds/packages/net/geoview
 mkdir package/geoview
 wget -O package/geoview/Makefile https://raw.githubusercontent.com/xiaorouji/openwrt-passwall-packages/refs/heads/main/geoview/Makefile
 
-sed -i 's/202503050126/202504050136/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/83337c712b04d8c16351cf5a5394eae5cb9cfa257fb4773485945dce65dcea76/735786c00694313090c5d525516463836167422b132ce293873443613b496e92/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/202504050136/202504050136/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/735786c00694313090c5d525516463836167422b132ce293873443613b496e92/735786c00694313090c5d525516463836167422b132ce293873443613b496e92/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/20250407044718/20250415151718/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/a35d248bdf7892fbf747d94e656e45339c1d90c6b656b5c1311d62c1f2cbaadf/fc4d21440f7f04e938374a0ab676a147dfb3fac67e59275c7ee3b4ee036638bf/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/20250407044718/20250422055726/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/a35d248bdf7892fbf747d94e656e45339c1d90c6b656b5c1311d62c1f2cbaadf/7a4530370eff2db6265613d9066c2b5eee841e3e7f02288750b03128af6daf7b/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/202504070038/202504140040/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/ea5ed940fee6d7c872a143d160486e5d576124fc5167dfc6a8d55708281276ec/854f5086bb3a22e77ea1f370c39b3c6b50cf7a9d08f3726449f164e8cb95aea4/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/202504070038/202504210040/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/ea5ed940fee6d7c872a143d160486e5d576124fc5167dfc6a8d55708281276ec/2d10e5a69771bc7daf612ce31e9dfc2dfd7ea6caa9caecfd88918da0ebd9cba7/g' feeds/packages/net/v2ray-geodata/Makefile
 
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
