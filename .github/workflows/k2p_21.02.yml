@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: k2p_frps_21.02
+name: k2p_frps_imm
 
 on:
   schedule:
@@ -26,12 +26,12 @@ on:
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
-  REPO_BRANCH: openwrt-21.02
+  REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: k2p_21.02.config
+  CONFIG_FILE: k2p_imm.config
   DIY_P1_SH: ax3600_immortalwrt_part1.sh
   DIY_P2_SH: ax3600_immortalwrt_part2.sh
-  RELEASE_TAG: k2p_21.02
+  RELEASE_TAG: k2p_frps_imm
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
@@ -42,7 +42,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Checkout
