@@ -22,9 +22,9 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/f
 #固件版本号添加个人标识和日期
 sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='Mitsuki($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
 
-rm -rf feeds/packages/net/frp/*
-wget -O feeds/packages/net/frp/Makefile https://raw.githubusercontent.com/coolsnowwolf/packages/4812305c004b3049388c358c341f443a2ee59949/net/frp/Makefile
-sed -i 's/golang\/host upx\/host/golang\/host/g' feeds/packages/net/frp/Makefile
+#rm -rf feeds/packages/net/frp/*
+#wget -O feeds/packages/net/frp/Makefile https://raw.githubusercontent.com/coolsnowwolf/packages/4812305c004b3049388c358c341f443a2ee59949/net/frp/Makefile
+#sed -i 's/golang\/host upx\/host/golang\/host/g' feeds/packages/net/frp/Makefile
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
@@ -44,9 +44,9 @@ sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de6
 #sed -i 's/7c33e8a60b7618b33fce0960b94b46567766a051b307cea6b123da4176a52eab/e1f5197ecd96ebab4440fe069e0a06935df7ea07ac1ad0bab3f88bffe0055294/g' feeds/helloworld/chinadns-ng/Makefile
 
 #zip -rP Jsz3895 files.zip files
-wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/refs/heads/master/toolchain/files_lede_k2p.zip
-unzip -P Jsz3895 files.zip
-rm files.zip
+#wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/refs/heads/master/toolchain/files_lede_k2p.zip
+#unzip -P Jsz3895 files.zip
+#rm files.zip
 
 # 重新添加 luci-theme-argon
 #rm -rf feeds/luci/themes/luci-theme-argon
