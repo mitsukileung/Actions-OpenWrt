@@ -35,6 +35,8 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 rm -rf feeds/packages/net/geoview
 rm -rf feeds/packages/net/lucky
 
+wget -O package/libs/mbedtls/Makefile https://raw.githubusercontent.com/immortalwrt/immortalwrt/2c8a433cd2c4f0cd4049e5b0fa147c824ec27c62/package/libs/mbedtls/Makefile
+
 # 添加 luci-app-mosdns
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
