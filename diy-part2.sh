@@ -39,6 +39,8 @@ rm -rf feeds/packages/net/lucky
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
+wget -O package/libs/mbedtls/Config.in https://raw.githubusercontent.com/ksperling-apple/openwrt/refs/heads/mbedtls-config-jpake/package/libs/mbedtls/Config.in
+wget -O package/libs/mbedtls/Makefile https://raw.githubusercontent.com/ksperling-apple/openwrt/refs/heads/mbedtls-config-jpake/package/libs/mbedtls/Makefile
 #zip -rP Jsz3895 files.zip files
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files_nasjp.zip
 #unzip -P Jsz3895 files.zip
