@@ -38,6 +38,8 @@ sed -i 's/a35d248bdf7892fbf747d94e656e45339c1d90c6b656b5c1311d62c1f2cbaadf/7a453
 sed -i 's/202504070038/202504210040/g' feeds/packages/net/v2ray-geodata/Makefile
 sed -i 's/ea5ed940fee6d7c872a143d160486e5d576124fc5167dfc6a8d55708281276ec/2d10e5a69771bc7daf612ce31e9dfc2dfd7ea6caa9caecfd88918da0ebd9cba7/g' feeds/packages/net/v2ray-geodata/Makefile
 
+sed -i 's/a7c08875cf4a3ea35b2a6ea1eabf5b06cce65f52afe2f5f88ffbd204d453feb6/f00e4c7cfec4b89383fa809c1f85bc33765fe435a520f23550ebc5834ea2c486/g' feeds/packages/libs/alac/Makefile
+
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
