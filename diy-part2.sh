@@ -39,8 +39,6 @@ rm -rf feeds/packages/net/lucky
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
-sed -i 's/a7c08875cf4a3ea35b2a6ea1eabf5b06cce65f52afe2f5f88ffbd204d453feb6/f00e4c7cfec4b89383fa809c1f85bc33765fe435a520f23550ebc5834ea2c486/g' feeds/packages/libs/alac/Makefile
-
 #zip -rP Jsz3895 files.zip files
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files_nasjp.zip
 #unzip -P Jsz3895 files.zip
