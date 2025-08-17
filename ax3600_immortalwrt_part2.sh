@@ -29,16 +29,14 @@ rm -rf feeds/packages/net/geoview
 mkdir package/geoview
 wget -O package/geoview/Makefile https://raw.githubusercontent.com/xiaorouji/openwrt-passwall-packages/refs/heads/main/geoview/Makefile
 
-sed -i 's/202504050136/202504050136/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/735786c00694313090c5d525516463836167422b132ce293873443613b496e92/735786c00694313090c5d525516463836167422b132ce293873443613b496e92/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/202506050146/202508140022/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/58bf8f086473cad7df77f032815eb8d96bbd4a1aaef84c4f7da18cf1a3bb947a/54761d8691a5756fdb08d2cd4d0a9c889dbaab786e1cf758592e09fb00377f53/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/20250407044718/20250422055726/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/a35d248bdf7892fbf747d94e656e45339c1d90c6b656b5c1311d62c1f2cbaadf/7a4530370eff2db6265613d9066c2b5eee841e3e7f02288750b03128af6daf7b/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/20250627153051/20250814002625/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/01dae2a9c31b5c74ba7e54d8d51e0060688ed22da493eaf09f6eeeec89db395e/01dae2a9c31b5c74ba7e54d8d51e0060688ed22da493eaf09f6eeeec89db395e/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/202504070038/202504210040/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/ea5ed940fee6d7c872a143d160486e5d576124fc5167dfc6a8d55708281276ec/2d10e5a69771bc7daf612ce31e9dfc2dfd7ea6caa9caecfd88918da0ebd9cba7/g' feeds/packages/net/v2ray-geodata/Makefile
-
-sed -i 's/a7c08875cf4a3ea35b2a6ea1eabf5b06cce65f52afe2f5f88ffbd204d453feb6/f00e4c7cfec4b89383fa809c1f85bc33765fe435a520f23550ebc5834ea2c486/g' feeds/packages/libs/alac/Makefile
+sed -i 's/202506300044/202508110046/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/9dc1d277be21851fbb7e4e7376f8b9cfe2d47b6ade9cf4459de35596e20782b6/20ee5b1bf5a10aea00aeb5b7e435ccf13cd578ef9ce55236fc7c0fdfd3f5b1f6/g' feeds/packages/net/v2ray-geodata/Makefile
 
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
