@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Ax6_immortalwrt_QCA_Apk_X
+name: Ax6_immortalwrt_QCA_Apk_nonss
 
 on:
   schedule:
@@ -27,13 +27,13 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/VIKINGYFY/immortalwrt.git
-  REPO_BRANCH: main
+  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
+  REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: ax6_immortalwrt_Qca_apk.config
-  DIY_P1_SH: ax3600_immortalwrt_Qca_apk_part1.sh
-  DIY_P2_SH: ax6_immortalwrt_Qca_part2_X.sh
-  RELEASE_TAG: Ax6_immortalwrt_QCA_Apk_X
+  CONFIG_FILE: ax6_immortalwrt_Qca_apk_nonss.config
+  DIY_P1_SH: ax3600_immortalwrt_part1.sh
+  DIY_P2_SH: ax3600_immortalwrt_part2.sh
+  RELEASE_TAG: Ax6_immortalwrt_QCA_Apk_nonss
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
@@ -44,7 +44,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
     
