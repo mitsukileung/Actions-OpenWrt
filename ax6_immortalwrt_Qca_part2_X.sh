@@ -21,18 +21,29 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 #sed -i 's/1234567/LaputaShita~!/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
+sed -i 's/'0/'1/g' feeds/packages/net/adguardhome/files/adguardhome.config
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
-sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/luci/applications/luci-app-zerotier/root/etc/config/zerotier
 
 rm -rf feeds/packages/net/geoview
-mkdir package/v2ray-geoview
-wget -O package/v2ray-geoview/Makefile https://raw.githubusercontent.com/xiaorouji/openwrt-passwall-packages/refs/heads/main/v2ray-geoview/Makefile
+mkdir package/geoview
+wget -O package/geoview/Makefile https://raw.githubusercontent.com/xiaorouji/openwrt-passwall-packages/refs/heads/main/geoview/Makefile
+
+sed -i 's/202506050146/202508140022/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/58bf8f086473cad7df77f032815eb8d96bbd4a1aaef84c4f7da18cf1a3bb947a/54761d8691a5756fdb08d2cd4d0a9c889dbaab786e1cf758592e09fb00377f53/g' feeds/packages/net/v2ray-geodata/Makefile
+
+sed -i 's/20250627153051/20250814002625/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/01dae2a9c31b5c74ba7e54d8d51e0060688ed22da493eaf09f6eeeec89db395e/01dae2a9c31b5c74ba7e54d8d51e0060688ed22da493eaf09f6eeeec89db395e/g' feeds/packages/net/v2ray-geodata/Makefile
+
+sed -i 's/202506300044/202508110046/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/9dc1d277be21851fbb7e4e7376f8b9cfe2d47b6ade9cf4459de35596e20782b6/20ee5b1bf5a10aea00aeb5b7e435ccf13cd578ef9ce55236fc7c0fdfd3f5b1f6/g' feeds/packages/net/v2ray-geodata/Makefile
 
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+
+git clone https://github.com/ophub/luci-app-amlogic.git package/luci-app-amlogic
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
@@ -41,17 +52,14 @@ sed -i 's/1603c78a6a5e9f83b278d305e1196fbfdeeb841be10ac2ddb7ea433c2701234b/dbc25
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
 
-#sed -i 's/1.20.3/1.20.4/g' feeds/packages/net/shadowsocks-rust/Makefile
-#sed -i 's/07d2301cb14d8e1ff653def167604e701ca9a05a140291875e0ec9e6334ad513/cf064ad157974b3e396aab3bb60aab380dbc4e11b736603bfbc8e7a138f6bb26/g' feeds/packages/net/shadowsocks-rust/Makefile
-
-sed -i 's/1.8.0.0/1.8.0.2/g' feeds/packages/net/socat/Makefile
-sed -i 's/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/adc07a9c2723527cf6568d2fb96559794cf9c254a4bc2edd36f7f3789e9f7625/g' feeds/packages/net/socat/Makefile
+#rm -rf feeds/luci/applications/luci-app-socat
+#wget -O feeds/packages/net/socat/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_Makefile
+#git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 
 #zip -rP Jsz3895 files.zip files
-wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-nss/refs/heads/main/tools/files_ax6_nss_X.zip
+wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files.zip
 unzip -P Jsz3895 files.zip
 rm files.zip
-
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
@@ -84,20 +92,23 @@ rm files.zip
 #git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
 # 重新添加 luci-app-homeproxy dev版
-#rm -rf feeds/luci/applications/luci-app-homeproxy
-#git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
+rm -rf feeds/luci/applications/luci-app-homeproxy
+git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
 
 # 重新添加 luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
 git clone --filter=blob:none --branch=dev https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+#sed -i 's/PKG_RELEASE:=beta/PKG_RELEASE:=/g' package/luci-app-openclash/luci-app-openclash/Makefile
 
 # 重新添加 luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+#sed -i 's/PKG_VERSION:=4.78-4/PKG_VERSION:=4.78.4/g' package/luci-app-passwall/luci-app-passwall/Makefile
 
 # 重新添加 luci-app-socat 同时兼容firewall3/4 
 #rm -rf feeds/luci/applications/luci-app-socat
 #git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-socat
+#git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 
 # 重新添加 luci-app-wechatpush
 #rm -rf feeds/luci/applications/luci-app-wechatpush
