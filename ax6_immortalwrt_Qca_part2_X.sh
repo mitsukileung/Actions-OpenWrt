@@ -57,7 +57,7 @@ git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tails
 #git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 
 #zip -rP Jsz3895 files.zip files
-wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files.zip
+wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/refs/heads/openwrt-21.02/include/site/files_ax6_lijun.zip
 unzip -P Jsz3895 files.zip
 rm files.zip
 #修正连接数（by ベ七秒鱼ベ）
