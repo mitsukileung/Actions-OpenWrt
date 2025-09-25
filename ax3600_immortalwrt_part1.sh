@@ -41,6 +41,7 @@ rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/luci/applications/luci-app-openclash
 #git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 #rm -f ./test1.sh
+./scripts/feeds update -a
 ./scripts/feeds install -a
 
 # Add a feed source
