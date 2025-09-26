@@ -39,7 +39,7 @@ sed -i 's/202506300044/202508110046/g' feeds/packages/net/v2ray-geodata/Makefile
 sed -i 's/9dc1d277be21851fbb7e4e7376f8b9cfe2d47b6ade9cf4459de35596e20782b6/20ee5b1bf5a10aea00aeb5b7e435ccf13cd578ef9ce55236fc7c0fdfd3f5b1f6/g' feeds/packages/net/v2ray-geodata/Makefile
 
 wget -O feeds/packages/lang/rust/Makefile https://raw.githubusercontent.com/1715173329/packages-official/refs/heads/r/lang/rust/Makefile
-sed -i 's/llvm.download-ci-llvm=true/llvm.download-ci-llvm=if-unchanged/g' feeds/packages/lang/rust/Makefile
+sed -i 's/llvm.download-ci-llvm=true/llvm.download-ci-llvm=false/g' feeds/packages/lang/rust/Makefile
 
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
