@@ -52,14 +52,6 @@ sed -i 's/1603c78a6a5e9f83b278d305e1196fbfdeeb841be10ac2ddb7ea433c2701234b/dbc25
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
 
-#rm -rf feeds/luci/applications/luci-app-socat
-#wget -O feeds/packages/net/socat/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_Makefile
-#git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
-
-#zip -rP Jsz3895 files.zip files
-wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/refs/heads/openwrt-21.02/include/site/files_ax6_lijun2.zip
-unzip -P Jsz3895 files.zip
-rm files.zip
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
