@@ -38,9 +38,9 @@ sed -i 's/01dae2a9c31b5c74ba7e54d8d51e0060688ed22da493eaf09f6eeeec89db395e/01dae
 sed -i 's/202506300044/202508110046/g' feeds/packages/net/v2ray-geodata/Makefile
 sed -i 's/9dc1d277be21851fbb7e4e7376f8b9cfe2d47b6ade9cf4459de35596e20782b6/20ee5b1bf5a10aea00aeb5b7e435ccf13cd578ef9ce55236fc7c0fdfd3f5b1f6/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/2025-09-23/2025-08-03/g' ‎tools/firmware-utils/Makefile
-sed -i 's/7e6f69b444c33a6ca4e9efb98832820e3d8e87ba/950f83405a935395492d61c9972b5e5ca826eeee/g' ‎tools/firmware-utils/Makefile
-sed -i 's/714053067b2b64689a6db9de0f49d1ce4fa20d9824d8f08e3c598b903eed8c03/19f5b7547dc6f9460e25183c83d55aca9d1f18148466c09b64504a64379a34ae/g' ‎tools/firmware-utils/Makefile
+sed -i 's/2025-09-23/2025-10-01/g' ‎tools/firmware-utils/Makefile
+sed -i 's/7e6f69b444c33a6ca4e9efb98832820e3d8e87ba/0782d243d23e64d8420f8c067a4169eb69a55f92/g' ‎tools/firmware-utils/Makefile
+sed -i 's/714053067b2b64689a6db9de0f49d1ce4fa20d9824d8f08e3c598b903eed8c03/70496cec3110fbf602b529e42d0646b3dc26495a6bf1e436504c6d39a92f20bc/g' ‎tools/firmware-utils/Makefile
 
 #sed -i 's/llvm.download-ci-llvm=true/llvm.download-ci-llvm=false/g' feeds/packages/lang/rust/Makefile
 
