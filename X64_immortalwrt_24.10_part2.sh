@@ -21,28 +21,42 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 #sed -i 's/1234567/LaputaShita~!/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
+#sed -i 's/'0/'1/g' feeds/packages/net/adguardhome/files/adguardhome.config
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
-sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/luci/applications/luci-app-zerotier/root/etc/config/zerotier
+
+sed -i 's/202509050142/202510050144/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/a01e09150b456cb2f3819d29d6e6c34572420aaee3ff9ef23977c4e9596c20ec/c23ac8343e9796f8cc8b670c3aeb6df6d03d4e8914437a409961477f6b226098/g' feeds/packages/net/v2ray-geodata/Makefile
+
+sed -i 's/20250906011216/20250916122507/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/186158b6c2f67ac59e184ed997ebebcef31938be9874eb8a7d5e3854187f4e8d/1a7dad0ceaaf1f6d12fef585576789699bd1c6ea014c887c04b94cb9609350e9/g' feeds/packages/net/v2ray-geodata/Makefile
+
+sed -i 's/202508250041/202510130040/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/20ee5b1bf5a10aea00aeb5b7e435ccf13cd578ef9ce55236fc7c0fdfd3f5b1f6/ddbdbfcc33e8eb6f235f7542cd71d291a9002387b8b858286e913d35e2d9aa02/g' feeds/packages/net/v2ray-geodata/Makefile
+
+sed -i 's/2025-09-23/2025-10-01/g' ‎tools/firmware-utils/Makefile
+sed -i 's/7e6f69b444c33a6ca4e9efb98832820e3d8e87ba/0782d243d23e64d8420f8c067a4169eb69a55f92/g' ‎tools/firmware-utils/Makefile
+sed -i 's/714053067b2b64689a6db9de0f49d1ce4fa20d9824d8f08e3c598b903eed8c03/70496cec3110fbf602b529e42d0646b3dc26495a6bf1e436504c6d39a92f20bc/g' ‎tools/firmware-utils/Makefile
+
+#sed -i 's/llvm.download-ci-llvm=true/llvm.download-ci-llvm=false/g' feeds/packages/lang/rust/Makefile
 
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
+#git clone https://github.com/ophub/luci-app-amlogic.git package/luci-app-amlogic
+
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
-sed -i 's/1.76.3/1.76.6/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/1cc2ef1b7b6491c48446ec4c20c413c2300e8b7e171b119d843af46d0ce3125f/1603c78a6a5e9f83b278d305e1196fbfdeeb841be10ac2ddb7ea433c2701234b/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/1.76.6/1.78.1/g' feeds/packages/net/tailscale/Makefile
+sed -i 's/1603c78a6a5e9f83b278d305e1196fbfdeeb841be10ac2ddb7ea433c2701234b/dbc25cc241bb233f183475f003d5508af7b45add1ca548b35a6a6fea91fb91af/g' feeds/packages/net/tailscale/Makefile
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
 
-#sed -i 's/1.20.3/1.20.4/g' feeds/packages/net/shadowsocks-rust/Makefile
-#sed -i 's/07d2301cb14d8e1ff653def167604e701ca9a05a140291875e0ec9e6334ad513/cf064ad157974b3e396aab3bb60aab380dbc4e11b736603bfbc8e7a138f6bb26/g' feeds/packages/net/shadowsocks-rust/Makefile
-
-#rm -f feeds/packages/net/socat/patches/100-usleep.patch
-#sed -i 's/1.7.4.4/1.8.0.0/g' feeds/packages/net/socat/Makefile
-#sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/g' feeds/packages/net/socat/Makefile
+#rm -rf feeds/luci/applications/luci-app-socat
+#wget -O feeds/packages/net/socat/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_Makefile
+#git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 
 #zip -rP Jsz3895 files.zip files
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/master/tools/files.zip
@@ -63,7 +77,7 @@ git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tails
 #wget -O target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh https://raw.githubusercontent.com/VIKINGYFY/immortalwrt/19e3832bf0d39dd2ced289b27a95444b1ec0f911/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh
 
 #添加 集客AC
-git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
+#git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
 
 # update frp to 0.53.2
 #sed -i 's/0.51.3/0.53.2/g' feeds/packages/net/frp/Makefile
@@ -96,13 +110,14 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-pas
 # 重新添加 luci-app-socat 同时兼容firewall3/4 
 #rm -rf feeds/luci/applications/luci-app-socat
 #git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-socat
+#git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 
 # 重新添加 luci-app-wechatpush
 #rm -rf feeds/luci/applications/luci-app-wechatpush
 #git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
 
-# 添加 OpenAppFilter
-#git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+# 添加 OpenWrt-nikki
+git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 
 # 添加 smartdns
 #git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
