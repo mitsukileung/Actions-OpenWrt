@@ -21,7 +21,7 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 #sed -i 's/1234567/LaputaShita~!/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
-sed -i 's/'0/'1/g' feeds/packages/net/adguardhome/files/adguardhome.config
+#sed -i 's/'0/'1/g' feeds/packages/net/adguardhome/files/adguardhome.config
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
@@ -29,8 +29,8 @@ rm -rf feeds/packages/net/geoview
 mkdir package/geoview
 wget -O package/geoview/Makefile https://raw.githubusercontent.com/xiaorouji/openwrt-passwall-packages/refs/heads/main/geoview/Makefile
 
-sed -i 's/202506050146/202508140022/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/58bf8f086473cad7df77f032815eb8d96bbd4a1aaef84c4f7da18cf1a3bb947a/54761d8691a5756fdb08d2cd4d0a9c889dbaab786e1cf758592e09fb00377f53/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/202509050142/202510050144/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/a01e09150b456cb2f3819d29d6e6c34572420aaee3ff9ef23977c4e9596c20ec/c23ac8343e9796f8cc8b670c3aeb6df6d03d4e8914437a409961477f6b226098/g' feeds/packages/net/v2ray-geodata/Makefile
 
 sed -i 's/20250627153051/20250814002625/g' feeds/packages/net/v2ray-geodata/Makefile
 sed -i 's/01dae2a9c31b5c74ba7e54d8d51e0060688ed22da493eaf09f6eeeec89db395e/01dae2a9c31b5c74ba7e54d8d51e0060688ed22da493eaf09f6eeeec89db395e/g' feeds/packages/net/v2ray-geodata/Makefile
@@ -49,7 +49,7 @@ sed -i 's/714053067b2b64689a6db9de0f49d1ce4fa20d9824d8f08e3c598b903eed8c03/70496
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
-git clone https://github.com/ophub/luci-app-amlogic.git package/luci-app-amlogic
+#git clone https://github.com/ophub/luci-app-amlogic.git package/luci-app-amlogic
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
