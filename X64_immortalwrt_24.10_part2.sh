@@ -34,10 +34,6 @@ sed -i 's/186158b6c2f67ac59e184ed997ebebcef31938be9874eb8a7d5e3854187f4e8d/1a7da
 sed -i 's/202508250041/202510130040/g' feeds/packages/net/v2ray-geodata/Makefile
 sed -i 's/20ee5b1bf5a10aea00aeb5b7e435ccf13cd578ef9ce55236fc7c0fdfd3f5b1f6/ddbdbfcc33e8eb6f235f7542cd71d291a9002387b8b858286e913d35e2d9aa02/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/2025-09-23/2025-10-01/g' ‎tools/firmware-utils/Makefile
-sed -i 's/7e6f69b444c33a6ca4e9efb98832820e3d8e87ba/0782d243d23e64d8420f8c067a4169eb69a55f92/g' ‎tools/firmware-utils/Makefile
-sed -i 's/714053067b2b64689a6db9de0f49d1ce4fa20d9824d8f08e3c598b903eed8c03/70496cec3110fbf602b529e42d0646b3dc26495a6bf1e436504c6d39a92f20bc/g' ‎tools/firmware-utils/Makefile
-
 #sed -i 's/llvm.download-ci-llvm=true/llvm.download-ci-llvm=false/g' feeds/packages/lang/rust/Makefile
 
 #rm -rf feeds/packages/net/mosdns
