@@ -124,6 +124,9 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-pas
 # 添加 OpenWrt-nikki
 git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 
+# 添加 luci-app-taskplan
+git clone https://github.com/sirpdboy/luci-app-taskplan.git package/luci-app-taskplan
+
 # 添加 adguardhome
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 
