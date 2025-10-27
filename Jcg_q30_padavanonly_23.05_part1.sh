@@ -20,15 +20,10 @@
 
 #sed -i '1i src-git small https://github.com/kenzok8/small' feeds.conf.default
 ./scripts/feeds update -a
-git clone -b v5 https://github.com/sbwml/luci-app-mosdns.git mosdns
-cp -r mosdns/luci-app-mosdns package/luci-app-mosdns
-cp -r mosdns/mosdns package/mosdns
-cp -r mosdns/v2dat package/v2dat
-rm -rf mosdns
-
+git clone -b v5 https://github.com/sbwml/luci-app-mosdns.git package/luci-app-mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-rm -rf feeds/packages/net/mosdns
-rm -rf feeds/packages/net/v2ray-geodata
+#rm -rf feeds/packages/net/mosdns
+#rm -rf feeds/packages/net/v2ray-geodata
 #wget -O test1.sh https://raw.githubusercontent.com/takayukileung/JB/main/v2ray-geodata_update.sh
 #wget -O feeds/packages/net/chinadns-ng/Makefile https://raw.githubusercontent.com/kenzok8/small/master/chinadns-ng/Makefile
 #chmod 777 test1.sh
