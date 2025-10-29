@@ -692,6 +692,26 @@ define Device/cmcc_xr30-nand
 endef
 TARGET_DEVICES += cmcc_xr30-nand
 
+define Device/cmcc_xr30-stock
+  DEVICE_VENDOR := CMCC
+  DEVICE_MODEL := XR30 NAND
+  DEVICE_VARIANT := (H layout)
+  DEVICE_DTS := mt7981b-cmcc-xr30-stock
+  DEVICE_DTS_DIR := ../dts
+  DEVICE_PACKAGES := kmod-mt7915e kmod-mt7981-firmware mt7981-wo-firmware kmod-usb3 \
+	automount f2fsck mkf2fs
+  SUPPORTED_DEVICES := cmcc,xr30
+  UBINIZE_OPTS := -E 5
+  BLOCKSIZE := 128k
+  PAGESIZE := 2048
+  IMAGE_SIZE := 116736k
+  KERNEL_IN_UBI := 1
+  IMAGES += factory.bin
+  IMAGE/factory.bin := append-ubi | check-size $$$$(IMAGE_SIZE)
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+endef
+TARGET_DEVICES += cmcc_xr30-stock
+
 define Device/comfast_cf-e393ax
   DEVICE_VENDOR := COMFAST
   DEVICE_MODEL := CF-E393AX
@@ -1176,13 +1196,8 @@ define Device/jcg_q30-pro
   DEVICE_MODEL := Q30 PRO
   DEVICE_DTS := mt7981b-jcg-q30-pro
   DEVICE_DTS_DIR := ../dts
-  UBINIZE_OPTS := -E 5
   BLOCKSIZE := 128k
   PAGESIZE := 2048
-  IMAGE_SIZE := 114816k
-  KERNEL_IN_UBI := 1
-  IMAGES += factory.bin
-  IMAGE/factory.bin := append-ubi | check-size $$$$(IMAGE_SIZE)
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
 endef
 TARGET_DEVICES += jcg_q30-pro
@@ -1324,6 +1339,24 @@ define Device/livinet_zr-3020-ubootmod
   DEVICE_COMPAT_MESSAGE := Flash layout changes require bootloader update
 endef
 TARGET_DEVICES += livinet_zr-3020-ubootmod
+
+define Device/mediatek_7981r128
+  DEVICE_VENDOR := MediaTek
+  DEVICE_MODEL := 7981r128
+  DEVICE_DTS := mt7981b-mediatek-7981r128
+  DEVICE_DTS_DIR := ../dts
+  DEVICE_PACKAGES := kmod-mt7915e kmod-mt7981-firmware mt7981-wo-firmware
+  SUPPORTED_DEVICES += mediatek,7981r128
+  UBINIZE_OPTS := -E 5
+  BLOCKSIZE := 128k
+  PAGESIZE := 2048
+  IMAGE_SIZE := 114688k
+  KERNEL_IN_UBI := 1
+  IMAGES += factory.bin
+  IMAGE/factory.bin := append-ubi | check-size $$$$(IMAGE_SIZE)
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+endef
+TARGET_DEVICES += mediatek_7981r128
 
 define Device/mediatek_mt7981-rfb
   DEVICE_VENDOR := MediaTek
