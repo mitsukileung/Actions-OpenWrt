@@ -36,10 +36,9 @@ sed -i 's/20ee5b1bf5a10aea00aeb5b7e435ccf13cd578ef9ce55236fc7c0fdfd3f5b1f6/ddbdb
 
 #sed -i 's/llvm.download-ci-llvm=true/llvm.download-ci-llvm=false/g' feeds/packages/lang/rust/Makefile
 
-#rm -rf feeds/packages/net/mosdns
-#rm -rf feeds/packages/net/v2ray-geodata
-#git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-#git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+rm -rf feeds/packages/net/geoview
+mkdir package/geoview
+wget -O package/geoview/Makefile https://raw.githubusercontent.com/xiaorouji/openwrt-passwall-packages/refs/heads/main/geoview/Makefile
 
 #git clone https://github.com/ophub/luci-app-amlogic.git package/luci-app-amlogic
 
