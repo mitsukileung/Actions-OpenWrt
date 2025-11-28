@@ -85,7 +85,7 @@ platform_do_upgrade() {
 	gatonetworks,gdsp|\
 	h3c,magic-nx30-pro|\
 	imou,lc-hx3001|\
-  jcg,q30-pro)
+	jcg,q30-pro)
   	CI_UBIPART="ubi"
 		CI_KERNPART="kernel"
 		CI_ROOTPART="rootfs"
