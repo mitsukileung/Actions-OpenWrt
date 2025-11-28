@@ -30,7 +30,7 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: openwrt-24.10
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: x64_immortalwrt.config
+  CONFIG_FILE: x64_immortalwrt_2410.config
   DIY_P1_SH: X64_immortalwrt_24.10_part1.sh
   DIY_P2_SH: X64_immortalwrt_24.10_part2.sh
   RELEASE_TAG: X64_immortalwrt_2410
