@@ -125,7 +125,7 @@ platform_do_upgrade() {
 	huasifei,wh3000-emmc|\
 	*Airpi*|\
 	cmcc,rax3000m-emmc|\
-		sl,3000-emmc)
+	sl,3000-emmc)
 		CI_KERNPART="kernel"
 		CI_ROOTPART="rootfs"
 		emmc_do_upgrade "$1"
