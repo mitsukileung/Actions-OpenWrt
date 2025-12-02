@@ -66,12 +66,12 @@ platform_do_upgrade() {
 	local board=$(board_name)
 
 	case "$board" in
-	qihoo,360t7)
-  	CI_UBIPART="ubi"
-		CI_KERNPART="kernel"
-		CI_ROOTPART="rootfs"
-		nand_do_upgrade "$1"
-		;;
+        qihoo,360t7)
+		CI_UBIPART="ubi"
+    		CI_KERNPART="kernel"
+      		CI_ROOTPART="rootfs"
+    		nand_do_upgrade "$1"
+    		;;
 	abt,asr3000|\
 	bananapi,bpi-r3|\
 	bananapi,bpi-r3-mini|\
@@ -85,15 +85,15 @@ platform_do_upgrade() {
 	gatonetworks,gdsp|\
 	h3c,magic-nx30-pro|\
 	imou,lc-hx3001|\
-	jcg,q30-pro)
-  	CI_UBIPART="ubi"
-		CI_KERNPART="kernel"
-		CI_ROOTPART="rootfs"
-		nand_do_upgrade "$1"
-		;;
-	jdcloud,re-cp-03|\
+        jcg,q30-pro)
+		CI_UBIPART="ubi"
+    		CI_KERNPART="kernel"
+      		CI_ROOTPART="rootfs"
+    		nand_do_upgrade "$1"
+    		;;
 	konka,komi-a31|\
 	livinet,zr-3020-ubootmod|\
+	mediatek,7981r128|\
 	mediatek,mt7981-rfb|\
 	mediatek,mt7988a-rfb|\
 	mercusys,mr90x-v1-ubi|\
@@ -138,6 +138,7 @@ platform_do_upgrade() {
 	smartrg,sdg-8733a|\
 	huasifei,wh3000-pro|\
 	umi,uax3000e|\
+ 	jdcloud,re-cp-03|\
 	smartrg,sdg-8734)
 		CI_KERNPART="kernel"
 		CI_ROOTPART="rootfs"
