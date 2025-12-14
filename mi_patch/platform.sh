@@ -66,6 +66,20 @@ platform_do_upgrade() {
 	local board=$(board_name)
 
 	case "$board" in
+	netcore,n60-pro|\
+	tplink,tl-xdr4288|\
+        tplink,tl-xdr6086|\
+        tplink,tl-xdr6088|\
+	xiaomi,redmi-router-ax6000-ubootmod|\
+	xiaomi,mi-router-ax3000t-ubootmod|\
+        xiaomi,mi-router-wr30u-ubootmod|\
+	h3c,magic-nx30-pro|\
+        jcg,q30-pro)
+		CI_UBIPART="ubi"
+    		CI_KERNPART="kernel"
+      		CI_ROOTPART="rootfs"
+    		nand_do_upgrade "$1"
+    		;;
         qihoo,360t7)
 		CI_UBIPART="ubi"
     		CI_KERNPART="kernel"
@@ -83,14 +97,7 @@ platform_do_upgrade() {
 	cmcc,rax3000me|\
 	cudy,tr3000-v1-ubootmod|\
 	gatonetworks,gdsp|\
-	h3c,magic-nx30-pro|\
 	imou,lc-hx3001|\
-        jcg,q30-pro)
-		CI_UBIPART="ubi"
-    		CI_KERNPART="kernel"
-      		CI_ROOTPART="rootfs"
-    		nand_do_upgrade "$1"
-    		;;
 	konka,komi-a31|\
 	livinet,zr-3020-ubootmod|\
 	mediatek,7981r128|\
@@ -101,16 +108,9 @@ platform_do_upgrade() {
 	nokia,ea0326gmp|\
 	openwrt,one|\
 	netcore,n60|\
-	netcore,n60-pro|\
 	routerich,ax3000-ubootmod|\
-	tplink,tl-xdr4288|\
-	tplink,tl-xdr6086|\
-	tplink,tl-xdr6088|\
 	tplink,tl-xtr8488|\
 	wirelesstag,zx7981pd-ubootmod|\
-	xiaomi,mi-router-ax3000t-ubootmod|\
-	xiaomi,redmi-router-ax6000-ubootmod|\
-	xiaomi,mi-router-wr30u-ubootmod|\
 	zyxel,ex5601-t0-ubootmod)
 		fit_do_upgrade "$1"
 		;;
@@ -118,6 +118,7 @@ platform_do_upgrade() {
 	acer,predator-w6d|\
 	acer,vero-w6m|\
 	arcadyan,mozart|\
+	clx,s20p|\
 	glinet,gl-mt2500|\
 	glinet,gl-mt6000|\
 	glinet,gl-x3000|\
@@ -125,6 +126,7 @@ platform_do_upgrade() {
 	huasifei,wh3000-emmc|\
 	*Airpi*|\
 	cmcc,rax3000m-emmc|\
+	philips,hy3000|\
 	sl,3000-emmc)
 		CI_KERNPART="kernel"
 		CI_ROOTPART="rootfs"
@@ -241,12 +243,14 @@ platform_copy_config() {
 	acer,predator-w6d|\
 	acer,vero-w6m|\
 	arcadyan,mozart|\
+	clx,s20p|\
 	glinet,gl-mt2500|\
 	glinet,gl-mt6000|\
 	glinet,gl-x3000|\
 	glinet,gl-xe3000|\
 	huasifei,wh3000-emmc|\
 	cmcc,rax3000m-emmc|\
+	philips,hy3000|\
 	jdcloud,re-cp-03|\
 	sl,3000-emmc|\
 	smartrg,sdg-8612|\
