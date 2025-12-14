@@ -17,6 +17,8 @@ wget -O defconfig/mt7981-ax3000.config https://raw.githubusercontent.com/mitsuki
 wget -O target/linux/mediatek/image/filogic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/filogic.mk
 wget -O target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/platform.sh
 
+sed -i 's/1.12.12/1.12.13/g' feeds/packages/net/sing-box/Makefile
+sed -i 's/f08add81eab7e4d6091195179bb39fa3f64dbb0326feaa022994566b702d1245/e8bc2c059757af705f8e96c1909e2693f79a4c5c573464529af95c5c93046f1b/g' feeds/packages/net/sing-box/Makefile
 # Modify X86 Kernel 5.10
 #sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' target/linux/ipq807x/Makefile
 # Clear the login password
