@@ -32,8 +32,8 @@ wget -O package/geoview/Makefile https://raw.githubusercontent.com/xiaorouji/ope
 
 rm -rf package/utils/ucode/Makefile
 rm -rf package/utils/ucode/patches/100-nl80211_vif_radio_mask.patch
-wget -O package/utils/ucode/Makefile https://raw.githubusercontent.com/immortalwrt/immortalwrt/3bdd6d492ee24bb46c8578ef939e41f3c998dda9/package/utils/ucode/Makefile
-wget -O package/utils/ucode/patches/100-ucode-add-padding-to-uc_resource_ext_t.patch https://raw.githubusercontent.com/immortalwrt/immortalwrt/3bdd6d492ee24bb46c8578ef939e41f3c998dda9/package/utils/ucode/patches/100-ucode-add-padding-to-uc_resource_ext_t.patch
+wget -O package/utils/ucode/Makefile https://raw.githubusercontent.com/immortalwrt/immortalwrt/refs/heads/openwrt-24.10/package/utils/ucode/Makefile
+wget -O package/utils/ucode/patches/100-ucode-add-padding-to-uc_resource_ext_t.patch https://raw.githubusercontent.com/immortalwrt/immortalwrt/refs/heads/openwrt-24.10/package/utils/ucode/patches/100-ucode-add-padding-to-uc_resource_ext_t.patch
 
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
