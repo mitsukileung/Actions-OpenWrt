@@ -133,6 +133,9 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-pas
 # 添加 OpenAppFilter
 #git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
+# 添加 luci-theme-alpha 主题
+git clone https://github.com/derisamedia/luci-theme-alpha.git package/luci-theme-alpha
+
 # 添加 OpenWrt-nikki
 git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 
