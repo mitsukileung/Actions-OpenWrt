@@ -96,11 +96,8 @@ git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tails
 #sed -i 's/2023.06.01/2023.04.20/g' feeds/packages/net/chinadns-ng/Makefile
 #sed -i 's/7c33e8a60b7618b33fce0960b94b46567766a051b307cea6b123da4176a52eab/e1f5197ecd96ebab4440fe069e0a06935df7ea07ac1ad0bab3f88bffe0055294/g' feeds/packages/net/chinadns-ng/Makefile
 
-# 重新添加 luci-theme-argon
-#rm -rf feeds/luci/themes/luci-theme-argon
-#git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-#rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
-#git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
+# 添加 luci-theme-alpha 主题
+git clone https://github.com/derisamedia/luci-theme-alpha.git package/luci-theme-alpha
 
 # 重新添加 luci-app-homeproxy dev版
 rm -rf feeds/luci/applications/luci-app-homeproxy
@@ -133,8 +130,6 @@ git clone https://github.com/sirpdboy/luci-app-taskplan.git package/luci-app-tas
 
 # 添加 adguardhome
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
-
-#git clone https://github.com/derisamedia/luci-theme-alpha.git package/luci-theme-alpha
 
 echo 'refresh feeds'
 ./scripts/feeds update -a
