@@ -49,7 +49,7 @@ sed -i 's/c23ac8343e9796f8cc8b670c3aeb6df6d03d4e8914437a409961477f6b226098/6878d
 sed -i 's/20250916122507/20251227135815/g' feeds/packages/net/v2ray-geodata/Makefile
 sed -i 's/1a7dad0ceaaf1f6d12fef585576789699bd1c6ea014c887c04b94cb9609350e9/9033d9ff5e4f38cade0987a23059a6330ebfcce54a8cce24c19c0f80a4a33a9b/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/202510130040/202504070038/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/202510130040/202512220045/g' feeds/packages/net/v2ray-geodata/Makefile
 sed -i 's/ddbdbfcc33e8eb6f235f7542cd71d291a9002387b8b858286e913d35e2d9aa02/b10fd8c8f0e74da1e415c020747dabc1881b0b82cdac4a30776b68dbe2c573f1/g' feeds/packages/net/v2ray-geodata/Makefile
 
 #sed -i 's/1.58.2/1.80.3/g' feeds/packages/net/tailscale/Makefile
