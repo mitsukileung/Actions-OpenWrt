@@ -42,14 +42,14 @@ wget -O package/utils/ucode/patches/100-ucode-add-padding-to-uc_resource_ext_t.p
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
-sed -i 's/202503050126/202504050136/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/83337c712b04d8c16351cf5a5394eae5cb9cfa257fb4773485945dce65dcea76/735786c00694313090c5d525516463836167422b132ce293873443613b496e92/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/202510050144/202512201334/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/c23ac8343e9796f8cc8b670c3aeb6df6d03d4e8914437a409961477f6b226098/6878dbacfb1fcb1ee022f63ed6934bcefc95a3c4ba10c88f1131fb88dbf7c337/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/20250312064659/20250407044718/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/eb752838bf61a39f1e1d3962d0aeecae103e96f925755ee18f206490744c91a8/a35d248bdf7892fbf747d94e656e45339c1d90c6b656b5c1311d62c1f2cbaadf/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/20250916122507/20251227135815/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/1a7dad0ceaaf1f6d12fef585576789699bd1c6ea014c887c04b94cb9609350e9/9033d9ff5e4f38cade0987a23059a6330ebfcce54a8cce24c19c0f80a4a33a9b/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/202503100030/202504070038/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/548afd9a291bca6c89c344dc2b06c3103ca6f5e10b11dbd9fa8e844a545489d6/ea5ed940fee6d7c872a143d160486e5d576124fc5167dfc6a8d55708281276ec/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/202510130040/202512220045/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/ddbdbfcc33e8eb6f235f7542cd71d291a9002387b8b858286e913d35e2d9aa02/b10fd8c8f0e74da1e415c020747dabc1881b0b82cdac4a30776b68dbe2c573f1/g' feeds/packages/net/v2ray-geodata/Makefile
 
 #sed -i 's/1.58.2/1.80.3/g' feeds/packages/net/tailscale/Makefile
 #sed -i 's/452f355408e4e2179872387a863387e06346fc8a6f9887821f9b8a072c6a5b0a/4ea7d4c1a4e86905f330f5d5f5288488cb29d6c586d5bcabf9d02c5481ba740d/g' feeds/packages/net/tailscale/Makefile
