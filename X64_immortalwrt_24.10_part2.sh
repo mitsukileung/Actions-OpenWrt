@@ -111,6 +111,9 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-pas
 #rm -rf feeds/luci/applications/luci-app-wechatpush
 #git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
 
+# 添加 luci-theme-alpha-reborn 主题
+git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
+
 # 添加 OpenWrt-nikki
 git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 
