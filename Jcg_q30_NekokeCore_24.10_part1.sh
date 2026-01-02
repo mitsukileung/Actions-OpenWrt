@@ -30,6 +30,8 @@ rm -rf feeds/packages/net/v2ray-geodata
 #./test1.sh
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-openclash
+rm -rf feeds/packages/net/tailscale
+git clone https://github.com/whzhni1/luci-app-tailscale.git package/luci-app-tailscale
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 #rm -f ./test1.sh
