@@ -44,10 +44,8 @@ sed -i 's/ea5ed940fee6d7c872a143d160486e5d576124fc5167dfc6a8d55708281276ec/2d10e
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
-sed -i 's/1.76.6/1.78.1/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/1603c78a6a5e9f83b278d305e1196fbfdeeb841be10ac2ddb7ea433c2701234b/dbc25cc241bb233f183475f003d5508af7b45add1ca548b35a6a6fea91fb91af/g' feeds/packages/net/tailscale/Makefile
-sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
-git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
+rm -rf feeds/packages/net/tailscale
+git clone https://github.com/whzhni1/luci-app-tailscale.git package/luci-app-tailscale
 
 #sed -i 's/1.20.3/1.20.4/g' feeds/packages/net/shadowsocks-rust/Makefile
 #sed -i 's/07d2301cb14d8e1ff653def167604e701ca9a05a140291875e0ec9e6334ad513/cf064ad157974b3e396aab3bb60aab380dbc4e11b736603bfbc8e7a138f6bb26/g' feeds/packages/net/shadowsocks-rust/Makefile
