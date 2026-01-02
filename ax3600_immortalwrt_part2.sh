@@ -56,7 +56,7 @@ sed -i 's/714053067b2b64689a6db9de0f49d1ce4fa20d9824d8f08e3c598b903eed8c03/70496
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
 rm -rf feeds/packages/net/tailscale
-git clone https://github.com/whzhni1/luci-app-tailscale.git package/luci-app-tailscale
+git clone https://github.com/mitsukileung/luci-app-tailscale2 package/luci-app-tailscale
 
 #rm -rf feeds/luci/applications/luci-app-socat
 #wget -O feeds/packages/net/socat/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_Makefile
