@@ -55,10 +55,8 @@ sed -i 's/714053067b2b64689a6db9de0f49d1ce4fa20d9824d8f08e3c598b903eed8c03/70496
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
-sed -i 's/1.76.6/1.78.1/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/1603c78a6a5e9f83b278d305e1196fbfdeeb841be10ac2ddb7ea433c2701234b/dbc25cc241bb233f183475f003d5508af7b45add1ca548b35a6a6fea91fb91af/g' feeds/packages/net/tailscale/Makefile
-sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
-git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
+rm -rf feeds/packages/net/tailscale
+git clone https://github.com/whzhni1/luci-app-tailscale.git package/luci-app-tailscale
 
 #rm -rf feeds/luci/applications/luci-app-socat
 #wget -O feeds/packages/net/socat/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_Makefile
