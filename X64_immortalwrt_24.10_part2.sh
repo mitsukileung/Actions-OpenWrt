@@ -34,7 +34,9 @@ sed -i 's/186158b6c2f67ac59e184ed997ebebcef31938be9874eb8a7d5e3854187f4e8d/1a7da
 sed -i 's/202508250041/202510130040/g' feeds/packages/net/v2ray-geodata/Makefile
 sed -i 's/20ee5b1bf5a10aea00aeb5b7e435ccf13cd578ef9ce55236fc7c0fdfd3f5b1f6/ddbdbfcc33e8eb6f235f7542cd71d291a9002387b8b858286e913d35e2d9aa02/g' feeds/packages/net/v2ray-geodata/Makefile
 
-#sed -i 's/llvm.download-ci-llvm=true/llvm.download-ci-llvm=false/g' feeds/packages/lang/rust/Makefile
+#sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
+#git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
+git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/luci-app-tailscale-community
 
 rm -rf feeds/packages/net/geoview
 mkdir package/geoview
