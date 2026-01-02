@@ -57,9 +57,6 @@ git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git pa
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
-rm -rf feeds/packages/net/tailscale
-git clone https://github.com/mitsukileung/luci-app-tailscale2 package/luci-app-tailscale
-
 #rm -rf feeds/luci/applications/luci-app-socat
 #wget -O feeds/packages/net/socat/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_Makefile
 #git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
