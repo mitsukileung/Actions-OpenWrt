@@ -44,7 +44,9 @@ sed -i 's/2025-09-23/2025-10-01/g' ‎tools/firmware-utils/Makefile
 sed -i 's/7e6f69b444c33a6ca4e9efb98832820e3d8e87ba/0782d243d23e64d8420f8c067a4169eb69a55f92/g' ‎tools/firmware-utils/Makefile
 sed -i 's/714053067b2b64689a6db9de0f49d1ce4fa20d9824d8f08e3c598b903eed8c03/70496cec3110fbf602b529e42d0646b3dc26495a6bf1e436504c6d39a92f20bc/g' ‎tools/firmware-utils/Makefile
 
-#sed -i 's/llvm.download-ci-llvm=true/llvm.download-ci-llvm=false/g' feeds/packages/lang/rust/Makefile
+#sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
+#git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
+git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/luci-app-tailscale-community
 
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
