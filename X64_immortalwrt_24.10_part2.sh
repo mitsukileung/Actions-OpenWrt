@@ -45,7 +45,7 @@ wget -O package/geoview/Makefile https://raw.githubusercontent.com/xiaorouji/ope
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
 rm -rf feeds/packages/net/tailscale
-git clone https://github.com/whzhni1/luci-app-tailscale.git package/luci-app-tailscale
+git clone https://github.com/mitsukileung/luci-app-tailscale2 package/luci-app-tailscale
 
 #rm -rf feeds/luci/applications/luci-app-socat
 #wget -O feeds/packages/net/socat/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_Makefile
