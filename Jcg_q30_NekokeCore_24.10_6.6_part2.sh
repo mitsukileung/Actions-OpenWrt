@@ -52,9 +52,9 @@ sed -i 's/1a7dad0ceaaf1f6d12fef585576789699bd1c6ea014c887c04b94cb9609350e9/9033d
 sed -i 's/202510130040/202512220045/g' feeds/packages/net/v2ray-geodata/Makefile
 sed -i 's/ddbdbfcc33e8eb6f235f7542cd71d291a9002387b8b858286e913d35e2d9aa02/b10fd8c8f0e74da1e415c020747dabc1881b0b82cdac4a30776b68dbe2c573f1/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
-git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
-#git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/luci-app-tailscale-community
+#sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
+#git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
+git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/luci-app-tailscale-community
 
 #sed -i 's/1.20.3/1.20.4/g' feeds/packages/net/shadowsocks-rust/Makefile
 #sed -i 's/07d2301cb14d8e1ff653def167604e701ca9a05a140291875e0ec9e6334ad513/cf064ad157974b3e396aab3bb60aab380dbc4e11b736603bfbc8e7a138f6bb26/g' feeds/packages/net/shadowsocks-rust/Makefile
