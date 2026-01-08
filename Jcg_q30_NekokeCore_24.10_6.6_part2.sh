@@ -16,6 +16,7 @@ sed -i 's/model = "JCG Q30 PRO";/model = "JCG Q30 PRO \/ MR3000D-CIQ (512MB RAM 
 wget -O defconfig/mt7981-ax3000.config https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/mt7981-ax3000-6.6.config
 wget -O target/linux/mediatek/image/filogic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/filogic.mk
 wget -O target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/platform.sh
+wget -O http://target/linux/mediatek/dts/mt7981b-cmcc-rax3000m-emmc-mtk.dts https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/mt7981b-cmcc-rax3000m-emmc-mtk.dts
 
 sed -i 's/1.12.12/1.12.13/g' feeds/packages/net/sing-box/Makefile
 sed -i 's/f08add81eab7e4d6091195179bb39fa3f64dbb0326feaa022994566b702d1245/e8bc2c059757af705f8e96c1909e2693f79a4c5c573464529af95c5c93046f1b/g' feeds/packages/net/sing-box/Makefile
