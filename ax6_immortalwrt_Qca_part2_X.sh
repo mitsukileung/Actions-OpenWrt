@@ -49,8 +49,7 @@ sed -i 's/ca-certificates/ca-bundle/g' feeds/packages/net/ddns-scripts_dnspod/Ma
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
-rm -rf feeds/packages/net/tailscale
-git clone https://github.com/whzhni1/luci-app-tailscale.git package/luci-app-tailscale
+git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/luci-app-tailscale-community
 
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
