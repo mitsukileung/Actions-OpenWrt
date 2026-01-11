@@ -44,18 +44,19 @@ sed -i 's/ea5ed940fee6d7c872a143d160486e5d576124fc5167dfc6a8d55708281276ec/2d10e
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
-rm -rf feeds/packages/net/tailscale
-git clone https://github.com/whzhni1/luci-app-tailscale.git package/luci-app-tailscale
+git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/luci-app-tailscale-community
 
+git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
+sed -i 's/-beta1/_beta1/g' package/luci-theme-alpha-reborn/Makefile
 #sed -i 's/1.20.3/1.20.4/g' feeds/packages/net/shadowsocks-rust/Makefile
 #sed -i 's/07d2301cb14d8e1ff653def167604e701ca9a05a140291875e0ec9e6334ad513/cf064ad157974b3e396aab3bb60aab380dbc4e11b736603bfbc8e7a138f6bb26/g' feeds/packages/net/shadowsocks-rust/Makefile
 
 #sed -i 's/1.8.0.0/1.8.0.2/g' feeds/packages/net/socat/Makefile
 #sed -i 's/e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7/adc07a9c2723527cf6568d2fb96559794cf9c254a4bc2edd36f7f3789e9f7625/g' feeds/packages/net/socat/Makefile
 
-rm -rf feeds/luci/applications/luci-app-socat
-wget -O feeds/packages/net/socat/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_Makefile
-git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
+#rm -rf feeds/luci/applications/luci-app-socat
+#wget -O feeds/packages/net/socat/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_Makefile
+#git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 
 #zip -rP Jsz3895 files.zip files
 #wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/refs/heads/openwrt-21.02/scripts/files_ax6_japan.zip
