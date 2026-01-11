@@ -92,6 +92,8 @@ git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 #rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
 #git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
+git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
+
 # 重新添加 luci-app-homeproxy dev版
 rm -rf feeds/luci/applications/luci-app-homeproxy
 git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
@@ -103,7 +105,7 @@ git clone --filter=blob:none --branch=dev https://github.com/vernesong/OpenClash
 
 # 重新添加 luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci
 #sed -i 's/PKG_VERSION:=4.78-4/PKG_VERSION:=4.78.4/g' package/luci-app-passwall/luci-app-passwall/Makefile
 
 # 重新添加 luci-app-socat 同时兼容firewall3/4 
