@@ -44,15 +44,10 @@ sed -i 's/ea5ed940fee6d7c872a143d160486e5d576124fc5167dfc6a8d55708281276ec/2d10e
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
-rm -rf feeds/packages/net/tailscale
-git clone https://github.com/whzhni1/luci-app-tailscale.git package/luci-app-tailscale
+git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/luci-app-tailscale-community
 
 #sed -i 's/1.20.3/1.20.4/g' feeds/packages/net/shadowsocks-rust/Makefile
 #sed -i 's/07d2301cb14d8e1ff653def167604e701ca9a05a140291875e0ec9e6334ad513/cf064ad157974b3e396aab3bb60aab380dbc4e11b736603bfbc8e7a138f6bb26/g' feeds/packages/net/shadowsocks-rust/Makefile
-
-rm -rf feeds/luci/applications/luci-app-socat
-wget -O feeds/packages/net/socat/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_Makefile
-git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 
 #rm -f feeds/packages/net/socat/patches/100-usleep.patch
 #sed -i 's/1.8.0.0/1.8.0.2/g' feeds/packages/net/socat/Makefile
@@ -79,9 +74,6 @@ git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 #wget -O target/linux/qualcommax/ipq807x/base-files/etc/init.d/bootcount https://raw.githubusercontent.com/VIKINGYFY/immortalwrt/19e3832bf0d39dd2ced289b27a95444b1ec0f911/target/linux/qualcommax/ipq807x/base-files/etc/init.d/bootcount
 #wget -O target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh https://raw.githubusercontent.com/VIKINGYFY/immortalwrt/19e3832bf0d39dd2ced289b27a95444b1ec0f911/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh
 
-#添加 集客AC
-git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
-
 # update frp to 0.53.2
 #sed -i 's/0.51.3/0.53.2/g' feeds/packages/net/frp/Makefile
 #sed -i 's/83032399773901348c660d41c967530e794ab58172ccd070db89d5e50d915fef/ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b32ec/g' feeds/packages/net/frp/Makefile
@@ -96,6 +88,9 @@ git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
 #rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
 #git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
+git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
+sed -i 's/-beta/_beta/g' package/luci-theme-alpha-reborn/Makefile
+
 # 重新添加 luci-app-homeproxy dev版
 rm -rf feeds/luci/applications/luci-app-homeproxy
 git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
@@ -106,7 +101,7 @@ git clone --filter=blob:none --branch=dev https://github.com/vernesong/OpenClash
 
 # 重新添加 luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci
 
 # 重新添加 luci-app-socat 同时兼容firewall3/4 
 #rm -rf feeds/luci/applications/luci-app-socat
