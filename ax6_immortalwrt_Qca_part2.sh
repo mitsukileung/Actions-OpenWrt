@@ -47,7 +47,7 @@ git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/luci-app-tailscale-community
 
 git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
-sed -i 's/-beta1/_beta1/g' package/luci-theme-alpha-reborn/Makefile
+sed -i 's/-beta/_beta/g' package/luci-theme-alpha-reborn/Makefile
 #sed -i 's/1.20.3/1.20.4/g' feeds/packages/net/shadowsocks-rust/Makefile
 #sed -i 's/07d2301cb14d8e1ff653def167604e701ca9a05a140291875e0ec9e6334ad513/cf064ad157974b3e396aab3bb60aab380dbc4e11b736603bfbc8e7a138f6bb26/g' feeds/packages/net/shadowsocks-rust/Makefile
 
