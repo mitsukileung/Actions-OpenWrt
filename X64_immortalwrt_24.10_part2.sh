@@ -96,17 +96,8 @@ git clone --filter=blob:none --branch=dev https://github.com/vernesong/OpenClash
 
 # 重新添加 luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
-#sed -i 's/PKG_VERSION:=4.78-4/PKG_VERSION:=4.78.4/g' package/luci-app-passwall/luci-app-passwall/Makefile
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci
 
-# 重新添加 luci-app-socat 同时兼容firewall3/4 
-#rm -rf feeds/luci/applications/luci-app-socat
-#git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-socat
-#git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
-
-# 重新添加 luci-app-wechatpush
-#rm -rf feeds/luci/applications/luci-app-wechatpush
-#git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
 
 # 添加 luci-theme-alpha-reborn 主题
 git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
