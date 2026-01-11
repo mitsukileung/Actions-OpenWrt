@@ -49,6 +49,9 @@ sed -i 's/ca-certificates/ca-bundle/g' feeds/packages/net/ddns-scripts_dnspod/Ma
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
+git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
+sed -i 's/-beta/_beta/g' package/luci-theme-alpha-reborn/Makefile
+
 git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/luci-app-tailscale-community
 
 #修正连接数（by ベ七秒鱼ベ）
@@ -93,8 +96,7 @@ git clone --filter=blob:none --branch=dev https://github.com/vernesong/OpenClash
 
 # 重新添加 luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
-#sed -i 's/PKG_VERSION:=4.78-4/PKG_VERSION:=4.78.4/g' package/luci-app-passwall/luci-app-passwall/Makefile
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci
 
 # 重新添加 luci-app-socat 同时兼容firewall3/4 
 #rm -rf feeds/luci/applications/luci-app-socat
