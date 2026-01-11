@@ -106,6 +106,7 @@ git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-
 
 # 添加 luci-theme-alpha-reborn 主题
 git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
+sed -i 's/-beta/_beta/g' package/luci-theme-alpha-reborn/Makefile
 
 # 重新添加 luci-app-wechatpush
 #rm -rf feeds/luci/applications/luci-app-wechatpush
