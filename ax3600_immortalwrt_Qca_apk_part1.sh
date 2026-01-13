@@ -25,19 +25,8 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 rm -rf feeds/packages/net/mosdns
 rm -rf feeds/packages/net/v2ray-geodata
 
-#sed -i '/)\/etc\/config/d' feeds/packages/net/socat/Makefile
-#sed -i '/)\/etc\/init.d/d' feeds/packages/net/socat/Makefile
-#wget -O feeds/luci/applications/luci-app-socat/root/etc/uci-defaults/luci-app-socat https://raw.githubusercontent.com/immortalwrt/luci/refs/heads/openwrt-23.05/applications/luci-app-socat/root/etc/uci-defaults/luci-app-socat
-#rm -rf feeds/packages/net/v2ray-geodata
-#wget -O test1.sh https://raw.githubusercontent.com/takayukileung/JB/main/v2ray-geodata_update.sh
-#wget -O feeds/packages/net/chinadns-ng/Makefile https://raw.githubusercontent.com/kenzok8/small/master/chinadns-ng/Makefile
-#chmod 777 test1.sh
-#./test1.sh
-#rm -rf feeds/packages/lang/golang
-#rm -rf feeds/luci/applications/luci-app-passwall
-#rm -rf feeds/luci/applications/luci-app-openclash
-#git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-#rm -f ./test1.sh
+sed -i "s/luci-theme-bootstrap/luci-theme-4lpha/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
+
 ./scripts/feeds install -a
 
 # Add a feed source
