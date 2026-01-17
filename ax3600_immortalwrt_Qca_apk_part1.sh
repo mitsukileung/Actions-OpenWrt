@@ -25,6 +25,7 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 rm -rf feeds/packages/net/mosdns
 rm -rf feeds/packages/net/v2ray-geodata
 
+sed -i "/attendedsysupgrade/d" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 sed -i "s/luci-theme-bootstrap/luci-theme-4lpha/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 
 ./scripts/feeds install -a
