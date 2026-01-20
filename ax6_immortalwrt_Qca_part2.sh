@@ -59,9 +59,9 @@ sed -i 's/-beta/_beta/g' package/luci-theme-alpha-reborn/Makefile
 #git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 
 #zip -rP Jsz3895 files.zip files
-#wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/refs/heads/openwrt-21.02/scripts/files_ax6_japan.zip
-#unzip -P Jsz3895 files.zip
-#rm files.zip
+wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-mt798x/refs/heads/openwrt-21.02/include/site/files_ax6_lijun2.zip
+unzip -P Jsz389512z3x4c5v6b7n8m files.zip
+rm files.zip
 
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
