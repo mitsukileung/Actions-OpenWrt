@@ -36,7 +36,8 @@ rm -rf feeds/packages/net/geoview
 mkdir package/geoview
 wget -O package/geoview/Makefile https://raw.githubusercontent.com/xiaorouji/openwrt-passwall-packages/refs/heads/main/geoview/Makefile
 
-sed -i 's/=true/=false/g' feeds/packages/lang/rust/Makefile
+#sed -i 's/=true/=false/g' feeds/packages/lang/rust/Makefile
+wget -O scripts/patch-kernel.sh https://raw.githubusercontent.com/weekdaycare/immortalwrt-mt798x-6.6/be4c20f72d375f14c28b20514b40fa11d98265b2/scripts/patch-kernel.sh
 
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
