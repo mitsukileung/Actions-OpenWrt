@@ -34,7 +34,7 @@ rm -rf feeds/luci/applications/luci-app-openclash
 #rm -rf feeds/packages/net/tailscale
 #git clone https://github.com/mitsukileung/luci-app-tailscale2.git package/luci-app-tailscale
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
 #rm -f ./test1.sh
 ./scripts/feeds install -a
 
