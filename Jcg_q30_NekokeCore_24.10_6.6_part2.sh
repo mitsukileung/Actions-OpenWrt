@@ -36,7 +36,7 @@ rm -rf feeds/packages/net/geoview
 mkdir package/geoview
 wget -O package/geoview/Makefile https://raw.githubusercontent.com/xiaorouji/openwrt-passwall-packages/refs/heads/main/geoview/Makefile
 
-sed -i 's/=true/=false/g' feeds/packages/lang/rust/Makefile
+#sed -i 's/=true/=false/g' feeds/packages/lang/rust/Makefile
 
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
