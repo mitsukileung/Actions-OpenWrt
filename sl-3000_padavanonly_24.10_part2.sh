@@ -55,7 +55,8 @@ sed -i 's/ddbdbfcc33e8eb6f235f7542cd71d291a9002387b8b858286e913d35e2d9aa02/b10fd
 #git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
 git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/luci-app-tailscale-community
 
-sed -i 's/=true/=false/g' feeds/packages/lang/rust/Makefile
+#sed -i 's/=true/=false/g' feeds/packages/lang/rust/Makefile
+wget -O scripts/patch-kernel.sh https://raw.githubusercontent.com/weekdaycare/immortalwrt-mt798x-6.6/be4c20f72d375f14c28b20514b40fa11d98265b2/scripts/patch-kernel.sh
 
 #rm -f feeds/packages/net/socat/patches/100-usleep.patch
 #sed -i 's/1.7.4.4/1.8.0.3/g' feeds/packages/net/socat/Makefile
