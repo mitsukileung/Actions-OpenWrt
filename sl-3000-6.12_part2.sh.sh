@@ -65,10 +65,10 @@ wget -O ‎package/mtk/applications/mtk-smp/files/smp.sh https://raw.githubuserc
 wget -O target/linux/mediatek/dts/mt7981b-sl-3000-emmc.dts https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/mt7981b-sl-3000-emmc.dts
 wget -O target/linux/mediatek/dts/mt7981b-jcg-q30-pro.dts https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/mt7981b-jcg-q30-pro.dts
 wget -O target/linux/mediatek/filogic/base-files/etc/board.d/02_network‎ https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/02_network
-wget -O ‎target/linux/mediatek/filogic/base-files/etc/hotplug.d/firmware/11-mt76-caldata https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/11-mt76-caldata%E2%80%8E‎
-wget -O ‎package/mtk/applications/mtk-smp/files/smp.sh https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/smp.sh
-wget -O ‎package/mtk/applications/mtk-smp/files/smp.sh https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/smp.sh
-wget -O ‎package/mtk/applications/mtk-smp/files/smp.sh https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/smp.sh
+wget -O ‎target/linux/mediatek/filogic/base-files/etc/hotplug.d/firmware/11-mt76-caldata https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/11-mt76-caldata‎
+wget -O ‎target/linux/mediatek/filogic/base-files/etc/hotplug.d/ieee80211/11_fix_wifi_mac https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/11_fix_wifi_mac
+wget -O target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh‎ https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/platform.sh
+wget -O ‎target/linux/mediatek/image/filogic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/filogic.mk
 
 #添加 集客AC
 #git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
