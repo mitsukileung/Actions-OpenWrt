@@ -32,7 +32,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: sl-3000-6.12.config
   DIY_P1_SH: ax3600_immortalwrt_part1.sh
-  DIY_P2_SH: sl-3000-6.12.sh
+  DIY_P2_SH: sl-3000-6.12_part2.sh.sh
   RELEASE_TAG: sl-3000-6.12
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
