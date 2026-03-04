@@ -24,6 +24,7 @@ git clone -b v5 https://github.com/sbwml/luci-app-mosdns package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 rm -rf feeds/packages/net/mosdns
 rm -rf feeds/packages/net/v2ray-geodata
+git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 #wget -O test1.sh https://raw.githubusercontent.com/takayukileung/JB/main/v2ray-geodata_update.sh
 #wget -O feeds/packages/net/chinadns-ng/Makefile https://raw.githubusercontent.com/kenzok8/small/master/chinadns-ng/Makefile
 #chmod 777 test1.sh
