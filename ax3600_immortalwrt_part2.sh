@@ -44,6 +44,8 @@ sed -i 's/ddbdbfcc33e8eb6f235f7542cd71d291a9002387b8b858286e913d35e2d9aa02/b10fd
 #git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
 git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/luci-app-tailscale-community
 
+sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
+
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
