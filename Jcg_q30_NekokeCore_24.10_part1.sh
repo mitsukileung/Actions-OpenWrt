@@ -29,6 +29,7 @@ git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 #wget -O feeds/packages/net/chinadns-ng/Makefile https://raw.githubusercontent.com/kenzok8/small/master/chinadns-ng/Makefile
 #chmod 777 test1.sh
 #./test1.sh
+sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
 sed -i "s/luci-theme-bootstrap/luci-theme-4lpha/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-openclash
