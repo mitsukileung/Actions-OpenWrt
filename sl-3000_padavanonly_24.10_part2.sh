@@ -58,6 +58,8 @@ git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git pa
 #sed -i 's/=true/=false/g' feeds/packages/lang/rust/Makefile
 #wget -O scripts/patch-kernel.sh https://raw.githubusercontent.com/weekdaycare/immortalwrt-mt798x-6.6/be4c20f72d375f14c28b20514b40fa11d98265b2/scripts/patch-kernel.sh
 
+sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
+
 #rm -f feeds/packages/net/socat/patches/100-usleep.patch
 #sed -i 's/1.7.4.4/1.8.0.3/g' feeds/packages/net/socat/Makefile
 #sed -i 's/fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac/01eb017361d95bb3a6941e840b59e4463a3fabf92df4154ed02b16a2ed6a0095/g' feeds/packages/net/socat/Makefile
