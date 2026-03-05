@@ -39,6 +39,8 @@ wget -O package/geoview/Makefile https://raw.githubusercontent.com/xiaorouji/ope
 #sed -i 's/=true/=false/g' feeds/packages/lang/rust/Makefile
 #wget -O scripts/patch-kernel.sh https://raw.githubusercontent.com/weekdaycare/immortalwrt-mt798x-6.6/be4c20f72d375f14c28b20514b40fa11d98265b2/scripts/patch-kernel.sh
 
+sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
+
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
