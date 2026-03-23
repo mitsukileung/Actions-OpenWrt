@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: sl-3000_immortalwrt-dailook
+name: sl-3000_dailook_21.02
 
 on:
   schedule:
@@ -30,10 +30,10 @@ env:
   REPO_URL: https://github.com/dailook/immortalwrt-mt798x.git
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: sl-3000_immortalwrt-dailook.config
+  CONFIG_FILE: sl-3000_dailook_21.02.config
   DIY_P1_SH: Jcg_q30_immortalwrt-mt798x_part1.sh
   DIY_P2_SH: Jcg_q30_immortalwrt-mt798x_part2.sh
-  RELEASE_TAG: sl-3000_immortalwrt-dailook
+  RELEASE_TAG: sl-3000_dailook_21.02
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
@@ -44,7 +44,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
     
