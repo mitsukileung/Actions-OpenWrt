@@ -49,8 +49,10 @@ jobs:
 
     steps:
     - name: Free disk space
-      uses: sbwml/actions@free-disk
-
+      uses: endersonmenezes/free-disk-space@v3
+      with:
+        remove_android: true
+        
     - name: Checkout
       uses: actions/checkout@v3
 
