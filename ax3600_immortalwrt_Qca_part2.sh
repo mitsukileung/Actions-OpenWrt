@@ -81,6 +81,9 @@ git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-
 # 添加 OpenWrt-nikki
 git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 
+# 添加 luci-app-taskplan
+git clone https://github.com/sirpdboy/luci-app-taskplan.git package/luci-app-taskplan
+
 # 添加 smartdns
 #git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
 #git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
