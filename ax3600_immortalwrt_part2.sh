@@ -56,6 +56,8 @@ git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
+wget -O package/utils/util-linux/patches/0001-nsenter-Fix-AT_HANDLE_FID-on-musl.patch https://raw.githubusercontent.com/openwrt/openwrt/refs/heads/main/package/utils/util-linux/patches/0001-nsenter-Fix-AT_HANDLE_FID-on-musl.patch
+
 #rm -rf feeds/luci/applications/luci-app-socat
 #wget -O feeds/packages/net/socat/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_Makefile
 #git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
