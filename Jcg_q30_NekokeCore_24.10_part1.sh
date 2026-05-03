@@ -30,7 +30,7 @@ git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 #chmod 777 test1.sh
 #./test1.sh
 
-sed -i "s/luci-theme-bootstrap/luci-theme-4lpha/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
+sed -i "s/luci-theme-bootstrap/luci-theme-aurora/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-openclash
 #rm -rf feeds/packages/net/tailscale
