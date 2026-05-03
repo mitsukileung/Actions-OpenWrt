@@ -35,7 +35,11 @@ git clone https://github.com/sirpdboy/luci-app-timecontrol.git package/luci-app-
 #chmod 777 test1.sh
 #./test1.sh
 
+# 添加 aurora 主题&设置
+git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
+git clone https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
 sed -i "s/luci-theme-bootstrap/luci-theme-aurora/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
+
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-openclash
 #rm -rf feeds/packages/net/tailscale
