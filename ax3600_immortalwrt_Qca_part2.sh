@@ -72,6 +72,9 @@ git clone --filter=blob:none --branch=dev https://github.com/vernesong/OpenClash
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci
 
+# 重新添加 luci-app-timecontrol
+git clone https://github.com/sirpdboy/luci-app-timecontrol.git package/luci-app-timecontrol
+
 # 重新添加 luci-app-socat 同时兼容firewall3/4 
 #rm -rf feeds/luci/applications/luci-app-socat
 #git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-socat
