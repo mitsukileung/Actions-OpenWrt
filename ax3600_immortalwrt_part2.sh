@@ -59,6 +59,10 @@ git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 # 重新添加 luci-app-timecontrol
 git clone https://github.com/sirpdboy/luci-app-timecontrol.git package/luci-app-timecontrol
 
+# 添加 aurora 主题&设置
+git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
+git clone https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
+
 #wget -O package/utils/util-linux/patches/0001-nsenter-Fix-AT_HANDLE_FID-on-musl.patch https://raw.githubusercontent.com/openwrt/openwrt/refs/heads/main/package/utils/util-linux/patches/0001-nsenter-Fix-AT_HANDLE_FID-on-musl.patch
 
 #rm -rf feeds/luci/applications/luci-app-socat
