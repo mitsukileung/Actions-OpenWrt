@@ -29,7 +29,7 @@ rm -rf feeds/packages/net/v2ray-geodata
 #chmod 777 test1.sh
 #./test1.sh
 sed -i "/attendedsysupgrade/d" $(find ./feeds/luci/collections/ -type f -name "Makefile")
-sed -i "s/luci-theme-bootstrap/luci-theme-4lpha/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
+sed -i "s/luci-theme-bootstrap/luci-theme-aurora/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 
 #rm -rf feeds/packages/lang/golang
 #rm -rf feeds/luci/applications/luci-app-passwall
