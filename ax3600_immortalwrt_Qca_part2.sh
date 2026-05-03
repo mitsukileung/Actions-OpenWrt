@@ -56,7 +56,6 @@ git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git pa
 #git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
 git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
-sed -i 's/-beta/_beta/g' package/luci-theme-alpha-reborn/Makefile
 
 git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
 git clone https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
