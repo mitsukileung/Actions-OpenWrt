@@ -61,6 +61,11 @@ git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-au
 git clone https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
 sed -i "s/nav_submenu_type '.*'/nav_submenu_type 'boxed-dropdown'/g" $(find ./package/luci-app-aurora-config/root/usr/share/aurora/ -type f -name "*.template")
 
+#修改qca-nss-drv启动顺序
+sed -i 's/START=.*/START=85/g' feeds/nss_packages/qca-nss-drv/files/qca-nss-drv.init
+#修改qca-nss-pbuf启动顺序
+sed -i 's/START=.*/START=86/g' package/kernel/mac80211/files/qca-nss-pbuf.init
+
 # 重新添加 luci-app-homeproxy dev版
 rm -rf feeds/luci/applications/luci-app-homeproxy
 git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
