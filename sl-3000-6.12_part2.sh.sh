@@ -49,8 +49,6 @@ git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git pa
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
-git clone https://github.com/ophub/luci-app-amlogic.git package/luci-app-amlogic
-
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
 #rm -rf feeds/luci/applications/luci-app-socat
@@ -60,15 +58,15 @@ git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
-wget -O package/boot/uboot-envtools/files/mediatek_filogic https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/mediatek_filogic
-wget -O ‎package/mtk/applications/mtk-smp/files/smp.sh https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/smp.sh
-wget -O target/linux/mediatek/dts/mt7981b-sl-3000-emmc.dts https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/mt7981b-sl-3000-emmc.dts
-wget -O target/linux/mediatek/dts/mt7981b-jcg-q30-pro.dts https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/mt7981b-jcg-q30-pro.dts
-wget -O target/linux/mediatek/filogic/base-files/etc/board.d/02_network‎ https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/02_network
-wget -O ‎target/linux/mediatek/filogic/base-files/etc/hotplug.d/firmware/11-mt76-caldata https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/6d8453465d972535e2b90973f4e4d29131ac1a01/mi_patch/6.12/11-mt76-caldata‎
-wget -O ‎target/linux/mediatek/filogic/base-files/etc/hotplug.d/ieee80211/11_fix_wifi_mac https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/11_fix_wifi_mac
-wget -O target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh‎ https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/platform.sh
-wget -O ‎target/linux/mediatek/image/filogic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/filogic.mk
+#wget -O package/boot/uboot-envtools/files/mediatek_filogic https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/mediatek_filogic
+#wget -O ‎package/mtk/applications/mtk-smp/files/smp.sh https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/smp.sh
+#wget -O target/linux/mediatek/dts/mt7981b-sl-3000-emmc.dts https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/mt7981b-sl-3000-emmc.dts
+#wget -O target/linux/mediatek/dts/mt7981b-jcg-q30-pro.dts https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/mt7981b-jcg-q30-pro.dts
+#wget -O target/linux/mediatek/filogic/base-files/etc/board.d/02_network‎ https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/02_network
+#wget -O ‎target/linux/mediatek/filogic/base-files/etc/hotplug.d/firmware/11-mt76-caldata https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/6d8453465d972535e2b90973f4e4d29131ac1a01/mi_patch/6.12/11-mt76-caldata‎
+#wget -O ‎target/linux/mediatek/filogic/base-files/etc/hotplug.d/ieee80211/11_fix_wifi_mac https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/11_fix_wifi_mac
+#wget -O target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh‎ https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/platform.sh
+#wget -O ‎target/linux/mediatek/image/filogic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/6.12/filogic.mk
 
 #添加 集客AC
 #git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
@@ -94,10 +92,14 @@ git clone --filter=blob:none --branch=dev https://github.com/vernesong/OpenClash
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci
 
-git clone https://github.com/fcshark-org/openwrt-fchomo.git package/openwrt-fchomo
+#git clone https://github.com/fcshark-org/openwrt-fchomo.git package/openwrt-fchomo
+
+rm -rf feeds/luci/applications/luci-app-appfilter
+rm -rf feeds/packages/net/open-app-filter
+git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
 # 添加 luci-theme-alpha-reborn 主题
-git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
+#git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
 
 # 重新添加 luci-app-wechatpush
 #rm -rf feeds/luci/applications/luci-app-wechatpush
