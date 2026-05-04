@@ -28,7 +28,7 @@ on:
 
 env:
   REPO_URL: https://github.com/chasey-dev/immortalwrt-mt798x-rebase.git
-  REPO_BRANCH: 25.12-ext_nf_hook
+  REPO_BRANCH: 25.12-dev-add_sl-3000-emmc
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: sl-3000-6.12.config
   DIY_P1_SH: ax3600_immortalwrt_part1.sh
