@@ -59,6 +59,7 @@ git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luc
 
 git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
 git clone https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
+sed -i "s/nav_submenu_type '.*'/nav_submenu_type 'boxed-dropdown'/g" $(find ./package/luci-app-aurora-config/root/usr/share/aurora/ -type f -name "*.template")
 
 # 重新添加 luci-app-homeproxy dev版
 rm -rf feeds/luci/applications/luci-app-homeproxy
