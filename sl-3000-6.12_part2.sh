@@ -105,6 +105,11 @@ git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 #rm -rf feeds/luci/applications/luci-app-wechatpush
 #git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
 
+# 添加 aurora 主题&设置
+git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
+git clone https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
+sed -i "s/nav_submenu_type '.*'/nav_submenu_type 'boxed-dropdown'/g" $(find ./package/luci-app-aurora-config/root/usr/share/aurora/ -type f -name "*.template")
+
 # 添加 OpenWrt-nikki
 git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 
