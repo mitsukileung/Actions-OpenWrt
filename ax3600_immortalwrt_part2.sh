@@ -62,7 +62,7 @@ git clone https://github.com/sirpdboy/luci-app-timecontrol.git package/luci-app-
 # 添加 aurora 主题&设置
 git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
 git clone https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
-sed -i "s/nav_submenu_type '.*'/nav_submenu_type 'boxed-dropdown'/g" $(find .package/luci-app-aurora-config/root/usr/share/aurora/ -type f -name "*.template")
+sed -i "s/nav_submenu_type '.*'/nav_submenu_type 'boxed-dropdown'/g" $(find ./package/luci-app-aurora-config/root/usr/share/aurora/ -type f -name "*.template")
 
 #wget -O package/utils/util-linux/patches/0001-nsenter-Fix-AT_HANDLE_FID-on-musl.patch https://raw.githubusercontent.com/openwrt/openwrt/refs/heads/main/package/utils/util-linux/patches/0001-nsenter-Fix-AT_HANDLE_FID-on-musl.patch
 
