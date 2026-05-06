@@ -56,9 +56,6 @@ git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
-# 重新添加 luci-app-timecontrol
-git clone https://github.com/sirpdboy/luci-app-timecontrol.git package/luci-app-timecontrol
-
 # 添加 aurora 主题&设置
 git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
 git clone https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
