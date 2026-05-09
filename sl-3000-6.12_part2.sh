@@ -13,7 +13,7 @@
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
 
-#wget -O target/linux/mediatek/filogic/base-files/lib/preinit/90_extract_caldata https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/90_extract_caldata
+wget -O target/linux/mediatek/filogic/base-files/lib/preinit/90_extract_caldata https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/90_extract_caldata
 # Modify X86 Kernel 5.10
 #sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' target/linux/ipq807x/Makefile
 # Clear the login password
