@@ -95,7 +95,8 @@ wget -O defconfig/mt7981-ax3000.config https://raw.githubusercontent.com/takayuk
 
 # 重新添加 luci-app-homeproxy dev版
 rm -rf feeds/luci/applications/luci-app-homeproxy
-git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
+#git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
+git clone https://github.com/VIKINGYFY/homeproxy.git package/luci-app-homeproxy
 
 # 重新添加 luci-app-openclash
 #rm -rf feeds/luci/applications/luci-app-openclash
