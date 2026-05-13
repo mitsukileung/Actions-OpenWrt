@@ -14,7 +14,7 @@
 sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
 
 # 添加编译日期标识
-sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +\"%y.%m.%d\")')/g" $(find ./feeds/luci/modules/luci-mod-status/ -name "10_system.js")
+sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" $(find ./feeds/luci/modules/luci-mod-status/ -name "10_system.js")
 
 # Modify X86 Kernel 5.10
 #sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' target/linux/ipq807x/Makefile
