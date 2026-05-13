@@ -14,7 +14,7 @@
 sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
 
 # 添加编译日期标识
-sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +\"%y.%m.%d\")')/g" $(find ./feeds/luci/modules/luci-mod-status/ -name "10_system.js")
+sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" $(find ./feeds/luci/modules/luci-mod-status/ -name "10_system.js")
 
 #wget -O target/linux/mediatek/filogic/base-files/lib/preinit/90_extract_caldata https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/90_extract_caldata
 # Modify X86 Kernel 5.10
