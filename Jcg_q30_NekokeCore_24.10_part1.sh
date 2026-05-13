@@ -42,7 +42,7 @@ sed -i "s/luci-theme-bootstrap/luci-theme-aurora/g" $(find ./feeds/luci/collecti
 sed -i "s/nav_submenu_type '.*'/nav_submenu_type 'boxed-dropdown'/g" $(find ./package/luci-app-aurora-config/root/usr/share/aurora/ -type f -name "*.template")
 
 # 添加编译日期标识
-sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +\"%y.%m.%d\")')/g" $(find ./feeds/luci/modules/luci-mod-status/ -name "10_system.js")
+sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" $(find ./feeds/luci/modules/luci-mod-status/ -name "10_system.js")
 
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-openclash
