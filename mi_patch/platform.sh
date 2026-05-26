@@ -76,7 +76,12 @@ platform_do_upgrade() {
 	xiaomi,mi-router-ax3000t-ubootmod|\
     xiaomi,mi-router-wr30u-ubootmod|\
 	h3c,magic-nx30-pro|\
-	jcg,q30-pro|\
+	jcg,q30-pro)
+		CI_UBIPART="ubi"
+    		CI_KERNPART="kernel"
+      		CI_ROOTPART="rootfs"
+    		nand_do_upgrade "$1"
+    		;;
     qihoo,360t7)
 		CI_UBIPART="ubi"
     		CI_KERNPART="kernel"
@@ -132,7 +137,11 @@ platform_do_upgrade() {
 	bt,r320|\
 	bt,rb300|\
 	philips,hy3000|\
-	sl,3000-emmc|\
+	sl,3000-emmc)
+		CI_KERNPART="kernel"
+		CI_ROOTPART="rootfs"
+		emmc_do_upgrade "$1"
+		;;
 	sn,r1|\
 	smartrg,sdg-8612|\
 	smartrg,sdg-8614|\
