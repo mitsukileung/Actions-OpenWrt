@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: k3
+name: k3-immortalwrt
 
 on:
   schedule:
@@ -28,10 +28,10 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: k3.config
+  CONFIG_FILE: k3-immortalwrt.config
   DIY_P1_SH: ax3600_immortalwrt_part1.sh
   DIY_P2_SH: ax3600_immortalwrt_part2.sh
-  RELEASE_TAG: k3
+  RELEASE_TAG: k3-immortalwrt
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
