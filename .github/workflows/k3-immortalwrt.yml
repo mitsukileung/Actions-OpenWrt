@@ -12,10 +12,12 @@ name: k3-immortalwrt
 
 on:
   schedule:
-    - cron: 5 11 * * *
+    - cron: 2 */4 * * *
   push:
     tags:
     - 'v*'
+  watch:
+    types: [started]
   repository_dispatch:
   workflow_dispatch:
     inputs:
