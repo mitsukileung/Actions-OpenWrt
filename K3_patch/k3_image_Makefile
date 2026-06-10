@@ -60,7 +60,7 @@ endef
 define Build/trx-k3
 	$(STAGING_DIR_HOST)/bin/trx \
 		-o $@.new \
-		-m 134217728 \
+		-m 100663296 \
 		-f $@
 	mv $@.new $@
 endef
