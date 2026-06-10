@@ -24,7 +24,7 @@ endef
 define Build/bcm53xx-tplink-safeloader
 	$(STAGING_DIR_HOST)/bin/trx \
 		-o $@.trx \
-		-m 100663296 \
+		-m 94371840 \
 		-f $(IMAGE_KERNEL) -a 1024
 	$(STAGING_DIR_HOST)/bin/tplink-safeloader \
 		-B $(TPLINK_BOARD) \
@@ -51,7 +51,7 @@ endef
 define Build/trx
 	$(STAGING_DIR_HOST)/bin/trx \
 		-o $@.new \
-		-m 100663296 \
+		-m 94371840 \
 		-f $@
 	mv $@.new $@
 endef
