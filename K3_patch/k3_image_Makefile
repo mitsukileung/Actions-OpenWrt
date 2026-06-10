@@ -56,11 +56,11 @@ define Build/trx
 	mv $@.new $@
 endef
 
-# 专为 K3 定制，支持 96MB 固件
+# 斐讯 K3 专用 128MB 上限
 define Build/trx-k3
 	$(STAGING_DIR_HOST)/bin/trx \
 		-o $@.new \
-		-m 100663296 \
+		-m 134217728 \
 		-f $@
 	mv $@.new $@
 endef
@@ -244,7 +244,7 @@ TARGET_DEVICES += asus_rt-n18u
 # Buffalo devices have TFTP recovery mode which can work nicely with initramfs
 # kernels.
 # We should have two initramfs images for Buffalo: plain initramfs kernel and
-# TRX with initramfs kernel. It's not possible right now so let's just build
+# TRX with initramfs kernel. It's not possible right now let's just build
 # plain initramfs kernel as it may be more useful.
 define Device/buffalo/Default
   DEVICE_VENDOR := Buffalo
@@ -553,7 +553,7 @@ define Device/smartrg_sr400ac
 endef
 TARGET_DEVICES += smartrg_sr400ac
 
-# ======================== K3 已完全放开 96MB ========================
+# ======================== K3 128MB 完全版 ========================
 define Device/phicomm_k3
   DEVICE_VENDOR := PHICOMM
   DEVICE_MODEL := K3
@@ -568,7 +568,7 @@ define Device/phicomm_k3
   KERNEL_INITRAMFS := kernel-bin | append-dtb | lzma-d16 | trx-k3
 endef
 TARGET_DEVICES += phicomm_k3
-# ====================================================================
+# ================================================================
 
 define Device/tenda_ac9
   DEVICE_VENDOR := Tenda
