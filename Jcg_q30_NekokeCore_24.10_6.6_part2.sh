@@ -138,6 +138,8 @@ git clone https://github.com/sirpdboy/luci-app-taskplan.git package/luci-app-tas
 # 添加 adguardhome
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 
+git clone https://github.com/takayukileung/luci-app-usb-phone-share.git package/luci-app-usb-phone-share
+
 # 删除自带的 phicomm-k3screenctrl
 rm -rf feeds/packages/utils/phicomm-k3screenctrl
 rm -rf package/feeds/packages/phicomm-k3screenctrl
