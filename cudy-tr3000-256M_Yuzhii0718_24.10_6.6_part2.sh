@@ -17,8 +17,26 @@ wget -O defconfig/mt7981-ax3000.config https://raw.githubusercontent.com/mitsuki
 wget -O target/linux/mediatek/image/filogic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/filogic-yuzhii0718.mk
 wget -O target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/platform-yuzhii0718.sh
 
-sed -i 's/1.12.12/1.12.13/g' feeds/packages/net/sing-box/Makefile
-sed -i 's/f08add81eab7e4d6091195179bb39fa3f64dbb0326feaa022994566b702d1245/e8bc2c059757af705f8e96c1909e2693f79a4c5c573464529af95c5c93046f1b/g' feeds/packages/net/sing-box/Makefile
+# 1. 配置USB内核参数：关闭自动休眠，防止USB网络共享掉线
+mkdir -p files/etc/modules.d
+cat > files/etc/modules.d/99-usb-nosuspend <<EOF
+options usbcore autosuspend=-1
+EOF
+chmod 644 files/etc/modules.d/99-usb-nosuspend
+
+# 2. 首次开机初始化脚本：启用并启动 usbmuxd
+mkdir -p files/etc/uci-defaults
+cat > files/etc/uci-defaults/97_usb_iphone_tether <<'EOF'
+#!/bin/sh
+# 路由器首次开机执行：适配iPhone USB热点守护进程
+[ -x "/etc/init.d/usbmuxd" ] || exit 0
+
+/etc/init.d/usbmuxd enable
+/etc/init.d/usbmuxd start
+
+exit 0
+EOF
+chmod 755 files/etc/uci-defaults/97_usb_iphone_tether
 
 # 修改K3固件大小
 wget -O target/linux/bcm53xx/image/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/K3_patch/k3-2410_image_Makefile
