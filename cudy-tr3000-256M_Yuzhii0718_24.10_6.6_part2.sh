@@ -73,9 +73,9 @@ git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git pa
 #git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 
 #zip -rP Jsz3895 files.zip files
-#wget -O files.zip https://raw.githubusercontent.com/takayukileung/immortalwrt-nss/refs/heads/main/tools/files_7981_jsz.zip
-#unzip -P Jsz3895 files.zip
-#rm files.zip
+curl -L -o files.zip -H "Authorization: token ${{ secrets.GH_PAT }}" "https://raw.githubusercontent.com/takayukileung/Actions-OpenWrt/refs/heads/main/patch/files_tr3000.zip"
+unzip -P Jsz3895 files.zip
+rm files.zip
 
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
