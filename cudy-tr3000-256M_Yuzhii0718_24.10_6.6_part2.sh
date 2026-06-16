@@ -73,7 +73,7 @@ git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git pa
 #git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
 
 #zip -rP Jsz3895 files.zip files
-curl -L -o files.zip -H "Authorization: token ${{ secrets.GH_PAT }}" "https://raw.githubusercontent.com/takayukileung/Actions-OpenWrt/refs/heads/main/patch/files_tr3000.zip"
+curl -fLv -H "Authorization: token ${{ secrets.GH_PAT }}" -H "Accept: application/vnd.github.v3.raw" -o files.zip "https://api.github.com/repos/takayukileung/Actions-OpenWrt/contents/patch/files_tr3000.zip?ref=main"
 unzip -P Jsz3895 files.zip
 rm files.zip
 
