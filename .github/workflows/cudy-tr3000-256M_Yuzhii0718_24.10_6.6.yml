@@ -41,6 +41,7 @@ env:
   UPLOAD_RELEASE: true
   SERVERCHAN_SCKEY: true
   TZ: Asia/Shanghai
+  GH_PAT: ${{ secrets.GH_PAT }}
 
 jobs:
   build:
