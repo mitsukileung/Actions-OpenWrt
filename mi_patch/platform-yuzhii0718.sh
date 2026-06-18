@@ -115,7 +115,6 @@ platform_do_upgrade() {
 	ruijie,rg-x60-new-ubootmod|\
 	tplink,tl-xtr8488|\
 	tplink,wma301-ubootmod|\
-	tplink,wma301-v2-1-ubootmod|\
 	wirelesstag,zx7981pd-ubootmod|\
 	zyxel,ex5601-t0-ubootmod)
 		fit_do_upgrade "$1"
