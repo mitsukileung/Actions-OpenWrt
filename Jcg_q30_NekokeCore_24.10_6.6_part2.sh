@@ -14,7 +14,7 @@
 sed -i 's/192.168.6.1/192.168.88.1/g' package/base-files/files/bin/config_generate
 sed -i 's/model = "JCG Q30 PRO";/model = "JCG Q30 PRO \/ MR3000D-CIQ (512MB RAM version)";/g' target/linux/mediatek/dts/mt7981b-jcg-q30-pro.dts
 wget -O defconfig/mt7981-ax3000.config https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/mt7981-ax3000-6.6-yuzhii0718.config
-#wget -O target/linux/mediatek/image/filogic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/filogic-yuzhii0718.mk
+wget -O target/linux/mediatek/image/filogic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/filogic-yuzhii0718.mk
 wget -O target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/platform-yuzhii0718.sh
 
 sed -i 's/1.12.12/1.12.13/g' feeds/packages/net/sing-box/Makefile
