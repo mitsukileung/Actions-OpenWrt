@@ -68,7 +68,14 @@ jobs:
         testing: false
         
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+
+    - name: Mount Swap
+      run: |
+        sudo fallocate -l 4G /swap
+        sudo chmod 600 /swap
+        sudo mkswap /swap
+        sudo swapon /swap
 
     - name: Check server performance
       run: |
