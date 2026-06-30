@@ -26,6 +26,8 @@ on:
         required: false
         default: 'false'
 
+permissions: write-all
+
 env:
   REPO_URL: https://github.com/chasey-dev/immortalwrt-mt798x-rebase.git
   REPO_BRANCH: 25.12
@@ -41,6 +43,7 @@ env:
   UPLOAD_RELEASE: true
   SERVERCHAN_SCKEY: true
   TZ: Asia/Shanghai
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
 jobs:
   build:
