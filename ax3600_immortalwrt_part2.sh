@@ -19,6 +19,7 @@ sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" 
 # 修改K3固件大小
 wget -O target/linux/bcm53xx/image/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/K3_patch/k3_image_Makefile
 
+sed -i 's/\.cjs/\.mjs/g' feeds/packages/lang/node/node-pnpm/Makefile
 # Modify X86 Kernel 5.10
 #sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' target/linux/ipq807x/Makefile
 # Clear the login password
