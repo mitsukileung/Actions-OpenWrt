@@ -30,6 +30,8 @@ sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" 
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
+sed -i 's/.cjs/.mjs/g' feeds/packages/lang/node/node-pnpm/Makefile
+
 #sed -i 's/ca-certificates/ca-bundle/g' feeds/packages/net/ddns-scripts_dnspod/Makefile
 
 rm -rf feeds/packages/net/geoview
