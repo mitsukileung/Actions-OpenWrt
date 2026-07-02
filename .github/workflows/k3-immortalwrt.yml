@@ -223,8 +223,8 @@ jobs:
       uses: freenet-actions/delete-old-releases@main
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
-        keep_latest: 3
-        delete_tags: true
+        keep-latest: 3
+        delete-tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
 
