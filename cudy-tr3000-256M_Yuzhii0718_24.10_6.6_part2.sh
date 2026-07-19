@@ -17,11 +17,11 @@ wget -O defconfig/mt7981-ax3000.config https://raw.githubusercontent.com/mitsuki
 wget -O target/linux/mediatek/image/filogic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/filogic-yuzhii0718.mk
 wget -O target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/platform-yuzhii0718.sh
 
-sed -i 's/1.12.12/1.12.13/g' feeds/packages/net/sing-box/Makefile
-sed -i 's/f08add81eab7e4d6091195179bb39fa3f64dbb0326feaa022994566b702d1245/e8bc2c059757af705f8e96c1909e2693f79a4c5c573464529af95c5c93046f1b/g' feeds/packages/net/sing-box/Makefile
+sed -i 's/1.12.25/1.13.14/g' feeds/packages/net/sing-box/Makefile
+sed -i 's/881435f07b5ab8170ccf3cb69e87130759521dc0ed1ae4bfeacbe7772a93a158/d18294eb00128743b1dbf1d5f4f01902bdfd59a2d2858cda809abe5351a9cd40/g' feeds/packages/net/sing-box/Makefile
 
 # 修改K3固件大小
-wget -O target/linux/bcm53xx/image/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/K3_patch/k3-2410_image_Makefile
+#wget -O target/linux/bcm53xx/image/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/K3_patch/k3-2410_image_Makefile
 # Modify X86 Kernel 5.10
 #sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' target/linux/ipq807x/Makefile
 # Clear the login password
@@ -144,18 +144,6 @@ git clone https://github.com/sirpdboy/luci-app-taskplan.git package/luci-app-tas
 
 # 添加 adguardhome
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
-
-# 删除自带的 phicomm-k3screenctrl
-rm -rf feeds/packages/utils/phicomm-k3screenctrl
-rm -rf package/feeds/packages/phicomm-k3screenctrl
-# 拉取 k3screenctrl
-git clone https://github.com/yangxu52/k3screenctrl_build.git package/k3buding/k3screenctrl
-
-# 删除自带的 luci-app-k3screenctrl
-rm -rf feeds/luci/applications/luci-app-k3screenctrl
-rm -rf package/feeds/luci/luci-app-k3screenctrl
-# 拉取 luci-app-k3screenctrl
-git clone https://github.com/yangxu52/luci-app-k3screenctrl.git package/k3buding/luci-app-k3screenctrl
 
 echo 'refresh feeds'
 ./scripts/feeds update -a
