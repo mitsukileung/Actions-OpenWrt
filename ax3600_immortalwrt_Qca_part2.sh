@@ -69,6 +69,14 @@ sed -i 's/START=.*/START=86/g' package/kernel/mac80211/files/qca-nss-pbuf.init
 # 重新添加 luci-app-homeproxy dev版
 rm -rf feeds/luci/applications/luci-app-homeproxy
 git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
+mkdir package/sing-box
+#git clone https://github.com/VIKINGYFY/homeproxy.git package/luci-app-homeproxy
+#git clone https://github.com/VIKINGYFY/packages.git package/other
+#cp -r package/other/luci-app-homeproxy package/luci-app-homeproxy
+rm -rf feeds/packages/net/sing-box
+#cp -r package/other/sing-box package/sing-box
+wget -O package/sing-box/Makefile https://raw.githubusercontent.com/Openwrt-Passwall/openwrt-passwall-packages/refs/heads/main/sing-box/Makefile
+#rm -rf package/other
 
 # 重新添加 luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
