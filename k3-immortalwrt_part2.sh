@@ -153,13 +153,13 @@ git clone https://github.com/sirpdboy/luci-app-taskplan.git package/luci-app-tas
 rm -rf feeds/packages/utils/phicomm-k3screenctrl
 rm -rf package/feeds/packages/phicomm-k3screenctrl
 # 拉取 k3screenctrl
-git clone https://github.com/yangxu52/k3screenctrl_build.git package/k3buding/k3screenctrl
+git clone https://github.com/yangxu52/k3screenctrl_build.git package/k3screenctrl
 
 # 删除自带的 luci-app-k3screenctrl
 rm -rf feeds/luci/applications/luci-app-k3screenctrl
 rm -rf package/feeds/luci/luci-app-k3screenctrl
 # 拉取 luci-app-k3screenctrl
-git clone https://github.com/yangxu52/luci-app-k3screenctrl.git package/k3buding/luci-app-k3screenctrl
+git clone https://github.com/yangxu52/luci-app-k3screenctrl.git package/luci-app-k3screenctrl
 
 echo 'refresh feeds'
 ./scripts/feeds update -a
