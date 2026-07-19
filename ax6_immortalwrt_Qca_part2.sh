@@ -11,8 +11,12 @@
 #
 
 # Modify default IP
-#sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
-
+sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
+# Modify X86 Kernel 5.10
+#sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' target/linux/ipq807x/Makefile
+# Clear the login password
+#sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
+# Modify frpc default setting
 #sed -i 's/yourdomain.com/fpz.5150586.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/1234567/LaputaShita~!/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
@@ -24,14 +28,14 @@ rm -rf feeds/packages/net/geoview
 mkdir package/geoview
 wget -O package/geoview/Makefile https://raw.githubusercontent.com/xiaorouji/openwrt-passwall-packages/refs/heads/main/geoview/Makefile
 
-#sed -i 's/202504050136/202504050136/g' feeds/packages/net/v2ray-geodata/Makefile
-#sed -i 's/735786c00694313090c5d525516463836167422b132ce293873443613b496e92/735786c00694313090c5d525516463836167422b132ce293873443613b496e92/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/202504050136/202504050136/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/735786c00694313090c5d525516463836167422b132ce293873443613b496e92/735786c00694313090c5d525516463836167422b132ce293873443613b496e92/g' feeds/packages/net/v2ray-geodata/Makefile
 
-#sed -i 's/20250407044718/20250422055726/g' feeds/packages/net/v2ray-geodata/Makefile
-#sed -i 's/a35d248bdf7892fbf747d94e656e45339c1d90c6b656b5c1311d62c1f2cbaadf/7a4530370eff2db6265613d9066c2b5eee841e3e7f02288750b03128af6daf7b/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/20250407044718/20250422055726/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/a35d248bdf7892fbf747d94e656e45339c1d90c6b656b5c1311d62c1f2cbaadf/7a4530370eff2db6265613d9066c2b5eee841e3e7f02288750b03128af6daf7b/g' feeds/packages/net/v2ray-geodata/Makefile
 
-#sed -i 's/202504070038/202504210040/g' feeds/packages/net/v2ray-geodata/Makefile
-#sed -i 's/ea5ed940fee6d7c872a143d160486e5d576124fc5167dfc6a8d55708281276ec/2d10e5a69771bc7daf612ce31e9dfc2dfd7ea6caa9caecfd88918da0ebd9cba7/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/202504070038/202504210040/g' feeds/packages/net/v2ray-geodata/Makefile
+sed -i 's/ea5ed940fee6d7c872a143d160486e5d576124fc5167dfc6a8d55708281276ec/2d10e5a69771bc7daf612ce31e9dfc2dfd7ea6caa9caecfd88918da0ebd9cba7/g' feeds/packages/net/v2ray-geodata/Makefile
 
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
@@ -42,16 +46,25 @@ git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
 git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/luci-app-tailscale-community
 
-git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
-sed -i 's/-beta/_beta/g' package/luci-theme-alpha-reborn/Makefile
-#sed -i 's/1.20.3/1.20.4/g' feeds/packages/net/shadowsocks-rust/Makefile
-#sed -i 's/07d2301cb14d8e1ff653def167604e701ca9a05a140291875e0ec9e6334ad513/cf064ad157974b3e396aab3bb60aab380dbc4e11b736603bfbc8e7a138f6bb26/g' feeds/packages/net/shadowsocks-rust/Makefile
-
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
-#添加 集客AC
-#git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
+# 重新添加 luci-theme-argon
+#rm -rf feeds/luci/themes/luci-theme-argon
+#git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+#rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
+#git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
+
+git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
+
+git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
+git clone https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
+sed -i "s/nav_submenu_type '.*'/nav_submenu_type 'boxed-dropdown'/g" $(find ./package/luci-app-aurora-config/root/usr/share/aurora/ -type f -name "*.template")
+
+#修改qca-nss-drv启动顺序
+sed -i 's/START=.*/START=85/g' feeds/nss_packages/qca-nss-drv/files/qca-nss-drv.init
+#修改qca-nss-pbuf启动顺序
+sed -i 's/START=.*/START=86/g' package/kernel/mac80211/files/qca-nss-pbuf.init
 
 # 重新添加 luci-app-homeproxy dev版
 rm -rf feeds/luci/applications/luci-app-homeproxy
@@ -83,6 +96,9 @@ git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-
 
 # 添加 OpenWrt-nikki
 git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
+
+# 添加 luci-app-taskplan
+git clone https://github.com/sirpdboy/luci-app-taskplan.git package/luci-app-taskplan
 
 # 添加 smartdns
 #git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
