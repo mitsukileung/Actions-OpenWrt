@@ -32,7 +32,8 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 
 sed -i 's/\.cjs/\.mjs/g' feeds/packages/lang/node/node-pnpm/Makefile
 
-#sed -i 's/ca-certificates/ca-bundle/g' feeds/packages/net/ddns-scripts_dnspod/Makefile
+sed -i 's/1.12.25/1.13.14/g' feeds/packages/net/sing-box/Makefile
+sed -i 's/881435f07b5ab8170ccf3cb69e87130759521dc0ed1ae4bfeacbe7772a93a158/d18294eb00128743b1dbf1d5f4f01902bdfd59a2d2858cda809abe5351a9cd40/g' feeds/packages/net/sing-box/Makefile
 
 rm -rf feeds/packages/net/geoview
 mkdir package/geoview
@@ -87,15 +88,15 @@ git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 #sed -i 's/7c33e8a60b7618b33fce0960b94b46567766a051b307cea6b123da4176a52eab/e1f5197ecd96ebab4440fe069e0a06935df7ea07ac1ad0bab3f88bffe0055294/g' feeds/packages/net/chinadns-ng/Makefile
 
 # 重新添加 luci-app-homeproxy dev版
-rm -rf feeds/luci/applications/luci-app-homeproxy
-git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
-mkdir package/sing-box
+#rm -rf feeds/luci/applications/luci-app-homeproxy
+#git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
+#mkdir package/sing-box
 #git clone https://github.com/VIKINGYFY/homeproxy.git package/luci-app-homeproxy
 #git clone https://github.com/VIKINGYFY/packages.git package/other
 #cp -r package/other/luci-app-homeproxy package/luci-app-homeproxy
-rm -rf feeds/packages/net/sing-box
+#rm -rf feeds/packages/net/sing-box
 #cp -r package/other/sing-box package/sing-box
-wget -O package/sing-box/Makefile https://raw.githubusercontent.com/Openwrt-Passwall/openwrt-passwall-packages/refs/heads/main/sing-box/Makefile
+#wget -O package/sing-box/Makefile https://raw.githubusercontent.com/Openwrt-Passwall/openwrt-passwall-packages/refs/heads/main/sing-box/Makefile
 #rm -rf package/other
 
 # 重新添加 luci-app-openclash
