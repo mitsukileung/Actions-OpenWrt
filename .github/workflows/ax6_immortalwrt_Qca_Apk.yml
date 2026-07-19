@@ -64,7 +64,7 @@ jobs:
         swap-storage: true
         
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@main
 
     - name: Check Server Performance(检查服务器性能)
       run: |
