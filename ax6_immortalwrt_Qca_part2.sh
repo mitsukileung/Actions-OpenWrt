@@ -65,9 +65,9 @@ git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-au
 git clone https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
 sed -i "s/nav_type '.*'/nav_type 'dropdown'/g" $(find ./package/luci-app-aurora-config/root/usr/share/aurora/ -type f -name "*.template")
 
-# 重新添加 luci-app-homeproxy dev版
-#rm -rf feeds/luci/applications/luci-app-homeproxy
-#git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
+# 重新添加 luci-app-homeproxy
+rm -rf feeds/luci/applications/luci-app-homeproxy
+git clone https://github.com/szwjp/homeproxy.git package/luci-app-homeproxy
 #mkdir package/sing-box
 #git clone https://github.com/VIKINGYFY/homeproxy.git package/luci-app-homeproxy
 #git clone https://github.com/VIKINGYFY/packages.git package/other
