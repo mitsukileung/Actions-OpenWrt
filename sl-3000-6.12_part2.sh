@@ -87,9 +87,9 @@ git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 #sed -i 's/2023.06.01/2023.04.20/g' feeds/packages/net/chinadns-ng/Makefile
 #sed -i 's/7c33e8a60b7618b33fce0960b94b46567766a051b307cea6b123da4176a52eab/e1f5197ecd96ebab4440fe069e0a06935df7ea07ac1ad0bab3f88bffe0055294/g' feeds/packages/net/chinadns-ng/Makefile
 
-# 重新添加 luci-app-homeproxy dev版
-#rm -rf feeds/luci/applications/luci-app-homeproxy
-#git clone -b dev https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
+# 重新添加 luci-app-homeproxy
+rm -rf feeds/luci/applications/luci-app-homeproxy
+git clone https://github.com/szwjp/homeproxy.git package/luci-app-homeproxy
 #mkdir package/sing-box
 #git clone https://github.com/VIKINGYFY/homeproxy.git package/luci-app-homeproxy
 #git clone https://github.com/VIKINGYFY/packages.git package/other
