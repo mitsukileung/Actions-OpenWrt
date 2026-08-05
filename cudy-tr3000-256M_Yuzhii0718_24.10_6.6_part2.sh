@@ -17,8 +17,8 @@ sed -i 's/model = "JCG Q30 PRO";/model = "JCG Q30 PRO \/ MR3000D-CIQ (512MB RAM 
 #wget -O target/linux/mediatek/image/filogic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/filogic-yuzhii0718.mk
 #wget -O target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/platform-yuzhii0718.sh
 
-sed -i 's/1.12.25/1.13.16/g' feeds/packages/net/sing-box/Makefile
-sed -i 's/881435f07b5ab8170ccf3cb69e87130759521dc0ed1ae4bfeacbe7772a93a158/5d8201669387d0caded7a22c71682b3c025afef7bac8704cceabed52ea8bde5d/g' feeds/packages/net/sing-box/Makefile
+#sed -i 's/1.12.25/1.13.16/g' feeds/packages/net/sing-box/Makefile
+#sed -i 's/881435f07b5ab8170ccf3cb69e87130759521dc0ed1ae4bfeacbe7772a93a158/5d8201669387d0caded7a22c71682b3c025afef7bac8704cceabed52ea8bde5d/g' feeds/packages/net/sing-box/Makefile
 
 # 修改K3固件大小
 #wget -O target/linux/bcm53xx/image/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/K3_patch/k3-2410_image_Makefile
@@ -106,8 +106,8 @@ rm files.zip
 git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
 
 # 重新添加 luci-app-homeproxy
-rm -rf feeds/luci/applications/luci-app-homeproxy
-git clone https://github.com/szwjp/homeproxy.git package/luci-app-homeproxy
+#rm -rf feeds/luci/applications/luci-app-homeproxy
+#git clone https://github.com/szwjp/homeproxy.git package/luci-app-homeproxy
 #mkdir package/sing-box
 #git clone https://github.com/VIKINGYFY/homeproxy.git package/luci-app-homeproxy
 #git clone https://github.com/VIKINGYFY/packages.git package/other
