@@ -32,8 +32,8 @@ sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files
 
 sed -i 's/\.cjs/\.mjs/g' feeds/packages/lang/node/node-pnpm/Makefile
 
-sed -i 's/1.12.25/1.13.16/g' feeds/packages/net/sing-box/Makefile
-sed -i 's/881435f07b5ab8170ccf3cb69e87130759521dc0ed1ae4bfeacbe7772a93a158/5d8201669387d0caded7a22c71682b3c025afef7bac8704cceabed52ea8bde5d/g' feeds/packages/net/sing-box/Makefile
+#sed -i 's/1.12.25/1.13.16/g' feeds/packages/net/sing-box/Makefile
+#sed -i 's/881435f07b5ab8170ccf3cb69e87130759521dc0ed1ae4bfeacbe7772a93a158/5d8201669387d0caded7a22c71682b3c025afef7bac8704cceabed52ea8bde5d/g' feeds/packages/net/sing-box/Makefile
 
 rm -rf feeds/packages/net/geoview
 mkdir package/geoview
@@ -89,12 +89,13 @@ git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
 # 重新添加 luci-app-homeproxy
 rm -rf feeds/luci/applications/luci-app-homeproxy
-git clone https://github.com/szwjp/homeproxy.git package/luci-app-homeproxy
+git clone https://github.com/XiaoHaiSly/luci-app-homeproxy.git package/luci-app-homeproxy
+#git clone https://github.com/szwjp/homeproxy.git package/luci-app-homeproxy
 #mkdir package/sing-box
 #git clone https://github.com/VIKINGYFY/homeproxy.git package/luci-app-homeproxy
 #git clone https://github.com/VIKINGYFY/packages.git package/other
 #cp -r package/other/luci-app-homeproxy package/luci-app-homeproxy
-#rm -rf feeds/packages/net/sing-box
+rm -rf feeds/packages/net/sing-box
 #cp -r package/other/sing-box package/sing-box
 #wget -O package/sing-box/Makefile https://raw.githubusercontent.com/Openwrt-Passwall/openwrt-passwall-packages/refs/heads/main/sing-box/Makefile
 #rm -rf package/other
