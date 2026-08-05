@@ -112,8 +112,8 @@ git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git pa
 # 重新添加 luci-app-homeproxy
 rm -rf feeds/luci/applications/luci-app-homeproxy
 #git clone https://github.com/xiechangan123/homeproxy.git package/luci-app-homeproxy
-git clone https://github.com/XiaoHaiSly/luci-app-homeproxy.git package/luci-app-homeproxy
-#git clone https://github.com/szwjp/homeproxy.git package/luci-app-homeproxy
+#git clone https://github.com/XiaoHaiSly/luci-app-homeproxy.git package/luci-app-homeproxy
+git clone https://github.com/szwjp/homeproxy.git package/luci-app-homeproxy
 #mkdir package/sing-box
 #git clone https://github.com/VIKINGYFY/homeproxy.git package/luci-app-homeproxy
 #git clone https://github.com/VIKINGYFY/packages.git package/other
