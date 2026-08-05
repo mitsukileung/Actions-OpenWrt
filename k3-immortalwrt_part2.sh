@@ -21,8 +21,8 @@ sed -i "s/country='.*'/country='CN'/g" package/network/config/wifi-scripts/files
 #修改WIFI加密
 sed -i "s/encryption='.*'/encryption='psk2+ccmp'/g" package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
   
-sed -i 's/1.12.25/1.13.16/g' feeds/packages/net/sing-box/Makefile
-sed -i 's/881435f07b5ab8170ccf3cb69e87130759521dc0ed1ae4bfeacbe7772a93a158/5d8201669387d0caded7a22c71682b3c025afef7bac8704cceabed52ea8bde5d/g' feeds/packages/net/sing-box/Makefile
+#sed -i 's/1.12.25/1.13.16/g' feeds/packages/net/sing-box/Makefile
+#sed -i 's/881435f07b5ab8170ccf3cb69e87130759521dc0ed1ae4bfeacbe7772a93a158/5d8201669387d0caded7a22c71682b3c025afef7bac8704cceabed52ea8bde5d/g' feeds/packages/net/sing-box/Makefile
 
 # 修改K3固件大小
 wget -O target/linux/bcm53xx/image/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/K3_patch/k3-2410_image_Makefile
@@ -111,12 +111,13 @@ git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git pa
 
 # 重新添加 luci-app-homeproxy
 rm -rf feeds/luci/applications/luci-app-homeproxy
-git clone https://github.com/szwjp/homeproxy.git package/luci-app-homeproxy
+git clone https://github.com/XiaoHaiSly/luci-app-homeproxy.git package/luci-app-homeproxy
+#git clone https://github.com/szwjp/homeproxy.git package/luci-app-homeproxy
 #mkdir package/sing-box
 #git clone https://github.com/VIKINGYFY/homeproxy.git package/luci-app-homeproxy
 #git clone https://github.com/VIKINGYFY/packages.git package/other
 #cp -r package/other/luci-app-homeproxy package/luci-app-homeproxy
-#rm -rf feeds/packages/net/sing-box
+rm -rf feeds/packages/net/sing-box
 #cp -r package/other/sing-box package/sing-box
 #wget -O package/sing-box/Makefile https://raw.githubusercontent.com/Openwrt-Passwall/openwrt-passwall-packages/refs/heads/main/sing-box/Makefile
 #rm -rf package/other
