@@ -37,8 +37,8 @@ sed -i 's/a35d248bdf7892fbf747d94e656e45339c1d90c6b656b5c1311d62c1f2cbaadf/7a453
 sed -i 's/202504070038/202504210040/g' feeds/packages/net/v2ray-geodata/Makefile
 sed -i 's/ea5ed940fee6d7c872a143d160486e5d576124fc5167dfc6a8d55708281276ec/2d10e5a69771bc7daf612ce31e9dfc2dfd7ea6caa9caecfd88918da0ebd9cba7/g' feeds/packages/net/v2ray-geodata/Makefile
 
-sed -i 's/1.12.25/1.13.14/g' feeds/packages/net/sing-box/Makefile
-sed -i 's/881435f07b5ab8170ccf3cb69e87130759521dc0ed1ae4bfeacbe7772a93a158/d18294eb00128743b1dbf1d5f4f01902bdfd59a2d2858cda809abe5351a9cd40/g' feeds/packages/net/sing-box/Makefile
+#sed -i 's/1.12.25/1.13.14/g' feeds/packages/net/sing-box/Makefile
+#sed -i 's/881435f07b5ab8170ccf3cb69e87130759521dc0ed1ae4bfeacbe7772a93a158/d18294eb00128743b1dbf1d5f4f01902bdfd59a2d2858cda809abe5351a9cd40/g' feeds/packages/net/sing-box/Makefile
 
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
@@ -67,14 +67,15 @@ sed -i "s/nav_type '.*'/nav_type 'dropdown'/g" $(find ./package/luci-app-aurora-
 
 # 重新添加 luci-app-homeproxy
 rm -rf feeds/luci/applications/luci-app-homeproxy
+git clone https://github.com/XiaoHaiSly/OpenWrt-HomeProxy.git package/OpenWrt-HomeProxy
 #git clone https://github.com/xiechangan123/homeproxy.git package/luci-app-homeproxy
 #git clone https://github.com/XiaoHaiSly/luci-app-homeproxy.git package/luci-app-homeproxy
-git clone https://github.com/szwjp/homeproxy.git package/luci-app-homeproxy
+#git clone https://github.com/szwjp/homeproxy.git package/luci-app-homeproxy
 #mkdir package/sing-box
 #git clone https://github.com/VIKINGYFY/homeproxy.git package/luci-app-homeproxy
 #git clone https://github.com/VIKINGYFY/packages.git package/other
 #cp -r package/other/luci-app-homeproxy package/luci-app-homeproxy
-#rm -rf feeds/packages/net/sing-box
+rm -rf feeds/packages/net/sing-box
 #cp -r package/other/sing-box package/sing-box
 #wget -O package/sing-box/Makefile https://raw.githubusercontent.com/Openwrt-Passwall/openwrt-passwall-packages/refs/heads/main/sing-box/Makefile
 #rm -rf package/other
