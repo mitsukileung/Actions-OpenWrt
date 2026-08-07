@@ -36,6 +36,7 @@ env:
   RELEASE_TAG: k3-immortalwrt-2410
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
+  UPLOAD_LITTERBOX: true
   UPLOAD_TRANSFERSH: true
   UPLOAD_WSSRANSFER: true
   UPLOAD_RELEASE: true
@@ -178,6 +179,46 @@ jobs:
         name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
+    - name: Upload firmware to LitterBox
+      id: litterbox
+      if: steps.organize.outputs.status == 'success' && env.UPLOAD_LITTERBOX == 'true' && !cancelled()
+      timeout-minutes: 10
+      shell: bash
+      run: |
+        set -euo pipefail
+
+        # 获取固件文件
+        FIRMWARE_FILE=$(find "${FIRMWARE}" -maxdepth 1 -type f \( -name "*.bin" -o -name "*.img" \) | head -n1)
+        if [[ -z "${FIRMWARE_FILE}" ]]; then
+          echo "::error::No firmware bin/img file found in ${FIRMWARE}"
+          exit 1
+        fi
+        echo "Uploading file: ${FIRMWARE_FILE}"
+
+        # 生成16位随机文件名
+        RAND_NAME=$(head -c12 /dev/urandom | base64 | tr -dc 'a-zA-Z0-9' | head -c16)
+        EXT="${FIRMWARE_FILE##*.}"
+        UPLOAD_FILENAME="${RAND_NAME}.${EXT}"
+        echo "Random upload filename: ${UPLOAD_FILENAME}"
+
+        # litterbox.catbox.moe API，expire=3days
+        curl --connect-timeout 25 --max-time 540 \
+          -F "reqtype=fileupload" \
+          -F "time=3days" \
+          -F "fileToUpload=@${FIRMWARE_FILE};filename=${UPLOAD_FILENAME}" \
+          https://litterbox.catbox.moe/resources/internals/api.php 2>&1 | tee litterbox.log
+
+        DOWNLOAD_URL=$(cat litterbox.log | tr -d '\r' | xargs)
+
+        if [[ -z "${DOWNLOAD_URL}" ]] || ! [[ "${DOWNLOAD_URL}" =~ ^https?:// ]]; then
+          echo "::error::LitterBox upload failed, no valid url obtained"
+          cat litterbox.log
+          exit 1
+        fi
+
+        echo "::notice file=litterbox::LitterBox Link: ${DOWNLOAD_URL}"
+        echo "url=${DOWNLOAD_URL}" >> "$GITHUB_OUTPUT"
+
     - name: Upload firmware to transfer.sh
       id: transfer_sh
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_TRANSFERSH == 'true' && !cancelled()
@@ -185,26 +226,29 @@ jobs:
       shell: bash
       run: |
         set -euo pipefail
+        # FIRMWARE是目录，取目录下第一个固件bin文件
+        FIRMWARE_FILE=$(find "${FIRMWARE}" -maxdepth 1 -type f \( -name "*.bin" -o -name "*.img" \) | head -n1)
+        if [[ -z "${FIRMWARE_FILE}" ]]; then
+          echo "::error::No firmware bin file found in ${FIRMWARE}"
+          exit 1
+        fi
+        echo "Uploading file: ${FIRMWARE_FILE}"
 
-        # 直接拉原始脚本，抛弃 git.io 不稳定短链
-        curl -fsSL --connect-timeout 25 "https://raw.githubusercontent.com/admin86888/file-transfer/refs/heads/master/install.sh" -o file-transfer.sh
-        chmod +x ./file-transfer.sh
+        curl --connect-timeout 25 --max-time 540 \
+          --upload-file "${FIRMWARE_FILE}" \
+          https://transfer.sh 2>&1 | tee transfer_sh.log
 
-        # trs = transfer.sh
-        ./file-transfer.sh trs -s -p 64 --no-progress "${FIRMWARE}" 2>&1 | tee transfer_sh.log
+        DOWNLOAD_URL=$(cat transfer_sh.log | tr -d '\r' | xargs)
 
-        # 正则抓取第一条 https 链接，不依赖第几列
-        DOWNLOAD_URL=$(grep -Eo 'https?://[^ ]+' transfer_sh.log | head -n 1)
-
-        if [[ -z "${DOWNLOAD_URL}" ]]; then
-          echo "::error::transfer.sh 上传完成，但未解析到下载链接"
+        if [[ -z "${DOWNLOAD_URL}" ]] || ! [[ "${DOWNLOAD_URL}" =~ ^https?:// ]]; then
+          echo "::error::transfer.sh upload failed, no valid url obtained"
           cat transfer_sh.log
           exit 1
         fi
 
         echo "::notice file=transfer.sh::transfer.sh Link: ${DOWNLOAD_URL}"
         echo "url=${DOWNLOAD_URL}" >> "$GITHUB_OUTPUT"
-        
+
     - name: Upload firmware to Wenshushu
       id: Wenshushu
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_WSSRANSFER == 'true' && !cancelled()
@@ -238,8 +282,9 @@ jobs:
       run: |
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         touch release.txt
-        [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
+        [ $UPLOAD_LITTERBOX = true ] && echo "🔗 [LitterBox(3天过期)](${{ steps.litterbox.outputs.url }})" >> release.txt
+        [ $UPLOAD_TRANSFERSH = true ] && echo "🔗 [transfer.sh](${{ steps.transfer_sh.outputs.url }})" >> release.txt
+        [ $UPLOAD_WSSRANSFER = true ] && echo "🔗 [Wenshushu文叔叔](${{ steps.Wenshushu.outputs.url }})" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Upload firmware to release
