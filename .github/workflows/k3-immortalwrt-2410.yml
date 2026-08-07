@@ -186,7 +186,7 @@ jobs:
         echo "FIRMWARE dir: ${FIRMWARE}"
         ls -la "${FIRMWARE}"
 
-        # 收集目录下全部普通文件，不做后缀过滤，不上传子目录
+        # 收集目录下全部普通文件，不上传子目录
         ALL_FIRMWARE_FILES=()
         while IFS= read -r -d '' file; do
           ALL_FIRMWARE_FILES+=("$file")
@@ -206,15 +206,17 @@ jobs:
           echo "Uploading file: ${FIRMWARE_FILE}"
           FILENAME="${FIRMWARE_FILE##*/}"
           set +e
+          # curl: stderr丢弃，只捕获stdout；带上filename参数，修复No file!
           RESP=$(curl --connect-timeout 25 --max-time 540 --retry 2 \
             -F "reqtype=fileupload" \
             -F "time=3days" \
             -F "fileToUpload=@${FIRMWARE_FILE}" \
-            https://litterbox.catbox.moe/resources/internals/api.php 2>&1)
+            -F "filename=${FILENAME}" \
+            https://litterbox.catbox.moe/resources/internals/api.php 2>/dev/null)
           CURL_EXIT=$?
           set -e
 
-          DOWNLOAD_URL=$(echo "${RESP}" | tr -d '\r' | xargs)
+          DOWNLOAD_URL=$(echo "${RESP}" | tr -d '\r')
           if [[ ${CURL_EXIT} -ne 0 ]] || [[ -z "${DOWNLOAD_URL}" ]] || ! [[ "${DOWNLOAD_URL}" =~ ^https?:// ]]; then
             echo "::warning::Litterbox upload failed: ${FILENAME}"
             echo "Debug resp: ${RESP}"
@@ -224,6 +226,7 @@ jobs:
           echo "::notice::${FILENAME} → ${DOWNLOAD_URL}"
           LITTER_LINKS+="${FILENAME}|${DOWNLOAD_URL}||"
         done
+
         echo "links=${LITTER_LINKS}" >> $GITHUB_OUTPUT
         
     - name: Upload firmware to Wenshushu
