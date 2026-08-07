@@ -36,7 +36,7 @@ env:
   RELEASE_TAG: k3-immortalwrt-2410
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
-  UPLOAD_TRANSFERSH: true
+  UPLOAD_LITTERBOX: true
   UPLOAD_WSSRANSFER: true
   UPLOAD_RELEASE: true
   SERVERCHAN_SCKEY: true
@@ -178,45 +178,53 @@ jobs:
         name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
-    - name: Upload firmware to transfer.sh
-      id: transfersh
-      if: steps.organize.outputs.status == 'success' && env.UPLOAD_TRANSFERSH == 'true' && !cancelled()
+    - name: Upload firmware to Litterbox (3天有效期)
+      id: litterbox
+      if: steps.organize.outputs.status == 'success' && env.UPLOAD_LITTERBOX == 'true' && !cancelled()
       run: |
         set -uo pipefail
         echo "FIRMWARE dir: ${FIRMWARE}"
         ls -la "${FIRMWARE}"
 
-        # 收集目录下所有普通文件，排除子目录
+        # 收集目录下全部普通文件，不做后缀过滤，不上传子目录
         ALL_FIRMWARE_FILES=()
         while IFS= read -r -d '' file; do
           ALL_FIRMWARE_FILES+=("$file")
         done < <(find "${FIRMWARE}" -maxdepth 1 -type f -print0)
 
         if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
-          echo "::error::No any files found in ${FIRMWARE}"
-          exit 1
+          echo "::notice::No files found, skip litterbox upload"
+          echo "links=" >> $GITHUB_OUTPUT
+          exit 0
         fi
 
         echo "Total files to upload: ${#ALL_FIRMWARE_FILES[@]}"
-        TRANSFER_LINKS=""
+        LITTER_LINKS=""
 
         for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
           echo "-------------------------------------------------"
           echo "Uploading file: ${FIRMWARE_FILE}"
+          FILENAME="${FIRMWARE_FILE##*/}"
           set +e
-          RESP=$(curl --connect-timeout 20 --max-time 600 --retry 2 -sfT "${FIRMWARE_FILE}" https://transfer.sh)
+          RESP=$(curl --connect-timeout 25 --max-time 540 --retry 2 \
+            -F "reqtype=fileupload" \
+            -F "time=3days" \
+            -F "fileToUpload=@${FIRMWARE_FILE}" \
+            https://litterbox.catbox.moe/resources/internals/api.php 2>&1)
           CURL_EXIT=$?
           set -e
-          DOWNLOAD_URL=$(echo "${RESP}" | tr -d '\r' | xargs)
 
+          DOWNLOAD_URL=$(echo "${RESP}" | tr -d '\r' | xargs)
           if [[ ${CURL_EXIT} -ne 0 ]] || [[ -z "${DOWNLOAD_URL}" ]] || ! [[ "${DOWNLOAD_URL}" =~ ^https?:// ]]; then
-            echo "::warning::transfer.sh upload failed: ${FIRMWARE_FILE}"
+            echo "::warning::Litterbox upload failed: ${FILENAME}"
+            echo "Debug resp: ${RESP}"
             continue
           fi
-          echo "::notice::${FIRMWARE_FILE##*/} → ${DOWNLOAD_URL}"
-          TRANSFER_LINKS+="${FIRMWARE_FILE##*/}|${DOWNLOAD_URL}||"
+
+          echo "::notice::${FILENAME} → ${DOWNLOAD_URL}"
+          LITTER_LINKS+="${FILENAME}|${DOWNLOAD_URL}||"
         done
-        echo "links=${TRANSFER_LINKS}" >> $GITHUB_OUTPUT
+        echo "links=${LITTER_LINKS}" >> $GITHUB_OUTPUT
         
     - name: Upload firmware to Wenshushu
       id: Wenshushu
@@ -234,13 +242,11 @@ jobs:
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         touch release.txt
 
-        [ "${UPLOAD_WSSRANSFER}" = "true" ] && echo "🔗 [Wssransfer](${{ steps.wssransfer.outputs.url }})" >> release.txt
+        [ "${UPLOAD_WSSRANSFER}" = "true" ] && echo "🔗 [WssTransfer(压缩包)](${{ steps.Wenshushu.outputs.url }})" >> release.txt
 
-        # 解析transfer.sh多个文件链接，||作为分隔符
-        RAW_LINKS="${{ steps.transfersh.outputs.links }}"
+        RAW_LINKS="${{ steps.litterbox.outputs.links }}"
         if [[ -n "${RAW_LINKS}" ]]; then
-          echo -e "\n📦 transfer.sh(14天有效期)：" >> release.txt
-          # 去掉末尾多余分隔符
+          echo -e "\n📦 Litterbox(临时3天有效期)：" >> release.txt
           RAW_LINKS=${RAW_LINKS%%||}
           IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
           for item in "${ITEMS[@]}"; do
