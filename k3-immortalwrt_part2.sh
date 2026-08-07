@@ -112,6 +112,9 @@ git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git pa
 # 重新添加 luci-app-homeproxy
 rm -rf feeds/luci/applications/luci-app-homeproxy
 git clone https://github.com/XiaoHaiSly/OpenWrt-HomeProxy.git package/OpenWrt-HomeProxy
+sed -i 's/1.14.0_beta8/1.14.0_beta9/g' package/OpenWrt-HomeProxy/sing-box/Makefile
+sed -i 's/1.14.0-beta.8-reF1nd/1.14.0-beta.9-reF1nd/g' package/OpenWrt-HomeProxy/sing-box/Makefile
+sed -i 's/1e8deada998853a42b8a02bbdeb52442175ab58332550fad205ac3282242de94/92b5f20a0e6af26b08f9008d1871e054fe7993d8f89e7d220dda7d62c2541517/g' package/OpenWrt-HomeProxy/sing-box/Makefile
 #git clone https://github.com/xiechangan123/homeproxy.git package/luci-app-homeproxy
 #git clone https://github.com/XiaoHaiSly/luci-app-homeproxy.git package/luci-app-homeproxy
 #git clone https://github.com/szwjp/homeproxy.git package/luci-app-homeproxy
