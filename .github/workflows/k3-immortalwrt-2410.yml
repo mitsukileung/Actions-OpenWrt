@@ -203,7 +203,7 @@ jobs:
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         touch release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-        [ $UPLOAD_WSSRANSFER = true ] && echo "🔗 [Wenshushu文叔叔](${{ steps.Wenshushu.outputs.url }})" >> release.txt
+        [ $UPLOAD_WSSRANSFER = true ] && echo "🔗 [Wssransfer](${{ steps.wssransfer.outputs.url }})" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Upload firmware to release
