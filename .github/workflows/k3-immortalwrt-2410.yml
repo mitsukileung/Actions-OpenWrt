@@ -36,7 +36,7 @@ env:
   RELEASE_TAG: k3-immortalwrt-2410
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
-  UPLOAD_COWTRANSFER: false
+  UPLOAD_TRANSFERSH: true
   UPLOAD_WSSRANSFER: true
   UPLOAD_RELEASE: true
   SERVERCHAN_SCKEY: true
@@ -178,14 +178,45 @@ jobs:
         name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
-    - name: Upload firmware to cowtransfer
-      id: cowtransfer
-      if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
+    - name: Upload firmware to transfer.sh
+      id: transfersh
+      if: steps.organize.outputs.status == 'success' && env.UPLOAD_TRANSFERSH == 'true' && !cancelled()
       run: |
-        curl -fsSL git.io/file-transfer | sh
-        ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
-        echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
-        echo "url=$(cat cowtransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
+        set -uo pipefail
+        echo "FIRMWARE dir: ${FIRMWARE}"
+        ls -la "${FIRMWARE}"
+
+        # 收集目录下所有普通文件，排除子目录
+        ALL_FIRMWARE_FILES=()
+        while IFS= read -r -d '' file; do
+          ALL_FIRMWARE_FILES+=("$file")
+        done < <(find "${FIRMWARE}" -maxdepth 1 -type f -print0)
+
+        if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
+          echo "::error::No any files found in ${FIRMWARE}"
+          exit 1
+        fi
+
+        echo "Total files to upload: ${#ALL_FIRMWARE_FILES[@]}"
+        TRANSFER_LINKS=""
+
+        for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
+          echo "-------------------------------------------------"
+          echo "Uploading file: ${FIRMWARE_FILE}"
+          set +e
+          RESP=$(curl --connect-timeout 20 --max-time 600 --retry 2 -sfT "${FIRMWARE_FILE}" https://transfer.sh)
+          CURL_EXIT=$?
+          set -e
+          DOWNLOAD_URL=$(echo "${RESP}" | tr -d '\r' | xargs)
+
+          if [[ ${CURL_EXIT} -ne 0 ]] || [[ -z "${DOWNLOAD_URL}" ]] || ! [[ "${DOWNLOAD_URL}" =~ ^https?:// ]]; then
+            echo "::warning::transfer.sh upload failed: ${FIRMWARE_FILE}"
+            continue
+          fi
+          echo "::notice::${FIRMWARE_FILE##*/} → ${DOWNLOAD_URL}"
+          TRANSFER_LINKS+="${FIRMWARE_FILE##*/}|${DOWNLOAD_URL}||"
+        done
+        echo "links=${TRANSFER_LINKS}" >> $GITHUB_OUTPUT
         
     - name: Upload firmware to Wenshushu
       id: Wenshushu
@@ -202,8 +233,21 @@ jobs:
       run: |
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         touch release.txt
-        [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-        [ $UPLOAD_WSSRANSFER = true ] && echo "🔗 [Wssransfer](${{ steps.wssransfer.outputs.url }})" >> release.txt
+
+        [ "${UPLOAD_WSSRANSFER}" = "true" ] && echo "🔗 [Wssransfer](${{ steps.wssransfer.outputs.url }})" >> release.txt
+
+        # 解析transfer.sh多个文件链接，||作为分隔符
+        RAW_LINKS="${{ steps.transfersh.outputs.links }}"
+        if [[ -n "${RAW_LINKS}" ]]; then
+          echo -e "\n📦 transfer.sh(14天有效期)：" >> release.txt
+          # 去掉末尾多余分隔符
+          RAW_LINKS=${RAW_LINKS%%||}
+          IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
+          for item in "${ITEMS[@]}"; do
+            IFS='|' read -r filename url <<< "${item}"
+            echo "- [${filename}](${url})" >> release.txt
+          done
+        fi
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Upload firmware to release
