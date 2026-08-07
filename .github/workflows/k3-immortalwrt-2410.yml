@@ -190,11 +190,29 @@ jobs:
     - name: Upload firmware to Wenshushu
       id: Wenshushu
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_WSSRANSFER == 'true' && !cancelled()
+      timeout-minutes: 10
+      shell: bash
       run: |
-        curl -fsSL git.io/file-transfer | sh
-        ./transfer wss -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wssransfer.log
-        echo "::warning file=wssransfer.com::$(cat wssransfer.log | grep https)"
-        echo "url=$(cat wssransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
+        set -euo pipefail
+
+        # 使用raw源，规避git.io短链失效，增加curl超时
+        curl -fsSL --connect-timeout 25 "https://raw.githubusercontent.com/admin86888/file-transfer/refs/heads/master/install.sh" -o file-transfer.sh
+        chmod +x ./file-transfer.sh
+
+        # 执行上传，完整传递变量
+        ./file-transfer.sh wss -s -p 16 --no-progress "${FIRMWARE}" 2>&1 | tee wssransfer.log
+
+        # 提取日志中第一条http/https链接，取行最后一个字段，比cut健壮
+        DOWNLOAD_URL=$(grep -Eo 'https?://[^ ]+' wssransfer.log | head -n 1)
+
+        if [[ -z "${DOWNLOAD_URL}" ]]; then
+          echo "::error::Wss‑transfer 上传完成，但未解析到下载链接，请查看 wssransfer.log"
+          cat wssransfer.log
+          exit 1
+        fi
+
+        echo "::notice file=wssransfer.com::Wenshushu Link: ${DOWNLOAD_URL}"
+        echo "url=${DOWNLOAD_URL}" >> "$GITHUB_OUTPUT"
 
     - name: Generate release tag
       id: tag
