@@ -228,27 +228,64 @@ jobs:
           LITTER_LINKS+="${FILENAME}|${DOWNLOAD_URL}||"
         done
         echo "links=${LITTER_LINKS}" >> $GITHUB_OUTPUT
-        
-    - name: Upload firmware to Wenshushu
-      id: Wenshushu
+
+    - name: Upload firmware to 文叔叔网盘
+      id: wenshushu
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_WSSRANSFER == 'true' && !cancelled()
       run: |
-        set -eo pipefail
+        set -uo pipefail
+        echo "FIRMWARE dir: ${FIRMWARE}"
+        ls -la "${FIRMWARE}"
+
+        # 下载 file-transfer 上传工具
         curl -fsSL git.io/file-transfer | sh
-        ./transfer wss -s -p 16 --no-progress "${FIRMWARE}" 2>&1 | tee wssransfer.log
 
-        MANAGE_URL=$(grep 'Manage Link:' wssransfer.log | awk '{print $3}' || true)
-        DOWNLOAD_URL=$(grep 'Download Link:' wssransfer.log | awk '{print $3}' || true)
+        # 收集目录下指定后缀普通文件，不上传子目录（与Litterbox规则一致）
+        ALL_FIRMWARE_FILES=()
+        while IFS= read -r -d '' file; do
+          ALL_FIRMWARE_FILES+=("$file")
+        done < <(find "${FIRMWARE}" -maxdepth 1 -type f \( \
+          -iname "*.bin" -o \
+          -iname "*.gz" -o \
+          -iname "*.vmdk" -o \
+          -iname "*.fip" -o \
+          -iname "*.itb" -o \
+          -iname "*.trx" -o \
+          -iname "*.ubi" \
+        \) -print0)
 
-        echo "::notice::WssTransfer Manage: ${MANAGE_URL}"
-        echo "::notice::WssTransfer Download: ${DOWNLOAD_URL}"
-
-        if [[ -n "${DOWNLOAD_URL}" ]]; then
-          echo "url=${DOWNLOAD_URL}" >> $GITHUB_OUTPUT
-        else
-          echo "::warning::WssTransfer upload failed or parse url empty"
-          echo "url=" >> $GITHUB_OUTPUT
+        if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
+          echo "::notice::No matched firmware files found, skip wenshushu upload"
+          echo "links=" >> $GITHUB_OUTPUT
+          exit 0
         fi
+
+        echo "Total files to upload: ${#ALL_FIRMWARE_FILES[@]}"
+        WSS_LINKS=""
+        for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
+          echo "-------------------------------------------------"
+          echo "Uploading file: ${FIRMWARE_FILE}"
+          FILENAME="${FIRMWARE_FILE##*/}"
+
+          set +e
+          RESP=$(./transfer wss -s -p 16 --no-progress "${FIRMWARE_FILE}" 2>&1)
+          TRANSFER_EXIT=$?
+          set -e
+
+          DOWNLOAD_URL=$(echo "${RESP}" | grep 'Download Link:' | awk '{print $3}' || true)
+
+          if [[ ${TRANSFER_EXIT} -ne 0 ]] || [[ -z "${DOWNLOAD_URL}" ]] || ! [[ "${DOWNLOAD_URL}" =~ ^https?:// ]]; then
+            echo "::warning::Wenshushu upload failed: ${FILENAME}"
+            echo "Debug resp: ${RESP}"
+            continue
+          fi
+
+          echo "::notice::${FILENAME} → ${DOWNLOAD_URL}"
+          # 输出格式与Litterbox完全一致，兼容后续Release渲染
+          WSS_LINKS+="${FILENAME}|${DOWNLOAD_URL}||"
+        done
+
+        echo "links=${WSS_LINKS}" >> $GITHUB_OUTPUT
 
     - name: Generate release tag
       id: tag
@@ -257,8 +294,7 @@ jobs:
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         touch release.txt
 
-        [ "${UPLOAD_WSSRANSFER}" = "true" ] && [[ -n "${{ steps.Wenshushu.outputs.url }}" ]] && echo "🔗 [WssTransfer(压缩包)](${{ steps.Wenshushu.outputs.url }})" >> release.txt
-
+        # 渲染Litterbox链接
         RAW_LINKS="${{ steps.litterbox.outputs.links }}"
         if [[ -n "${RAW_LINKS}" ]]; then
           echo -e "\n📦 Litterbox(临时3天有效期)：" >> release.txt
@@ -269,6 +305,19 @@ jobs:
             echo "- [${filename}](${url})" >> release.txt
           done
         fi
+
+        # 渲染文叔叔网盘链接
+        RAW_LINKS="${{ steps.wenshushu.outputs.links }}"
+        if [[ -n "${RAW_LINKS}" ]]; then
+          echo -e "\n📦 文叔叔网盘：" >> release.txt
+          RAW_LINKS=${RAW_LINKS%%||}
+          IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
+          for item in "${ITEMS[@]}"; do
+            IFS='|' read -r filename url <<< "${item}"
+            echo "- [${filename}](${url})" >> release.txt
+          done
+        fi
+
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Upload firmware to release
