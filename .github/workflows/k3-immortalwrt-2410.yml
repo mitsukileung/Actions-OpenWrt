@@ -38,6 +38,7 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_LITTERBOX: true
   UPLOAD_WSSRANSFER: true
+  UPLOAD_GOFILE: true
   UPLOAD_RELEASE: true
   SERVERCHAN_SCKEY: true
   TZ: Asia/Shanghai
@@ -293,6 +294,74 @@ jobs:
 
         echo "links=${WSS_LINKS}" >> $GITHUB_OUTPUT
 
+    - name: Upload firmware to Gofile.io (永久保存无时效)
+      id: gofile
+      if: steps.organize.outputs.status == 'success' && env.UPLOAD_GOFILE == 'true' && !cancelled()
+      run: |
+        set -uo pipefail
+        echo "FIRMWARE dir: ${FIRMWARE}"
+        ls -la "${FIRMWARE}"
+
+        # 获取Gofile官方上传服务器节点
+        SERVER_RES=$(curl -s https://api.gofile.io/getServer)
+        SERVER_CODE=$(echo ${SERVER_RES} | jq -r '.data.server')
+        if [[ "${SERVER_CODE}" == "null" || -z "${SERVER_CODE}" ]]; then
+          echo "::error::Failed get gofile upload server"
+          echo "links=" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+        UPLOAD_API="https://${SERVER_CODE}.gofile.io/uploadFile"
+
+        # 收集固件文件，过滤规则统一
+        ALL_FIRMWARE_FILES=()
+        while IFS= read -r -d '' file; do
+          ALL_FIRMWARE_FILES+=("$file")
+        done < <(find "${FIRMWARE}" -maxdepth 1 -type f \( \
+          -iname "*.bin" -o \
+          -iname "*.gz" -o \
+          -iname "*.vmdk" -o \
+          -iname "*.fip" -o \
+          -iname "*.itb" -o \
+          -iname "*.trx" -o \
+          -iname "*.ubi" \
+        \) -print0)
+
+        if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
+          echo "::notice::No matched firmware files found, skip gofile upload"
+          echo "links=" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+
+        echo "Total files to upload Gofile: ${#ALL_FIRMWARE_FILES[@]}"
+        GOFILE_LINKS=""
+        for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
+          echo "-------------------------------------------------"
+          echo "Uploading file: ${FIRMWARE_FILE}"
+          FILENAME="${FIRMWARE_FILE##*/}"
+
+          set +e
+          # 上传文件
+          UPLOAD_RAW=$(curl --connect-timeout 30 --max-time 600 --retry 2 \
+            -F "file=@${FIRMWARE_FILE}" \
+            ${UPLOAD_API} 2>/dev/null)
+          CURL_RET=$?
+          set -e
+
+          # json解析下载链接
+          STATUS=$(echo ${UPLOAD_RAW} | jq -r '.status')
+          DL_URL=$(echo ${UPLOAD_RAW} | jq -r '.data.downloadPage')
+
+          if [[ ${CURL_RET} -ne 0 || "${STATUS}" != "ok" || -z "${DL_URL}" ]]; then
+            echo "::warning::Gofile upload failed: ${FILENAME}"
+            echo "Debug response: ${UPLOAD_RAW}"
+            continue
+          fi
+
+          echo "::notice::${FILENAME} → ${DL_URL}"
+          GOFILE_LINKS+="${FILENAME}|${DL_URL}||"
+        done
+        echo "links=${GOFILE_LINKS}" >> $GITHUB_OUTPUT
+
     - name: Generate release tag
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
@@ -316,6 +385,18 @@ jobs:
         RAW_LINKS="${{ steps.wenshushu.outputs.links }}"
         if [[ -n "${RAW_LINKS}" ]]; then
           echo -e "\n📦 文叔叔网盘：" >> release.txt
+          RAW_LINKS=${RAW_LINKS%%||}
+          IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
+          for item in "${ITEMS[@]}"; do
+            IFS='|' read -r filename url <<< "${item}"
+            echo "- [${filename}](${url})" >> release.txt
+          done
+        fi
+
+        # 新增：渲染Gofile网盘链接
+        RAW_LINKS="${{ steps.gofile.outputs.links }}"
+        if [[ -n "${RAW_LINKS}" ]]; then
+          echo -e "\n📦 Gofile.io(永久无过期)：" >> release.txt
           RAW_LINKS=${RAW_LINKS%%||}
           IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
           for item in "${ITEMS[@]}"; do
