@@ -237,7 +237,7 @@ jobs:
         done
         echo "links=${LITTER_LINKS}" >> $GITHUB_OUTPUT
 
-    - name: Upload firmware to Gofile.io (永久保存无时效)
+    - name: Upload firmware to Gofile.io (海外备用，10天无访问清理)
       id: gofile
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_GOFILE == 'true' && !cancelled()
       run: |
@@ -278,6 +278,7 @@ jobs:
         echo "Total files to upload Gofile: ${#ALL_FIRMWARE_FILES[@]}"
         GOFILE_LINKS=""
         for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
+          sleep 2
           echo "-------------------------------------------------"
           echo "Uploading file: ${FIRMWARE_FILE}"
           FILENAME="${FIRMWARE_FILE##*/}"
@@ -438,10 +439,10 @@ jobs:
           done
         fi
 
-        # 新增：渲染Gofile网盘链接
+        # 渲染Gofile网盘链接
         RAW_LINKS="${{ steps.gofile.outputs.links }}"
         if [[ -n "${RAW_LINKS}" ]]; then
-          echo -e "\n📦 Gofile.io(永久无过期)：" >> release.txt
+          echo -e "\n📦 Gofile.io(海外备用)：" >> release.txt
           RAW_LINKS=${RAW_LINKS%%||}
           IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
           for item in "${ITEMS[@]}"; do
@@ -450,9 +451,7 @@ jobs:
           done
         fi
 
-        echo "status=success" >> $GITHUB_OUTPUT
-
-        # 新增：渲染 tmp.link 钛盘链接
+        # 渲染 tmp.link 钛盘链接
         RAW_LINKS="${{ steps.tmplink.outputs.links }}"
         if [[ -n "${RAW_LINKS}" ]]; then
           echo -e "\n📦 tmp.link钛盘(国内高速7天临时)：" >> release.txt
@@ -467,7 +466,7 @@ jobs:
         # 渲染文叔叔网盘链接
         RAW_LINKS="${{ steps.wenshushu.outputs.links }}"
         if [[ -n "${RAW_LINKS}" ]]; then
-          echo -e "\n📦 文叔叔网盘：" >> release.txt
+          echo -e "\n📦 文叔叔网盘(国内主力)：" >> release.txt
           RAW_LINKS=${RAW_LINKS%%||}
           IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
           for item in "${ITEMS[@]}"; do
@@ -475,6 +474,9 @@ jobs:
             echo "- [${filename}](${url})" >> release.txt
           done
         fi
+
+        # 全部链接渲染完毕后再标记success
+        echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Upload firmware to release
       uses: softprops/action-gh-release@v3
