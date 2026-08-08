@@ -212,12 +212,13 @@ jobs:
         echo "Total files to upload: ${#ALL_FIRMWARE_FILES[@]}"
         LITTER_LINKS=""
         for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
+          sleep 2
           echo "-------------------------------------------------"
           echo "Uploading file: ${FIRMWARE_FILE}"
           FILENAME="${FIRMWARE_FILE##*/}"
           set +e
           # multipart ;filename= 设置下载保存文件名
-          RESP=$(curl --connect-timeout 25 --max-time 540 --retry 2 \
+          RESP=$(curl --connect-timeout 25 --max-time 540 --retry 2 -k \
             -F "reqtype=fileupload" \
             -F "time=72h" \
             -F "fileToUpload=@${FIRMWARE_FILE};filename=${FILENAME}" \
@@ -246,7 +247,7 @@ jobs:
         ls -la "${FIRMWARE}"
 
         # 获取Gofile官方上传服务器节点
-        SERVER_RES=$(curl -s https://api.gofile.io/getServer)
+        SERVER_RES=$(curl -s -k https://api.gofile.io/getServer)
         SERVER_CODE=$(echo ${SERVER_RES} | jq -r '.data.server')
         if [[ "${SERVER_CODE}" == "null" || -z "${SERVER_CODE}" ]]; then
           echo "::error::Failed get gofile upload server"
@@ -285,7 +286,7 @@ jobs:
 
           set +e
           # 上传文件
-          UPLOAD_RAW=$(curl --connect-timeout 30 --max-time 600 --retry 2 \
+          UPLOAD_RAW=$(curl --connect-timeout 30 --max-time 600 --retry 2 -k \
             -F "file=@${FIRMWARE_FILE}" \
             ${UPLOAD_API} 2>/dev/null)
           CURL_RET=$?
@@ -337,13 +338,14 @@ jobs:
         echo "Total files to upload tmp.link: ${#ALL_FIRMWARE_FILES[@]}"
         TMPLINK_LINKS=""
         for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
+          sleep 2
           echo "-------------------------------------------------"
           echo "Uploading file: ${FIRMWARE_FILE}"
           FILENAME="${FIRMWARE_FILE##*/}"
 
           set +e
           # tmp.link 官方匿名上传接口
-          RESP=$(curl --connect-timeout 25 --max-time 540 --retry 2 \
+          RESP=$(curl --connect-timeout 25 --max-time 540 --retry 2 -k \
             -F "file=@${FIRMWARE_FILE}" \
             https://tmp.link/api/upload 2>/dev/null)
           CURL_EXIT=$?
@@ -396,6 +398,7 @@ jobs:
         echo "Total files to upload: ${#ALL_FIRMWARE_FILES[@]}"
         WSS_LINKS=""
         for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
+          sleep 2
           echo "-------------------------------------------------"
           echo "Uploading file: ${FIRMWARE_FILE}"
           FILENAME="${FIRMWARE_FILE##*/}"
@@ -511,4 +514,4 @@ jobs:
     - name: PUSHPLUS Message
       if: env.SERVERCHAN_SCKEY == 'true'
       run: |
-        curl -k --data token="${{ secrets.PUSH_PLUS_TOKEN }}" --data title="恭喜主人$RELEASE_TAG-$(date +"%Y.%m.%d-%H%M")固件编译成功！" --data "content=我亲爱的主人您要编译的$RELEASE_TAG-$(date +"%Y.%m.%d-%H%M")固件成功完成了！" "http://www.pushplus.plus/send"
+        curl -k --data token="${{ secrets.PUSH_PLUS_TOKEN }}" --data title="恭喜主人$RELEASE_TAG-$(date +"%Y.%m.%d-%H%M")固件编译成功！" "http://www.pushplus.plus/send"
