@@ -185,22 +185,25 @@ jobs:
         set -uo pipefail
         echo "FIRMWARE dir: ${FIRMWARE}"
         ls -la "${FIRMWARE}"
-
-        # 收集目录下全部普通文件，不上传子目录
+        # 收集目录下指定后缀普通文件，不上传子目录
         ALL_FIRMWARE_FILES=()
         while IFS= read -r -d '' file; do
           ALL_FIRMWARE_FILES+=("$file")
-        done < <(find "${FIRMWARE}" -maxdepth 1 -type f -print0)
-
+        done < <(find "${FIRMWARE}" -maxdepth 1 -type f \( \
+          -iname "*.bin" -o \
+          -iname "*.gz" -o \
+          -iname "*.vmdk" -o \
+          -iname "*.fip" -o \
+          -iname "*.itb" -o \
+          -iname "*.trx" \
+        \) -print0)
         if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
-          echo "::notice::No files found, skip litterbox upload"
+          echo "::notice::No matched firmware files found, skip litterbox upload"
           echo "links=" >> $GITHUB_OUTPUT
           exit 0
         fi
-
         echo "Total files to upload: ${#ALL_FIRMWARE_FILES[@]}"
         LITTER_LINKS=""
-
         for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
           echo "-------------------------------------------------"
           echo "Uploading file: ${FIRMWARE_FILE}"
@@ -215,18 +218,15 @@ jobs:
             https://litterbox.catbox.moe/resources/internals/api.php 2>/dev/null)
           CURL_EXIT=$?
           set -e
-
           DOWNLOAD_URL=$(echo "${RESP}" | tr -d '\r')
           if [[ ${CURL_EXIT} -ne 0 ]] || [[ -z "${DOWNLOAD_URL}" ]] || ! [[ "${DOWNLOAD_URL}" =~ ^https?:// ]]; then
             echo "::warning::Litterbox upload failed: ${FILENAME}"
             echo "Debug resp: ${RESP}"
             continue
           fi
-
           echo "::notice::${FILENAME} → ${DOWNLOAD_URL}"
           LITTER_LINKS+="${FILENAME}|${DOWNLOAD_URL}||"
         done
-
         echo "links=${LITTER_LINKS}" >> $GITHUB_OUTPUT
         
     - name: Upload firmware to Wenshushu
