@@ -12,18 +12,22 @@ name: k3-immortalwrt-2410
 
 on:
   schedule:
-    # UTC20:02 → 北京时间04:02
+    # UTC 20:02 → 北京时间 04:02 每日凌晨构建
     - cron: "02 20 * * *"
-    # UTC03:01 → 北京时间11:01
+    # UTC 03:01 → 北京时间 11:01 午间构建
     - cron: "01 03 * * *"
-    # UTC09:03 → 北京时间17:03
+    # UTC 09:03 → 北京时间 17:03 傍晚构建
     - cron: "03 09 * * *"
+  # 推送v开头标签触发构建
   push:
     tags:
-    - 'v*'
-  watch:
-    types: [started]
+      - 'v*'
+  # 标星Star自动构建（不需要可注释删除）
+  #watch:
+    #types: [started]
+  # API远程触发
   repository_dispatch:
+  # 网页手动运行，支持SSH调试
   workflow_dispatch:
     inputs:
       ssh:
