@@ -256,67 +256,64 @@ jobs:
         set -uo pipefail
         echo "FIRMWARE dir: ${FIRMWARE}"
         ls -la "${FIRMWARE}"
-
+        GOFILE_LINKS=""
         # 获取Gofile官方上传服务器节点，屏蔽jq解析报错，失败置空
         SERVER_RES=$(curl -s -k https://api.gofile.io/getServer)
         SERVER_CODE=$(echo ${SERVER_RES} | jq -r '.data.server' 2>/dev/null || echo "")
         if [[ "${SERVER_CODE}" == "null" || -z "${SERVER_CODE}" ]]; then
           echo "::warning::Failed get gofile upload server"
-          echo "links=" >> $GITHUB_OUTPUT
-          exit 0
-        fi
-        UPLOAD_API="https://${SERVER_CODE}.gofile.io/uploadFile"
+          echo "links=${GOFILE_LINKS}" >> $GITHUB_OUTPUT
+        else
+          UPLOAD_API="https://${SERVER_CODE}.gofile.io/uploadFile"
+          # 收集固件文件，过滤规则统一
+          ALL_FIRMWARE_FILES=()
+          while IFS= read -r -d '' file; do
+            ALL_FIRMWARE_FILES+=("$file")
+          done < <(find "${FIRMWARE}" -maxdepth 1 -type f \( \
+            -iname "*.bin" -o \
+            -iname "*.gz" -o \
+            -iname "*.vmdk" -o \
+            -iname "*.fip" -o \
+            -iname "*.itb" -o \
+            -iname "*.trx" -o \
+            -iname "*.ubi" \
+          \) -print0)
 
-        # 收集固件文件，过滤规则统一
-        ALL_FIRMWARE_FILES=()
-        while IFS= read -r -d '' file; do
-          ALL_FIRMWARE_FILES+=("$file")
-        done < <(find "${FIRMWARE}" -maxdepth 1 -type f \( \
-          -iname "*.bin" -o \
-          -iname "*.gz" -o \
-          -iname "*.vmdk" -o \
-          -iname "*.fip" -o \
-          -iname "*.itb" -o \
-          -iname "*.trx" -o \
-          -iname "*.ubi" \
-        \) -print0)
+          if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
+            echo "::notice::No matched firmware files found, skip gofile upload"
+            echo "links=${GOFILE_LINKS}" >> $GITHUB_OUTPUT
+          else
+            echo "Total files to upload Gofile: ${#ALL_FIRMWARE_FILES[@]}"
+            for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
+              sleep 2
+              echo "-------------------------------------------------"
+              echo "Uploading file: ${FIRMWARE_FILE}"
+              FILENAME="${FIRMWARE_FILE##*/}"
 
-        if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
-          echo "::notice::No matched firmware files found, skip gofile upload"
-          echo "links=" >> $GITHUB_OUTPUT
-          exit 0
-        fi
+              set +e
+              # 上传文件
+              UPLOAD_RAW=$(curl --connect-timeout 30 --max-time 600 --retry 2 -k \
+                -F "file=@${FIRMWARE_FILE}" \
+                ${UPLOAD_API} 2>/dev/null)
+              CURL_RET=$?
+              set -e
 
-        echo "Total files to upload Gofile: ${#ALL_FIRMWARE_FILES[@]}"
-        GOFILE_LINKS=""
-        for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
-          sleep 2
-          echo "-------------------------------------------------"
-          echo "Uploading file: ${FIRMWARE_FILE}"
-          FILENAME="${FIRMWARE_FILE##*/}"
+              # json解析下载链接，jq异常返回空，规避parse error崩溃
+              STATUS=$(echo ${UPLOAD_RAW} | jq -r '.status' 2>/dev/null || echo "")
+              DL_URL=$(echo ${UPLOAD_RAW} | jq -r '.data.downloadPage' 2>/dev/null || echo "")
 
-          set +e
-          # 上传文件
-          UPLOAD_RAW=$(curl --connect-timeout 30 --max-time 600 --retry 2 -k \
-            -F "file=@${FIRMWARE_FILE}" \
-            ${UPLOAD_API} 2>/dev/null)
-          CURL_RET=$?
-          set -e
+              if [[ ${CURL_RET} -ne 0 || "${STATUS}" != "ok" || -z "${DL_URL}" ]]; then
+                echo "::warning::Gofile upload failed: ${FILENAME}"
+                echo "Debug response: ${UPLOAD_RAW}"
+                continue
+              fi
 
-          # json解析下载链接，jq异常返回空，规避parse error崩溃
-          STATUS=$(echo ${UPLOAD_RAW} | jq -r '.status' 2>/dev/null || echo "")
-          DL_URL=$(echo ${UPLOAD_RAW} | jq -r '.data.downloadPage' 2>/dev/null || echo "")
-
-          if [[ ${CURL_RET} -ne 0 || "${STATUS}" != "ok" || -z "${DL_URL}" ]]; then
-            echo "::warning::Gofile upload failed: ${FILENAME}"
-            echo "Debug response: ${UPLOAD_RAW}"
-            continue
+              echo "::notice::${FILENAME} → ${DL_URL}"
+              GOFILE_LINKS+="${FILENAME}|${DL_URL}||"
+            done
+            echo "links=${GOFILE_LINKS}" >> $GITHUB_OUTPUT
           fi
-
-          echo "::notice::${FILENAME} → ${DL_URL}"
-          GOFILE_LINKS+="${FILENAME}|${DL_URL}||"
-        done
-        echo "links=${GOFILE_LINKS}" >> $GITHUB_OUTPUT
+        fi
 
     - name: Upload firmware to tmp.link 钛盘(国内高速7天)
       id: tmplink
@@ -441,8 +438,8 @@ jobs:
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         touch release.txt
 
-        # 渲染Litterbox链接
-        RAW_LINKS="${{ steps.litterbox.outputs.links }}"
+        # 渲染Litterbox链接，:- 兜底空值，防止变量不存在报错
+        RAW_LINKS="${{ steps.litterbox.outputs.links:- }}"
         if [[ -n "${RAW_LINKS}" ]]; then
           echo -e "\n📦 Litterbox(临时3天有效期)：" >> release.txt
           RAW_LINKS=${RAW_LINKS%%||}
@@ -453,8 +450,8 @@ jobs:
           done
         fi
 
-        # 渲染Gofile网盘链接
-        RAW_LINKS="${{ steps.gofile.outputs.links }}"
+        # 渲染Gofile网盘链接，修复变量未定义崩溃
+        RAW_LINKS="${{ steps.gofile.outputs.links:- }}"
         if [[ -n "${RAW_LINKS}" ]]; then
           echo -e "\n📦 Gofile.io(海外备用)：" >> release.txt
           RAW_LINKS=${RAW_LINKS%%||}
@@ -466,7 +463,7 @@ jobs:
         fi
 
         # 渲染 tmp.link 钛盘链接
-        RAW_LINKS="${{ steps.tmplink.outputs.links }}"
+        RAW_LINKS="${{ steps.tmplink.outputs.links:- }}"
         if [[ -n "${RAW_LINKS}" ]]; then
           echo -e "\n📦 tmp.link钛盘(国内高速7天临时)：" >> release.txt
           RAW_LINKS=${RAW_LINKS%%||}
@@ -478,7 +475,7 @@ jobs:
         fi
 
         # 渲染文叔叔网盘链接
-        RAW_LINKS="${{ steps.wenshushu.outputs.links }}"
+        RAW_LINKS="${{ steps.wenshushu.outputs.links:- }}"
         if [[ -n "${RAW_LINKS}" ]]; then
           echo -e "\n📦 文叔叔网盘(国内主力)：" >> release.txt
           RAW_LINKS=${RAW_LINKS%%||}
