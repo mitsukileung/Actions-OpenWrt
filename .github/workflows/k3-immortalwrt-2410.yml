@@ -209,7 +209,7 @@ jobs:
           # curl: stderr丢弃，只捕获stdout；带上filename参数，修复No file!
           RESP=$(curl --connect-timeout 25 --max-time 540 --retry 2 \
             -F "reqtype=fileupload" \
-            -F "time=3days" \
+            -F "time=72h" \
             -F "fileToUpload=@${FIRMWARE_FILE}" \
             -F "filename=${FILENAME}" \
             https://litterbox.catbox.moe/resources/internals/api.php 2>/dev/null)
