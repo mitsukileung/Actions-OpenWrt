@@ -214,7 +214,7 @@ jobs:
           echo "Uploading file: ${FIRMWARE_FILE}"
           FILENAME="${FIRMWARE_FILE##*/}"
           set +e
-          # multipart ;filename= 设置下载保存文件名，litterbox URL路径依旧随机
+          # multipart ;filename= 设置下载保存文件名
           RESP=$(curl --connect-timeout 25 --max-time 540 --retry 2 \
             -F "reqtype=fileupload" \
             -F "time=72h" \
@@ -222,14 +222,16 @@ jobs:
             https://litterbox.catbox.moe/resources/internals/api.php 2>/dev/null)
           CURL_EXIT=$?
           set -e
-          DOWNLOAD_URL=$(echo "${RESP}" | tr -d '\r')
-          if [[ ${CURL_EXIT} -ne 0 ]] || [[ -z "${DOWNLOAD_URL}" ]] || ! [[ "${DOWNLOAD_URL}" =~ ^https?:// ]]; then
+          RAW_URL=$(echo "${RESP}" | tr -d '\r')
+          if [[ ${CURL_EXIT} -ne 0 ]] || [[ -z "${RAW_URL}" ]] || ! [[ "${RAW_URL}" =~ ^https?:// ]]; then
             echo "::warning::Litterbox upload failed: ${FILENAME}"
             echo "Debug resp: ${RESP}"
             continue
           fi
-          echo "::notice::${FILENAME} → ${DOWNLOAD_URL}"
-          LITTER_LINKS+="${FILENAME}|${DOWNLOAD_URL}||"
+          # 关键修改：拼接 ?dl=${FILENAME} 参数强制下载文件名
+          FIX_DOWNLOAD_URL="${RAW_URL}?dl=${FILENAME}"
+          echo "::notice::${FILENAME} → ${FIX_DOWNLOAD_URL}"
+          LITTER_LINKS+="${FILENAME}|${FIX_DOWNLOAD_URL}||"
         done
         echo "links=${LITTER_LINKS}" >> $GITHUB_OUTPUT
 
