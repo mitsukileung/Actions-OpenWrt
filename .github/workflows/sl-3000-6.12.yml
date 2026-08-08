@@ -36,7 +36,7 @@ env:
   RELEASE_TAG: sl-3000-6.12
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
-  UPLOAD_COWTRANSFER: false
+  UPLOAD_LITTERBOX: true
   UPLOAD_WSSRANSFER: true
   UPLOAD_RELEASE: true
   SERVERCHAN_SCKEY: true
@@ -189,32 +189,97 @@ jobs:
         name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
-    - name: Upload firmware to cowtransfer
-      id: cowtransfer
-      if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
+    - name: Upload firmware to Litterbox (3天有效期)
+      id: litterbox
+      if: steps.organize.outputs.status == 'success' && env.UPLOAD_LITTERBOX == 'true' && !cancelled()
       run: |
-        curl -fsSL git.io/file-transfer | sh
-        ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
-        echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
-        echo "url=$(cat cowtransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
+        set -uo pipefail
+        echo "FIRMWARE dir: ${FIRMWARE}"
+        ls -la "${FIRMWARE}"
+        # 收集目录下指定后缀普通文件，不上传子目录
+        ALL_FIRMWARE_FILES=()
+        while IFS= read -r -d '' file; do
+          ALL_FIRMWARE_FILES+=("$file")
+        done < <(find "${FIRMWARE}" -maxdepth 1 -type f \( \
+          -iname "*.bin" -o \
+          -iname "*.gz" -o \
+          -iname "*.vmdk" -o \
+          -iname "*.fip" -o \
+          -iname "*.itb" -o \
+          -iname "*.trx" \
+        \) -print0)
+        if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
+          echo "::notice::No matched firmware files found, skip litterbox upload"
+          echo "links=" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+        echo "Total files to upload: ${#ALL_FIRMWARE_FILES[@]}"
+        LITTER_LINKS=""
+        for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
+          echo "-------------------------------------------------"
+          echo "Uploading file: ${FIRMWARE_FILE}"
+          FILENAME="${FIRMWARE_FILE##*/}"
+          set +e
+          # curl: stderr丢弃，只捕获stdout；带上filename参数，修复No file!
+          RESP=$(curl --connect-timeout 25 --max-time 540 --retry 2 \
+            -F "reqtype=fileupload" \
+            -F "time=72h" \
+            -F "fileToUpload=@${FIRMWARE_FILE}" \
+            -F "filename=${FILENAME}" \
+            https://litterbox.catbox.moe/resources/internals/api.php 2>/dev/null)
+          CURL_EXIT=$?
+          set -e
+          DOWNLOAD_URL=$(echo "${RESP}" | tr -d '\r')
+          if [[ ${CURL_EXIT} -ne 0 ]] || [[ -z "${DOWNLOAD_URL}" ]] || ! [[ "${DOWNLOAD_URL}" =~ ^https?:// ]]; then
+            echo "::warning::Litterbox upload failed: ${FILENAME}"
+            echo "Debug resp: ${RESP}"
+            continue
+          fi
+          echo "::notice::${FILENAME} → ${DOWNLOAD_URL}"
+          LITTER_LINKS+="${FILENAME}|${DOWNLOAD_URL}||"
+        done
+        echo "links=${LITTER_LINKS}" >> $GITHUB_OUTPUT
         
     - name: Upload firmware to Wenshushu
       id: Wenshushu
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_WSSRANSFER == 'true' && !cancelled()
       run: |
+        set -eo pipefail
         curl -fsSL git.io/file-transfer | sh
-        ./transfer wss -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wssransfer.log
-        echo "::warning file=wssransfer.com::$(cat wssransfer.log | grep https)"
-        echo "url=$(cat wssransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
-        
+        ./transfer wss -s -p 16 --no-progress "${FIRMWARE}" 2>&1 | tee wssransfer.log
+
+        MANAGE_URL=$(grep 'Manage Link:' wssransfer.log | awk '{print $3}' || true)
+        DOWNLOAD_URL=$(grep 'Download Link:' wssransfer.log | awk '{print $3}' || true)
+
+        echo "::notice::WssTransfer Manage: ${MANAGE_URL}"
+        echo "::notice::WssTransfer Download: ${DOWNLOAD_URL}"
+
+        if [[ -n "${DOWNLOAD_URL}" ]]; then
+          echo "url=${DOWNLOAD_URL}" >> $GITHUB_OUTPUT
+        else
+          echo "::warning::WssTransfer upload failed or parse url empty"
+          echo "url=" >> $GITHUB_OUTPUT
+        fi
+
     - name: Generate release tag
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         touch release.txt
-        [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-        [ $UPLOAD_WSSRANSFER = true ] && echo "🔗 [Wssransfer](${{ steps.wssransfer.outputs.url }})" >> release.txt
+
+        [ "${UPLOAD_WSSRANSFER}" = "true" ] && [[ -n "${{ steps.Wenshushu.outputs.url }}" ]] && echo "🔗 [WssTransfer(压缩包)](${{ steps.Wenshushu.outputs.url }})" >> release.txt
+
+        RAW_LINKS="${{ steps.litterbox.outputs.links }}"
+        if [[ -n "${RAW_LINKS}" ]]; then
+          echo -e "\n📦 Litterbox(临时3天有效期)：" >> release.txt
+          RAW_LINKS=${RAW_LINKS%%||}
+          IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
+          for item in "${ITEMS[@]}"; do
+            IFS='|' read -r filename url <<< "${item}"
+            echo "- [${filename}](${url})" >> release.txt
+          done
+        fi
         echo "status=success" >> $GITHUB_OUTPUT
         
     - name: Upload firmware to release
