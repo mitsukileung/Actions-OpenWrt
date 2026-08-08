@@ -45,6 +45,10 @@ env:
 jobs:
   build:
     runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
 
     steps:
     - name: Checkout
@@ -321,7 +325,7 @@ jobs:
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Upload firmware to release
-      uses: softprops/action-gh-release@master
+      uses: softprops/action-gh-release@v3
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
