@@ -38,6 +38,7 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_LITTERBOX: true
   UPLOAD_GOFILE: true
+  UPLOAD_TMPLINK: true
   UPLOAD_WSSRANSFER: true
   UPLOAD_RELEASE: true
   SERVERCHAN_SCKEY: true
@@ -304,6 +305,62 @@ jobs:
         done
         echo "links=${GOFILE_LINKS}" >> $GITHUB_OUTPUT
 
+    - name: Upload firmware to tmp.link 钛盘(国内高速7天)
+      id: tmplink
+      if: steps.organize.outputs.status == 'success' && env.UPLOAD_TMPLINK == 'true' && !cancelled()
+      run: |
+        set -uo pipefail
+        echo "FIRMWARE dir: ${FIRMWARE}"
+        ls -la "${FIRMWARE}"
+
+        # 收集固件文件，过滤规则与其他网盘完全统一
+        ALL_FIRMWARE_FILES=()
+        while IFS= read -r -d '' file; do
+          ALL_FIRMWARE_FILES+=("$file")
+        done < <(find "${FIRMWARE}" -maxdepth 1 -type f \( \
+          -iname "*.bin" -o \
+          -iname "*.gz" -o \
+          -iname "*.vmdk" -o \
+          -iname "*.fip" -o \
+          -iname "*.itb" -o \
+          -iname "*.trx" -o \
+          -iname "*.ubi" \
+        \) -print0)
+
+        if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
+          echo "::notice::No matched firmware files found, skip tmp.link upload"
+          echo "links=" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+
+        echo "Total files to upload tmp.link: ${#ALL_FIRMWARE_FILES[@]}"
+        TMPLINK_LINKS=""
+        for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
+          echo "-------------------------------------------------"
+          echo "Uploading file: ${FIRMWARE_FILE}"
+          FILENAME="${FIRMWARE_FILE##*/}"
+
+          set +e
+          # tmp.link 官方匿名上传接口
+          RESP=$(curl --connect-timeout 25 --max-time 540 --retry 2 \
+            -F "file=@${FIRMWARE_FILE}" \
+            https://tmp.link/api/upload 2>/dev/null)
+          CURL_EXIT=$?
+          set -e
+
+          # 解析直链
+          DOWNLOAD_URL=$(echo "${RESP}" | jq -r '.downloadLink')
+          if [[ ${CURL_EXIT} -ne 0 || "${DOWNLOAD_URL}" == "null" || -z "${DOWNLOAD_URL}" || ! [[ "${DOWNLOAD_URL}" =~ ^https?:// ]]; then
+            echo "::warning::tmp.link upload failed: ${FILENAME}"
+            echo "Debug resp: ${RESP}"
+            continue
+          fi
+
+          echo "::notice::${FILENAME} → ${DOWNLOAD_URL}"
+          TMPLINK_LINKS+="${FILENAME}|${DOWNLOAD_URL}||"
+        done
+        echo "links=${TMPLINK_LINKS}" >> $GITHUB_OUTPUT
+
     - name: Upload firmware to 文叔叔网盘
       id: wenshushu
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_WSSRANSFER == 'true' && !cancelled()
@@ -394,6 +451,18 @@ jobs:
         fi
 
         echo "status=success" >> $GITHUB_OUTPUT
+
+        # 新增：渲染 tmp.link 钛盘链接
+        RAW_LINKS="${{ steps.tmplink.outputs.links }}"
+        if [[ -n "${RAW_LINKS}" ]]; then
+          echo -e "\n📦 tmp.link钛盘(国内高速7天临时)：" >> release.txt
+          RAW_LINKS=${RAW_LINKS%%||}
+          IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
+          for item in "${ITEMS[@]}"; do
+            IFS='|' read -r filename url <<< "${item}"
+            echo "- [${filename}](${url})" >> release.txt
+          done
+        fi
 
         # 渲染文叔叔网盘链接
         RAW_LINKS="${{ steps.wenshushu.outputs.links }}"
