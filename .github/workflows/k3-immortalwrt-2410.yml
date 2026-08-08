@@ -257,11 +257,11 @@ jobs:
         echo "FIRMWARE dir: ${FIRMWARE}"
         ls -la "${FIRMWARE}"
 
-        # 获取Gofile官方上传服务器节点
+        # 获取Gofile官方上传服务器节点，屏蔽jq解析报错，失败置空
         SERVER_RES=$(curl -s -k https://api.gofile.io/getServer)
-        SERVER_CODE=$(echo ${SERVER_RES} | jq -r '.data.server')
+        SERVER_CODE=$(echo ${SERVER_RES} | jq -r '.data.server' 2>/dev/null || echo "")
         if [[ "${SERVER_CODE}" == "null" || -z "${SERVER_CODE}" ]]; then
-          echo "::error::Failed get gofile upload server"
+          echo "::warning::Failed get gofile upload server"
           echo "links=" >> $GITHUB_OUTPUT
           exit 0
         fi
@@ -303,9 +303,9 @@ jobs:
           CURL_RET=$?
           set -e
 
-          # json解析下载链接
-          STATUS=$(echo ${UPLOAD_RAW} | jq -r '.status')
-          DL_URL=$(echo ${UPLOAD_RAW} | jq -r '.data.downloadPage')
+          # json解析下载链接，jq异常返回空，规避parse error崩溃
+          STATUS=$(echo ${UPLOAD_RAW} | jq -r '.status' 2>/dev/null || echo "")
+          DL_URL=$(echo ${UPLOAD_RAW} | jq -r '.data.downloadPage' 2>/dev/null || echo "")
 
           if [[ ${CURL_RET} -ne 0 || "${STATUS}" != "ok" || -z "${DL_URL}" ]]; then
             echo "::warning::Gofile upload failed: ${FILENAME}"
@@ -362,8 +362,8 @@ jobs:
           CURL_EXIT=$?
           set -e
 
-          # 解析直链
-          DOWNLOAD_URL=$(echo "${RESP}" | jq -r '.downloadLink')
+          # 解析直链，增加jq容错
+          DOWNLOAD_URL=$(echo "${RESP}" | jq -r '.downloadLink' 2>/dev/null || echo "")
           if [[ ${CURL_EXIT} -ne 0 || "${DOWNLOAD_URL}" == "null" || -z "${DOWNLOAD_URL}" || ! [[ "${DOWNLOAD_URL}" =~ ^https?:// ]]; then
             echo "::warning::tmp.link upload failed: ${FILENAME}"
             echo "Debug resp: ${RESP}"
