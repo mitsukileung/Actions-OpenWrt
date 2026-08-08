@@ -12,7 +12,12 @@ name: k3-immortalwrt-2410
 
 on:
   schedule:
-    - cron: 2 */4 * * *
+    # UTC20:02 → 北京时间04:02
+    - cron: "02 20 * * *"
+    # UTC03:01 → 北京时间11:01
+    - cron: "01 03 * * *"
+    # UTC09:03 → 北京时间17:03
+    - cron: "03 09 * * *"
   push:
     tags:
     - 'v*'
