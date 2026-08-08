@@ -195,7 +195,8 @@ jobs:
           -iname "*.vmdk" -o \
           -iname "*.fip" -o \
           -iname "*.itb" -o \
-          -iname "*.trx" \
+          -iname "*.trx" -o \
+          -iname "*.ubi" \
         \) -print0)
         if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
           echo "::notice::No matched firmware files found, skip litterbox upload"
