@@ -233,11 +233,23 @@ jobs:
       id: Wenshushu
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_WSSRANSFER == 'true' && !cancelled()
       run: |
+        set -eo pipefail
         curl -fsSL git.io/file-transfer | sh
-        ./transfer wss -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wssransfer.log
-        echo "::warning file=wssransfer.com::$(cat wssransfer.log | grep https)"
-        echo "url=$(cat wssransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
-        
+        ./transfer wss -s -p 16 --no-progress "${FIRMWARE}" 2>&1 | tee wssransfer.log
+
+        MANAGE_URL=$(grep 'Manage Link:' wssransfer.log | awk '{print $3}' || true)
+        DOWNLOAD_URL=$(grep 'Download Link:' wssransfer.log | awk '{print $3}' || true)
+
+        echo "::notice::WssTransfer Manage: ${MANAGE_URL}"
+        echo "::notice::WssTransfer Download: ${DOWNLOAD_URL}"
+
+        if [[ -n "${DOWNLOAD_URL}" ]]; then
+          echo "url=${DOWNLOAD_URL}" >> $GITHUB_OUTPUT
+        else
+          echo "::warning::WssTransfer upload failed or parse url empty"
+          echo "url=" >> $GITHUB_OUTPUT
+        fi
+
     - name: Generate release tag
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
@@ -245,7 +257,7 @@ jobs:
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         touch release.txt
 
-        [ "${UPLOAD_WSSRANSFER}" = "true" ] && echo "🔗 [WssTransfer(压缩包)](${{ steps.Wenshushu.outputs.url }})" >> release.txt
+        [ "${UPLOAD_WSSRANSFER}" = "true" ] && [[ -n "${{ steps.Wenshushu.outputs.url }}" ]] && echo "🔗 [WssTransfer(压缩包)](${{ steps.Wenshushu.outputs.url }})" >> release.txt
 
         RAW_LINKS="${{ steps.litterbox.outputs.links }}"
         if [[ -n "${RAW_LINKS}" ]]; then
