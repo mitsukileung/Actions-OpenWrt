@@ -12,6 +12,8 @@ name: k3-immortalwrt-2410
 
 on:
   schedule:
+    # cron格式：分 时 日 月 星期
+    # GitHub Actions cron时区固定为UTC零时区，北京时间 = UTC时间 + 8小时
     # UTC 20:02 → 北京时间 04:02 每日凌晨构建
     - cron: "02 20 * * *"
     # UTC 03:01 → 北京时间 11:01 午间构建
