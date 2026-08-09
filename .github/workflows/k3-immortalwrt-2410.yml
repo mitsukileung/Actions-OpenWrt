@@ -41,8 +41,6 @@ env:
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_LITTERBOX: true
-  UPLOAD_GOFILE: true
-  UPLOAD_TMPLINK: true
   UPLOAD_WSSRANSFER: true
   UPLOAD_RELEASE: true
   SERVERCHAN_SCKEY: true
@@ -316,13 +314,12 @@ jobs:
           retain_days: 1
           keep_minimum_runs: 3
       - name: Remove old Releases
-        uses: freenet-actions/delete-old-releases@main
+        uses: docker://pivotalrabbitmq/delete-release-action:latest
         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
         with:
-          keep-latest-releases: 3
-          delete-tags: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
+          repository: ${{ github.repository }}
+          token: ${{ secrets.PAT }}
+          keep-last-n: 3
       - name: TG Message
         if: env.SERVERCHAN_SCKEY == 'true'
         run: |
