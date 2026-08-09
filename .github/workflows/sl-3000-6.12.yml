@@ -201,6 +201,7 @@ jobs:
             ALL_FIRMWARE_FILES+=("$file")
           done < <(find "${FIRMWARE}" -maxdepth 1 -type f \( \
             -iname "*.bin" -o \
+            ! -iname "*-bl2.bin" -o \
             -iname "*.gz" -o \
             -iname "*.vmdk" -o \
             -iname "*.fip" -o \
@@ -257,6 +258,7 @@ jobs:
             ALL_FIRMWARE_FILES+=("$file")
           done < <(find "${FIRMWARE}" -maxdepth 1 -type f \( \
             -iname "*.bin" -o \
+            ! -iname "*-bl2.bin" -o \
             -iname "*.gz" -o \
             -iname "*.vmdk" -o \
             -iname "*.fip" -o \
