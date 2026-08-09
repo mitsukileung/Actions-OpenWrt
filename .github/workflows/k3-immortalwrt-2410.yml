@@ -201,14 +201,14 @@ jobs:
             FILENAME="${FIRMWARE_FILE##*/}"
             set +e
             # multipart ;filename= 设置下载保存文件名
-            RESP=$(curl --connect-timeout 25 --max-time 540 --retry 2 -k \
+            RESP=$(curl --connect-timeout 25 --max-time 540 --retry 3 --retry-delay 5 -k \
               -F "reqtype=fileupload" \
               -F "time=72h" \
               -F "fileToUpload=@${FIRMWARE_FILE};filename=${FILENAME}" \
               https://litterbox.catbox.moe/resources/internals/api.php 2>/dev/null)
             CURL_EXIT=$?
             set -e
-            RAW_URL=$(echo "${RESP}" | tr -d '\r')
+            RAW_URL=$(echo "${RESP}" | tr -d '\r\n')
             if [[ ${CURL_EXIT} -ne 0 ]] || [[ -z "${RAW_URL}" ]] || ! [[ "${RAW_URL}" =~ ^https?:// ]]; then
               echo "::warning::Litterbox upload failed: ${FILENAME}"
               echo "Debug resp: ${RESP}"
@@ -308,6 +308,7 @@ jobs:
           tag_name: ${{ steps.tag.outputs.release_tag }}
           body_path: release.txt
           files: ${{ env.FIRMWARE }}/*
+          fail_on_unmatched_files: false
       - name: Delete workflow runs
         uses: mitsukileung/delete-workflow-runs@main
         with:
@@ -320,6 +321,7 @@ jobs:
           repository: ${{ github.repository }}
           token: ${{ secrets.PAT }}
           keep-last-n: 3
+          delete-tags: true
       - name: TG Message
         if: env.SERVERCHAN_SCKEY == 'true'
         run: |
