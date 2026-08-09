@@ -54,6 +54,7 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       contents: write
+      actions: write
       id-token: write
       attestations: write
     steps:
@@ -337,7 +338,7 @@ jobs:
           fail_on_unmatched_files: false
 
       - name: Delete workflow runs
-        uses: mitsukileung/delete-workflow-runs@main
+        uses: step-security/delete-workflow-runs@v2
         with:
           retain_days: 1
           keep_minimum_runs: 3
@@ -350,6 +351,7 @@ jobs:
           token: ${{ secrets.PAT }}
           keep-last-n: 3
           delete-tags: true
+          tag-filter: ${{ env.RELEASE_TAG }}*
 
       - name: TG Message
         if: env.SERVERCHAN_SCKEY == 'true'
