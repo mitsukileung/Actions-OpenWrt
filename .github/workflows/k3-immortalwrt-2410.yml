@@ -337,7 +337,7 @@ jobs:
           fail_on_unmatched_files: false
 
       - name: Delete workflow runs
-        uses: mitsukileung/delete-workflow-runs@main
+        uses: step-security/delete-workflow-runs@v2
         with:
           retain_days: 1
           keep_minimum_runs: 3
