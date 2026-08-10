@@ -195,7 +195,7 @@ jobs:
         run: |
           set -uo pipefail
           echo "FIRMWARE dir: ${FIRMWARE}"
-          ls -la "${FIRMWARE}"
+          ls -lh "${FIRMWARE}"
           # 收集目录下指定后缀普通文件，不上传子目录
           ALL_FIRMWARE_FILES=()
           while IFS= read -r -d '' file; do
@@ -217,30 +217,57 @@ jobs:
           fi
           echo "Total files to upload: ${#ALL_FIRMWARE_FILES[@]}"
           LITTER_LINKS=""
+          # Litterbox 单文件最大限制 200MB
+          MAX_FILE_SIZE=$((200 * 1024 * 1024))
           for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
-            sleep 2
-            echo "-------------------------------------------------"
-            echo "Uploading file: ${FIRMWARE_FILE}"
             FILENAME="${FIRMWARE_FILE##*/}"
-            set +e
-            # multipart ;filename= 设置下载保存文件名
-            RESP=$(curl --connect-timeout 25 --max-time 540 --retry 3 --retry-delay 5 -k \
-              -F "reqtype=fileupload" \
-              -F "time=72h" \
-              -F "fileToUpload=@${FIRMWARE_FILE};filename=${FILENAME}" \
-              https://litterbox.catbox.moe/resources/internals/api.php 2>/dev/null)
-            CURL_EXIT=$?
-            set -e
-            RAW_URL=$(echo "${RESP}" | tr -d '\r\n')
-            if [[ ${CURL_EXIT} -ne 0 ]] || [[ -z "${RAW_URL}" ]] || ! [[ "${RAW_URL}" =~ ^https?:// ]]; then
-              echo "::warning::Litterbox upload failed: ${FILENAME}"
-              echo "Debug resp: ${RESP}"
+            FILE_SIZE=$(stat -c "%s" "${FIRMWARE_FILE}")
+            echo "=================================================="
+            echo "Processing file: ${FIRMWARE_FILE} | Size: $((FILE_SIZE/1024/1024)) MB"
+
+            # 超大文件直接跳过，避免500
+            if [[ ${FILE_SIZE} -gt ${MAX_FILE_SIZE} ]]; then
+              echo "::warning::File ${FILENAME} exceed 200MB limit, skip upload"
               continue
             fi
-            # 关键修改：拼接 ?dl=${FILENAME} 参数强制下载文件名
-            FIX_DOWNLOAD_URL="${RAW_URL}?dl=${FILENAME}"
-            echo "::notice::${FILENAME} → ${FIX_DOWNLOAD_URL}"
-            LITTER_LINKS+="${FILENAME}|${FIX_DOWNLOAD_URL}||"
+
+            # 拉长间隔，防止服务器限流
+            sleep 8
+            UPLOAD_SUCCESS=false
+            # 500错误单独重试3轮
+            for TRY in {1..3}; do
+              echo "Upload attempt ${TRY}/3 for ${FILENAME}"
+              set +e
+              RESP=$(curl --connect-timeout 30 --max-time 600 --retry 1 --retry-delay 5 \
+                -H "User-Agent: Actions-OpenWrt CI Build" \
+                -H "Accept: */*" \
+                --no-compress -k \
+                -F "reqtype=fileupload" \
+                -F "time=72h" \
+                -F "filename=${FILENAME}" \
+                -F "fileToUpload=@${FIRMWARE_FILE}" \
+                https://litterbox.catbox.moe/resources/internals/api.php 2>/dev/null)
+              CURL_EXIT=$?
+              set -e
+              RAW_URL=$(echo "${RESP}" | tr -d '\r\n' | xargs)
+
+              # 判断成功条件：curl无报错 + 返回内容是http链接
+              if [[ ${CURL_EXIT} -eq 0 ]] && [[ -n "${RAW_URL}" ]] && [[ "${RAW_URL}" =~ ^https?:// ]]; then
+                FIX_DOWNLOAD_URL="${RAW_URL}?dl=${FILENAME}"
+                echo "::notice::${FILENAME} → ${FIX_DOWNLOAD_URL}"
+                LITTER_LINKS+="${FILENAME}|${FIX_DOWNLOAD_URL}||"
+                UPLOAD_SUCCESS=true
+                break
+              else
+                echo "::warning::Attempt ${TRY} failed, server response:"
+                echo "${RESP}"
+                sleep 4
+              fi
+            done
+
+            if [[ ${UPLOAD_SUCCESS} == false ]]; then
+              echo "::error::All 3 attempts failed for file: ${FILENAME}"
+            fi
           done
           echo "links=${LITTER_LINKS}" >> $GITHUB_OUTPUT
 
