@@ -221,37 +221,41 @@ jobs:
           MAX_FILE_SIZE=$((200 * 1024 * 1024))
           for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
             FILENAME="${FIRMWARE_FILE##*/}"
-            FILE_SIZE=$(stat -c "%s" "${FIRMWARE_FILE}")
+            # 兼容Linux stat，获取文件字节大小
+            FILE_SIZE=$(stat --printf="%s" "${FIRMWARE_FILE}")
+            # 安全计算MB，避免小数报错
+            FILE_MB=$(( FILE_SIZE / 1048576 ))
             echo "=================================================="
-            echo "Processing file: ${FIRMWARE_FILE} | Size: $((FILE_SIZE/1024/1024)) MB"
+            echo "Processing file: ${FIRMWARE_FILE} | Size: ${FILE_MB} MB (${FILE_SIZE} bytes)"
 
-            # 超大文件直接跳过，避免500
+            # 超大文件直接跳过，避免服务器500
             if [[ ${FILE_SIZE} -gt ${MAX_FILE_SIZE} ]]; then
               echo "::warning::File ${FILENAME} exceed 200MB limit, skip upload"
               continue
             fi
 
-            # 拉长间隔，防止服务器限流
+            # 间隔8秒防限流
             sleep 8
             UPLOAD_SUCCESS=false
-            # 500错误单独重试3轮
+            # 循环3次手动重试，关闭curl自带retry避免冲突
             for TRY in {1..3}; do
               echo "Upload attempt ${TRY}/3 for ${FILENAME}"
               set +e
-              RESP=$(curl --connect-timeout 30 --max-time 600 --retry 1 --retry-delay 5 \
+              # 使用--form-string 防止特殊文件名截断，保留stderr输出方便排错
+              RESP=$(curl --connect-timeout 30 --max-time 600 \
                 -H "User-Agent: Actions-OpenWrt CI Build" \
                 -H "Accept: */*" \
                 --no-compress -k \
-                -F "reqtype=fileupload" \
-                -F "time=72h" \
-                -F "filename=${FILENAME}" \
+                --form-string "reqtype=fileupload" \
+                --form-string "time=72h" \
+                --form-string "filename=${FILENAME}" \
                 -F "fileToUpload=@${FIRMWARE_FILE}" \
-                https://litterbox.catbox.moe/resources/internals/api.php 2>/dev/null)
+                https://litterbox.catbox.moe/resources/internals/api.php)
               CURL_EXIT=$?
               set -e
               RAW_URL=$(echo "${RESP}" | tr -d '\r\n' | xargs)
 
-              # 判断成功条件：curl无报错 + 返回内容是http链接
+              # 校验返回链接
               if [[ ${CURL_EXIT} -eq 0 ]] && [[ -n "${RAW_URL}" ]] && [[ "${RAW_URL}" =~ ^https?:// ]]; then
                 FIX_DOWNLOAD_URL="${RAW_URL}?dl=${FILENAME}"
                 echo "::notice::${FILENAME} → ${FIX_DOWNLOAD_URL}"
@@ -259,8 +263,8 @@ jobs:
                 UPLOAD_SUCCESS=true
                 break
               else
-                echo "::warning::Attempt ${TRY} failed, server response:"
-                echo "${RESP}"
+                echo "::warning::Attempt ${TRY} failed, curl exit code: ${CURL_EXIT}"
+                echo "Server response content: ${RESP}"
                 sleep 4
               fi
             done
