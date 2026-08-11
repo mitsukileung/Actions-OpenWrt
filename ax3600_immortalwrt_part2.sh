@@ -52,6 +52,10 @@ sed -i 's/ddbdbfcc33e8eb6f235f7542cd71d291a9002387b8b858286e913d35e2d9aa02/b10fd
 #git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
 git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/luci-app-tailscale-community
 
+
+git clone https://github.com/VIKINGYFY/packages.git package/other
+cp -r package/other/luci-app-wolultra package/luci-app-wolultra
+rm -rf package/other
 #sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
 
 #rm -rf feeds/packages/net/mosdns
