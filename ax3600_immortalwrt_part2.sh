@@ -147,6 +147,12 @@ git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-ni
 # 添加 luci-app-taskplan
 git clone https://github.com/sirpdboy/luci-app-taskplan.git package/luci-app-taskplan
 
+# 添加修复后的插件
+rm -rf feeds/luci/applications/luci-app-ipsec-vpnd
+rm -rf feeds/luci/applications/luci-app-openvpn-server
+git clone https://github.com/szwjp/luci-app-ipsec-vpnd.git package/luci-app-ipsec-vpnd
+git clone https://github.com/szwjp/luci-app-openvpn-server.git package/luci-app-openvpn-server
+
 # 添加 smartdns
 #git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
 #git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
