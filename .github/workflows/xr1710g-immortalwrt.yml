@@ -181,6 +181,25 @@ jobs:
           rm -rf packages
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
           echo "status=success" >> $GITHUB_OUTPUT
+          # 日期格式 yy.M.d 例：26.8.13
+          BUILD_DATE=$(date +"%y.%-m.%-d")
+          # 匹配所有固件后缀文件，不限文件名开头
+          find . -maxdepth 1 -type f \( \
+            -iname "*.bin" -o \
+            -iname "*.trx" -o \
+            -iname "*.ubi" -o \
+            -iname "*.itb" -o \
+            -iname "*.gz" -o \
+            -iname "*.vmdk" -o \
+            -iname "*.fip" \
+          \) | while read -r f; do
+            # 跳过bl2底层分区文件
+            if [[ "$f" == *"-bl2.bin" ]]; then
+              continue
+            fi
+            filename="${f##*/}"
+            mv "$f" "${BUILD_DATE}-${filename}"
+          done
 
       - name: Upload firmware directory
         uses: actions/upload-artifact@main
