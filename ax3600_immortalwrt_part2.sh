@@ -152,6 +152,8 @@ rm -rf feeds/luci/applications/luci-app-ipsec-vpnd
 rm -rf feeds/luci/applications/luci-app-openvpn-server
 git clone https://github.com/szwjp/luci-app-ipsec-vpnd.git package/luci-app-ipsec-vpnd
 git clone https://github.com/szwjp/luci-app-openvpn-server.git package/luci-app-openvpn-server
+sed -i 's/2026070800/2026080300/g' feeds/packages/kernel/ovpn-dco/Makefile
+sed -i 's/2be764534b9a1c2e7827bc7fb832cf89827c5b2e73db6805cb749458e0c72e3b/b612261015b75fcb52a364d7bedc1e5fd70656e26ba388f1d88f58fc5fbb9560/g' feeds/packages/kernel/ovpn-dco/Makefile‎
 
 # 添加 smartdns
 #git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
