@@ -128,6 +128,12 @@ git clone https://github.com/sirpdboy/luci-app-timecontrol.git package/luci-app-
 # 添加 luci-theme-alpha-reborn 主题
 #git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
 
+# 添加修复后的插件
+rm -rf feeds/luci/applications/luci-app-ipsec-vpnd
+rm -rf feeds/luci/applications/luci-app-openvpn-server
+git clone https://github.com/szwjp/luci-app-ipsec-vpnd.git package/luci-app-ipsec-vpnd
+git clone https://github.com/szwjp/luci-app-openvpn-server.git package/luci-app-openvpn-server
+
 # 重新添加 luci-app-wechatpush
 #rm -rf feeds/luci/applications/luci-app-wechatpush
 #git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
