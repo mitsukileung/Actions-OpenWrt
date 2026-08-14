@@ -140,9 +140,15 @@ git clone --filter=blob:none --branch=dev https://github.com/vernesong/OpenClash
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci
 
-# 重新添加 luci-app-socat 同时兼容firewall3/4 
-#rm -rf feeds/luci/applications/luci-app-socat
-#git clone https://github.com/chenmozhijin/luci-app-socat.git package/luci-app-socat
+git clone https://github.com/VIKINGYFY/packages.git package/other
+cp -r package/other/luci-app-wolultra package/luci-app-wolultra
+rm -rf package/other
+
+# 添加修复后的插件
+rm -rf feeds/luci/applications/luci-app-ipsec-vpnd
+rm -rf feeds/luci/applications/luci-app-openvpn-server
+git clone https://github.com/szwjp/luci-app-ipsec-vpnd.git package/luci-app-ipsec-vpnd
+git clone https://github.com/szwjp/luci-app-openvpn-server.git package/luci-app-openvpn-server
 
 # 重新添加 luci-app-wechatpush
 #rm -rf feeds/luci/applications/luci-app-wechatpush
