@@ -146,9 +146,9 @@ rm -rf package/other
 
 # 添加修复后的插件
 rm -rf feeds/luci/applications/luci-app-ipsec-vpnd
-rm -rf feeds/luci/applications/luci-app-openvpn-server
+#rm -rf feeds/luci/applications/luci-app-openvpn-server
 git clone https://github.com/szwjp/luci-app-ipsec-vpnd.git package/luci-app-ipsec-vpnd
-git clone https://github.com/szwjp/luci-app-openvpn-server.git package/luci-app-openvpn-server
+#git clone https://github.com/szwjp/luci-app-openvpn-server.git package/luci-app-openvpn-server
 
 # 重新添加 luci-app-wechatpush
 #rm -rf feeds/luci/applications/luci-app-wechatpush
