@@ -33,8 +33,6 @@ sed -i '/label = "\(bl2\|fip\)";/,/^[[:space:]]*};/ {/[[:space:]]*read-only;/d}'
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
-sed -i 's/\.cjs/\.mjs/g' feeds/packages/lang/node/node-pnpm/Makefile
-
 #sed -i 's/1.12.25/1.13.14/g' feeds/packages/net/sing-box/Makefile
 #sed -i 's/881435f07b5ab8170ccf3cb69e87130759521dc0ed1ae4bfeacbe7772a93a158/d18294eb00128743b1dbf1d5f4f01902bdfd59a2d2858cda809abe5351a9cd40/g' feeds/packages/net/sing-box/Makefile
 
@@ -125,8 +123,6 @@ git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-
 rm -rf feeds/luci/applications/luci-app-appfilter
 rm -rf feeds/packages/net/open-app-filter
 git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
-
-git clone https://github.com/sirpdboy/luci-app-timecontrol.git package/luci-app-timecontrol
 
 # 添加 luci-theme-alpha-reborn 主题
 #git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
