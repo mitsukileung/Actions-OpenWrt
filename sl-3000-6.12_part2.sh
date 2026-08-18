@@ -117,6 +117,15 @@ git clone --filter=blob:none --branch=dev https://github.com/vernesong/OpenClash
 # 重新添加 luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci
+sed -i '1i 52pojie.cn\
+right.com.cn\
+wnflb99.com\
+2222dy.com\
+555gy.cc\
+555zxdy.cc\
+666ys.net\
+91zxdy.com/\
+' package/passwall-luci/luci-app-passwall/root/usr/share/passwall/rules/direct_host
 
 #git clone https://github.com/fcshark-org/openwrt-fchomo.git package/openwrt-fchomo
 
