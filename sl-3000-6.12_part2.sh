@@ -120,6 +120,7 @@ git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-
 sed -i '1i 52pojie.cn\
 right.com.cn\
 wnflb99.com\
+5150586.xyz\
 2222dy.com\
 555gy.cc\
 555zxdy.cc\
