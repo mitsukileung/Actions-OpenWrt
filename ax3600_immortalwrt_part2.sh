@@ -109,19 +109,14 @@ sed -i "s/nav_type '.*'/nav_type 'dropdown'/g" $(find ./package/luci-app-aurora-
 #sed -i 's/7c33e8a60b7618b33fce0960b94b46567766a051b307cea6b123da4176a52eab/e1f5197ecd96ebab4440fe069e0a06935df7ea07ac1ad0bab3f88bffe0055294/g' feeds/packages/net/chinadns-ng/Makefile
 
 # 重新添加 luci-app-homeproxy
+rm -rf feeds/packages/net/sing-box
 rm -rf feeds/luci/applications/luci-app-homeproxy
 git clone https://github.com/XiaoHaiSly/OpenWrt-HomeProxy.git package/OpenWrt-HomeProxy
-#git clone https://github.com/xiechangan123/homeproxy.git package/luci-app-homeproxy
-#git clone https://github.com/XiaoHaiSly/luci-app-homeproxy.git package/luci-app-homeproxy
-#git clone https://github.com/szwjp/homeproxy.git package/luci-app-homeproxy
-#mkdir package/sing-box
-#git clone https://github.com/VIKINGYFY/homeproxy.git package/luci-app-homeproxy
-#git clone https://github.com/VIKINGYFY/packages.git package/other
-#cp -r package/other/luci-app-homeproxy package/luci-app-homeproxy
-rm -rf feeds/packages/net/sing-box
-#cp -r package/other/sing-box package/sing-box
-#wget -O package/sing-box/Makefile https://raw.githubusercontent.com/Openwrt-Passwall/openwrt-passwall-packages/refs/heads/main/sing-box/Makefile
-#rm -rf package/other
+cp -r package/OpenWrt-HomeProxy/luci-app-homeproxy feeds/luci/applications/luci-app-homeproxy
+sed -i '/^include $(TOPDIR)\/feeds\/luci\/luci.mk/d' feeds/luci/applications/luci-app-homeproxy/Makefile
+sed -i '$a\include ../../luci.mk\n\n# call BuildPackage - OpenWrt buildroot signature' feeds/luci/applications/luci-app-homeproxy/Makefile
+cp -r package/OpenWrt-HomeProxy/sing-box feeds/packages/net/sing-box
+rm -rf package/OpenWrt-HomeProxy
 
 # 重新添加 luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
