@@ -91,12 +91,16 @@ git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 # 重新添加 luci-app-homeproxy
 rm -rf feeds/packages/net/sing-box
 rm -rf feeds/luci/applications/luci-app-homeproxy
-git clone https://github.com/XiaoHaiSly/OpenWrt-HomeProxy.git package/OpenWrt-HomeProxy
-cp -r package/OpenWrt-HomeProxy/luci-app-homeproxy feeds/luci/applications/luci-app-homeproxy
-sed -i '/^include $(TOPDIR)\/feeds\/luci\/luci.mk/d' feeds/luci/applications/luci-app-homeproxy/Makefile
-sed -i '$a\include ../../luci.mk\n\n# call BuildPackage - OpenWrt buildroot signature' feeds/luci/applications/luci-app-homeproxy/Makefile
-cp -r package/OpenWrt-HomeProxy/sing-box feeds/packages/net/sing-box
-rm -rf package/OpenWrt-HomeProxy
+#git clone https://github.com/XiaoHaiSly/OpenWrt-HomeProxy.git package/OpenWrt-HomeProxy
+#cp -r package/OpenWrt-HomeProxy/luci-app-homeproxy feeds/luci/applications/luci-app-homeproxy
+#sed -i '/^include $(TOPDIR)\/feeds\/luci\/luci.mk/d' feeds/luci/applications/luci-app-homeproxy/Makefile
+#sed -i '$a\include ../../luci.mk\n\n# call BuildPackage - OpenWrt buildroot signature' feeds/luci/applications/luci-app-homeproxy/Makefile
+#cp -r package/OpenWrt-HomeProxy/sing-box feeds/packages/net/sing-box
+#rm -rf package/OpenWrt-HomeProxy
+git clone https://github.com/VIKINGYFY/packages.git package/vikingyfy
+sed -i 's/1.14.0-beta.17/1.14.0-beta.17-reF1nd/g' package/vikingyfy/sing-box/Makefile
+sed -i 's#codeload.github.com/SagerNet#codeload.github.com/reF1nd#' package/vikingyfy/sing-box/Makefile
+sed -i 's/061cb9769a9d117d8b100081cf721236f5b26f17d5ab6b28db8de9c76fa3a7d4/edd8c3ee4ec9bf1afb490e03a0056c7bbbc964d4e3686aeb77e836880409efd1/g' package/vikingyfy/sing-box/Makefile
 
 # 重新添加 luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
