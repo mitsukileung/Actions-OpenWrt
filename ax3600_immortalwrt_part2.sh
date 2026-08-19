@@ -152,18 +152,6 @@ git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-ni
 # 添加 luci-app-taskplan
 git clone https://github.com/sirpdboy/luci-app-taskplan.git package/luci-app-taskplan
 
-# 添加修复后的插件
-rm -rf feeds/luci/applications/luci-app-ipsec-vpnd
-rm -rf feeds/luci/applications/luci-app-openvpn-server
-git clone https://github.com/szwjp/luci-app-ipsec-vpnd.git package/luci-app-ipsec-vpnd
-git clone https://github.com/szwjp/luci-app-openvpn-server.git package/luci-app-openvpn-server
-# 修改 feeds/packages/kernel/ovpn-dco
-#sed -i 's/PKG_VERSION:=7.1.0.2026070800/PKG_VERSION:=7.1.0.2026080300/g' feeds/packages/kernel/ovpn-dco/Makefile
-#sed -i 's/2be764534b9a1c2e7827bc7fb832cf89827c5b2e73db6805cb749458e0c72e3b/b612261015b75fcb52a364d7bedc1e5fd70656e26ba388f1d88f58fc5fbb9560/g' feeds/packages/kernel/ovpn-dco/Makefile
-# 修改 feeds/packages/net/openvpn/Makefile
-#sed -i 's/PKG_VERSION:=2.7.5/PKG_VERSION:=2.7.6/g' feeds/packages/net/openvpn/Makefile
-#sed -i 's/c6864b3c7d4e059c7d6ce22d1b5fa646c8b379a06af872eeb9792b6083a44ac4/10e24a9385f23cc38cc5cf448f3ca0769f939bc4cbecc4f4647d7e006e52db74/g' feeds/packages/net/openvpn/Makefile‎
-
 # 添加 smartdns
 #git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
 #git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
