@@ -94,6 +94,7 @@ rm -rf feeds/luci/applications/luci-app-homeproxy
 git clone https://github.com/XiaoHaiSly/OpenWrt-HomeProxy.git package/OpenWrt-HomeProxy
 cp -r package/OpenWrt-HomeProxy/luci-app-homeproxy package/luci-app-homeproxy
 cp -r package/OpenWrt-HomeProxy/sing-box package/sing-box
+rm -rf package/OpenWrt-HomeProxy
 # 1. PKG_VERSION 统一改为横杠格式 1.14.0-beta.9-reF1nd
 #sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=1.14.0_beta9/' package/OpenWrt-HomeProxy/sing-box/Makefile
 # 2. PKG_SOURCE_VERSION
