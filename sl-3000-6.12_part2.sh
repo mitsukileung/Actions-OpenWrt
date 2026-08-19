@@ -92,8 +92,10 @@ git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 rm -rf feeds/packages/net/sing-box
 rm -rf feeds/luci/applications/luci-app-homeproxy
 git clone https://github.com/XiaoHaiSly/OpenWrt-HomeProxy.git package/OpenWrt-HomeProxy
-cp -r package/OpenWrt-HomeProxy/luci-app-homeproxy package/luci-app-homeproxy
-cp -r package/OpenWrt-HomeProxy/sing-box package/sing-box
+cp -r package/OpenWrt-HomeProxy/luci-app-homeproxy feeds/luci/applications/luci-app-homeproxy
+sed -i '/^include $(TOPDIR)\/feeds\/luci\/luci.mk/d' feeds/luci/applications/luci-app-homeproxy/Makefile
+sed -i '$a\include ../../luci.mk\n\n# call BuildPackage - OpenWrt buildroot signature' feeds/luci/applications/luci-app-homeproxy/Makefile
+cp -r package/OpenWrt-HomeProxy/sing-box feeds/packages/net/sing-box
 rm -rf package/OpenWrt-HomeProxy
 # 1. PKG_VERSION 统一改为横杠格式 1.14.0-beta.9-reF1nd
 #sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=1.14.0_beta9/' package/OpenWrt-HomeProxy/sing-box/Makefile
