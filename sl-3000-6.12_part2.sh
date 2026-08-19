@@ -97,22 +97,6 @@ sed -i '/^include $(TOPDIR)\/feeds\/luci\/luci.mk/d' feeds/luci/applications/luc
 sed -i '$a\include ../../luci.mk\n\n# call BuildPackage - OpenWrt buildroot signature' feeds/luci/applications/luci-app-homeproxy/Makefile
 cp -r package/OpenWrt-HomeProxy/sing-box feeds/packages/net/sing-box
 rm -rf package/OpenWrt-HomeProxy
-# 1. PKG_VERSION 统一改为横杠格式 1.14.0-beta.9-reF1nd
-#sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=1.14.0_beta9/' package/OpenWrt-HomeProxy/sing-box/Makefile
-# 2. PKG_SOURCE_VERSION
-#sed -i 's/PKG_SOURCE_VERSION:=.*/PKG_SOURCE_VERSION:=1.14.0-beta.9-reF1nd/' package/OpenWrt-HomeProxy/sing-box/Makefile
-# 3. 更新hash
-#sed -i 's/PKG_HASH:=.*/PKG_HASH:=92b5f20a0e6af26b08f9008d1871e054fe7993d8f89e7d220dda7d62c2541517/' package/OpenWrt-HomeProxy/sing-box/Makefile
-#git clone https://github.com/xiechangan123/homeproxy.git package/luci-app-homeproxy
-#git clone https://github.com/XiaoHaiSly/luci-app-homeproxy.git package/luci-app-homeproxy
-#git clone https://github.com/szwjp/homeproxy.git package/luci-app-homeproxy
-#mkdir package/sing-box
-#git clone https://github.com/VIKINGYFY/homeproxy.git package/luci-app-homeproxy
-#git clone https://github.com/VIKINGYFY/packages.git package/other
-#cp -r package/other/luci-app-homeproxy package/luci-app-homeproxy
-#cp -r package/other/sing-box package/sing-box
-#wget -O package/sing-box/Makefile https://raw.githubusercontent.com/Openwrt-Passwall/openwrt-passwall-packages/refs/heads/main/sing-box/Makefile
-#rm -rf package/other
 
 # 重新添加 luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
