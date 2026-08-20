@@ -20,7 +20,7 @@ sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" 
 wget -O target/linux/bcm53xx/image/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/K3_patch/k3_image_Makefile
 
 # 关闭 CI llvm
-sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
+#sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
 
 # Modify X86 Kernel 5.10
 #sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' target/linux/ipq807x/Makefile
