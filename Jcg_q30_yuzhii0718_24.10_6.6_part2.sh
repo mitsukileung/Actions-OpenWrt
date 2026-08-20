@@ -142,6 +142,9 @@ rm -rf feeds/luci/applications/luci-app-ipsec-vpnd
 #rm -rf feeds/luci/applications/luci-app-openvpn-server
 git clone https://github.com/szwjp/luci-app-ipsec-vpnd.git package/luci-app-ipsec-vpnd
 #git clone https://github.com/szwjp/luci-app-openvpn-server.git package/luci-app-openvpn-server
+cp -r package/luci-app-ipsec-vpnd feeds/luci/applications/luci-app-ipsec-vpnd
+sed -i '/^include $(TOPDIR)\/feeds\/luci\/luci.mk/d' feeds/luci/applications/luci-app-ipsec-vpnd/Makefile
+sed -i '$a\include ../../luci.mk\n\n# call BuildPackage - OpenWrt buildroot signature' feeds/luci/applications/luci-app-ipsec-vpnd/Makefile
 
 # 重新添加 luci-app-wechatpush
 #rm -rf feeds/luci/applications/luci-app-wechatpush
