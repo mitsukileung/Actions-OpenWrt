@@ -117,11 +117,11 @@ sed -i "s/nav_type '.*'/nav_type 'dropdown'/g" $(find ./package/luci-app-aurora-
 rm -rf feeds/packages/net/sing-box
 rm -rf feeds/luci/applications/luci-app-homeproxy
 git clone https://github.com/XiaoHaiSly/OpenWrt-HomeProxy.git package/OpenWrt-HomeProxy
-cp -r package/OpenWrt-HomeProxy/luci-app-homeproxy feeds/luci/applications/luci-app-homeproxy
-sed -i '/^include $(TOPDIR)\/feeds\/luci\/luci.mk/d' feeds/luci/applications/luci-app-homeproxy/Makefile
-sed -i '$a\include ../../luci.mk\n\n# call BuildPackage - OpenWrt buildroot signature' feeds/luci/applications/luci-app-homeproxy/Makefile
-cp -r package/OpenWrt-HomeProxy/sing-box feeds/packages/net/sing-box
-rm -rf package/OpenWrt-HomeProxy
+#cp -r package/OpenWrt-HomeProxy/luci-app-homeproxy feeds/luci/applications/luci-app-homeproxy
+#sed -i '/^include $(TOPDIR)\/feeds\/luci\/luci.mk/d' feeds/luci/applications/luci-app-homeproxy/Makefile
+#sed -i '$a\include ../../luci.mk\n\n# call BuildPackage - OpenWrt buildroot signature' feeds/luci/applications/luci-app-homeproxy/Makefile
+#cp -r package/OpenWrt-HomeProxy/sing-box feeds/packages/net/sing-box
+#rm -rf package/OpenWrt-HomeProxy
 #git clone https://github.com/VIKINGYFY/packages.git package/vikingyfy
 #sed -i 's/1.14.0-beta.17/1.14.0-beta.17-reF1nd/g' package/vikingyfy/sing-box/Makefile
 #sed -i 's#codeload.github.com/SagerNet#codeload.github.com/reF1nd#' package/vikingyfy/sing-box/Makefile
