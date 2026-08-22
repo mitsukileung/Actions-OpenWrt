@@ -19,6 +19,8 @@ sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" 
 # 修改K3固件大小
 wget -O target/linux/bcm53xx/image/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/K3_patch/k3_image_Makefile
 
+rm -rf target/linux/generic/pending-6.18/991-net-neigh-Reallocate-headroom-if-necessary-in-neigh_.patch
+
 # 关闭 CI llvm
 #sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
 
