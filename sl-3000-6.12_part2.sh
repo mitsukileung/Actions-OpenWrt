@@ -130,9 +130,9 @@ rm -rf feeds/luci/applications/luci-app-appfilter
 rm -rf feeds/packages/net/open-app-filter
 git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
-git clone https://github.com/VIKINGYFY/packages.git package/other
-cp -r package/other/luci-app-wolultra package/luci-app-wolultra
-rm -rf package/other
+#git clone https://github.com/VIKINGYFY/packages.git package/other
+#cp -r package/other/luci-app-wolultra package/luci-app-wolultra
+#rm -rf package/other
 
 # 添加 luci-theme-alpha-reborn 主题
 #git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
