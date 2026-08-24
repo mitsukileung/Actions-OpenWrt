@@ -4,7 +4,7 @@ set -euo pipefail
 ##############################################################################
 # 配置区
 ##############################################################################
-MAKEFILE_PATH="sing-box/Makefile"
+MAKEFILE_PATH="mi_patch/sing-box-Makefile"
 UPSTREAM_REPO="reF1nd/sing-box"   # 目标仓库
 GITHUB_API_PER_PAGE=30
 
