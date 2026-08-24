@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+##############################################################################
+# 配置区
+##############################################################################
+MAKEFILE_PATH="./sing-box/Makefile"
+UPSTREAM_REPO="reF1nd/sing-box"   # 目标仓库
+GITHUB_API_PER_PAGE=30
+
+##############################################################################
+# 1. 获取最新非draft tag
+##############################################################################
+echo "==> 获取 $UPSTREAM_REPO 最新 release tag"
+# 需要预先安装 gh 工具(github cli)
+if ! command -v gh &> /dev/null; then
+    echo "错误：需要安装 github cli(gh)"
+    exit 1
+fi
+
+# 取最新非draft release tag
+UPSTREAM_TAG=$(gh api "repos/${UPSTREAM_REPO}/releases?per_page=${GITHUB_API_PER_PAGE}" \
+  --jq '[.[] | select(.draft == false)][0].tag_name')
+
+if [[ -z "${UPSTREAM_TAG}" ]]; then
+  echo "错误：未获取到release tag"
+  exit 1
+fi
+echo "最新tag: ${UPSTREAM_TAG}"
+
+# 去除开头v，得到 PKG_UPSTREAM_VERSION
+PKG_UPSTREAM_VERSION="${UPSTREAM_TAG#v}"
+echo "PKG_UPSTREAM_VERSION=${PKG_UPSTREAM_VERSION}"
+
+##############################################################################
+# 2. 版本转换逻辑： PKG_UPSTREAM_VERSION → PKG_VERSION
+# 示例：1.14.0-beta.17-reF1nd → 1.14.0_beta17
+##############################################################################
+raw_ver="${PKG_UPSTREAM_VERSION}"
+# 先切掉后缀 -reF1nd
+without_refind="${raw_ver%-reF1nd}"
+
+# 转换 a-b.c → a_bc
+if [[ "${without_refind}" =~ ^([0-9]+\.[0-9]+\.[0-9]+)-([a-zA-Z]+)\.([0-9]+)$ ]]; then
+  base="${BASH_REMATCH[1]}"
+  suffix_kind="${BASH_REMATCH[2],,}"
+  suffix_num="${BASH_REMATCH[3]}"
+  PKG_VERSION="${base}_${suffix_kind}${suffix_num}"
+else
+  PKG_VERSION="${without_refind}"
+fi
+echo "PKG_VERSION=${PKG_VERSION}"
+
+##############################################################################
+# 3.读取当前Makefile版本，判断是否需要更新
+##############################################################################
+if [[ ! -f "${MAKEFILE_PATH}" ]]; then
+  echo "Makefile不存在: ${MAKEFILE_PATH}"
+  exit 1
+fi
+
+CUR_UPSTREAM_VER=$(sed -n 's/^PKG_UPSTREAM_VERSION:=//p' "${MAKEFILE_PATH}")
+echo "本地当前 PKG_UPSTREAM_VERSION: ${CUR_UPSTREAM_VER}"
+
+if [[ "${CUR_UPSTREAM_VER}" == "${PKG_UPSTREAM_VERSION}" ]]; then
+  echo "✅ 版本一致，无需更新"
+  exit 0
+fi
+
+##############################################################################
+# 4.下载源码包计算PKG_HASH
+# 注意：你的Makefile源码地址：https://codeload.github.com/reF1nd/sing-box/tar.gz/v<tag>
+##############################################################################
+TMP_ARCHIVE=$(mktemp --suffix=.tar.gz)
+echo "==> 下载源码包: tag ${UPSTREAM_TAG}"
+curl -fL --retry 3 "https://codeload.github.com/${UPSTREAM_REPO}/tar.gz/${UPSTREAM_TAG}" -o "${TMP_ARCHIVE}"
+# 简单校验压缩包
+tar -tzf "${TMP_ARCHIVE}" >/dev/null
+PKG_HASH=$(sha256sum "${TMP_ARCHIVE}" | awk '{print $1}')
+echo "PKG_HASH=${PKG_HASH}"
+rm -f "${TMP_ARCHIVE}"
+
+##############################################################################
+# 5.原地sed修改Makefile
+##############################################################################
+echo "==> 修改Makefile"
+sed -i.bak \
+  -e "s/^PKG_UPSTREAM_VERSION:=.*/PKG_UPSTREAM_VERSION:=${PKG_UPSTREAM_VERSION}/" \
+  -e "s/^PKG_VERSION:=.*/PKG_VERSION:=${PKG_VERSION}/" \
+  -e 's/^PKG_RELEASE:=.*/PKG_RELEASE:=1/' \
+  -e "s/^PKG_HASH:=.*/PKG_HASH:=${PKG_HASH}/" \
+  "${MAKEFILE_PATH}"
+
+# 删除备份文件
+rm -f "${MAKEFILE_PATH}.bak"
+
+##############################################################################
+# 6.校验写入结果
+##############################################################################
+echo -e "\n==== 修改后校验 ===="
+grep -E '^PKG_UPSTREAM_VERSION|^PKG_VERSION|^PKG_RELEASE|^PKG_HASH' "${MAKEFILE_PATH}"
+echo -e "\n✅ 更新完成"
