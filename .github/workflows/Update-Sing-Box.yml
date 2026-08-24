@@ -1,102 +1,113 @@
-#!/usr/bin/env bash
-set -euo pipefail
+name: Sing‑box reF1nd Auto Update
 
-##############################################################################
-# 配置区
-##############################################################################
-MAKEFILE_PATH="mi_patch/sing-box-Makefile"
-UPSTREAM_REPO="reF1nd/sing-box"   # 目标仓库
-GITHUB_API_PER_PAGE=30
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * *'
 
-##############################################################################
-# 1. 获取最新非draft tag
-##############################################################################
-echo "==> 获取 $UPSTREAM_REPO 最新 release tag"
-# 需要预先安装 gh 工具(github cli)
-if ! command -v gh &> /dev/null; then
-    echo "错误：需要安装 github cli(gh)"
-    exit 1
-fi
+permissions:
+  contents: write
 
-# 取最新非draft release tag
-UPSTREAM_TAG=$(gh api "repos/${UPSTREAM_REPO}/releases?per_page=${GITHUB_API_PER_PAGE}" \
-  --jq '[.[] | select(.draft == false)][0].tag_name')
+jobs:
+  update_singbox:
+    name: Check & Update sing‑box Makefile
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.upstream_check.outputs.changed }}
+      tag: ${{ steps.upstream_check.outputs.tag }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-if [[ -z "${UPSTREAM_TAG}" ]]; then
-  echo "错误：未获取到release tag"
-  exit 1
-fi
-echo "最新tag: ${UPSTREAM_TAG}"
+      - name: Install GitHub CLI (gh)
+        run: |
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/githubcli.list > /dev/null
+          sudo apt update
+          sudo apt install gh -y
 
-# 去除开头v，得到 PKG_UPSTREAM_VERSION
-PKG_UPSTREAM_VERSION="${UPSTREAM_TAG#v}"
-echo "PKG_UPSTREAM_VERSION=${PKG_UPSTREAM_VERSION}"
+      - name: Check upstream release & patch Makefile
+        id: upstream_check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MAKEFILE_PATH: mi_patch/sing-box-Makefile
+          UPSTREAM_REPO: reF1nd/sing-box
+        run: |
+          set -euo pipefail
 
-##############################################################################
-# 2. 版本转换逻辑： PKG_UPSTREAM_VERSION → PKG_VERSION
-# 示例：1.14.0-beta.17-reF1nd → 1.14.0_beta17
-##############################################################################
-raw_ver="${PKG_UPSTREAM_VERSION}"
-# 先切掉后缀 -reF1nd
-without_refind="${raw_ver%-reF1nd}"
+          echo "==> Fetch latest non‑draft release from $UPSTREAM_REPO"
+          UPSTREAM_TAG=$(gh api "repos/${UPSTREAM_REPO}/releases?per_page=30" \
+            --jq '[.[] | select(.draft == false)][0].tag_name')
+          echo "UPSTREAM_TAG: ${UPSTREAM_TAG}"
 
-# 转换 a-b.c → a_bc
-if [[ "${without_refind}" =~ ^([0-9]+\.[0-9]+\.[0-9]+)-([a-zA-Z]+)\.([0-9]+)$ ]]; then
-  base="${BASH_REMATCH[1]}"
-  suffix_kind="${BASH_REMATCH[2],,}"
-  suffix_num="${BASH_REMATCH[3]}"
-  PKG_VERSION="${base}_${suffix_kind}${suffix_num}"
-else
-  PKG_VERSION="${without_refind}"
-fi
-echo "PKG_VERSION=${PKG_VERSION}"
+          if [[ -z "${UPSTREAM_TAG}" || "${UPSTREAM_TAG}" == "null" ]]; then
+            echo "::error::Failed to get upstream release tag"
+            exit 1
+          fi
 
-##############################################################################
-# 3.读取当前Makefile版本，判断是否需要更新
-##############################################################################
-if [[ ! -f "${MAKEFILE_PATH}" ]]; then
-  echo "Makefile不存在: ${MAKEFILE_PATH}"
-  exit 1
-fi
+          PKG_UPSTREAM_VERSION="${UPSTREAM_TAG#v}"
+          echo "PKG_UPSTREAM_VERSION: ${PKG_UPSTREAM_VERSION}"
 
-CUR_UPSTREAM_VER=$(sed -n 's/^PKG_UPSTREAM_VERSION:=//p' "${MAKEFILE_PATH}")
-echo "本地当前 PKG_UPSTREAM_VERSION: ${CUR_UPSTREAM_VER}"
+          # 版本转换逻辑： 1.14.0-beta.17-reF1nd → 1.14.0_beta17
+          raw_ver="${PKG_UPSTREAM_VERSION}"
+          without_refind="${raw_ver%-reF1nd}"
 
-if [[ "${CUR_UPSTREAM_VER}" == "${PKG_UPSTREAM_VERSION}" ]]; then
-  echo "✅ 版本一致，无需更新"
-  exit 0
-fi
+          if [[ "${without_refind}" =~ ^([0-9]+\.[0-9]+\.[0-9]+)-([a-zA-Z]+)\.([0-9]+)$ ]]; then
+            base="${BASH_REMATCH[1]}"
+            suffix_kind="${BASH_REMATCH[2],,}"
+            suffix_num="${BASH_REMATCH[3]}"
+            PKG_VERSION="${base}_${suffix_kind}${suffix_num}"
+          else
+            PKG_VERSION="${without_refind}"
+          fi
+          echo "PKG_VERSION: ${PKG_VERSION}"
 
-##############################################################################
-# 4.下载源码包计算PKG_HASH
-# 注意：你的Makefile源码地址：https://codeload.github.com/reF1nd/sing-box/tar.gz/v<tag>
-##############################################################################
-TMP_ARCHIVE=$(mktemp --suffix=.tar.gz)
-echo "==> 下载源码包: tag ${UPSTREAM_TAG}"
-curl -fL --retry 3 "https://codeload.github.com/${UPSTREAM_REPO}/tar.gz/${UPSTREAM_TAG}" -o "${TMP_ARCHIVE}"
-# 简单校验压缩包
-tar -tzf "${TMP_ARCHIVE}" >/dev/null
-PKG_HASH=$(sha256sum "${TMP_ARCHIVE}" | awk '{print $1}')
-echo "PKG_HASH=${PKG_HASH}"
-rm -f "${TMP_ARCHIVE}"
+          # 读取本地当前版本
+          CUR_UPSTREAM_VER=$(sed -n 's/^PKG_UPSTREAM_VERSION:=//p' "${MAKEFILE_PATH}")
+          echo "Local PKG_UPSTREAM_VERSION: ${CUR_UPSTREAM_VER}"
 
-##############################################################################
-# 5.原地sed修改Makefile
-##############################################################################
-echo "==> 修改Makefile"
-sed -i.bak \
-  -e "s/^PKG_UPSTREAM_VERSION:=.*/PKG_UPSTREAM_VERSION:=${PKG_UPSTREAM_VERSION}/" \
-  -e "s/^PKG_VERSION:=.*/PKG_VERSION:=${PKG_VERSION}/" \
-  -e 's/^PKG_RELEASE:=.*/PKG_RELEASE:=1/' \
-  -e "s/^PKG_HASH:=.*/PKG_HASH:=${PKG_HASH}/" \
-  "${MAKEFILE_PATH}"
+          changed="false"
+          if [[ "${CUR_UPSTREAM_VER}" != "${PKG_UPSTREAM_VERSION}" ]]; then
+            changed="true"
+            echo "==> New version detected, download source tarball for hash calculation"
 
-# 删除备份文件
-rm -f "${MAKEFILE_PATH}.bak"
+            TMP_ARCHIVE=$(mktemp --suffix=.tar.gz)
+            curl -fL --retry 3 "https://codeload.github.com/${UPSTREAM_REPO}/tar.gz/${UPSTREAM_TAG}" -o "${TMP_ARCHIVE}"
+            tar -tzf "${TMP_ARCHIVE}" >/dev/null
+            PKG_HASH=$(sha256sum "${TMP_ARCHIVE}" | awk '{print $1}')
+            rm -f "${TMP_ARCHIVE}"
+            echo "PKG_HASH: ${PKG_HASH}"
 
-##############################################################################
-# 6.校验写入结果
-##############################################################################
-echo -e "\n==== 修改后校验 ===="
-grep -E '^PKG_UPSTREAM_VERSION|^PKG_VERSION|^PKG_RELEASE|^PKG_HASH' "${MAKEFILE_PATH}"
-echo -e "\n✅ 更新完成"
+            # sed 修改 Makefile
+            sed -i.bak \
+              -e "s/^PKG_UPSTREAM_VERSION:=.*/PKG_UPSTREAM_VERSION:=${PKG_UPSTREAM_VERSION}/" \
+              -e "s/^PKG_VERSION:=.*/PKG_VERSION:=${PKG_VERSION}/" \
+              -e 's/^PKG_RELEASE:=.*/PKG_RELEASE:=1/' \
+              -e "s/^PKG_HASH:=.*/PKG_HASH:=${PKG_HASH}/" \
+              "${MAKEFILE_PATH}"
+            rm -f "${MAKEFILE_PATH}.bak"
+
+            echo -e "\n==== Updated Makefile snippet ===="
+            grep -E '^PKG_UPSTREAM_VERSION|^PKG_VERSION|^PKG_RELEASE|^PKG_HASH' "${MAKEFILE_PATH}"
+          fi
+
+          # 设置 Action outputs
+          {
+            echo "changed=${changed}"
+            echo "tag=${UPSTREAM_TAG}"
+            echo "pkg_upstream_version=${PKG_UPSTREAM_VERSION}"
+            echo "pkg_version=${PKG_VERSION}"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Commit & Push update (only when changed=true)
+        if: steps.upstream_check.outputs.changed == 'true'
+        run: |
+          git config --global user.name "github‑actions[bot]"
+          git config --global user.email "github‑actions[bot]@users.noreply.github.com"
+          git add mi_patch/sing-box-Makefile
+          git diff --cached --exit-code || {
+            git commit -m "chore: update sing‑box‑reF1nd to ${{ steps.upstream_check.outputs.pkg_upstream_version }}"
+            git push
+          }
