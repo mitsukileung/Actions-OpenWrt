@@ -96,9 +96,9 @@ rm -rf feeds/packages/net/sing-box
 rm -rf feeds/luci/applications/luci-app-homeproxy
 git clone https://github.com/VIKINGYFY/packages.git package/vikingyfy
 
-SING_BOX_VERSION="1.14.0-beta.17-reF1nd"
+SING_BOX_VERSION="1.14.0-rc.1-reF1nd"
 SING_BOX_REPO="reF1nd/sing-box"
-SING_BOX_HASH="edd8c3ee4ec9bf1afb490e03a0056c7bbbc964d4e3686aeb77e836880409efd1"
+SING_BOX_HASH="fe0f276c5d9c09953e19d9157419f4c09039bb8a46a3a9363aa49caa93758bde"
 MAKEFILE_PATH="package/vikingyfy/sing-box/Makefile"
 
 sed -i "s#PKG_UPSTREAM_VERSION:=.*#PKG_UPSTREAM_VERSION:=$SING_BOX_VERSION#g" "$MAKEFILE_PATH"
