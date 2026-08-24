@@ -17,7 +17,7 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" $(find ./feeds/luci/modules/luci-mod-status/ -name "10_system.js")
 
 # 修改K3固件大小
-wget -O target/linux/bcm53xx/image/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/K3_patch/k3_image_Makefile
+#wget -O target/linux/bcm53xx/image/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/K3_patch/k3_image_Makefile
 
 #rm -rf target/linux/generic/pending-6.18/991-net-neigh-Reallocate-headroom-if-necessary-in-neigh_.patch
 
