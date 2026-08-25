@@ -41,7 +41,7 @@ jobs:
           REPO="${UPSTREAM_REPO##*/}"
 
           UPSTREAM_TAG=$(gh api "/repos/${OWNER}/${REPO}/tags" \
-            --jq '.[] | .name | select(endswith("-reF1nd"))' | head -n1)
+            --jq '[.[] | .name | select(endswith("-reF1nd"))][0]')
 
           echo "UPSTREAM_TAG: ${UPSTREAM_TAG}"
           if [[ -z "${UPSTREAM_TAG}" || "${UPSTREAM_TAG}" == "null" ]]; then
