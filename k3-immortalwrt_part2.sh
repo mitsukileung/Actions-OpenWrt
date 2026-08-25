@@ -38,7 +38,6 @@ sed -i "s/encryption='.*'/encryption='psk2+ccmp'/g" package/network/config/wifi-
 #sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
-sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/luci/applications/luci-app-zerotier/root/etc/config/zerotier
 
 rm -rf feeds/packages/net/geoview
 mkdir package/geoview
@@ -49,21 +48,7 @@ wget -O package/geoview/Makefile https://raw.githubusercontent.com/xiaorouji/ope
 
 #sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
 
-#rm -rf feeds/packages/net/mosdns
-#rm -rf feeds/packages/net/v2ray-geodata
-#git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-#git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
-
-sed -i 's/202510050144/202512201334/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/c23ac8343e9796f8cc8b670c3aeb6df6d03d4e8914437a409961477f6b226098/6878dbacfb1fcb1ee022f63ed6934bcefc95a3c4ba10c88f1131fb88dbf7c337/g' feeds/packages/net/v2ray-geodata/Makefile
-
-sed -i 's/20250916122507/20251227135815/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/1a7dad0ceaaf1f6d12fef585576789699bd1c6ea014c887c04b94cb9609350e9/9033d9ff5e4f38cade0987a23059a6330ebfcce54a8cce24c19c0f80a4a33a9b/g' feeds/packages/net/v2ray-geodata/Makefile
-
-sed -i 's/202510130040/202512220045/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/ddbdbfcc33e8eb6f235f7542cd71d291a9002387b8b858286e913d35e2d9aa02/b10fd8c8f0e74da1e415c020747dabc1881b0b82cdac4a30776b68dbe2c573f1/g' feeds/packages/net/v2ray-geodata/Makefile
 
 #sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 #git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
