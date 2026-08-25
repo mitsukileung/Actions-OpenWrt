@@ -77,11 +77,16 @@ jobs:
 
           sed -i.bak \
             -e "s/^PKG_UPSTREAM_VERSION:=.*/PKG_UPSTREAM_VERSION:=${PKG_UPSTREAM_VERSION}/" \
-            -e "s|^PKG_SOURCE_URL:=.*|"$'PKG_SOURCE_URL:=https://codeload.github.com/reF1nd/sing-box/tar.gz/v$(PKG_UPSTREAM_VERSION)?'|" \
             -e "s/^PKG_VERSION:=.*/PKG_VERSION:=${PKG_VERSION}/" \
             -e 's/^PKG_RELEASE:=.*/PKG_RELEASE:=1/' \
             -e "s/^PKG_HASH:=.*/PKG_HASH:=${PKG_HASH}/" \
             "${MAKEFILE_PATH}"
+
+          TMP_SED=$(mktemp)
+          printf 's|^PKG_SOURCE_URL:=.*|PKG_SOURCE_URL:=https://codeload.github.com/reF1nd/sing-box/tar.gz/v$(PKG_UPSTREAM_VERSION)?|\n' > "${TMP_SED}"
+          sed -i -f "${TMP_SED}" "${MAKEFILE_PATH}"
+          rm -f "${TMP_SED}"
+
           rm -f "${MAKEFILE_PATH}.bak"
 
           echo -e "\n==== Updated Makefile snippet ===="
