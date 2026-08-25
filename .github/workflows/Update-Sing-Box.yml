@@ -67,28 +67,29 @@ jobs:
           CUR_UPSTREAM_VER=$(sed -n 's/^PKG_UPSTREAM_VERSION:=//p' "${MAKEFILE_PATH}")
           echo "Local PKG_UPSTREAM_VERSION: ${CUR_UPSTREAM_VER}"
 
+          echo "==> Download source tarball and calculate sha256"
+          TMP_ARCHIVE=$(mktemp --suffix=.tar.gz)
+          curl -fL --retry 3 "https://codeload.github.com/${UPSTREAM_REPO}/tar.gz/${UPSTREAM_TAG}" -o "${TMP_ARCHIVE}"
+          tar -tzf "${TMP_ARCHIVE}" >/dev/null
+          PKG_HASH=$(sha256sum "${TMP_ARCHIVE}" | awk '{print $1}')
+          rm -f "${TMP_ARCHIVE}"
+          echo "PKG_HASH: ${PKG_HASH}"
+
+          sed -i.bak \
+            -e "s/^PKG_UPSTREAM_VERSION:=.*/PKG_UPSTREAM_VERSION:=${PKG_UPSTREAM_VERSION}/" \
+            -e "s|^PKG_SOURCE_URL:=.*|PKG_SOURCE_URL:=https://codeload.github.com/reF1nd/sing-box/tar.gz/v\$$(PKG_UPSTREAM_VERSION)?|" \
+            -e "s/^PKG_VERSION:=.*/PKG_VERSION:=${PKG_VERSION}/" \
+            -e 's/^PKG_RELEASE:=.*/PKG_RELEASE:=1/' \
+            -e "s/^PKG_HASH:=.*/PKG_HASH:=${PKG_HASH}/" \
+            "${MAKEFILE_PATH}"
+          rm -f "${MAKEFILE_PATH}.bak"
+
+          echo -e "\n==== Updated Makefile snippet ===="
+          grep -E '^PKG_UPSTREAM_VERSION|^PKG_SOURCE_URL|^PKG_VERSION|^PKG_RELEASE|^PKG_HASH' "${MAKEFILE_PATH}"
+
           changed="false"
-          if [[ "${CUR_UPSTREAM_VER}" != "${PKG_UPSTREAM_VERSION}" ]]; then
+          if ! git diff --quiet -- "${MAKEFILE_PATH}"; then
             changed="true"
-            echo "==> New -reF1nd version detected, download source tarball for hash calculation"
-            TMP_ARCHIVE=$(mktemp --suffix=.tar.gz)
-            curl -fL --retry 3 "https://codeload.github.com/${UPSTREAM_REPO}/tar.gz/${UPSTREAM_TAG}" -o "${TMP_ARCHIVE}"
-            tar -tzf "${TMP_ARCHIVE}" >/dev/null
-            PKG_HASH=$(sha256sum "${TMP_ARCHIVE}" | awk '{print $1}')
-            rm -f "${TMP_ARCHIVE}"
-            echo "PKG_HASH: ${PKG_HASH}"
-
-            sed -i.bak \
-              -e "s/^PKG_UPSTREAM_VERSION:=.*/PKG_UPSTREAM_VERSION:=${PKG_UPSTREAM_VERSION}/" \
-              -e "s|^PKG_SOURCE_URL:=.*|PKG_SOURCE_URL:=https://codeload.github.com/reF1nd/sing-box/tar.gz/v\$$(PKG_UPSTREAM_VERSION)?|" \
-              -e "s/^PKG_VERSION:=.*/PKG_VERSION:=${PKG_VERSION}/" \
-              -e 's/^PKG_RELEASE:=.*/PKG_RELEASE:=1/' \
-              -e "s/^PKG_HASH:=.*/PKG_HASH:=${PKG_HASH}/" \
-              "${MAKEFILE_PATH}"
-            rm -f "${MAKEFILE_PATH}.bak"
-
-            echo -e "\n==== Updated Makefile snippet ===="
-            grep -E '^PKG_UPSTREAM_VERSION|^PKG_SOURCE_URL|^PKG_VERSION|^PKG_RELEASE|^PKG_HASH' "${MAKEFILE_PATH}"
           fi
 
           {
