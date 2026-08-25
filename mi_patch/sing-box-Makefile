@@ -10,7 +10,7 @@ PKG_VERSION:=1.14.0_rc1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_UPSTREAM_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/reF1nd/sing-box/archive/v1.14.0-rc.1-reF1nd.tar.gz
+PKG_SOURCE_URL:=https://codeload.github.com/reF1nd/sing-box/tar.gz/v$?
 PKG_HASH:=fe0f276c5d9c09953e19d9157419f4c09039bb8a46a3a9363aa49caa93758bde
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_UPSTREAM_VERSION)
 
