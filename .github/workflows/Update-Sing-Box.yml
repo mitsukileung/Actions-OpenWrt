@@ -40,7 +40,7 @@ jobs:
           OWNER="${UPSTREAM_REPO%%/*}"
           REPO="${UPSTREAM_REPO##*/}"
           QUERY='query($owner:String!,$repo:String!){repository(owner:$owner,name:$repo){refs(refPrefix:"refs/tags/",first:50,orderBy:{field:TAG_COMMIT_DATE,direction:DESC}){edges{node{name}}}}}}'
-          UPSTREAM_TAG=$(gh api graphql -f owner="${OWNER}" -f repo="${REPO}" -q "${QUERY}" \
+          UPSTREAM_TAG=$(gh api graphql -f query="${QUERY}" -f owner="${OWNER}" -f repo="${REPO}" \
             --jq '.repository.refs.edges[].node.name | select(endswith("-reF1nd"))' | head -n1)
           echo "UPSTREAM_TAG: ${UPSTREAM_TAG}"
           if [[ -z "${UPSTREAM_TAG}" || "${UPSTREAM_TAG}" == "null" ]]; then
