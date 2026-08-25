@@ -36,25 +36,21 @@ jobs:
           UPSTREAM_REPO: reF1nd/sing-box
         run: |
           set -euo pipefail
-
-          echo "==> Fetch latest -reF1nd tagged version from $UPSTREAM_REPO"
-          # 获取tags，过滤-reF1nd，按commit时间倒序，取第一个最新
-          UPSTREAM_TAG=$(gh api "repos/${UPSTREAM_REPO}/tags?per_page=50" \
-          --jq '[.[] | select(.name | endswith("-reF1nd"))] | sort_by(.commit.committer.date) | reverse | .[0].name')
+          echo "==> Fetch latest -reF1nd tagged version from $UPSTREAM_REPO (GraphQL get tag creation time)"
+          OWNER="${UPSTREAM_REPO%%/*}"
+          REPO="${UPSTREAM_REPO##*/}"
+          QUERY='query($owner:String!,$repo:String!){repository(owner:$owner,name:$repo){refs(refPrefix:"refs/tags/",first:50,orderBy:{field:TAG_COMMIT_DATE,direction:DESC}){edges{node{name}}}}}}'
+          UPSTREAM_TAG=$(gh api graphql -f owner="${OWNER}" -f repo="${REPO}" -q "${QUERY}" \
+            --jq '.repository.refs.edges[].node.name | select(endswith("-reF1nd"))' | head -n1)
           echo "UPSTREAM_TAG: ${UPSTREAM_TAG}"
-
           if [[ -z "${UPSTREAM_TAG}" || "${UPSTREAM_TAG}" == "null" ]]; then
             echo "::error::Failed to get upstream -reF1nd tag"
             exit 1
           fi
-
           PKG_UPSTREAM_VERSION="${UPSTREAM_TAG#v}"
           echo "PKG_UPSTREAM_VERSION: ${PKG_UPSTREAM_VERSION}"
-
-          # 版本转换逻辑： 1.14.0-beta.17-reF1nd → 1.14.0_beta17
           raw_ver="${PKG_UPSTREAM_VERSION}"
           without_refind="${raw_ver%-reF1nd}"
-
           if [[ "${without_refind}" =~ ^([0-9]+\.[0-9]+\.[0-9]+)-([a-zA-Z]+)\.([0-9]+)$ ]]; then
             base="${BASH_REMATCH[1]}"
             suffix_kind="${BASH_REMATCH[2],,}"
@@ -64,24 +60,18 @@ jobs:
             PKG_VERSION="${without_refind}"
           fi
           echo "PKG_VERSION: ${PKG_VERSION}"
-
-          # 读取本地当前版本
           CUR_UPSTREAM_VER=$(sed -n 's/^PKG_UPSTREAM_VERSION:=//p' "${MAKEFILE_PATH}")
           echo "Local PKG_UPSTREAM_VERSION: ${CUR_UPSTREAM_VER}"
-
           changed="false"
           if [[ "${CUR_UPSTREAM_VER}" != "${PKG_UPSTREAM_VERSION}" ]]; then
             changed="true"
             echo "==> New -reF1nd version detected, download source tarball for hash calculation"
-
             TMP_ARCHIVE=$(mktemp --suffix=.tar.gz)
             curl -fL --retry 3 "https://codeload.github.com/${UPSTREAM_REPO}/tar.gz/${UPSTREAM_TAG}" -o "${TMP_ARCHIVE}"
             tar -tzf "${TMP_ARCHIVE}" >/dev/null
             PKG_HASH=$(sha256sum "${TMP_ARCHIVE}" | awk '{print $1}')
             rm -f "${TMP_ARCHIVE}"
             echo "PKG_HASH: ${PKG_HASH}"
-
-            # sed 修改 Makefile
             sed -i.bak \
               -e "s/^PKG_UPSTREAM_VERSION:=.*/PKG_UPSTREAM_VERSION:=${PKG_UPSTREAM_VERSION}/" \
               -e "s/^PKG_VERSION:=.*/PKG_VERSION:=${PKG_VERSION}/" \
@@ -89,12 +79,9 @@ jobs:
               -e "s/^PKG_HASH:=.*/PKG_HASH:=${PKG_HASH}/" \
               "${MAKEFILE_PATH}"
             rm -f "${MAKEFILE_PATH}.bak"
-
             echo -e "\n==== Updated Makefile snippet ===="
             grep -E '^PKG_UPSTREAM_VERSION|^PKG_VERSION|^PKG_RELEASE|^PKG_HASH' "${MAKEFILE_PATH}"
           fi
-
-          # 设置 Action outputs
           {
             echo "changed=${changed}"
             echo "tag=${UPSTREAM_TAG}"
