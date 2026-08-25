@@ -39,7 +39,6 @@ sed -i '/label = "\(bl2\|fip\)";/,/^[[:space:]]*};/ {/[[:space:]]*read-only;/d}'
 #sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
-sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/luci/applications/luci-app-zerotier/root/etc/config/zerotier
 
 rm -rf feeds/packages/net/geoview
 mkdir package/geoview
@@ -50,21 +49,7 @@ wget -O package/geoview/Makefile https://raw.githubusercontent.com/xiaorouji/ope
 
 #sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
 
-#rm -rf feeds/packages/net/mosdns
-#rm -rf feeds/packages/net/v2ray-geodata
-#git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-#git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
-
-sed -i 's/202510050144/202512201334/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/c23ac8343e9796f8cc8b670c3aeb6df6d03d4e8914437a409961477f6b226098/6878dbacfb1fcb1ee022f63ed6934bcefc95a3c4ba10c88f1131fb88dbf7c337/g' feeds/packages/net/v2ray-geodata/Makefile
-
-sed -i 's/20250916122507/20251227135815/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/1a7dad0ceaaf1f6d12fef585576789699bd1c6ea014c887c04b94cb9609350e9/9033d9ff5e4f38cade0987a23059a6330ebfcce54a8cce24c19c0f80a4a33a9b/g' feeds/packages/net/v2ray-geodata/Makefile
-
-sed -i 's/202510130040/202512220045/g' feeds/packages/net/v2ray-geodata/Makefile
-sed -i 's/ddbdbfcc33e8eb6f235f7542cd71d291a9002387b8b858286e913d35e2d9aa02/b10fd8c8f0e74da1e415c020747dabc1881b0b82cdac4a30776b68dbe2c573f1/g' feeds/packages/net/v2ray-geodata/Makefile
 
 #sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 #git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
@@ -116,14 +101,68 @@ rm -rf feeds/packages/net/sing-box
 rm -rf feeds/luci/applications/luci-app-homeproxy
 git clone https://github.com/VIKINGYFY/packages.git package/vikingyfy
 
-SING_BOX_VERSION="1.14.0-rc.1-reF1nd"
-SING_BOX_REPO="reF1nd/sing-box"
-SING_BOX_HASH="fe0f276c5d9c09953e19d9157419f4c09039bb8a46a3a9363aa49caa93758bde"
+set -eo pipefail
+REPO="reF1nd/sing-box"
 MAKEFILE_PATH="package/vikingyfy/sing-box/Makefile"
 
-sed -i "s#PKG_UPSTREAM_VERSION:=.*#PKG_UPSTREAM_VERSION:=$SING_BOX_VERSION#g" "$MAKEFILE_PATH"
-sed -i "s#PKG_SOURCE_URL:=https://codeload.github.com/[^/]*/sing-box/tar.gz/v\$(PKG_UPSTREAM_VERSION)?#PKG_SOURCE_URL:=https://codeload.github.com/$SING_BOX_REPO/tar.gz/v\$(PKG_UPSTREAM_VERSION)?#g" "$MAKEFILE_PATH"
-sed -i "s#PKG_HASH:=.*#PKG_HASH:=$SING_BOX_HASH#g" "$MAKEFILE_PATH"
+if [ ! -f "${MAKEFILE_PATH}" ];then
+    echo "WARN: ${MAKEFILE_PATH} not found, skip sing‑box update"
+else
+    set +e
+    # curl：重试3次，总超时30秒，允许非200返回
+    RAW_TAGS=$(curl --retry 3 --max-time 30 -fsSL "https://api.github.com/repos/${REPO}/tags?per_page=30")
+    CURL_RET=$?
+    set -e
+
+    if [ ${CURL_RET} -ne 0 ];then
+        echo "⚠️ GitHub API network failed(timeout/429/connect error), skip sing‑box update."
+    else
+        REF_TAGS=$(echo "${RAW_TAGS}" | grep -oP '"name": "\K(.*)(?=")' | grep -i -- '-ref1nd')
+        if [ -z "${REF_TAGS}" ];then
+            echo "⚠️ No tag with '-reF1nd' suffix found, skip sing‑box update."
+        else
+            LATEST_FULL_TAG=$(echo "${REF_TAGS}" | head -n1)
+            LATEST_UPSTREAM_VER="${LATEST_FULL_TAG#v}"
+
+            # 版本转换规则
+            LATEST_PKG_VER=$(echo "${LATEST_UPSTREAM_VER}" \
+                | sed -e 's/-reF1nd$//I' -e 's/-/_/1' -e 's/\.\([0-9]*\)$/\1/')
+
+            echo "Latest full tag: ${LATEST_FULL_TAG}"
+            echo "PKG_UPSTREAM_VERSION=${LATEST_UPSTREAM_VER}"
+            echo "PKG_VERSION=${LATEST_PKG_VER}"
+
+            echo "🔔 Try download tarball ..."
+            SRC_URL="https://github.com/${REPO}/archive/refs/tags/${LATEST_FULL_TAG}.tar.gz"
+            TMP_TAR=$(mktemp)
+            TMP_HTTP=$(mktemp)
+
+            set +e
+            curl --retry 3 --max-time 35 -fsSL -w "%{http_code}" -o "${TMP_TAR}" "${SRC_URL}" > "${TMP_HTTP}"
+            HTTP_CODE=$(cat "${TMP_HTTP}")
+            set -e
+
+            if [[ "${HTTP_CODE}" != "200" ]];then
+                echo "⚠️ Source tarball download failed, HTTP ${HTTP_CODE}, skip update."
+                rm -f "${TMP_TAR}" "${TMP_HTTP}"
+            else
+                NEW_HASH=$(sha256sum "${TMP_TAR}" | awk '{print $1}')
+                rm -f "${TMP_TAR}" "${TMP_HTTP}"
+                echo "New PKG_HASH=${NEW_HASH}"
+
+                sed -i \
+                    -e "s/^PKG_UPSTREAM_VERSION:=.*/PKG_UPSTREAM_VERSION:=${LATEST_UPSTREAM_VER}/" \
+                    -e "s/^PKG_VERSION:=.*/PKG_VERSION:=${LATEST_PKG_VER}/" \
+                    -e "s|^PKG_SOURCE_URL:=.*|PKG_SOURCE_URL:=https://codeload.github.com/reF1nd/sing-box/tar.gz/v\$(PKG_UPSTREAM_VERSION)?|" \
+                    -e "s/^PKG_HASH:=.*/PKG_HASH:=${NEW_HASH}/" \
+                    "${MAKEFILE_PATH}"
+
+                echo "✅ Makefile force patched completed."
+            fi
+        fi
+    fi
+fi
+
 
 # 重新添加 luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
