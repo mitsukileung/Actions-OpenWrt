@@ -80,6 +80,7 @@ jobs:
 
             sed -i.bak \
               -e "s/^PKG_UPSTREAM_VERSION:=.*/PKG_UPSTREAM_VERSION:=${PKG_UPSTREAM_VERSION}/" \
+              -e "s|^PKG_SOURCE_URL:=.*|PKG_SOURCE_URL:=https://github.com/reF1nd/sing-box/archive/${UPSTREAM_TAG}.tar.gz|" \
               -e "s/^PKG_VERSION:=.*/PKG_VERSION:=${PKG_VERSION}/" \
               -e 's/^PKG_RELEASE:=.*/PKG_RELEASE:=1/' \
               -e "s/^PKG_HASH:=.*/PKG_HASH:=${PKG_HASH}/" \
@@ -87,7 +88,7 @@ jobs:
             rm -f "${MAKEFILE_PATH}.bak"
 
             echo -e "\n==== Updated Makefile snippet ===="
-            grep -E '^PKG_UPSTREAM_VERSION|^PKG_VERSION|^PKG_RELEASE|^PKG_HASH' "${MAKEFILE_PATH}"
+            grep -E '^PKG_UPSTREAM_VERSION|^PKG_SOURCE_URL|^PKG_VERSION|^PKG_RELEASE|^PKG_HASH' "${MAKEFILE_PATH}"
           fi
 
           {
