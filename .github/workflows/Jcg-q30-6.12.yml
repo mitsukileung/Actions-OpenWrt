@@ -4,6 +4,7 @@
 # https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
 name: Jcg-q30-6.12
+
 on:
   schedule:
     # cron格式：分 时 日 月 星期
@@ -14,15 +15,19 @@ on:
     - cron: "31 03 * * *"
     # UTC 09:03 → 北京时间 17:10 傍晚构建
     - cron: "10 09 * * *"
+
   # 推送v开头标签触发构建
   push:
     tags:
       - 'v*'
+
   # 标星Star自动构建（不需要可注释删除）
   #watch:
     #types: [started]
+
   # API远程触发
   repository_dispatch:
+
   # 网页手动运行，支持SSH调试
   workflow_dispatch:
     inputs:
@@ -30,6 +35,7 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
+
 env:
   REPO_URL: https://github.com/chasey-dev/immortalwrt-mt798x-rebase.git
   REPO_BRANCH: 25.12
@@ -45,7 +51,7 @@ env:
   UPLOAD_RELEASE: true
   SERVERCHAN_SCKEY: true
   TZ: Asia/Shanghai
-  
+
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -54,7 +60,7 @@ jobs:
       actions: write
       id-token: write
       attestations: write
-      
+
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -178,9 +184,14 @@ jobs:
         run: |
           cd openwrt/bin/targets/*/*
           rm -rf packages
+
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
           echo "status=success" >> $GITHUB_OUTPUT
-          BUILD_PREFIX=$(date +"%y.%-m.%-d")"-6.12-"
+
+          # 日期格式 yy.M.d 例：26.8.26
+          BUILD_DATE=$(date +"%y.%-m.%-d")
+
+          # 匹配所有固件后缀文件，不限文件名开头，‑print0安全模式
           find . -maxdepth 1 -type f \( \
             -iname "*.bin" -o \
             -iname "*.trx" -o \
@@ -188,15 +199,18 @@ jobs:
             -iname "*.itb" -o \
             -iname "*.gz" -o \
             -iname "*.vmdk" -o \
-            -iname "*.fip" \
             -iname "*.buildinfo" -o \
+            -iname "*.fip" \
           \) -print0 | while IFS= read -r -d '' f; do
-            filename="${f##*/}"
-            # 跳过bl2底层分区文件，不重命名
-            if [[ "$filename" == *"-bl2.bin" ]]; then
+
+            # 跳过bl2底层分区文件
+            if [[ "$f" == *"-bl2.bin" ]]; then
               continue
             fi
-            mv -- "$f" "${BUILD_PREFIX}${filename}"
+
+            filename="${f##*/}"
+            # 插入固定版本标记 6.12
+            mv -- "$f" "${BUILD_DATE}-6.12-${filename}"
           done
 
       - name: Upload firmware directory
@@ -213,6 +227,7 @@ jobs:
           set -uo pipefail
           echo "FIRMWARE dir: ${FIRMWARE}"
           ls -la "${FIRMWARE}"
+
           # 收集目录下指定后缀普通文件，不上传子目录
           ALL_FIRMWARE_FILES=()
           while IFS= read -r -d '' file; do
@@ -224,42 +239,51 @@ jobs:
             -iname "*.fip" -o \
             -iname "*.itb" -o \
             -iname "*.trx" -o \
-            -iname "*.ubi" \) \
             -iname "*.buildinfo" -o \
+            -iname "*.ubi" \) \
             -not -iname "*-bl2.bin" \
           \) -print0)
+
           if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
             echo "::notice::No matched firmware files found, skip litterbox upload"
             echo "links=" | tr -d '\r\n' >> $GITHUB_OUTPUT
             exit 0
           fi
+
           echo "Total files to upload: ${#ALL_FIRMWARE_FILES[@]}"
           LITTER_LINKS=""
+
           for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
             sleep 2
             echo "-------------------------------------------------"
             echo "Uploading file: ${FIRMWARE_FILE}"
+
             FILENAME="${FIRMWARE_FILE##*/}"
             set +e
+
             # multipart ;filename= 设置下载保存文件名
             RESP=$(curl --connect-timeout 25 --max-time 540 --retry 3 --retry-delay 5 -k \
               -F "reqtype=fileupload" \
               -F "time=72h" \
               -F "fileToUpload=@${FIRMWARE_FILE};filename=${FILENAME}" \
               https://litterbox.catbox.moe/resources/internals/api.php 2>/dev/null)
+
             CURL_EXIT=$?
             set -e
+
             RAW_URL=$(echo "${RESP}" | tr -d '\r\n\t ')
             if [[ ${CURL_EXIT} -ne 0 ]] || [[ -z "${RAW_URL}" ]] || ! [[ "${RAW_URL}" =~ ^https?:// ]]; then
               echo "::warning::Litterbox upload failed: ${FILENAME}"
               echo "Debug resp: ${RESP}"
               continue
             fi
+
             # 关键修改：拼接 ?dl=${FILENAME} 参数强制下载文件名
             FIX_DOWNLOAD_URL="${RAW_URL}?dl=${FILENAME}"
             echo "::notice::${FILENAME} → ${FIX_DOWNLOAD_URL}"
             LITTER_LINKS+="${FILENAME}|${FIX_DOWNLOAD_URL}||"
           done
+
           echo "links=${LITTER_LINKS}" | tr -d '\r\n' >> $GITHUB_OUTPUT
 
       - name: Upload firmware to 文叔叔网盘
@@ -269,8 +293,10 @@ jobs:
           set -uo pipefail
           echo "FIRMWARE dir: ${FIRMWARE}"
           ls -la "${FIRMWARE}"
+
           # 下载 file-transfer 上传工具
           curl -fsSL git.io/file-transfer | sh
+
           # 收集目录下指定后缀普通文件，不上传子目录（与Litterbox规则一致）
           ALL_FIRMWARE_FILES=()
           while IFS= read -r -d '' file; do
@@ -282,37 +308,45 @@ jobs:
             -iname "*.fip" -o \
             -iname "*.itb" -o \
             -iname "*.trx" -o \
-            -iname "*.ubi" \) \
             -iname "*.buildinfo" -o \
+            -iname "*.ubi" \) \
             -not -iname "*-bl2.bin" \
           \) -print0)
+
           if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
             echo "::notice::No matched firmware files found, skip wenshushu upload"
             echo "links=" | tr -d '\r\n' >> $GITHUB_OUTPUT
             exit 0
           fi
+
           echo "Total files to upload: ${#ALL_FIRMWARE_FILES[@]}"
           WSS_LINKS=""
+
           for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
             sleep 2
             echo "-------------------------------------------------"
             echo "Uploading file: ${FIRMWARE_FILE}"
+
             FILENAME="${FIRMWARE_FILE##*/}"
             set +e
             RESP=$(./transfer wss -s -p 16 --no-progress "${FIRMWARE_FILE}" 2>&1)
             TRANSFER_EXIT=$?
             set -e
+
             DOWNLOAD_URL=$(echo "${RESP}" | grep 'Download Link:' | awk '{print $3}' || true)
             DOWNLOAD_URL=$(echo "${DOWNLOAD_URL}" | tr -d '\r\n\t ')
+
             if [[ ${TRANSFER_EXIT} -ne 0 ]] || [[ -z "${DOWNLOAD_URL}" ]] || ! [[ "${DOWNLOAD_URL}" =~ ^https?:// ]]; then
               echo "::warning::Wenshushu upload failed: ${FILENAME}"
               echo "Debug resp: ${RESP}"
               continue
             fi
+
             echo "::notice::${FILENAME} → ${DOWNLOAD_URL}"
             # 输出格式与Litterbox完全一致，兼容后续Release渲染
             WSS_LINKS+="${FILENAME}|${DOWNLOAD_URL}||"
           done
+
           echo "links=${WSS_LINKS}" | tr -d '\r\n' >> $GITHUB_OUTPUT
 
       - name: Generate release tag
@@ -325,26 +359,26 @@ jobs:
           # 渲染Litterbox链接，清洗\r回车
           RAW_LINKS=$(echo "${{ steps.litterbox.outputs.links }}" | tr -d '\r')
           if [[ -n "${RAW_LINKS}" ]]; then
-            echo -e "\n📦 Litterbox(临时3天有效期)：" >> release.txt
+            echo -e "\n📦 Litterbox(临时3天有效期)：<br><br>" >> release.txt
             RAW_LINKS=${RAW_LINKS%%||}
             IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
             for item in "${ITEMS[@]}"; do
               IFS='|' read -r filename url <<< "${item}"
               url=$(echo "$url" | tr -d '\r\n ')
-              echo "- [${filename}](${url})" >> release.txt
+              echo "- <a href=\"${url}\">${filename}</a><br>" >> release.txt
             done
           fi
 
           # 渲染文叔叔网盘链接，清洗\r回车
           RAW_LINKS=$(echo "${{ steps.wenshushu.outputs.links }}" | tr -d '\r')
           if [[ -n "${RAW_LINKS}" ]]; then
-            echo -e "\n📦 文叔叔网盘(国内主力)：" >> release.txt
+            echo -e "\n<br>📦 文叔叔网盘(国内主力)：<br><br>" >> release.txt
             RAW_LINKS=${RAW_LINKS%%||}
             IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
             for item in "${ITEMS[@]}"; do
               IFS='|' read -r filename url <<< "${item}"
               url=$(echo "$url" | tr -d '\r\n ')
-              echo "- [${filename}](${url})" >> release.txt
+              echo "- <a href=\"${url}\">${filename}</a><br>" >> release.txt
             done
           fi
 
