@@ -180,9 +180,7 @@ jobs:
           rm -rf packages
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
           echo "status=success" >> $GITHUB_OUTPUT
-          # 日期格式 yy.M.d 例：26.8.13
-          BUILD_DATE=$(date +"%y.%-m.%-d")
-          # 匹配所有固件后缀文件，不限文件名开头
+          BUILD_PREFIX=$(date +"%y.%-m.%-d")"-6.12-"
           find . -maxdepth 1 -type f \( \
             -iname "*.bin" -o \
             -iname "*.trx" -o \
@@ -191,13 +189,14 @@ jobs:
             -iname "*.gz" -o \
             -iname "*.vmdk" -o \
             -iname "*.fip" \
-          \) | while read -r f; do
-            # 跳过bl2底层分区文件
-            if [[ "$f" == *"-bl2.bin" ]]; then
+            -iname "*.buildinfo" -o \
+          \) -print0 | while IFS= read -r -d '' f; do
+            filename="${f##*/}"
+            # 跳过bl2底层分区文件，不重命名
+            if [[ "$filename" == *"-bl2.bin" ]]; then
               continue
             fi
-            filename="${f##*/}"
-            mv "$f" "${BUILD_DATE}-${filename}"
+            mv -- "$f" "${BUILD_PREFIX}${filename}"
           done
 
       - name: Upload firmware directory
@@ -226,6 +225,7 @@ jobs:
             -iname "*.itb" -o \
             -iname "*.trx" -o \
             -iname "*.ubi" \) \
+            -iname "*.buildinfo" -o \
             -not -iname "*-bl2.bin" \
           \) -print0)
           if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
@@ -283,6 +283,7 @@ jobs:
             -iname "*.itb" -o \
             -iname "*.trx" -o \
             -iname "*.ubi" \) \
+            -iname "*.buildinfo" -o \
             -not -iname "*-bl2.bin" \
           \) -print0)
           if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
