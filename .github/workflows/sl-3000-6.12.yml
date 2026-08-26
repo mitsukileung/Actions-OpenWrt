@@ -189,6 +189,7 @@ jobs:
             -iname "*.gz" -o \
             -iname "*.vmdk" -o \
             -iname "*.fip" \
+            -iname "*.buildinfo" -o \
           \) -print0 | while IFS= read -r -d '' f; do
             filename="${f##*/}"
             # 跳过bl2底层分区文件，不重命名
@@ -224,6 +225,7 @@ jobs:
             -iname "*.itb" -o \
             -iname "*.trx" -o \
             -iname "*.ubi" \) \
+            -iname "*.buildinfo" -o \
             -not -iname "*-bl2.bin" \
           \) -print0)
           if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
@@ -281,6 +283,7 @@ jobs:
             -iname "*.itb" -o \
             -iname "*.trx" -o \
             -iname "*.ubi" \) \
+            -iname "*.buildinfo" -o \
             -not -iname "*-bl2.bin" \
           \) -print0)
           if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
