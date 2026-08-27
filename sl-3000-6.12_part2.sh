@@ -20,7 +20,7 @@ sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" 
 sed -i '/label = "\(bl2\|fip\)";/,/^[[:space:]]*};/ {/[[:space:]]*read-only;/d}' target/linux/mediatek/dts/mt7981b-jcg-q30-pro.dts
 
 # 关闭 CI llvm
-sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
+#sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
 
 #wget -O target/linux/mediatek/filogic/base-files/lib/preinit/90_extract_caldata https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/90_extract_caldata
 # Modify X86 Kernel 5.10
