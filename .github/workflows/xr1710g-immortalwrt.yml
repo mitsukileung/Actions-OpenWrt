@@ -37,7 +37,7 @@ env:
   REPO_URL: https://github.com/naoki66/ImmortalWrt-for-Gemtek-XR1710G.git
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: xr1710g-immortalwrt.config
+  CONFIG_FILE: xr1710g-immortalwrt111.config
   DIY_P1_SH: ax3600_immortalwrt_part1.sh
   DIY_P2_SH: ax3600_immortalwrt_part2.sh
   RELEASE_TAG: xr1710g-immortalwrt
