@@ -100,6 +100,7 @@ git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git pa
 rm -rf feeds/packages/net/sing-box
 rm -rf feeds/luci/applications/luci-app-homeproxy
 git clone https://github.com/VIKINGYFY/packages.git package/vikingyfy
+sed -i 's/1.14.0_alpha1/1.14.0/g' package/vikingyfy/luci-app-homeproxy/Makefile
 
 # 重新添加 luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
