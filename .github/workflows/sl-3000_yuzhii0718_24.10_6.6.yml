@@ -6,7 +6,7 @@
 name: sl-3000_Yuzhii0718_24.10_6.6
 on:
   schedule:
-    - cron: 11 */4 * * *
+    - cron: 11 */5 * * *
   # 推送v开头标签触发构建
   push:
     tags:
