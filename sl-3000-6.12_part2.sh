@@ -103,7 +103,7 @@ wnflb99.com\
 555gy.cc\
 555zxdy.cc\
 666ys.net\
-91zxdy.com/\
+91zxdy.com\
 ' package/passwall-luci/luci-app-passwall/root/usr/share/passwall/rules/direct_host
 
 #git clone https://github.com/fcshark-org/openwrt-fchomo.git package/openwrt-fchomo
