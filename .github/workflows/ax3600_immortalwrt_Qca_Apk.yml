@@ -8,13 +8,8 @@ name: Ax3600_immortalwrt_QCA_Apk-v
 on:
   schedule:
     # cron格式：分 时 日 月 星期
-    # GitHub Actions cron时区固定为UTC零时区，北京时间 = UTC时间 + 8小时
-    # UTC 20:02 → 北京时间 05:07 每日凌晨构建
-    - cron: "07 21 * * *"
-    # UTC 03:01 → 北京时间 12:09 午间构建
-    - cron: "09 04 * * *"
-    # UTC 09:03 → 北京时间 18:11 傍晚构建
-    - cron: "11 10 * * *"
+    # 启动时间为 4,15,20 点
+    - cron: 13 3,11,20 * * *
 
   # 推送v开头标签触发构建
   push:
