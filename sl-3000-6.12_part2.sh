@@ -17,7 +17,12 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" $(find ./feeds/luci/modules/luci-mod-status/ -name "10_system.js")
 
 # 修改Uboot分区刷写
-sed -i '/label = "\(bl2\|fip\)";/,/^[[:space:]]*};/ {/[[:space:]]*read-only;/d}' target/linux/mediatek/dts/mt7981b-jcg-q30-pro.dts
+#sed -i '/label = "\(bl2\|fip\)";/,/^[[:space:]]*};/ {/[[:space:]]*read-only;/d}' target/linux/mediatek/dts/mt7981b-jcg-q30-pro.dts
+
+wget -O target/linux/mediatek/dts/mt7981b-jcg-q30-pro.dts https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/chaseydev-mt7981b-jcg-q30-pro.dts
+
+https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/chaseydev-filogic.mk
+https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/chaseydev-mt7981b-jcg-q30-pro.dts
 
 # 关闭 CI llvm
 #sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
