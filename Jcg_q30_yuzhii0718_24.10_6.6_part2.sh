@@ -101,9 +101,9 @@ rm -rf feeds/packages/net/sing-box
 rm -rf feeds/luci/applications/luci-app-homeproxy
 git clone https://github.com/VIKINGYFY/packages.git package/vikingyfy
 
-sed -i 's/1.15.0-alpha.1/1.15.0-alpha.2/g' package/vikingyfy/sing-box/Makefile
-sed -i 's/1.15.0_alpha1/1.15.0_alpha2/g' package/vikingyfy/sing-box/Makefile
-sed -i 's/18ce715936db59dee730c0da3d8323331ba647fb17aa89108ddd1de90b6ca71b/76f322be1e86b689dfdb12be9d27314e7a329dca03b134222c7454900321f8be/g' package/vikingyfy/sing-box/Makefile
+sed -i 's/1.15.0-alpha.2/1.15.0-alpha.3/g' package/vikingyfy/sing-box/Makefile
+sed -i 's/1.15.0_alpha2/1.15.0_alpha3/g' package/vikingyfy/sing-box/Makefile
+sed -i 's/76f322be1e86b689dfdb12be9d27314e7a329dca03b134222c7454900321f8be/152a2700feed70b28673b93debbf59806480eb540a933fcd59b44eb9c6bc4cf9/g' package/vikingyfy/sing-box/Makefile
 sed -i 's/1.14.0_alpha1/1.14.0/g' package/vikingyfy/luci-app-homeproxy/Makefile
 
 # 重新添加 luci-app-openclash
