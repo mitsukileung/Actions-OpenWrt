@@ -19,10 +19,9 @@ sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" 
 # 修改Uboot分区刷写
 #sed -i '/label = "\(bl2\|fip\)";/,/^[[:space:]]*};/ {/[[:space:]]*read-only;/d}' target/linux/mediatek/dts/mt7981b-jcg-q30-pro.dts
 
+# 修改 jcg-q30 生成.bin固件
 wget -O target/linux/mediatek/dts/mt7981b-jcg-q30-pro.dts https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/chaseydev-mt7981b-jcg-q30-pro.dts
-
-https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/chaseydev-filogic.mk
-https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/chaseydev-mt7981b-jcg-q30-pro.dts
+wget -O target/linux/mediatek/image/filogic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/chaseydev-filogic.mk
 
 # 关闭 CI llvm
 #sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
