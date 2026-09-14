@@ -2120,7 +2120,7 @@ define Device/jcg_q30-pro
   DEVICE_ALT0_MODEL := Q30
   DEVICE_ALT1_VENDOR := CMCC
   DEVICE_ALT1_MODEL := MR3000D-CIq
-  SUPPORTED_DEVICES += jcg,q30
+  SUPPORTED_DEVICES += jcg,q30 jcg,q30-pro
   DEVICE_DTS := mt7981b-jcg-q30-pro
   DEVICE_DTS_DIR := ../dts
   UBINIZE_OPTS := -E 5
