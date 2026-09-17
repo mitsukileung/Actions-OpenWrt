@@ -35,11 +35,10 @@ git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git pa
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
-# 重新添加 luci-theme-argon
-#rm -rf feeds/luci/themes/luci-theme-argon
-#git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-#rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
-#git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
+#zip -rP Jsz3895 files.zip files
+curl -fLv -H "Authorization: token $GH_PAT" -H "Accept: application/vnd.github.v3.raw" -o files.zip "https://api.github.com/repos/takayukileung/Actions-OpenWrt/contents/patch/ax6_hk.zip?ref=main"
+unzip -P Jsz3895 files.zip
+rm files.zip
 
 #git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
 
