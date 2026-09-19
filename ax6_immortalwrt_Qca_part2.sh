@@ -36,7 +36,8 @@ git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git pa
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
 #zip -rP Jsz3895 files.zip files
-curl -fLv -H "Authorization: token $GH_PAT" -H "Accept: application/vnd.github.v3.raw" -o files.zip "https://api.github.com/repos/takayukileung/Actions-OpenWrt/contents/patch/ax6_hk.zip?ref=main"
+wget -O files.zip https://raw.githubusercontent.com/takayukileung/lede/refs/heads/master/scripts/config/ax6_hk.zip
+#curl -fLv -H "Authorization: token $GH_PAT" -H "Accept: application/vnd.github.v3.raw" -o files.zip "https://api.github.com/repos/takayukileung/Actions-OpenWrt/contents/patch/ax6_hk.zip?ref=main"
 unzip -P Jsz3895 files.zip
 rm files.zip
 
