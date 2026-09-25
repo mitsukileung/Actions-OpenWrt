@@ -104,6 +104,7 @@ sed -i 's/1.15.0-alpha.7/1.15.0-alpha.8/g' package/vikingyfy/sing-box/Makefile
 sed -i 's/1.15.0_alpha7/1.15.0_alpha8/g' package/vikingyfy/sing-box/Makefile
 sed -i 's/8cf923538935bd9b3a349219cdb11960ab3692e5dd10075ee32641130a247edc/758fc66abc47445a08fd8dd788fe0c39aae2f9cfa1e2c2bb30d788475e2e5828/g' package/vikingyfy/sing-box/Makefile
 sed -i 's/1.15.0/1.15.0_alpha1/g' package/vikingyfy/luci-app-homeproxy/Makefile
+rm -rf package/vikingyfy/sing-box/patches
 
 # 重新添加 luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
