@@ -108,7 +108,14 @@ jobs:
           df -hT $PWD
           git clone $REPO_URL -b $REPO_BRANCH openwrt
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-          #cd openwrt && git reset --hard d9ed0b5a8c1fb500f1712a15571a0e873335a57c
+                    # ===== 自检：确认 clone 到的 commit 与 xr1710g device 定义 =====
+          cd openwrt
+          echo "===== cloned commit ====="
+          git log -1 --oneline
+          echo "===== gemtek_xr1710g device block ====="
+          sed -n '/Device\/gemtek_xr1710g-common/,/^endef/p;/Device\/gemtek_xr1710g-ubi/,/^endef/p' target/linux/airoha/image/an7581.mk
+          echo "===== xr1710g dts present? ====="
+          ls -l target/linux/airoha/dts/an7581-gemtek-xr1710g-ubi.dts || echo "NO xr1710g dts!"
 
       - name: Load custom feeds
         run: |
