@@ -42,8 +42,7 @@ rm -rf feeds/packages/net/geoview
 mkdir package/geoview
 wget -O package/geoview/Makefile https://raw.githubusercontent.com/Openwrt-Passwall/openwrt-passwall-packages/refs/heads/main/geoview/Makefile
 
-#sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
-#git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
+rm -rf feeds/luci/applications/luci-app-tailscale-community
 git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/luci-app-tailscale-community
 
 #sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
@@ -52,6 +51,7 @@ rm -rf feeds/luci/applications/luci-app-appfilter
 rm -rf feeds/packages/net/open-app-filter
 git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
+rm -rf package/lucky
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
 # 添加 aurora 主题&设置
@@ -124,10 +124,10 @@ wnflb99.com\
 91zxdy.com\
 ' package/passwall-luci/luci-app-passwall/root/usr/share/passwall/rules/direct_host
 
-git clone https://github.com/fcshark-org/openwrt-fchomo.git package/openwrt-fchomo
+#git clone https://github.com/fcshark-org/openwrt-fchomo.git package/openwrt-fchomo
 
 # 添加 luci-theme-alpha-reborn 主题
-git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
+#git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
 
 # 重新添加 luci-app-wechatpush
 #rm -rf feeds/luci/applications/luci-app-wechatpush
@@ -147,18 +147,6 @@ git clone https://github.com/sirpdboy/luci-app-taskplan.git package/luci-app-tas
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 
 #git clone https://github.com/derisamedia/luci-theme-alpha.git package/luci-theme-alpha
-
-# 删除自带的 phicomm-k3screenctrl
-rm -rf feeds/packages/utils/phicomm-k3screenctrl
-rm -rf package/feeds/packages/phicomm-k3screenctrl
-# 拉取 k3screenctrl
-git clone https://github.com/yangxu52/k3screenctrl_build.git package/k3buding/k3screenctrl
-
-# 删除自带的 luci-app-k3screenctrl
-rm -rf feeds/luci/applications/luci-app-k3screenctrl
-rm -rf package/feeds/luci/luci-app-k3screenctrl
-# 拉取 luci-app-k3screenctrl
-git clone https://github.com/yangxu52/luci-app-k3screenctrl.git package/k3buding/luci-app-k3screenctrl
 
 echo 'refresh feeds'
 ./scripts/feeds update -a
