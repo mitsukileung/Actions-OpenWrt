@@ -27,7 +27,7 @@ rm -rf feeds/packages/net/sing-box
 #chmod 777 test1.sh
 #./test1.sh
 sed -i "/attendedsysupgrade/d" $(find ./feeds/luci/collections/ -type f -name "Makefile")
-sed -i "s/luci-theme-bootstrap/luci-theme-aurora/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
+sed -i "s/luci-theme-bootstrap/luci-theme-glass/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 
 #rm -rf feeds/packages/lang/golang
 #rm -rf feeds/luci/applications/luci-app-passwall
