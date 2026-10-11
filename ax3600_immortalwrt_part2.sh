@@ -54,6 +54,9 @@ git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 rm -rf package/lucky
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
+# 添加 luci-theme-glass 主题
+git clone https://github.com/rchen14b/luci-theme-glass.git package/luci-theme-glass
+
 # 添加 aurora 主题&设置
 git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
 git clone https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
