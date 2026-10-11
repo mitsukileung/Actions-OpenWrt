@@ -13,12 +13,9 @@
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
-# 修改ath11k-firmware
-#wget -O package/firmware/ath11k-firmware/Makefile https://raw.githubusercontent.com/robimarko/openwrt/ipq807x-5.15/package/firmware/ath11k-firmware/Makefile
-# 添加xiaomi系列
-#wget -O target/linux/ipq807x/image/generic.mk https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/main/mi_patch/generic.mk
+sed -i 's/src-git helloworld/#src-git helloworld/g' feeds.conf.default
+sed -i 's/src-git pushbot/#src-git pushbot/g' feeds.conf.default
 
-#sed -i '1i src-git small https://github.com/kenzok8/small' feeds.conf.default
 ./scripts/feeds update -a
 git clone -b v5 https://github.com/sbwml/luci-app-mosdns package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
