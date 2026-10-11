@@ -12,7 +12,7 @@
 
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
-
+sed -i 's/^src-git --directory=luci-theme-glass/#&/' feeds.conf.default
 sed -i 's/src-git helloworld/#src-git helloworld/g' feeds.conf.default
 sed -i 's/src-git pushbot/#src-git pushbot/g' feeds.conf.default
 
