@@ -4,7 +4,7 @@
 # https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
 
-name: xr1710g-immortalwrt
+name: xr1710g-immortalwrt-chienkuo
 
 on:
   schedule:
@@ -35,7 +35,7 @@ env:
   CONFIG_FILE: xr1710g-immortalwrt.config
   DIY_P1_SH: ax3600_immortalwrt_part1.sh
   DIY_P2_SH: ax3600_immortalwrt_part2.sh
-  RELEASE_TAG: xr1710g-immortalwrt
+  RELEASE_TAG: xr1710g-immortalwrt-chienkuo
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_LITTERBOX: true
