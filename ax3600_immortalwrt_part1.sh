@@ -13,7 +13,7 @@
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 sed -i 's/^src-git --directory=luci-theme-glass/#&/' feeds.conf.default
-sed -i 's/src-git helloworld/#src-git helloworld/g' feeds.conf.default
+sed -i 's/^src-git helloworld/#&/' feeds.conf.default
 
 ./scripts/feeds update -a
 git clone -b v5 https://github.com/sbwml/luci-app-mosdns package/mosdns
