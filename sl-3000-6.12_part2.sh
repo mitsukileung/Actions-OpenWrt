@@ -40,6 +40,8 @@ sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" 
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
+
+
 #sed -i 's/1.12.25/1.13.14/g' feeds/packages/net/sing-box/Makefile
 #sed -i 's/881435f07b5ab8170ccf3cb69e87130759521dc0ed1ae4bfeacbe7772a93a158/d18294eb00128743b1dbf1d5f4f01902bdfd59a2d2858cda809abe5351a9cd40/g' feeds/packages/net/sing-box/Makefile
 
@@ -123,9 +125,7 @@ git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 # 添加 luci-theme-alpha-reborn 主题
 #git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
 
-# 重新添加 luci-app-wechatpush
-#rm -rf feeds/luci/applications/luci-app-wechatpush
-#git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
+git clone https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-pushbot
 
 # 添加 aurora 主题&设置
 git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
