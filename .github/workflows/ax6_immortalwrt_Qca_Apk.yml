@@ -33,7 +33,7 @@ on:
 
 env:
   REPO_URL: https://github.com/VIKINGYFY/immortalwrt.git
-  REPO_BRANCH: main
+  REPO_BRANCH: owrt
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: ax6_immortalwrt_Qca_apk.config
   DIY_P1_SH: ax3600_immortalwrt_Qca_apk_part1.sh
