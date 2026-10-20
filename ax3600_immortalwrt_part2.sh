@@ -19,11 +19,6 @@ sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" 
 # 修改K3固件大小
 #wget -O target/linux/bcm53xx/image/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/K3_patch/k3_image_Makefile
 
-rm -rf feeds/packages/net/miniupnpd/patches/020-descr-filter-fix.patch
-rm -rf feeds/packages/net/miniupnpd/patches/030-allow-private-fix.patch
-rm -rf feeds/packages/net/miniupnpd/patches/030-allow-private-fix.patch
-#wget -O feeds/packages/net/miniupnpd/patches/040-improve-logging.patch https://raw.githubusercontent.com/naoki66/packages/refs/heads/miniupnpd-refresh-patches/net/miniupnpd/patches/040-improve-logging.patch
-
 # 关闭 CI llvm
 #sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
 
