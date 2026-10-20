@@ -96,6 +96,8 @@ git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git pa
 # 添加 luci-theme-alpha-reborn 主题
 #git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
 
+git clone https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-pushbot
+
 # 重新添加 luci-app-homeproxy
 rm -rf feeds/packages/net/sing-box
 rm -rf feeds/luci/applications/luci-app-homeproxy
