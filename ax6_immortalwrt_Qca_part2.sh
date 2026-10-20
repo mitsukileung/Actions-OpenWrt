@@ -42,6 +42,8 @@ git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git pa
 
 #git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
 
+git clone https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-pushbot
+
 # 添加 aurora 主题&设置
 git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
 git clone https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
