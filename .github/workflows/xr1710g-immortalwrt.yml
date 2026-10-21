@@ -34,7 +34,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: xr1710g-immortalwrt.config
   DIY_P1_SH: ax3600_immortalwrt_part1.sh
-  DIY_P2_SH: ax3600_immortalwrt_part2.sh
+  DIY_P2_SH: xr1710g_immortalwrt_part2.sh
   RELEASE_TAG: xr1710g-immortalwrt-naoki66
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
