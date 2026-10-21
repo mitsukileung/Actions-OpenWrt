@@ -111,6 +111,7 @@ sed -i 's/f5b0e1ac6ba8376580266421894b7f86292967a98fba8c69f1adb90c1a40e1ea/bf241
 # 重新添加 luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
 git clone --filter=blob:none --branch=dev https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+sed -i 's/\$\$CORE_ARCH/$$$$CORE_ARCH/g' package/luci-app-openclash/luci-app-openclash/Makefile
 
 # 重新添加 luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall
