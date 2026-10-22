@@ -16,8 +16,6 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 # 添加编译日期标识
 sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" $(find ./feeds/luci/modules/luci-mod-status/ -name "10_system.js")
 
-#sed -i 's/bluez python3/libffi bluez python3/g' feeds/packages/lang/python/python3/Makefile
-
 # 修复编译时python3的错误
 mkdir -p patches/feeds/packages/lang/python/python3/
 wget -O patches/feeds/packages/lang/python/python3/100-add-libffi-build-dep.patch https://raw.githubusercontent.com/chienkuo/ImmortalWrt-for-Gemtek-XR1710G/refs/heads/master/patches/feeds/packages/lang/python/python3/100-add-libffi-build-dep.patch
