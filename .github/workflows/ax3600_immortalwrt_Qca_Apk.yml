@@ -417,6 +417,7 @@ jobs:
             AP_LINKS+="${FILENAME}|${DOWNLOAD_URL}||"
           done
           echo "links=${AP_LINKS}" | tr -d '\r\n' >> $GITHUB_OUTPUT
+
       - name: Upload firmware to Wormhole (端到端加密)
         id: wormhole
         if: steps.organize.outputs.status == 'success' && env.UPLOAD_WORMHOLE == 'true' && !cancelled()
@@ -472,11 +473,10 @@ jobs:
           for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
             sleep 2
             echo "-------------------------------------------------"
-            FILENAME="${FIRMWARE_FILE##*/}"
             echo "Uploading file: ${FIRMWARE_FILE}"
+            FILENAME="${FIRMWARE_FILE##*/}"
             set +e
-            # 若日后接入真实无头上传器(如自建 E2EE 客户端)，在此调用并解析出下载直链
-            DOWNLOAD_URL=$("${WH_BIN}" upload --stdout "${FIRMWARE_FILE}" 2>/dev/null | grep -Eo 'https://wormhole.app/[^[:space:]]+' | head -n1 || true)
+            DOWNLOAD_URL=$("${WH_BIN}" --quiet --chrome-args="--no-sandbox" "${FIRMWARE_FILE}" 2>/dev/null)
             WH_EXIT=$?
             set -e
             DOWNLOAD_URL=$(echo "${DOWNLOAD_URL}" | tr -d '\r\n\t ')
@@ -488,7 +488,8 @@ jobs:
             WH_LINKS+="${FILENAME}|${DOWNLOAD_URL}||"
           done
           echo "links=${WH_LINKS}" | tr -d '\r\n' >> $GITHUB_OUTPUT
-# ==================== 修改2 Generate release tag：HTML <a>标签，脚本内空行拉开 ====================
+
+# ==================== 修改2 Generate release tag：HTML 标签，脚本内空行拉开 ====================
       - name: Generate release tag
         id: tag
         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
@@ -499,53 +500,55 @@ jobs:
           # 渲染Litterbox链接，清洗\r回车
           RAW_LINKS=$(echo "${{ steps.litterbox.outputs.links }}" | tr -d '\r')
           if [[ -n "${RAW_LINKS}" ]]; then
-            echo -e "\n📦 Litterbox(临时3天有效期)：<br><br>" >> release.txt
+            echo -e "\n📦 Litterbox(临时3天有效期)：\n\n" >> release.txt
             RAW_LINKS=${RAW_LINKS%%||}
             IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
             for item in "${ITEMS[@]}"; do
               IFS='|' read -r filename url <<< "${item}"
               url=$(echo "$url" | tr -d '\r\n ')
-              echo "- <a href=\"${url}\">${filename}</a><br>" >> release.txt
+              echo "- <a href="${url}">${filename}</a>" >> release.txt
             done
           fi
 
           # 渲染文叔叔网盘链接，清洗\r回车
           RAW_LINKS=$(echo "${{ steps.wenshushu.outputs.links }}" | tr -d '\r')
           if [[ -n "${RAW_LINKS}" ]]; then
-            echo -e "\n<br>📦 文叔叔网盘(国内主力)：<br><br>" >> release.txt
+            echo -e "\n\n📦 文叔叔网盘(国内主力)：\n\n" >> release.txt
             RAW_LINKS=${RAW_LINKS%%||}
             IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
             for item in "${ITEMS[@]}"; do
               IFS='|' read -r filename url <<< "${item}"
               url=$(echo "$url" | tr -d '\r\n ')
-              echo "- <a href=\"${url}\">${filename}</a><br>" >> release.txt
+              echo "- <a href="${url}">${filename}</a>" >> release.txt
             done
           fi
 
           # 渲染爱快传链接，清洗\r回车
           RAW_LINKS=$(echo "${{ steps.airportal.outputs.links }}" | tr -d '\r')
           if [[ -n "${RAW_LINKS}" ]]; then
-            echo -e "\n<br>📦 爱快传 AirPortal(临时24小时)：<br><br>" >> release.txt
+            echo -e "\n\n📦 爱快传 AirPortal(网页下载/24H有效)：\n\n" >> release.txt
             RAW_LINKS=${RAW_LINKS%%||}
             IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
             for item in "${ITEMS[@]}"; do
               IFS='|' read -r filename url <<< "${item}"
               url=$(echo "$url" | tr -d '\r\n ')
-              echo "- <a href=\"${url}\">${filename}</a><br>" >> release.txt
+              echo "- <a href="${url}">${filename}</a>" >> release.txt
             done
           fi
+
           # 渲染Wormhole链接，清洗\r回车
           RAW_LINKS=$(echo "${{ steps.wormhole.outputs.links }}" | tr -d '\r')
           if [[ -n "${RAW_LINKS}" ]]; then
-            echo -e "\n<br>🔒 Wormhole(端到端加密·临时)：<br><br>" >> release.txt
+            echo -e "\n\n🔒 Wormhole(端到端加密·临时)：\n\n" >> release.txt
             RAW_LINKS=${RAW_LINKS%%||}
             IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
             for item in "${ITEMS[@]}"; do
               IFS='|' read -r filename url <<< "${item}"
               url=$(echo "$url" | tr -d '\r\n ')
-              echo "- <a href=\"${url}\">${filename}</a><br>" >> release.txt
+              echo "- <a href="${url}">${filename}</a>" >> release.txt
             done
           fi
+
           echo "==== release.txt debug ===="
           cat -v release.txt
           echo "=========================="
@@ -575,6 +578,7 @@ jobs:
         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
         with:
           repository: ${{ github.repository }}
+
           token: ${{ secrets.PAT }}
           keep-last-n: 3
           delete-tags: true
@@ -588,4 +592,4 @@ jobs:
       - name: PUSHPLUS Message
         if: env.SERVERCHAN_SCKEY == 'true'
         run: |
-          curl -k --data token="${{ secrets.PUSH_PLUS_TOKEN }}" --data title="恭喜主人$RELEASE_TAG-$(date +"%Y.%m.%d-%H%M")固件编译成功！" "http://www.pushplus.plus/send"
+          curl -k --data token="${{ secrets.PUSH_PLUS_TOKEN }}" --data title="恭喜主人$RELEASE_TAG-$(date +"%Y.%m.%d-%H%M")固件编译成功！" --data "content=🎉 我亲爱的主人您要编译的$RELEASE_TAG-$(date +"%Y.%m.%d-%H%M")固件编译成功！" "http://www.pushplus.plus/send"
