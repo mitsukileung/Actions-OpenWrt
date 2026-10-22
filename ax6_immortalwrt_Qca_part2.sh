@@ -49,8 +49,6 @@ git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-au
 git clone https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
 sed -i "s/nav_type '.*'/nav_type 'dropdown'/g" $(find ./package/luci-app-aurora-config/root/usr/share/aurora/ -type f -name "*.template")
 
-rm -rf feeds/packages/net/miniupnpd
-
 # 重新添加 luci-app-homeproxy
 rm -rf feeds/packages/net/sing-box
 rm -rf feeds/luci/applications/luci-app-homeproxy
