@@ -43,6 +43,7 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_LITTERBOX: true
   UPLOAD_WSSRANSFER: true
+  UPLOAD_AIRPORTAL: true
   UPLOAD_RELEASE: true
   SERVERCHAN_SCKEY: true
   TZ: Asia/Shanghai
@@ -346,6 +347,91 @@ jobs:
           echo "links=${WSS_LINKS}" | tr -d '\r\n' >> $GITHUB_OUTPUT
 
 # ==================== 修改2 Generate release tag：HTML <a>标签，脚本内空行拉开 ====================
+      - name: Upload firmware to AirPortal 爱快传
+        id: airportal
+        if: steps.organize.outputs.status == 'success' && env.UPLOAD_AIRPORTAL == 'true' && !cancelled()
+        run: |
+          set -uo pipefail
+          if [[ ! -x ./transfer ]]; then
+            curl -fsSL git.io/file-transfer | sh
+          fi
+
+          AP_BACKEND=""
+          if ./transfer --help 2>&1 | grep -qiE 'airportal'; then
+            AP_BACKEND="airportal"
+          fi
+          if [[ -z "${AP_BACKEND}" ]]; then
+            echo "::warning::当前 transfer 工具不支持爱快传(airportal)后端，干净跳过爱快传上传。"
+            echo "::warning::爱快传官方未公开免登录直链API，且对云/数据中心出口IP多返回403风控，Actions内自动上传不可靠。"
+            echo "links=" | tr -d '\r\n' >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          AP_CODE=$(curl -sS -o /dev/null -m 20 -w '%{http_code}' https://www.airportal.cn/ 2>/dev/null || echo 000)
+          case "${AP_CODE}" in
+            200|301|302)
+              ;;
+            4[0-9][0-9])
+              echo "::warning::爱快传对当前出口IP返回风控(${AP_CODE})，多半是 Actions 数据中心IP被拦，干净跳过爱快传上传。"
+              echo "links=" | tr -d '\r\n' >> $GITHUB_OUTPUT
+              exit 0
+              ;;
+            *)
+              echo "::warning::爱快传探活失败(${AP_CODE})，跳过爱快传上传。"
+              echo "links=" | tr -d '\r\n' >> $GITHUB_OUTPUT
+              exit 0
+              ;;
+          esac
+
+          ALL_FIRMWARE_FILES=()
+          while IFS= read -r -d '' file; do
+            ALL_FIRMWARE_FILES+=("$file")
+          done < <(find "${FIRMWARE}" -maxdepth 1 -type f \( \
+            \( -iname "*.bin" -o \
+            -iname "*.gz" -o \
+            -iname "*.vmdk" -o \
+            -iname "*.fip" -o \
+            -iname "*.itb" -o \
+            -iname "*.trx" -o \
+            -iname "*.buildinfo" -o \
+            -iname "*.ubi" \) \
+            -not -iname "*-bl2.bin" \
+          \) -print0)
+
+          if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
+            echo "::notice::No matched firmware files found, skip airportal upload"
+            echo "links=" | tr -d '\r\n' >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "Total files to upload: ${#ALL_FIRMWARE_FILES[@]}"
+          AP_LINKS=""
+
+          for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
+            sleep 2
+            echo "-------------------------------------------------"
+            echo "Uploading to AirPortal: ${FIRMWARE_FILE}"
+
+            FILENAME="${FIRMWARE_FILE##*/}"
+            set +e
+            RESP=$(./transfer "${AP_BACKEND}" -s --no-progress "${FIRMWARE_FILE}" 2>&1)
+            TRANSFER_EXIT=$?
+            set -e
+
+            DOWNLOAD_URL=$(echo "${RESP}" | grep -oE 'https?://[^[:space:]]+' | tail -n1 | tr -d '\r\n\t ')
+
+            if [[ ${TRANSFER_EXIT} -ne 0 ]] || [[ -z "${DOWNLOAD_URL}" ]] || ! [[ "${DOWNLOAD_URL}" =~ ^https?:// ]]; then
+              echo "::warning::AirPortal upload failed: ${FILENAME}"
+              echo "Debug resp: ${RESP}"
+              continue
+            fi
+
+            echo "::notice::${FILENAME} -> ${DOWNLOAD_URL}"
+            AP_LINKS+="${FILENAME}|${DOWNLOAD_URL}||"
+          done
+
+          echo "links=${AP_LINKS}" | tr -d '\r\n' >> $GITHUB_OUTPUT
+
       - name: Generate release tag
         id: tag
         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
@@ -370,6 +456,19 @@ jobs:
           RAW_LINKS=$(echo "${{ steps.wenshushu.outputs.links }}" | tr -d '\r')
           if [[ -n "${RAW_LINKS}" ]]; then
             echo -e "\n<br>📦 文叔叔网盘(国内主力)：<br><br>" >> release.txt
+            RAW_LINKS=${RAW_LINKS%%||}
+            IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
+            for item in "${ITEMS[@]}"; do
+              IFS='|' read -r filename url <<< "${item}"
+              url=$(echo "$url" | tr -d '\r\n ')
+              echo "- <a href=\"${url}\">${filename}</a><br>" >> release.txt
+            done
+          fi
+
+          # 渲染爱快传链接，清洗\r回车
+          RAW_LINKS=$(echo "${{ steps.airportal.outputs.links }}" | tr -d '\r')
+          if [[ -n "${RAW_LINKS}" ]]; then
+            echo -e "\n<br>\U0001F4E6 爱快传 AirPortal(临时24小时)：<br><br>" >> release.txt
             RAW_LINKS=${RAW_LINKS%%||}
             IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
             for item in "${ITEMS[@]}"; do
