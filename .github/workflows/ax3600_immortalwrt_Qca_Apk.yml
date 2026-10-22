@@ -44,6 +44,7 @@ env:
   UPLOAD_LITTERBOX: true
   UPLOAD_WSSRANSFER: true
   UPLOAD_AIRPORTAL: true
+  UPLOAD_WORMHOLE: true
   UPLOAD_RELEASE: true
   SERVERCHAN_SCKEY: true
   TZ: Asia/Shanghai
@@ -346,43 +347,35 @@ jobs:
 
           echo "links=${WSS_LINKS}" | tr -d '\r\n' >> $GITHUB_OUTPUT
 
-# ==================== 修改2 Generate release tag：HTML <a>标签，脚本内空行拉开 ====================
       - name: Upload firmware to AirPortal 爱快传
         id: airportal
         if: steps.organize.outputs.status == 'success' && env.UPLOAD_AIRPORTAL == 'true' && !cancelled()
         run: |
           set -uo pipefail
-          if [[ ! -x ./transfer ]]; then
-            curl -fsSL git.io/file-transfer | sh
-          fi
-
-          AP_BACKEND=""
-          if ./transfer --help 2>&1 | grep -qiE 'airportal'; then
-            AP_BACKEND="airportal"
-          fi
-          if [[ -z "${AP_BACKEND}" ]]; then
-            echo "::warning::当前 transfer 工具不支持爱快传(airportal)后端，干净跳过爱快传上传。"
-            echo "::warning::爱快传官方未公开免登录直链API，且对云/数据中心出口IP多返回403风控，Actions内自动上传不可靠。"
+          echo "FIRMWARE dir: ${FIRMWARE}"
+          # 下载 file-transfer 上传工具
+          curl -fsSL git.io/file-transfer | sh
+          # 能力探测：当前 git.io/file-transfer 后端列表不含爱快传(airportal)直链后端，
+          # 且爱快传免登录接口返回的是取件码/下载页而非 Release 可用的直链。
+          # 探测不到可用后端则干净跳过，绝不伪造链接。
+          if ! ./transfer --help 2>&1 | grep -qi 'airportal'; then
+            echo "::warning::未检测到 file-transfer 的爱快传(airportal)直链后端(爱快传无免登录直链 API)，已跳过。"
             echo "links=" | tr -d '\r\n' >> $GITHUB_OUTPUT
             exit 0
           fi
-
-          AP_CODE=$(curl -sS -o /dev/null -m 20 -w '%{http_code}' https://www.airportal.cn/ 2>/dev/null || echo 000)
-          case "${AP_CODE}" in
-            200|301|302)
-              ;;
-            4[0-9][0-9])
-              echo "::warning::爱快传对当前出口IP返回风控(${AP_CODE})，多半是 Actions 数据中心IP被拦，干净跳过爱快传上传。"
-              echo "links=" | tr -d '\r\n' >> $GITHUB_OUTPUT
-              exit 0
-              ;;
-            *)
-              echo "::warning::爱快传探活失败(${AP_CODE})，跳过爱快传上传。"
-              echo "links=" | tr -d '\r\n' >> $GITHUB_OUTPUT
-              exit 0
-              ;;
-          esac
-
+          # 探活：确认能连通爱快传(数据中心出口 IP 常被 WAF 返回 403)
+          AP_CODE=$(curl -s -o /dev/null -w '%{http_code}' --connect-timeout 15 --max-time 30 https://airportal.cn/ || echo 000)
+          if [[ "${AP_CODE}" == "000" || "${AP_CODE}" =~ ^5 ]]; then
+            echo "::warning::爱快传探活失败(HTTP ${AP_CODE}，多为服务宕机或网络不可达)，已跳过。"
+            echo "links=" | tr -d '\r\n' >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          if [[ "${AP_CODE}" == "403" || "${AP_CODE}" == "1010" || "${AP_CODE}" == "1020" ]]; then
+            echo "::warning::爱快传返回 HTTP ${AP_CODE}(WAF 对数据中心出口 IP 风控)，已跳过。"
+            echo "links=" | tr -d '\r\n' >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          # 收集目录下指定后缀普通文件，不上传子目录（与 Litterbox / 文叔叔规则一致）
           ALL_FIRMWARE_FILES=()
           while IFS= read -r -d '' file; do
             ALL_FIRMWARE_FILES+=("$file")
@@ -397,41 +390,105 @@ jobs:
             -iname "*.ubi" \) \
             -not -iname "*-bl2.bin" \
           \) -print0)
-
           if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
             echo "::notice::No matched firmware files found, skip airportal upload"
             echo "links=" | tr -d '\r\n' >> $GITHUB_OUTPUT
             exit 0
           fi
-
           echo "Total files to upload: ${#ALL_FIRMWARE_FILES[@]}"
           AP_LINKS=""
-
           for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
             sleep 2
             echo "-------------------------------------------------"
-            echo "Uploading to AirPortal: ${FIRMWARE_FILE}"
-
+            echo "Uploading file: ${FIRMWARE_FILE}"
             FILENAME="${FIRMWARE_FILE##*/}"
             set +e
-            RESP=$(./transfer "${AP_BACKEND}" -s --no-progress "${FIRMWARE_FILE}" 2>&1)
+            RESP=$(./transfer airportal -s -p 16 --no-progress "${FIRMWARE_FILE}" 2>&1)
             TRANSFER_EXIT=$?
             set -e
-
-            DOWNLOAD_URL=$(echo "${RESP}" | grep -oE 'https?://[^[:space:]]+' | tail -n1 | tr -d '\r\n\t ')
-
+            DOWNLOAD_URL=$(echo "${RESP}" | grep -Eo 'https?://[^[:space:]]+' | head -n1 || true)
+            DOWNLOAD_URL=$(echo "${DOWNLOAD_URL}" | tr -d '\r\n\t ')
             if [[ ${TRANSFER_EXIT} -ne 0 ]] || [[ -z "${DOWNLOAD_URL}" ]] || ! [[ "${DOWNLOAD_URL}" =~ ^https?:// ]]; then
               echo "::warning::AirPortal upload failed: ${FILENAME}"
               echo "Debug resp: ${RESP}"
               continue
             fi
-
-            echo "::notice::${FILENAME} -> ${DOWNLOAD_URL}"
+            echo "::notice::${FILENAME} → ${DOWNLOAD_URL}"
             AP_LINKS+="${FILENAME}|${DOWNLOAD_URL}||"
           done
-
           echo "links=${AP_LINKS}" | tr -d '\r\n' >> $GITHUB_OUTPUT
-
+      - name: Upload firmware to Wormhole (端到端加密)
+        id: wormhole
+        if: steps.organize.outputs.status == 'success' && env.UPLOAD_WORMHOLE == 'true' && !cancelled()
+        run: |
+          set -uo pipefail
+          echo "FIRMWARE dir: ${FIRMWARE}"
+          # 能力探测：wormhole.app 为浏览器端 AES-GCM(WASM)端到端加密，上传经 WebSocket 流式加密，
+          # 官方未提供无头(headless)免登录直链 API，下载页是 SPA(wormhole.app/#id)而非直链。
+          # 这里先探测是否存在可在 Actions 无头环境使用的上传器，没有则干净跳过，绝不伪造链接。
+          WH_BIN=""
+          for cand in wormhole-app wh-app wormhole-cli magic-wormhole wormhole; do
+            if command -v "${cand}" >/dev/null 2>&1; then WH_BIN="${cand}"; break; fi
+          done
+          if [[ -z "${WH_BIN}" ]]; then
+            echo "::warning::未检测到无头可用的 wormhole.app 上传器(Wormhole 为浏览器端 E2EE，官方无免登录直链 API)，已跳过。"
+            echo "links=" | tr -d '\r\n' >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          # 探活：确认能连通 wormhole.app（数据中心出口 IP 常被 WAF/Cloudflare 风控）
+          WH_CODE=$(curl -s -o /dev/null -w '%{http_code}' --connect-timeout 15 --max-time 30 https://wormhole.app/ || echo 000)
+          if [[ "${WH_CODE}" == "000" || "${WH_CODE}" =~ ^5 ]]; then
+            echo "::warning::wormhole.app 探活失败(HTTP ${WH_CODE}，多为服务宕机或网络不可达)，已跳过。"
+            echo "links=" | tr -d '\r\n' >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          if [[ "${WH_CODE}" == "403" || "${WH_CODE}" == "1010" || "${WH_CODE}" == "1020" ]]; then
+            echo "::warning::wormhole.app 返回 HTTP ${WH_CODE}(WAF/Cloudflare 对数据中心出口 IP 风控)，已跳过。"
+            echo "links=" | tr -d '\r\n' >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          # 收集目录下指定后缀普通文件(与 Litterbox / 文叔叔规则一致)
+          ALL_FIRMWARE_FILES=()
+          while IFS= read -r -d '' file; do
+            ALL_FIRMWARE_FILES+=("$file")
+          done < <(find "${FIRMWARE}" -maxdepth 1 -type f \( \
+            \( -iname "*.bin" -o \
+            -iname "*.gz" -o \
+            -iname "*.vmdk" -o \
+            -iname "*.fip" -o \
+            -iname "*.itb" -o \
+            -iname "*.trx" -o \
+            -iname "*.buildinfo" -o \
+            -iname "*.ubi" \) \
+            -not -iname "*-bl2.bin" \
+          \) -print0)
+          if [[ ${#ALL_FIRMWARE_FILES[@]} -eq 0 ]]; then
+            echo "::notice::No matched firmware files found, skip wormhole upload"
+            echo "links=" | tr -d '\r\n' >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          echo "Total files to upload: ${#ALL_FIRMWARE_FILES[@]}"
+          WH_LINKS=""
+          for FIRMWARE_FILE in "${ALL_FIRMWARE_FILES[@]}"; do
+            sleep 2
+            echo "-------------------------------------------------"
+            FILENAME="${FIRMWARE_FILE##*/}"
+            echo "Uploading file: ${FIRMWARE_FILE}"
+            set +e
+            # 若日后接入真实无头上传器(如自建 E2EE 客户端)，在此调用并解析出下载直链
+            DOWNLOAD_URL=$("${WH_BIN}" upload --stdout "${FIRMWARE_FILE}" 2>/dev/null | grep -Eo 'https://wormhole.app/[^[:space:]]+' | head -n1 || true)
+            WH_EXIT=$?
+            set -e
+            DOWNLOAD_URL=$(echo "${DOWNLOAD_URL}" | tr -d '\r\n\t ')
+            if [[ ${WH_EXIT} -ne 0 ]] || [[ -z "${DOWNLOAD_URL}" ]] || ! [[ "${DOWNLOAD_URL}" =~ ^https?:// ]]; then
+              echo "::warning::Wormhole upload failed: ${FILENAME}"
+              continue
+            fi
+            echo "::notice::${FILENAME} -> ${DOWNLOAD_URL}"
+            WH_LINKS+="${FILENAME}|${DOWNLOAD_URL}||"
+          done
+          echo "links=${WH_LINKS}" | tr -d '\r\n' >> $GITHUB_OUTPUT
+# ==================== 修改2 Generate release tag：HTML <a>标签，脚本内空行拉开 ====================
       - name: Generate release tag
         id: tag
         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
@@ -468,7 +525,7 @@ jobs:
           # 渲染爱快传链接，清洗\r回车
           RAW_LINKS=$(echo "${{ steps.airportal.outputs.links }}" | tr -d '\r')
           if [[ -n "${RAW_LINKS}" ]]; then
-            echo -e "\n<br>\U0001F4E6 爱快传 AirPortal(临时24小时)：<br><br>" >> release.txt
+            echo -e "\n<br>📦 爱快传 AirPortal(临时24小时)：<br><br>" >> release.txt
             RAW_LINKS=${RAW_LINKS%%||}
             IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
             for item in "${ITEMS[@]}"; do
@@ -477,7 +534,18 @@ jobs:
               echo "- <a href=\"${url}\">${filename}</a><br>" >> release.txt
             done
           fi
-
+          # 渲染Wormhole链接，清洗\r回车
+          RAW_LINKS=$(echo "${{ steps.wormhole.outputs.links }}" | tr -d '\r')
+          if [[ -n "${RAW_LINKS}" ]]; then
+            echo -e "\n<br>🔒 Wormhole(端到端加密·临时)：<br><br>" >> release.txt
+            RAW_LINKS=${RAW_LINKS%%||}
+            IFS='||' read -ra ITEMS <<< "${RAW_LINKS}"
+            for item in "${ITEMS[@]}"; do
+              IFS='|' read -r filename url <<< "${item}"
+              url=$(echo "$url" | tr -d '\r\n ')
+              echo "- <a href=\"${url}\">${filename}</a><br>" >> release.txt
+            done
+          fi
           echo "==== release.txt debug ===="
           cat -v release.txt
           echo "=========================="
