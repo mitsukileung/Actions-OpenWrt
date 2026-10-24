@@ -68,6 +68,17 @@ sed -i 's/\$\$CORE_ARCH/$$$$CORE_ARCH/g' package/luci-app-openclash/luci-app-ope
 # 重新添加 luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci
+sed -i '1i 52pojie.cn\
+right.com.cn\
+chinadsl.net\
+wnflb99.com\
+5150586.xyz\
+2222dy.com\
+555gy.cc\
+555zxdy.cc\
+666ys.net\
+91zxdy.com\
+' package/passwall-luci/luci-app-passwall/root/usr/share/passwall/rules/direct_host
 
 # 添加 luci-app-pushbot
 git clone https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-pushbot
