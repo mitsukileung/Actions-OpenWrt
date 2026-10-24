@@ -103,6 +103,7 @@ rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci
 sed -i '1i 52pojie.cn\
 right.com.cn\
+chinadsl.net\
 wnflb99.com\
 5150586.xyz\
 2222dy.com\
