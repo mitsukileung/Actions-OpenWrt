@@ -133,9 +133,9 @@ wnflb99.com\
 # 添加 luci-theme-alpha-reborn 主题
 #git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
 
-# 重新添加 luci-app-wechatpush
-#rm -rf feeds/luci/applications/luci-app-wechatpush
-#git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
+# 删除 luci-app-upnp
+rm -rf feeds/luci/applications/luci-app-upnp
+rm -rf feeds/packages/net/miniupnpd
 
 # 添加 OpenWrt-nikki
 git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
