@@ -55,9 +55,8 @@ git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git pa
 
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
-#rm -rf feeds/luci/applications/luci-app-socat
-#wget -O feeds/packages/net/socat/Makefile https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/socat_Makefile
-#git clone https://github.com/WROIATE/luci-app-socat.git package/luci-app-socat
+rm -rf package/vikingyfy/miniupnpd
+rm -rf package/vikingyfy/luci-app-upnp
 
 #修正连接数（by ベ七秒鱼ベ）
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
