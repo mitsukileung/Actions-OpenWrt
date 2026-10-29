@@ -20,7 +20,8 @@ sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" 
 mkdir -p patches/feeds/packages/lang/python/python3/
 wget -O patches/feeds/packages/lang/python/python3/100-add-libffi-build-dep.patch https://raw.githubusercontent.com/chienkuo/ImmortalWrt-for-Gemtek-XR1710G/refs/heads/master/patches/feeds/packages/lang/python/python3/100-add-libffi-build-dep.patch
 mkdir -p package/libs/libffi/
-wget -O package/libs/libffi/Makefile https://raw.githubusercontent.com/chienkuo/ImmortalWrt-for-Gemtek-XR1710G/refs/heads/master/package/libs/libffi/Makefile
+#wget -O package/libs/libffi/Makefile https://raw.githubusercontent.com/chienkuo/ImmortalWrt-for-Gemtek-XR1710G/refs/heads/master/package/libs/libffi/Makefile
+wget -O package/libs/libffi/Makefile https://raw.githubusercontent.com/immortalwrt/immortalwrt/refs/heads/master/package/libs/libffi/Makefile
 
 rm -rf patches/feeds/app_airoha/luci-app-airoha-npu/root/usr/libexec/rpcd/100-offload-unsupported-xg2010g-2g.patch
 
