@@ -22,6 +22,8 @@ wget -O patches/feeds/packages/lang/python/python3/100-add-libffi-build-dep.patc
 mkdir -p package/libs/libffi/
 wget -O package/libs/libffi/Makefile https://raw.githubusercontent.com/chienkuo/ImmortalWrt-for-Gemtek-XR1710G/refs/heads/master/package/libs/libffi/Makefile
 
+rm -rf patches/feeds/app_airoha/luci-app-airoha-npu/root/usr/libexec/rpcd/100-offload-unsupported-xg2010g-2g.patch
+
 # 关闭 CI llvm
 #sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
 
