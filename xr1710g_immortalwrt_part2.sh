@@ -137,11 +137,11 @@ wnflb99.com\
 #git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
 
 # 删除 luci-app-upnp
-#rm -rf feeds/luci/applications/luci-app-upnp
-#rm -rf feeds/packages/net/miniupnpd
+rm -rf feeds/luci/applications/luci-app-upnp
+rm -rf feeds/packages/net/miniupnpd
 
-rm -rf package/vikingyfy/miniupnpd
-rm -rf package/vikingyfy/luci-app-upnp
+#rm -rf package/vikingyfy/miniupnpd
+#rm -rf package/vikingyfy/luci-app-upnp
 
 # 添加 OpenWrt-nikki
 git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
