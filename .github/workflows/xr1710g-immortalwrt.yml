@@ -10,8 +10,9 @@ on:
   schedule:
     # cron格式：分 时 日 月 星期
     # 启动时间为 4,15,20 点
-    - cron: 13 3,10,19 * * *
-  # 推送v开头标签触发构建
+    - cron: 10 5,11,19 * * *
+      timezone: 'Asia/Shanghai'
+      
   push:
     tags:
       - 'v*'
