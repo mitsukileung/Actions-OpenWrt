@@ -105,30 +105,19 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          echo "==== 正在清理環境... ===="
-          sudo apt-get -yqq purge firefox google-chrome-stable microsoft-edge-stable mono-devel >/dev/null 2>&1
-          sudo apt-get -yqq update >/dev/null
-          
-          echo "==== 正在背景安裝依賴包（請稍候，約 30 秒）... ===="
-          sudo apt-get -yqq install dos2unix libfuse-dev jq ack antlr3 asciidoc autoconf automake \
-            autopoint binutils bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler \
-            fastjar flex gawk gettext genisoimage gnutls-dev gperf haveged help2man intltool \
-            libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev \
-            libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool libyaml-dev libz-dev \
-            lrzsz msmtp nano ninja-build p7zip p7zip-full patch pkgconf python3 python3-pip \
-            python3-ply python3-pyelftools qemu-utils quilt re2c rsync scons sharutils squashfs-tools \
-            subversion swig texinfo uglifyjs unzip vim wget xmlto zlib1g-dev zstd xxd >/dev/null
-          
-          echo "==== 正在清理快取與配置環境... ===="
-          sudo apt-get -yqq autoremove --purge >/dev/null 2>&1
-          sudo apt-get -yqq autoclean >/dev/null 2>&1
-          sudo apt-get -yqq clean >/dev/null 2>&1
-          
-          sudo systemctl daemon-reload
-          sudo timedatectl set-timezone "Asia/Shanghai"
+          sudo -E apt -yqq purge firefox
+          sudo -E apt -yqq update
+          sudo -E apt -yqq full-upgrade
+          sudo -E apt -yqq autoremove --purge
+          sudo -E apt -yqq autoclean
+          sudo -E apt -yqq clean
+          sudo -E apt -yqq install dos2unix libfuse-dev jq
+          sudo bash -c 'bash <(curl -sL https://build-scripts.immortalwrt.org/init_build_environment.sh)'
+          sudo -E systemctl daemon-reload
+          sudo -E timedatectl set-timezone "Asia/Shanghai"
           sudo mkdir -p /workdir
           sudo chown $USER:$GROUPS /workdir
-          echo "==== 環境初始化成功，即將安全進入下一步！ ===="
+          dos2unix *.sh || true
 
       - name: Clone source code
         working-directory: /workdir
