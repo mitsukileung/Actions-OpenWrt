@@ -80,6 +80,21 @@ jobs:
           echo "硬盘详情："
           df -Th
 
+      - name: Free Disk Space & Setup Swap
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /usr/local/share/powershell /usr/share/swift /opt/az /usr/lib/mono
+          sudo docker image prune --all --force
+          
+          # 建立 16GB 的 Swap 虛擬記憶體防止 Go 編譯爆記憶體
+          sudo swapoff -a
+          sudo dd if=/dev/zero of=/swapfile bs=1M count=16384
+          sudo chmod 600 /swapfile
+          sudo mkswap /swapfile
+          sudo swapon /swapfile
+          free -h
+          
       - name: TG Message
         if: env.SERVERCHAN_SCKEY == 'true'
         run: |
