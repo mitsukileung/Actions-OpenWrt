@@ -105,12 +105,12 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          # 1. 移除不必要的殘留軟體，釋放極限空間
-          sudo -E apt -yqq purge firefox google-chrome-stable microsoft-edge-stable mono-devel changelog
-          sudo -E apt -yqq update
+          # 1. 移除不必要的殘留軟體（已修正：刪除不存在的 changelog 包）
+          sudo apt-get -yqq purge firefox google-chrome-stable microsoft-edge-stable mono-devel
+          sudo apt-get -yqq update
           
-          # 2. 僅安裝編譯 OpenWrt 必需且微軟鏡像缺少的核心依賴包（精簡高效）
-          sudo -E apt -yqq install dos2unix libfuse-dev jq ack antlr3 asciidoc autoconf automake \
+          # 2. 安裝編譯 OpenWrt 必需的核心依賴包
+          sudo apt-get -yqq install dos2unix libfuse-dev jq ack antlr3 asciidoc autoconf automake \
             autopoint binutils bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler \
             fastjar flex gawk gettext genisoimage gnutls-dev gperf haveged help2man intltool \
             libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev \
@@ -120,13 +120,13 @@ jobs:
             subversion swig texinfo uglifyjs unzip vim wget xmlto zlib1g-dev zstd xxd
           
           # 3. 清理 APT 快取
-          sudo -E apt -yqq autoremove --purge
-          sudo -E apt -yqq autoclean
-          sudo -E apt -yqq clean
+          sudo apt-get -yqq autoremove --purge
+          sudo apt-get -yqq autoclean
+          sudo apt-get -yqq clean
           
           # 4. 配置時區與工作目錄
-          sudo -E systemctl daemon-reload
-          sudo -E timedatectl set-timezone "Asia/Shanghai"
+          sudo systemctl daemon-reload
+          sudo timedatectl set-timezone "Asia/Shanghai"
           sudo mkdir -p /workdir
           sudo chown $USER:$GROUPS /workdir
 
