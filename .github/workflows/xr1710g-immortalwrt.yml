@@ -105,14 +105,26 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          sudo -E apt -yqq purge firefox
+          # 1. 移除不必要的殘留軟體，釋放極限空間
+          sudo -E apt -yqq purge firefox google-chrome-stable microsoft-edge-stable mono-devel changelog
           sudo -E apt -yqq update
-          sudo -E apt -yqq full-upgrade
+          
+          # 2. 僅安裝編譯 OpenWrt 必需且微軟鏡像缺少的核心依賴包（精簡高效）
+          sudo -E apt -yqq install dos2unix libfuse-dev jq ack antlr3 asciidoc autoconf automake \
+            autopoint binutils bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler \
+            fastjar flex gawk gettext genisoimage gnutls-dev gperf haveged help2man intltool \
+            libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev \
+            libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool libyaml-dev libz-dev \
+            lrzsz msmtp nano ninja-build p7zip p7zip-full patch pkgconf python3 python3-pip \
+            python3-ply python3-pyelftools qemu-utils quilt re2c rsync scons sharutils squashfs-tools \
+            subversion swig texinfo uglifyjs unzip vim wget xmlto zlib1g-dev zstd xxd
+          
+          # 3. 清理 APT 快取
           sudo -E apt -yqq autoremove --purge
           sudo -E apt -yqq autoclean
           sudo -E apt -yqq clean
-          sudo -E apt -yqq install dos2unix libfuse-dev jq
-          sudo bash -c 'bash <(curl -sL https://build-scripts.immortalwrt.org/init_build_environment.sh)'
+          
+          # 4. 配置時區與工作目錄
           sudo -E systemctl daemon-reload
           sudo -E timedatectl set-timezone "Asia/Shanghai"
           sudo mkdir -p /workdir
