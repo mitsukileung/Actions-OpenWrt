@@ -17,13 +17,13 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" $(find ./feeds/luci/modules/luci-mod-status/ -name "10_system.js")
 
 # 修复编译时python3的错误
-mkdir -p patches/feeds/packages/lang/python/python3/
-wget -O patches/feeds/packages/lang/python/python3/100-add-libffi-build-dep.patch https://raw.githubusercontent.com/chienkuo/ImmortalWrt-for-Gemtek-XR1710G/refs/heads/master/patches/feeds/packages/lang/python/python3/100-add-libffi-build-dep.patch
-mkdir -p package/libs/libffi/
+#mkdir -p patches/feeds/packages/lang/python/python3/
+#wget -O patches/feeds/packages/lang/python/python3/100-add-libffi-build-dep.patch https://raw.githubusercontent.com/chienkuo/ImmortalWrt-for-Gemtek-XR1710G/refs/heads/master/patches/feeds/packages/lang/python/python3/100-add-libffi-build-dep.patch
+#mkdir -p package/libs/libffi/
 #wget -O package/libs/libffi/Makefile https://raw.githubusercontent.com/chienkuo/ImmortalWrt-for-Gemtek-XR1710G/refs/heads/master/package/libs/libffi/Makefile
-wget -O package/libs/libffi/Makefile https://raw.githubusercontent.com/immortalwrt/immortalwrt/refs/heads/master/package/libs/libffi/Makefile
+#wget -O package/libs/libffi/Makefile https://raw.githubusercontent.com/immortalwrt/immortalwrt/refs/heads/master/package/libs/libffi/Makefile
 
-rm -rf patches/feeds/app_airoha/luci-app-airoha-npu/root/usr/libexec/rpcd/100-offload-unsupported-xg2010g-2g.patch
+#rm -rf patches/feeds/app_airoha/luci-app-airoha-npu/root/usr/libexec/rpcd/100-offload-unsupported-xg2010g-2g.patch
 
 # 关闭 CI llvm
 #sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
@@ -61,7 +61,7 @@ rm -rf package/lucky
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
 # 添加 luci-theme-glass 主题
-git clone https://github.com/rchen14b/luci-theme-glass.git package/luci-theme-glass
+#git clone https://github.com/rchen14b/luci-theme-glass.git package/luci-theme-glass
 
 # 添加 aurora 主题&设置
 git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
