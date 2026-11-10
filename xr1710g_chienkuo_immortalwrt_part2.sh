@@ -28,19 +28,6 @@ sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" 
 # 关闭 CI llvm
 #sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
 
-# Modify X86 Kernel 5.10
-#sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' target/linux/ipq807x/Makefile
-# Clear the login password
-#sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
-# Modify frpc default setting
-#sed -i 's/yourdomain.com/fpz.5150586.xyz/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
-#sed -i 's/1234567/LaputaShita~!/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
-#sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
-#sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
-#sed -i 's/'0/'1/g' feeds/packages/net/adguardhome/files/adguardhome.config
-
-wget -O target/linux/airoha/patches-6.18/110-net-airoha-fix-ppe-flow-stats-decl.patch https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/110-net-airoha-fix-ppe-flow-stats-decl.patch
-
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
 #sed -i 's/1.12.25/1.13.16/g' feeds/packages/net/sing-box/Makefile
