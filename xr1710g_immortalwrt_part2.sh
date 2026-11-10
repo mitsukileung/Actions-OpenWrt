@@ -39,6 +39,8 @@ sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" 
 #sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/'0/'1/g' feeds/packages/net/adguardhome/files/adguardhome.config
 
+wget -O target/linux/airoha/patches-6.18/110-net-airoha-fix-ppe-flow-stats-decl.patch https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/110-net-airoha-fix-ppe-flow-stats-decl.patch
+
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
 #sed -i 's/1.12.25/1.13.16/g' feeds/packages/net/sing-box/Makefile
