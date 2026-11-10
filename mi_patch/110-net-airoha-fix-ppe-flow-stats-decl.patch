@@ -1,0 +1,17 @@
+--- a/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
+@@ -9,6 +9,14 @@
+ #include "airoha_regs.h"
+ #include "airoha_eth.h"
+ 
++/*
++ * airoha_ppe_flow_stats_available() is first used in
++ * airoha_ppe_debugfs_foe_show() but its definition lives further down the
++ * file. Add a forward declaration so the call sees the real prototype
++ * instead of an implicit int, and the definition below does not conflict.
++ */
++static bool airoha_ppe_flow_stats_available(struct airoha_ppe *ppe);
++
+ static void airoha_debugfs_ppe_print_tuple(struct seq_file *m,
+ 					   void *src_addr, void *dest_addr,
+ 					   u16 *src_port, u16 *dest_port,
