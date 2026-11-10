@@ -135,8 +135,7 @@ wnflb99.com\
 
 #git clone https://github.com/fcshark-org/openwrt-fchomo.git package/openwrt-fchomo
 
-# 添加 luci-theme-alpha-reborn 主题
-#git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
+rm -rf feeds/luci/themes/luci-theme-argon
 
 # 删除 luci-app-upnp
 rm -rf feeds/luci/applications/luci-app-upnp
