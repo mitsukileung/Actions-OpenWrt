@@ -23,7 +23,7 @@ sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" 
 #wget -O package/libs/libffi/Makefile https://raw.githubusercontent.com/chienkuo/ImmortalWrt-for-Gemtek-XR1710G/refs/heads/master/package/libs/libffi/Makefile
 #wget -O package/libs/libffi/Makefile https://raw.githubusercontent.com/immortalwrt/immortalwrt/refs/heads/master/package/libs/libffi/Makefile
 
-#rm -rf patches/feeds/app_airoha/luci-app-airoha-npu/root/usr/libexec/rpcd/100-offload-unsupported-xg2010g-2g.patch
+rm -rf package/kernel/mt76/patches/9995-wifi-mt76-mt7996-advertise-beacon-protection.patch
 
 # 关闭 CI llvm
 #sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
