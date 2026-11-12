@@ -23,7 +23,7 @@ sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" 
 #wget -O package/libs/libffi/Makefile https://raw.githubusercontent.com/chienkuo/ImmortalWrt-for-Gemtek-XR1710G/refs/heads/master/package/libs/libffi/Makefile
 #wget -O package/libs/libffi/Makefile https://raw.githubusercontent.com/immortalwrt/immortalwrt/refs/heads/master/package/libs/libffi/Makefile
 
-#rm -rf patches/feeds/app_airoha/luci-app-airoha-npu/root/usr/libexec/rpcd/100-offload-unsupported-xg2010g-2g.patch
+rm -rf patches/feeds/packages/net/sing-box/100-naive-outbound-configurable.patch
 
 # 关闭 CI llvm
 #sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
