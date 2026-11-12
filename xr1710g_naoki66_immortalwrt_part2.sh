@@ -41,7 +41,7 @@ sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" 
 
 wget -O package/kernel/mt76/patches/126-mt76-npu-fix-rx-ring-handling.patch https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/126-mt76-npu-fix-rx-ring-handling.patch
 
-#wget -O target/linux/airoha/patches-6.18/110-net-airoha-fix-ppe-flow-stats-decl.patch https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/110-net-airoha-fix-ppe-flow-stats-decl.patch
+wget -O target/linux/airoha/patches-6.18/110-net-airoha-fix-ppe-flow-stats-decl.patch https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/110-net-airoha-fix-ppe-flow-stats-decl.patch
 
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
