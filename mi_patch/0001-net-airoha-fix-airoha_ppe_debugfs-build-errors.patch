@@ -1,0 +1,45 @@
+From: OpenWrt Developer <openwrt@openwrt.org>
+Date: Mon, 10 Nov 2026 00:00:00 +0800
+Subject: [PATCH] net: airoha: fix airoha_ppe_debugfs build errors
+
+Fix implicit declaration / conflicting type for
+airoha_ppe_flow_stats_available() by adding a forward declaration,
+and fix seq_printf format mismatches where unsigned long was printed
+with %u.
+
+Signed-off-by: OpenWrt Developer <openwrt@openwrt.org>
+---
+ drivers/net/ethernet/airoha/airoha_ppe_debugfs.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c b/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
+index 000000000000..000000000000 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
+@@ -10,6 +10,11 @@
+ #include "airoha_eth.h"
+ #include "airoha_ppe.h"
+ 
++/* Forward declaration to avoid implicit-int / conflicting-type errors. */
++static bool
++airoha_ppe_flow_stats_available(struct airoha_ppe *ppe);
++
+ static int airoha_ppe_debugfs_foe_show(struct seq_file *m, void *private,
+ 				       bool bind)
+ {
+@@ -219,7 +224,7 @@ static int airoha_ppe_debugfs_config_show(struct seq_file *m, void *private)
+ 	for (i = 0; i < ppe->n_ppe; i++) {
+ 		seq_printf(m, "ppe%u_gdm2_default_cpu_port: %lu\n", i,
+ 			   ppe->gdm2_default_cpu_port[i]);
+ 	}
+ 
+ 	return 0;
+@@ -356,7 +361,7 @@ static int airoha_ppe_debugfs_bind_rate_show(struct seq_file *m, void *private)
+ 	for (i = 0; i < ppe->n_ppe; i++) {
+ 		seq_printf(m, "ppe%u: l2b=%lu l3=%lu\n", i,
+ 			   ppe->l2b_bind_rate[i], ppe->l3_bind_rate[i]);
+ 	}
+ 
+ 	return 0;
+-- 
+2.43.0
