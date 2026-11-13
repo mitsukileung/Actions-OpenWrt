@@ -45,6 +45,8 @@ wget -O package/kernel/mt76/patches/126-mt76-npu-fix-rx-ring-handling.patch http
 
 wget -O target/linux/airoha/patches-6.18/110-net-airoha-fix-ppe-flow-stats-decl.patch https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/110-net-airoha-fix-ppe-flow-stats-decl.patch
 
+rm -rf rm -rf patches/feeds/argon
+
 sed -i 's/8056c2e21c000001/9f77fc393e758059/g' feeds/packages/net/zerotier/files/etc/config/zerotier
 
 #sed -i 's/1.12.25/1.13.16/g' feeds/packages/net/sing-box/Makefile
@@ -140,7 +142,6 @@ wnflb99.com\
 #git clone https://github.com/fcshark-org/openwrt-fchomo.git package/openwrt-fchomo
 
 rm -rf feeds/luci/themes/luci-theme-argon
-rm -rf patches/feeds/argon/root
 sed -i 's/5e72e4/3d138c/g' feeds/argon/root/etc/config/argon
 
 # 删除 luci-app-upnp
