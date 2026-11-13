@@ -140,7 +140,7 @@ wnflb99.com\
 #git clone https://github.com/fcshark-org/openwrt-fchomo.git package/openwrt-fchomo
 
 rm -rf feeds/luci/themes/luci-theme-argon
-wget -O patches/feeds/argon/root/etc/config/argon/100-luci-theme-argon-defaults.patch https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/100-luci-theme-argon-defaults.patch
+sed -i 's/5e72e4/3d138c/g' feeds/argon/root/etc/config/argon
 
 # 删除 luci-app-upnp
 rm -rf feeds/luci/applications/luci-app-upnp
