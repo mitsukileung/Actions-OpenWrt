@@ -38,8 +38,9 @@ sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" 
 #sed -i 's/80/57001/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/443/57002/g' feeds/luci/applications/luci-app-frpc/root/etc/config/frp
 #sed -i 's/'0/'1/g' feeds/packages/net/adguardhome/files/adguardhome.config
-#wget -O package/kernel/mt76/patches/9995-wifi-mt76-mt7996-advertise-beacon-protection.patch https://raw.githubusercontent.com/chienkuo/ImmortalWrt-for-Gemtek-XR1710G/8aa7a9b8447674541ed638df7e509c87929b8bc6/package/kernel/mt76/patches/9995-wifi-mt76-mt7996-advertise-beacon-protection.patch
-wget -O package/kernel/mt76/patches/9995-wifi-mt76-mt7996-advertise-beacon-protection.patch https://raw.githubusercontent.com/chienkuo/ImmortalWrt-for-Gemtek-XR1710G/refs/heads/master/package/kernel/mt76/patches/9995-wifi-mt76-mt7996-advertise-beacon-protection.patch
+
+wget -O package/kernel/mt76/patches/9995-wifi-mt76-mt7996-advertise-beacon-protection.patch https://raw.githubusercontent.com/chienkuo/ImmortalWrt-for-Gemtek-XR1710G/8aa7a9b8447674541ed638df7e509c87929b8bc6/package/kernel/mt76/patches/9995-wifi-mt76-mt7996-advertise-beacon-protection.patch
+#wget -O package/kernel/mt76/patches/9995-wifi-mt76-mt7996-advertise-beacon-protection.patch https://raw.githubusercontent.com/chienkuo/ImmortalWrt-for-Gemtek-XR1710G/refs/heads/master/package/kernel/mt76/patches/9995-wifi-mt76-mt7996-advertise-beacon-protection.patch
 
 wget -O package/kernel/mt76/patches/126-mt76-npu-fix-rx-ring-handling.patch https://raw.githubusercontent.com/mitsukileung/Actions-OpenWrt/refs/heads/main/mi_patch/126-mt76-npu-fix-rx-ring-handling.patch
 
