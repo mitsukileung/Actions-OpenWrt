@@ -23,8 +23,9 @@ sed -i "s/(luciversion || '')/& + (' \/ Mitsuki-$(TZ=UTC-8 date +%y.%m.%d)')/g" 
 #wget -O package/libs/libffi/Makefile https://raw.githubusercontent.com/chienkuo/ImmortalWrt-for-Gemtek-XR1710G/refs/heads/master/package/libs/libffi/Makefile
 #wget -O package/libs/libffi/Makefile https://raw.githubusercontent.com/immortalwrt/immortalwrt/refs/heads/master/package/libs/libffi/Makefile
 
-rm -rf patches/feeds/packages/net/sing-box/100-naive-outbound-configurable.patch
-rm -rf patches/feeds/luci/applications/luci-app-passwall/100-smartdns-default-off-arm.patch
+rm -rf patches/feeds/argon
+#rm -rf patches/feeds/packages/net/sing-box/100-naive-outbound-configurable.patch
+#rm -rf patches/feeds/luci/applications/luci-app-passwall/100-smartdns-default-off-arm.patch
 
 # 关闭 CI llvm
 #sed -i 's/llvm=true/llvm=false/g' feeds/packages/lang/rust/Makefile
@@ -124,6 +125,7 @@ wnflb99.com\
 #git clone https://github.com/fcshark-org/openwrt-fchomo.git package/openwrt-fchomo
 
 rm -rf feeds/luci/themes/luci-theme-argon
+sed -i 's/5e72e4/3d138c/g' feeds/argon/root/etc/config/argon
 
 # 删除 luci-app-upnp
 rm -rf feeds/luci/applications/luci-app-upnp
