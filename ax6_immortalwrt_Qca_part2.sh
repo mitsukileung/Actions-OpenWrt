@@ -90,9 +90,11 @@ git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-ni
 # 添加 luci-app-taskplan
 git clone https://github.com/sirpdboy/luci-app-taskplan.git package/luci-app-taskplan
 
-# 添加 smartdns
-#git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
-#git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
+# 重新添加 luci-theme-argon
+rm -rf feeds/luci/themes/luci-theme-argon
+git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+sed -i 's/classic/centered/g' package/luci-theme-argon/root/etc/config/argon
+sed -i 's/5e72e4/3d138c/g' package/luci-theme-argon/root/etc/config/argon
 
 # 添加 adguardhome
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
