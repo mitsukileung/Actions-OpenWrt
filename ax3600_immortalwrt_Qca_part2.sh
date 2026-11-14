@@ -36,10 +36,10 @@ git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git pa
 #sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
 # 重新添加 luci-theme-argon
-#rm -rf feeds/luci/themes/luci-theme-argon
-#git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-#rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
-#git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
+rm -rf feeds/luci/themes/luci-theme-argon
+git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+sed -i 's/classic/centered/g' package/luci-theme-argon/root/etc/config/argon
+sed -i 's/5e72e4/3d138c/g' package/luci-theme-argon/root/etc/config/argon
 
 #git clone https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
 
