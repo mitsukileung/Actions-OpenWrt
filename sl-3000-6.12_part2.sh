@@ -108,6 +108,7 @@ wnflb99.com\
 555zxdy.cc\
 666ys.net\
 91zxdy.com\
+chinadsl.net\
 ' package/passwall-luci/luci-app-passwall/root/usr/share/passwall/rules/direct_host
 
 #git clone https://github.com/fcshark-org/openwrt-fchomo.git package/openwrt-fchomo
