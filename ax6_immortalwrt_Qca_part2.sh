@@ -75,6 +75,7 @@ wnflb99.com\
 555zxdy.cc\
 666ys.net\
 91zxdy.com\
+chinadsl.net\
 ' package/passwall-luci/luci-app-passwall/root/usr/share/passwall/rules/direct_host
 
 # 添加 luci-app-pushbot
