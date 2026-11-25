@@ -146,6 +146,8 @@ chinadsl.net\
 
 rm -rf feeds/luci/themes/luci-theme-argon
 sed -i 's/5e72e4/3d138c/g' feeds/argon/root/etc/config/argon
+sed -i 's/classic/centered/g' feeds/argon/root/etc/config/argon
+sed -i 's/none/bing/g' feeds/argon/root/etc/config/argon
 
 # 删除 luci-app-upnp
 rm -rf feeds/luci/applications/luci-app-upnp
