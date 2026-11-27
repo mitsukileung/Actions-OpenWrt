@@ -131,6 +131,12 @@ git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-au
 git clone https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
 sed -i "s/nav_type '.*'/nav_type 'dropdown'/g" $(find ./package/luci-app-aurora-config/root/usr/share/aurora/ -type f -name "*.template")
 
+rm -rf feeds/luci/themes/luci-theme-argon
+git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+sed -i 's/5e72e4/3d138c/g' package/luci-theme-argon/root/etc/config/argon
+sed -i 's/classic/centered/g' package/luci-theme-argon/root/etc/config/argon
+sed -i 's/none/bing/g' package/luci-theme-argon/root/etc/config/argon
+
 # 添加 OpenWrt-nikki
 git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 
